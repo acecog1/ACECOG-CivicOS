@@ -12,13 +12,17 @@ const SOURCE_FILES = [
 ];
 let pyReady = null;
 
+async function sha256(bytes) {
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2,"0")).join("");
+}
+
 async function sourceWithHash(path, manifest) {
   if (!(path in manifest.files)) throw new Error("Unapproved Python module");
   const response = await fetch(new URL(path, BASE), {cache:"no-store"});
   if (!response.ok) throw new Error("Local Python module unavailable");
   const content = new Uint8Array(await response.arrayBuffer());
-  const digest = await crypto.subtle.digest("SHA-256", content);
-  const hash = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2,"0")).join("");
+  const hash = await sha256(content);
   if (hash !== manifest.files[path]) throw new Error("Engine bundle hash mismatch");
   return content;
 }
@@ -26,10 +30,30 @@ async function sourceWithHash(path, manifest) {
 async function initialize() {
   const manifestResponse = await fetch(new URL("source-manifest.json",BASE), {cache:"no-store"});
   if (!manifestResponse.ok) throw new Error("Source manifest absent");
-  const manifest = await manifestResponse.json();
+  const manifestBytes = await manifestResponse.arrayBuffer();
+  const manifestDigest = await sha256(manifestBytes);
+  const manifest = JSON.parse(new TextDecoder().decode(manifestBytes));
   if (manifest.schema !== "ACECOG-browser-lab-source-v0.1" ||
       manifest.scenario_kind !== "abbreviated-isolated-synthetic-not-279-event-fork") {
     throw new Error("Invalid browser source scope");
+  }
+  // This is an identifier, not a signature. A locally built bundle may have
+  // no Git identity and must say so instead of inventing a source SHA.
+  if (!(/^[a-f0-9]{40}$/.test(manifest.source_revision) ||
+        manifest.source_revision === "unrecorded-local-build")) {
+    throw new Error("Invalid source revision declaration");
+  }
+  const runtimeResponse = await fetch(new URL("acecog-runtime-manifest.json",RUNTIME_BASE),
+                                      {cache:"no-store"});
+  if (!runtimeResponse.ok) throw new Error("Runtime manifest absent");
+  const runtimeBytes = await runtimeResponse.arrayBuffer();
+  const runtimeDigest = await sha256(runtimeBytes);
+  const runtime = JSON.parse(new TextDecoder().decode(runtimeBytes));
+  if (runtime.distribution !== "Pyodide" || runtime.version !== "314.0.7" ||
+      runtime.root_lock_sha256 !== "5dc2fc119108bc148c7457dc86e7675b5c87e1cafd420b9c34c1eaef7b36c010" ||
+      !["EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA",
+        "UNPINNED_OBSERVED_ONLY_BLOCK_RELEASE"].includes(runtime.core_root_status)) {
+    throw new Error("Unrecognized local Pyodide runtime");
   }
   const {loadPyodide} = await import(new URL("pyodide.mjs", RUNTIME_BASE));
   const py = await loadPyodide({
@@ -49,7 +73,8 @@ async function initialize() {
   // Fingerprints identify the solver; never assert cross-build byte-for-byte parity
   // merely because the same source and scenario were used.
   const versions = py.runPython("import scipy, numpy, jsonschema; (scipy.__version__, numpy.__version__)").toJs();
-  return {py,versions};
+  return {py,versions,sourceRevision:manifest.source_revision,
+          manifestDigest,runtimeDigest,runtime};
 }
 function ready() {
   if (!pyReady) pyReady = initialize().catch(error=>{pyReady=null; throw error;});
@@ -57,7 +82,7 @@ function ready() {
 }
 async function run(method,payload) {
   if (!["compare","random"].includes(method)) throw new Error("Unsupported calculation");
-  const {py,versions} = await ready();
+  const {py,versions,sourceRevision,manifestDigest,runtimeDigest,runtime} = await ready();
   if (method==="random") {
     if (!Number.isSafeInteger(payload) || payload<0 || payload>4294967295)
       throw new Error("Bad input seed");
@@ -73,10 +98,18 @@ async function run(method,payload) {
   const result = JSON.parse(raw);
   result.browser_runtime = {
     mode:"client-only",
-    source_revision:"bundle-manifest",
+    source_revision:sourceRevision,
+    source_manifest_sha256:manifestDigest,
+    runtime_manifest_sha256:runtimeDigest,
+    pyodide_version:runtime.version,
+    pyodide_root_lock_sha256:runtime.root_lock_sha256,
+    core_root_status:runtime.core_root_status,
+    core_root_release_attestation:"NOT_INDEPENDENTLY_APPROVED",
     python:"Pyodide",
     scipy:versions[0],
     numpy:versions[1],
+    event_evidence_scope:"summary and chain-head only; raw events not included",
+    independently_authenticated:false,
     limitation:"Fictional shortened fixture, not the 279-event published snapshot",
     network_compute:false
   };
