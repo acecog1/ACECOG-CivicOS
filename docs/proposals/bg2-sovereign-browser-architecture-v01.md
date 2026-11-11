@@ -58,3 +58,36 @@ asserts busy/restore behavior through the self-hosted cold-start worker path.
 This resolves **one** QA defect in P2; it does **not** resolve the other BG-2
 supply-chain, evidence, performance/accessibility and publication holds. No
 static Pages deployment, Render service or real civic state is enabled.
+
+## Provenance remediation v0.2 — explicit core release blockade (2026-11-11)
+
+**Supply chain:** `vendor_browser_pyodide.py` now downloads the locked root package
+manifest first and verifies its pinned SHA **before writing it**. Root core files
+(`pyodide.mjs`, `pyodide.asm.mjs`, `pyodide.asm.wasm`,
+`python_stdlib.zip`) can be accepted for a future release only with
+`--approved-root-pinset PATH`, a separate previously reviewed JSON pinset
+with schema `ACECOG-PYODIDE-CORE-PINSET-v1`, exact version/lock SHA and all four
+SHA-256 values. Downloaded root and dependency wheel digests are checked against
+expected hashes **before being written**, and an incorrect SHA or upstream
+redirect fails closed. The current feasibility workflow has **no independently
+approved core pinset**: it reports and archives observed root hashes labeled
+`UNPINNED_OBSERVED_ONLY_BLOCK_RELEASE`. This mode must **never** be presented
+as a production-ready dependency audit. A full license/SBOM and independent
+provenance disposition are still required.
+
+**Evidence identity:** The worker now hashes the *actual* source and runtime
+manifest bytes used by the active browser session, records the source checkout
+revision (or honestly declares `unrecorded-local-build`), and emits
+Pyodide/NumPy/SciPy version, runtime lock and explicit unapproved core pin
+state. Opt-in local export and JSON recipe copy include source/runtime identity
+and clearly state that **raw chain events and independent event verification
+are not included**. A client-editable chain head does not prove authentic
+provenance or legal decision authority. Browser tests assert these declarations
+on actual WASM-originated exported JSON, not just synthetic object fixtures.
+
+**Remaining release obligations:** QA must separately review/approve core root
+hashes from a trusted release provenance source, verify notices/SBOM and root
+license, produce a SHA-attested and rollback-ready BG-2 static artifact,
+run multi-browser/low-memory/true 200% zoom/native AT evaluations, reconcile
+WBS8 incremental cost and schedule, and obtain exact new-source BG-2
+publication approval. **BG-1/public main and GoDaddy remain unchanged.**
