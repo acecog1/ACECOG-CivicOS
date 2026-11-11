@@ -56,8 +56,8 @@ def stripped_model() -> str:
         lambda n: isinstance(n, ast.FunctionDef) and n.name == "model",
         "model() function",
     )
-    out = "'''Source-extracted synthetic Riverbend model, no HTTP server imports.'''\\n"
-    return out + ast.unparse(nodes) + "\\n\\n" + ast.unparse(model) + "\\n"
+    out = "'''Source-extracted synthetic Riverbend model, no HTTP server imports.'''\n"
+    return out + ast.unparse(nodes) + "\n\n" + ast.unparse(model) + "\n"
 
 
 def replace_one(content: str, old: str, new: str, file: str):
@@ -76,7 +76,7 @@ def build(dest: Path = DEST) -> None:
     html = replace_one(html, 'src="/experience.js"', 'src="./experience.js"', "index.html")
     html = replace_one(
         html, '<script src="./lab.js" defer></script>',
-        '<script src="./browser-api.js" defer></script>\\n  <script src="./lab.js" defer></script>',
+        '<script src="./browser-api.js" defer></script>\n  <script src="./lab.js" defer></script>',
         "index.html",
     )
     html = replace_one(
@@ -85,15 +85,15 @@ def build(dest: Path = DEST) -> None:
         "index.html",
     )
     html = replace_one(
-        html, "<p class=\\"subtle\\">Select <strong>Run with CivicOS engine</strong> to compare the local reference fixture with your alternative.",
-        "<p class=\\"subtle\\">Select <strong>Run with CivicOS engine</strong> to compare the embedded synthetic reference fixture with your alternative.",
+        html, "<p class=\"subtle\">Select <strong>Run with CivicOS engine</strong> to compare the local reference fixture with your alternative.",
+        "<p class=\"subtle\">Select <strong>Run with CivicOS engine</strong> to compare the embedded synthetic reference fixture with your alternative.",
         "index.html",
     )
     (dest / "index.html").write_text(html, encoding="utf-8")
     js = (PUBLIC / "lab.js").read_text(encoding="utf-8")
     js = replace_one(
         js,
-        "const response = await fetch(url, Object.assign({cache:\\"no-store\\"}, options || {}));",
+        "const response = await fetch(url, Object.assign({cache:\"no-store\"}, options || {}));",
         "const response = await window.AcecogBrowserLab.fetch(url, options || {});",
         "lab.js",
     )
@@ -119,7 +119,7 @@ def build(dest: Path = DEST) -> None:
         "runtime": "Pyodide version pinned by vendor manifest; solver output parity still needs proof",
         "files": {str(p.relative_to(dest)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
     }
-    (dest / "source-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\\n", encoding="utf-8")
+    (dest / "source-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     if any("https://cdn" in (dest / item).read_text(encoding="utf-8") for item in
            ("index.html", "lab.js", "browser-api.js", "browser-engine-worker.mjs")):
         raise RuntimeError("Browser executable must not request an external CDN")
