@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/AssuranceAnchor.schema.json",
+  "title": "AssuranceAnchor",
+  "description": "One piece of uniqueness evidence, stored only as a keyed hash.",
+  "x-acecog-object": "Assurance Anchor",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 23.1.1",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "identity_id",
+    "anchor_type",
+    "keyed_hash"
+  ],
+  "properties": {
+    "identity_id": {
+      "type": "string"
+    },
+    "anchor_type": {
+      "enum": [
+        "self_assertion",
+        "passkey",
+        "vouching",
+        "document",
+        "registrar"
+      ]
+    },
+    "keyed_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attested_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/TreatyCompactAgreement.schema.json",
+  "title": "TreatyCompactAgreement",
+  "description": "Explicit interface among independent jurisdictions (federation is interface only in Phase 1).",
+  "x-acecog-object": "Treaty / Compact / Agreement",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "interface",
+  "x-acecog-spec": "7, 22",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "parties"
+  ],
+  "properties": {
+    "parties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "shared_constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authorities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

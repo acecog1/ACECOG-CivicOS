@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Vote.schema.json",
+  "title": "Vote",
+  "description": "Process record (17.3, 17.5).",
+  "x-acecog-object": "Vote",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "17.3, 17.5",
+  "x-acecog-engine": "vote",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "proposition_version_id",
+    "voter",
+    "choice"
+  ],
+  "properties": {
+    "proposition_id": {
+      "type": "string"
+    },
+    "proposition_version_id": {
+      "type": "string"
+    },
+    "voter": {
+      "type": "string"
+    },
+    "choice": {
+      "type": "string"
+    },
+    "via_delegate": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

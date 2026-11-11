@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ResourceCommitmentRegistryEntry.schema.json",
+  "title": "ResourceCommitmentRegistryEntry",
+  "description": "Single registration of a committed resource (Part V).",
+  "x-acecog-object": "Resource Commitment Registry Entry",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "interface",
+  "x-acecog-spec": "7, 41.2",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "resource_id",
+    "quantity"
+  ],
+  "properties": {
+    "resource_id": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "committed_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

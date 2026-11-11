@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Authority.schema.json",
+  "title": "Authority",
+  "description": "Lawful or organizational capacity to approve, prohibit, delegate, waive, commit or execute.",
+  "x-acecog-object": "Authority",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 12.0.1, 23.1",
+  "x-acecog-engine": "authority",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "grantee_actor_id",
+    "actions"
+  ],
+  "properties": {
+    "grantee_actor_id": {
+      "type": "string"
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "monitoring_role": {
+      "type": "boolean"
+    },
+    "rotation_terms": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "recall_terms": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revoked": {
+      "type": "boolean"
+    }
+  }
+}

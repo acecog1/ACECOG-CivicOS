@@ -1,0 +1,10 @@
+# Exact versions CI tests against. Strict-mode replay (OPT-REPRO-001) records the solver
+# version in every optimization run, so CI pins it rather than floating.
+# Update deliberately: change a pin, run the suite, commit with a note.
+numpy==2.5.4
+scipy==1.18.1
+jsonschema==4.26.0
+referencing==0.37.0
+PyYAML==6.0.3
+openpyxl==3.1.5
+pytest==9.2.0

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/StatementOfRelationship.schema.json",
+  "title": "StatementOfRelationship",
+  "description": "Guardian Council's statement of relationship to the land (Part V).",
+  "x-acecog-object": "Statement Of Relationship",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "interface",
+  "x-acecog-spec": "7, 38",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "guardian_jurisdiction_id"
+  ],
+  "properties": {
+    "guardian_jurisdiction_id": {
+      "type": "string"
+    },
+    "text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

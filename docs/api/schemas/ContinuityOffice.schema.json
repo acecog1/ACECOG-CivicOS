@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ContinuityOffice.schema.json",
+  "title": "ContinuityOffice",
+  "description": "A continuity office configured by a Civic Body; process powers only.",
+  "x-acecog-object": "Continuity Office",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 17.9",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "office_type"
+  ],
+  "properties": {
+    "office_type": {
+      "enum": [
+        "Justice of the Peace",
+        "Elders Council",
+        "External Convener"
+      ]
+    },
+    "local_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "holder_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "term_end": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 date or date-time."
+    }
+  }
+}

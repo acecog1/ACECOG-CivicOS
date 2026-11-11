@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Decision.schema.json",
+  "title": "Decision",
+  "description": "Proposed or completed choice among alternatives.",
+  "x-acecog-object": "Decision",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 8.0, 8.4, 17.4, 23.1.1",
+  "x-acecog-engine": "decision",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "proposition_version_id",
+    "decision_class",
+    "process_version_id",
+    "result",
+    "lifecycle_state",
+    "legal_status"
+  ],
+  "properties": {
+    "proposition_id": {
+      "type": "string"
+    },
+    "proposition_version_id": {
+      "type": "string"
+    },
+    "decision_class": {
+      "type": "string"
+    },
+    "process_version_id": {
+      "type": "string"
+    },
+    "result": {
+      "enum": [
+        "approved",
+        "rejected",
+        "no_quorum",
+        "tied"
+      ]
+    },
+    "tally": {
+      "type": "object"
+    },
+    "minority_positions": {
+      "type": "array"
+    },
+    "lifecycle_state": {
+      "type": "string"
+    },
+    "legal_status": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "enum": [
+            "Advisory",
+            "Consultative",
+            "Binding"
+          ]
+        }
+      }
+    },
+    "assurance_sensitive": {
+      "type": "boolean",
+      "description": "Margin does not exceed the at-risk count (23.1.1)."
+    },
+    "composition_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

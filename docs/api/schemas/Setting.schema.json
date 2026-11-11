@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Setting.schema.json",
+  "title": "Setting",
+  "description": "Process record (43.2, 14.0).",
+  "x-acecog-object": "Setting",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "43.2, 14.0",
+  "x-acecog-engine": "setting",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [],
+  "properties": {}
+}

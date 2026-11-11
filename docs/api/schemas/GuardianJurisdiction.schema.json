@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/GuardianJurisdiction.schema.json",
+  "title": "GuardianJurisdiction",
+  "description": "Jurisdiction whose scope is stewardship of an Ecosystem Entity (Part V).",
+  "x-acecog-object": "Guardian Jurisdiction",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "interface",
+  "x-acecog-spec": "7, 37",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "ecosystem_entity_id"
+  ],
+  "properties": {
+    "ecosystem_entity_id": {
+      "type": "string"
+    }
+  }
+}

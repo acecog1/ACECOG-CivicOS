@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/InterestDeclaration.schema.json",
+  "title": "InterestDeclaration",
+  "description": "Declared interest in a proposition; blocks deliberation and voting on it.",
+  "x-acecog-object": "Interest Declaration",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 43.4",
+  "x-acecog-engine": "interest_declaration",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "person_id",
+    "proposition_id",
+    "recusal_status"
+  ],
+  "properties": {
+    "person_id": {
+      "type": "string"
+    },
+    "proposition_id": {
+      "type": "string"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "recusal_status": {
+      "enum": [
+        "recused",
+        "cleared"
+      ]
+    }
+  }
+}

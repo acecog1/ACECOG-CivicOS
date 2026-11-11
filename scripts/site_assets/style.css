@@ -1,0 +1,80 @@
+/* ACECOG public beta. Palette: river stone. One typeface (Public Sans); monospace only for real hashes. */
+@font-face { font-family: "Public Sans"; font-weight: 400; font-display: swap; src: url(fonts/public-sans-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Public Sans"; font-weight: 600; font-display: swap; src: url(fonts/public-sans-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Public Sans"; font-weight: 800; font-display: swap; src: url(fonts/public-sans-latin-800-normal.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-display: swap; src: url(fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2"); }
+
+:root {
+  --paper: #f4f7f6; --ink: #18282d; --muted: #4e6166; --water: #2c6a70; --water-deep: #1f4f54;
+  --lichen: #6f8f57; --refuse: #a23a2a; --rule: #d3dcda; --wash: #e6eeec;
+  --sans: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --measure: 68ch;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #111c1f; --ink: #e3ecea; --muted: #a3b5b8; --water: #7fbcc2; --water-deep: #a9d6db;
+          --lichen: #9fc286; --refuse: #ef8b78; --rule: #2c3d41; --wash: #182629; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.6 var(--sans); }
+a { color: var(--water); text-underline-offset: .18em; }
+a:hover { color: var(--water-deep); }
+:focus-visible { outline: 3px solid var(--water); outline-offset: 2px; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: .5rem; background: var(--paper); padding: .4rem .7rem; z-index: 2; }
+
+.top { display: flex; flex-wrap: wrap; gap: .5rem 2rem; align-items: baseline; padding: 1.1rem clamp(1rem, 5vw, 4rem); }
+.mark { font-weight: 800; letter-spacing: .02em; color: var(--ink); text-decoration: none; font-size: 1.15rem; }
+nav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+nav a { color: var(--muted); text-decoration: none; padding: .2rem 0; }
+nav a[aria-current] { color: var(--ink); box-shadow: inset 0 -2px var(--water); }
+.status { max-width: none; margin: 0; padding: .55rem clamp(1rem, 5vw, 4rem); background: var(--wash); color: var(--muted); font-size: .95rem; }
+
+main { padding: 0 clamp(1rem, 5vw, 4rem) 4rem; max-width: calc(var(--measure) + 8rem); }
+h1 { font-weight: 800; font-size: clamp(2.2rem, 6vw, 3.9rem); line-height: 1.04; letter-spacing: -.02em; margin: 3.5rem 0 1rem; max-width: 16ch; }
+h2 { font-weight: 800; font-size: 1.6rem; line-height: 1.2; margin: 3.5rem 0 .75rem; }
+h3 { font-weight: 600; font-size: 1.15rem; margin: 0 0 .35rem; }
+p, ul, blockquote, table { max-width: var(--measure); }
+.lede { font-size: 1.2rem; color: var(--muted); }
+.plain { padding-left: 1.1rem; }
+blockquote { margin: .75rem 0; padding: .1rem 0 .1rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); font-style: italic; }
+code { font-family: var(--mono); font-size: .82em; overflow-wrap: anywhere; }
+
+.button { display: inline-block; font: 600 1rem var(--sans); color: var(--paper); background: var(--water); border: 0;
+  padding: .7rem 1.1rem; text-decoration: none; border-radius: 3px; cursor: pointer; }
+.button:hover { background: var(--water-deep); color: var(--paper); }
+
+/* The record strip: one square per event, filled as the browser verifies it. */
+.chain { margin: 2rem 0 1.25rem; max-width: var(--measure); }
+.squares { display: grid; grid-template-columns: repeat(auto-fill, minmax(9px, 1fr)); gap: 3px; }
+.squares i { aspect-ratio: 1; background: var(--rule); display: block; }
+.squares i.ok { background: var(--lichen); }
+.squares i.bad { background: var(--refuse); }
+.squares i.after { background: color-mix(in srgb, var(--refuse) 35%, var(--rule)); }
+.chain-status { font-size: .95rem; color: var(--muted); margin-top: .8rem; }
+.chain-status strong { color: var(--ink); }
+
+/* The walkthrough is a real sequence, so it is numbered. */
+.steps { list-style: none; counter-reset: step; padding: 0; margin: 0; }
+.steps > li { counter-increment: step; position: relative; padding: 1.4rem 0 1.4rem 3rem; border-top: 1px solid var(--rule); }
+.steps > li::before { content: counter(step); position: absolute; left: 0; top: 1.35rem; font-weight: 800;
+  font-size: 1.15rem; color: var(--water); font-variant-numeric: tabular-nums; }
+.refused { font-size: .95rem; color: var(--muted); }
+.refused span { color: var(--refuse); font-weight: 600; margin-right: .35rem; }
+.hash { font-size: .95rem; color: var(--muted); }
+
+.scroll { overflow-x: auto; max-width: var(--measure); }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; margin: .75rem 0; }
+caption { text-align: left; color: var(--muted); padding-bottom: .4rem; }
+th, td { text-align: left; padding: .45rem .6rem .45rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr:target { background: var(--wash); }
+
+footer { padding: 1.5rem clamp(1rem, 5vw, 4rem) 3rem; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--rule); }
+footer p { max-width: var(--measure); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+.scroll:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+[hidden] { display: none !important; }

@@ -1,0 +1,39 @@
+# OpenSSF Scorecard: weekly automated score of security practices (independent-review-options.md, Tier 1).
+# Publishing results needs a public repository, so the job is skipped while the repository is private
+# and switches on by itself when it goes public (request Q-07c).
+name: Scorecard
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "23 7 * * 1"
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  analysis:
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      id-token: write
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ossf/scorecard-action@v2.5.0
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
+      - uses: actions/upload-artifact@v7
+        with:
+          name: scorecard-results
+          path: results.sarif
+      - uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: results.sarif

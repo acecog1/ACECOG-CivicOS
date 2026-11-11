@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Risk.schema.json",
+  "title": "Risk",
+  "description": "Uncertainty about a future condition or consequence.",
+  "x-acecog-object": "Risk",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 21",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "description"
+  ],
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "likelihood": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "impact": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "applies_to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

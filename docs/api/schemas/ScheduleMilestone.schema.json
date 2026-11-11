@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ScheduleMilestone.schema.json",
+  "title": "ScheduleMilestone",
+  "description": "Temporal commitment, dependency or window (CPM in 18, MVP-112).",
+  "x-acecog-object": "Schedule / Milestone",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 18",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "node_id"
+  ],
+  "properties": {
+    "node_id": {
+      "type": "string"
+    },
+    "duration": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "window_start": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 date or date-time."
+    },
+    "window_end": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 date or date-time."
+    },
+    "early_start": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "early_finish": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "late_start": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "late_finish": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "total_float": {
+      "type": [
+        "number",
+        "null"
+      ]
+    }
+  }
+}

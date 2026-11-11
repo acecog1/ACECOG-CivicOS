@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ActorRoleAgent.schema.json",
+  "title": "ActorRoleAgent",
+  "description": "Identity or function capable of acting; authentication is not authority.",
+  "x-acecog-object": "Actor / Role / Agent",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 12.0.1",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "kind",
+    "display_name"
+  ],
+  "properties": {
+    "kind": {
+      "enum": [
+        "person",
+        "role",
+        "agent"
+      ]
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "accountability_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approval_track_record": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  }
+}

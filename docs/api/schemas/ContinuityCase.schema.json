@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ContinuityCase.schema.json",
+  "title": "ContinuityCase",
+  "description": "Founding or restoration of an office, from detection to restoration.",
+  "x-acecog-object": "Continuity Case",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 17.9",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "condition",
+    "state"
+  ],
+  "properties": {
+    "condition": {
+      "enum": [
+        "Absent",
+        "Vacant",
+        "Incapacitated",
+        "Compromised"
+      ]
+    },
+    "state": {
+      "enum": [
+        "Detected",
+        "Raised",
+        "Verified",
+        "Convened",
+        "Rolled",
+        "Selected",
+        "Contested",
+        "Certified",
+        "Restored",
+        "Lapsed",
+        "Stalled",
+        "Rejected",
+        "Closed"
+      ]
+    },
+    "initiator_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "verifier_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "warrant": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "sunset_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 date or date-time."
+    }
+  }
+}

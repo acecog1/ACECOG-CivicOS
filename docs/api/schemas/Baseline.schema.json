@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Baseline.schema.json",
+  "title": "Baseline",
+  "description": "Process record (8.5).",
+  "x-acecog-object": "Baseline",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "8.5",
+  "x-acecog-engine": "baseline",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "decision_id",
+    "run_id",
+    "model_version_id",
+    "allocations",
+    "bound_versions"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "model_version_id": {
+      "type": "string"
+    },
+    "allocations": {},
+    "bound_versions": {
+      "type": "object"
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

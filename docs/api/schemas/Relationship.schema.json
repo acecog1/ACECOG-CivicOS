@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Relationship.schema.json",
+  "title": "Relationship",
+  "description": "Typed connection among objects (7.1).",
+  "x-acecog-object": "Relationship",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 7.1",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "relation",
+    "from_id",
+    "to_id"
+  ],
+  "properties": {
+    "relation": {
+      "enum": [
+        "contains",
+        "contributes_to",
+        "constrains",
+        "consumes",
+        "produces",
+        "depends_on",
+        "synergizes_with",
+        "competes_with",
+        "substitutes_for",
+        "externalizes_to",
+        "authorizes",
+        "delegates_to",
+        "funds",
+        "measures",
+        "supersedes",
+        "conflicts_with",
+        "governs_shared_interface"
+      ]
+    },
+    "from_id": {
+      "type": "string"
+    },
+    "to_id": {
+      "type": "string"
+    },
+    "coefficient": {
+      "type": [
+        "number",
+        "null"
+      ]
+    }
+  }
+}

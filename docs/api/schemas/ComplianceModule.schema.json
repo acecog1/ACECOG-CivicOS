@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ComplianceModule.schema.json",
+  "title": "ComplianceModule",
+  "description": "One versioned layer of a Compliance Pack composition.",
+  "x-acecog-object": "Compliance Module",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 43.4",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "module_id",
+    "edition",
+    "layer"
+  ],
+  "properties": {
+    "module_id": {
+      "type": "string"
+    },
+    "edition": {
+      "type": "string"
+    },
+    "layer": {
+      "enum": [
+        "federal",
+        "state",
+        "local",
+        "body"
+      ]
+    },
+    "rules": {
+      "type": "array"
+    }
+  }
+}

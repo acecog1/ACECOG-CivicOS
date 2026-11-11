@@ -1,0 +1,31 @@
+# CodeQL static analysis (independent-review-options.md, Tier 1).
+# Code scanning is free for public repositories. While the repository is private the job is skipped,
+# so it switches on by itself when the repository goes public (request Q-07c). Bandit in ci.yml covers
+# Python security analysis in the meantime.
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: github/codeql-action/init@v4
+        with:
+          languages: python
+          queries: security-and-quality
+      - uses: github/codeql-action/analyze@v4

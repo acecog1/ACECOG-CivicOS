@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/FundingInstrument.schema.json",
+  "title": "FundingInstrument",
+  "description": "Governed financial source and restrictions.",
+  "x-acecog-object": "Funding Instrument",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 5.13",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "instrument_type",
+    "amount"
+  ],
+  "properties": {
+    "instrument_type": {
+      "enum": [
+        "Appropriation",
+        "Fixed-Rate Debt",
+        "Restricted Grant",
+        "Endowment",
+        "Collective Enterprise",
+        "Public Finance Institution"
+      ],
+      "description": "Phase 1 builds Appropriation only (13.6)."
+    },
+    "amount": {
+      "type": "number"
+    },
+    "restrictions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "steward_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

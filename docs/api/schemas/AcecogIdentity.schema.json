@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/AcecogIdentity.schema.json",
+  "title": "AcecogIdentity",
+  "description": "One real person within a civic scope, with an assurance tier.",
+  "x-acecog-object": "ACECOG Identity",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 23.1.1",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "tier"
+  ],
+  "properties": {
+    "tier": {
+      "enum": [
+        "Provisional",
+        "Vouched",
+        "Documented",
+        "Verified"
+      ]
+    },
+    "anchor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "merged_into": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
