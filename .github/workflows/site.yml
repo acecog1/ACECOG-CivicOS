@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: site-build-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -37,7 +37,7 @@ jobs:
           set -e
           mkdir -p /tmp/fonts scripts/site_assets/fonts
           cd /tmp/fonts
-          npm pack @fontsource/public-sans@5 @fontsource/jetbrains-mono@5 >/dev/null
+          npm pack @fontsource/public-sans@5.3.0 @fontsource/jetbrains-mono@5.3.0 >/dev/null
           for t in *.tgz; do tar -xzf "$t" && mv package "${t%.tgz}"; done
           cp fontsource-public-sans-*/files/public-sans-latin-{400,600,800}-normal.woff2 "$GITHUB_WORKSPACE/scripts/site_assets/fonts/"
           cp fontsource-jetbrains-mono-*/files/jetbrains-mono-latin-400-normal.woff2 "$GITHUB_WORKSPACE/scripts/site_assets/fonts/"
@@ -58,8 +58,8 @@ jobs:
           npm audit --prefix scripts/site_checks --audit-level=high
       - name: Build the site from the engine
         env:
-          SITE_DOMAIN: ${{ vars.SITE_DOMAIN }}
-          SITE_CONTACT: ${{ vars.SITE_CONTACT }}
+          SITE_DOMAIN: "" # project Pages URL; no obsolete custom-domain CNAME
+          SITE_CONTACT: morgan@acecog.org
         run: python scripts/build_site.py
       - name: Adversarial browser and accessibility checks on this artifact
         run: npm test --prefix scripts/site_checks
