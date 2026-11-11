@@ -29,8 +29,13 @@ def download(name: str, destination: Path) -> str:
     if not name or "/" in name or "\\" in name or name.startswith("."):
         raise ValueError("Unsafe upstream filename")
     req = urllib.request.Request(UPSTREAM + name, headers={"User-Agent":"ACECOG-Pyodide-vendor-PoC"})
-    with urllib.request.urlopen(req, timeout=60) as response:
-        if response.geturl().split("?")[0].rsplit("/", 1)[-1] != name:
+    # nosec B310: req URL is a fixed HTTPS allowlist host plus validated filename;
+    # redirects are checked against that same host and versioned path before use.
+    with urllib.request.urlopen(req, timeout=60) as response:  # nosec B310
+        from urllib.parse import urlsplit
+        final = urlsplit(response.geturl())
+        if (final.scheme != "https" or final.hostname != "cdn.jsdelivr.net"
+                or final.path != f"/pyodide/v{VERSION}/full/{name}"):
             raise RuntimeError("Unexpected upstream redirect")
         data = response.read(MAX_DOWNLOAD + 1)
     if len(data) > MAX_DOWNLOAD:
