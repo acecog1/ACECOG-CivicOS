@@ -40,3 +40,21 @@ At build time only, the Python vendoring script pulls **Pyodide 314.0.7** core a
 ## Disposition
 
 **BG-2 architecture choice: browser-only / sovereign / static distribution GO.** Render PR #8 was closed unmerged and retained as superseded evidence. Builder PoC [PR #10](https://github.com/acecog1/ACECOG-CivicOS/pull/10), owner issue [#9](https://github.com/acecog1/ACECOG-CivicOS/issues/9). Owner earlier approved release intent, but actual public launch remains **HOLD pending stage-specific independent QA, source pin, cost reconciliation and verified Pages/GoDaddy workflow**. No real civic effects or public APIs authorized.
+
+## P2 source integration — local computation input lock (11 Nov 2026)
+
+The browser-only distribution now **inherits** the P2 input-lock correction from
+`feature/p2-laboratory-experience-v02` at commit `7af2a2e90299569b516e4128d6049bcb78731c1f`.
+While a compare or seeded random selection is pending, number fields, fictional
+vote radios, presets, reset, randomize, run and in-tab history restoration are
+temporarily disabled; `aria-busy` identifies the pending state. A separate
+input revision and serialized-parameter equality check discards any late result
+if assumptions somehow changed despite the UI lock, and no previous scenario
+remains exportable during a new run. Failure and stale-reply paths unlock the UI.
+
+The deterministic delayed-route Playwright cases cover success, error, stale
+forced input and stale random response. The true WebAssembly/Chromium test also
+asserts busy/restore behavior through the self-hosted cold-start worker path.
+This resolves **one** QA defect in P2; it does **not** resolve the other BG-2
+supply-chain, evidence, performance/accessibility and publication holds. No
+static Pages deployment, Render service or real civic state is enabled.
