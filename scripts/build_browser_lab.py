@@ -71,6 +71,16 @@ def build(dest: Path = DEST) -> None:
     html = (PUBLIC / "index.html").read_text(encoding="utf-8")
     for old, new in BROWSER_COPIES.items():
         html = replace_one(html, old, new, "index.html")
+    html = replace_one(
+        html, '<meta name="viewport" content="width=device-width,initial-scale=1">',
+        '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
+        '  <meta http-equiv="Content-Security-Policy" '
+        'content="default-src \'self\'; connect-src \'self\'; '
+        'script-src \'self\' \'wasm-unsafe-eval\'; worker-src \'self\'; '
+        'style-src \'self\'; img-src \'self\'; object-src \'none\'; '
+        'base-uri \'none\'; form-action \'none\'">',
+        "index.html",
+    )
     html = replace_one(html, 'href="/lab.css"', 'href="./lab.css"', "index.html")
     html = replace_one(html, 'src="/lab.js"', 'src="./lab.js"', "index.html")
     html = replace_one(html, 'src="/experience.js"', 'src="./experience.js"', "index.html")
