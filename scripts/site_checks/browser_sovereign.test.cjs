@@ -51,7 +51,7 @@ test("sovereign browser worker runs original CivicOS decision, solver and reject
     assert.match(origin.source_manifest_sha256,/^[a-f0-9]{64}$/);
     assert.match(origin.runtime_manifest_sha256,/^[a-f0-9]{64}$/);
     assert.match(origin.pyodide_version,/^314[.]0[.]7$/);
-    assert.match(origin.scipy_version,/^\\d+\\.\\d+/);
+    assert.match(origin.scipy_version,/^[0-9]+[.][0-9]+/);
     assert.equal(origin.raw_chain_events_included,false);
     assert.equal(origin.independent_verifier_included,false);
     assert.equal(origin.user_generated_content_is_authentic,false);
