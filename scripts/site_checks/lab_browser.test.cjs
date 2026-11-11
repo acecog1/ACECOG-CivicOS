@@ -214,3 +214,79 @@ test("P2 local export is evidence-bounded and mobile results reflow", async () =
     assert.deepEqual(a.errors,[]);
   } finally { await a.context.close(); }
 });
+
+// Q-39: selecting a guided preset is forbidden while compare/randomize runs.
+test("solver locks scenario controls; delayed result never overwrites forced input changes", async () => {
+  const a=await openLab(390);
+  let release, reached;
+  const latch=new Promise(resolve=>{release=resolve;});
+  const intercepted=new Promise(resolve=>{reached=resolve;});
+  try {
+    await a.page.route("**/api/compare", async route => {
+      reached();
+      await latch;
+      await route.continue();
+    });
+    await a.page.locator("#run").click();
+    await intercepted;
+    for (const selector of ["#run","#random","#reset","#budget","#water","#crew","#appropriation",
+                            '[data-preset="votes"]','#run-history button']) {
+      if (await a.page.locator(selector).count())
+        assert.equal(await a.page.locator(selector).first().isDisabled(),true,selector+" was editable while working");
+    }
+    assert.equal(await a.page.locator('input[name="vote-cara"]').first().isDisabled(),true);
+    assert.equal(await a.page.locator("#lab-form").getAttribute("aria-busy"),"true");
+    await a.page.evaluate(()=>{
+      const el=document.querySelector("#budget");
+      el.value="600000";
+      el.dispatchEvent(new Event("input",{bubbles:true}));
+    });
+    release();
+    await a.page.waitForFunction(()=>/Older result discarded/.test(document.querySelector("#form-status").textContent),null,{timeout:30000});
+    assert.equal(await a.page.locator("#scenario-tools").isVisible(),false);
+    assert.doesNotMatch(await a.page.locator("#results").innerText(),/Plan A approved|Plan A rejected/);
+    assert.equal(await a.page.locator("#run").isEnabled(),true);
+    assert.equal(await a.page.locator("#budget").isEnabled(),true);
+    assert.deepEqual(a.errors,[]);
+  } finally { release(); await a.context.close(); }
+});
+
+test("solver lock re-enables on failed request without revealing/exporting old evidence", async () => {
+  const a=await openLab();
+  try {
+    await a.page.route("**/api/compare", route=>route.fulfill({
+      status:503,contentType:"application/json",body:JSON.stringify({error:"Synthetic compute failure"})
+    }));
+    await a.page.locator("#run").click();
+    await a.page.waitForFunction(()=>/Synthetic compute failure/.test(document.querySelector("#form-status").textContent));
+    assert.equal(await a.page.locator("#run").isEnabled(),true);
+    assert.equal(await a.page.locator("#budget").isEnabled(),true);
+    assert.equal(await a.page.locator('[data-preset="votes"]').isEnabled(),true);
+    assert.equal(await a.page.locator("#scenario-tools").isVisible(),false);
+  } finally { await a.context.close(); }
+});
+
+test("randomize freezes assumptions and discards delayed seed after newer edit", async () => {
+  const a=await openLab();
+  let release,reached;
+  const latch=new Promise(resolve=>{release=resolve;});
+  const intercepted=new Promise(resolve=>{reached=resolve;});
+  try {
+    await a.page.route("**/api/random?*",async route=>{reached();await latch;await route.continue();});
+    await a.page.locator("#random").click();
+    await intercepted;
+    assert.equal(await a.page.locator("#budget").isDisabled(),true);
+    assert.equal(await a.page.locator("#reset").isDisabled(),true);
+    await a.page.evaluate(()=>{
+      const budget=document.querySelector("#budget");
+      budget.value="600000";
+      budget.dispatchEvent(new Event("input",{bubbles:true}));
+    });
+    release();
+    await a.page.waitForFunction(()=>/Older random selection discarded/.test(document.querySelector("#form-status").textContent),null,{timeout:30000});
+    assert.equal(await a.page.locator("#budget").inputValue(),"600000");
+    assert.equal(await a.page.locator("#seed-info").innerText(),"");
+    assert.equal(await a.page.locator("#random").isEnabled(),true);
+    assert.equal(await a.page.locator("#scenario-tools").isVisible(),false);
+  } finally { release(); await a.context.close(); }
+});

@@ -48,6 +48,7 @@
     document.querySelectorAll("[data-preset]").forEach(b=>b.setAttribute("aria-pressed","false"));
   }
   function choosePreset(key) {
+    if ($("lab-form").getAttribute("aria-busy")==="true") return;
     const p=presets[key];
     if (!p) return;
     applyInputs(p);
@@ -68,6 +69,7 @@
       b.type="button";
       b.textContent="Restore run "+item.run+": "+item.status+" · "+inputSummary(item.inputs);
       b.addEventListener("click",()=>{
+        if ($("lab-form").getAttribute("aria-busy")==="true") return;
         applyInputs(item.inputs);
         document.dispatchEvent(new Event("acecog:inputs-changed"));
         expireViewedResult();
@@ -123,6 +125,15 @@
       $("export-status").textContent="Clipboard access unavailable. Manually copy the recipe shown below.";
     }
   }
+  // Hide prior exports immediately on new computation, and freeze history
+  // restoration while busy. A later result event is the only unlock for export.
+  document.addEventListener("acecog:busy",event=>{
+    const working=event.detail.busy;
+    if (working) expireViewedResult();
+    document.querySelectorAll("#run-history button").forEach(button=>{
+      button.disabled=working;
+    });
+  });
   document.addEventListener("acecog:result",event=>{
     const {payload,seed}=event.detail;
     latest={payload,seed:seed===null?null:seed};
@@ -134,6 +145,9 @@
     // Count is monotonic in this tab, despite the bounded three-item history.
     if (recent.length>3) recent.length=3;
     renderRecent();
+    document.querySelectorAll("#run-history button").forEach(button=>{
+      button.disabled=$("lab-form").getAttribute("aria-busy")==="true";
+    });
     $("scenario-tools").hidden=false;
     $("export-status").textContent="Results came from the local CivicOS engine. Export or copy deliberately; nothing was saved remotely.";
     $("scenario-description").textContent="Your scenario "+status+
