@@ -1,5 +1,6 @@
 """Public beta site (WBS 1.7.2): the promises the site makes are checked on every change (beta gate BG-1)."""
 import glob, hashlib, json, os, re, sys
+from pathlib import Path
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "scripts"))
 import build_site  # noqa: E402
@@ -24,14 +25,14 @@ def test_no_automatic_third_party_resources_or_forms():
         assert not any(token in text for token in ('url(https://', 'url(http://',
                     'url("https://', 'url("http://', "url('https://", "url('http://")), f
         assert "<form" not in text and "document.cookie" not in text, f
-    about = open(os.path.join(OUT, "about.html"), encoding="utf-8").read()
+    about = (Path(OUT) / "about.html").read_text(encoding="utf-8")
     url = "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
     assert url in about
     assert about.count('href="https://') == 1
 
 
 def test_owner_approved_public_notice_without_private_review_notes():
-    about = open(os.path.join(OUT, "about.html"), encoding="utf-8").read()
+    about = (Path(OUT) / "about.html").read_text(encoding="utf-8")
     for phrase in ("Accelerated Ecological Governance", "morgan@acecog.org",
                    "synthetic", "Advisory", "no legal effect", "GitHub Pages",
                    "record checker", "Privacy Statement"):
