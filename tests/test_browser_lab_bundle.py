@@ -20,7 +20,7 @@ def test_model_extraction_excludes_http_and_preserves_reference_source(tmp_path)
     assert "urllib" not in text
     ns = {}
     exec(compile(text, "<reviewed-scenario-extract>", "exec"), ns)  # trusted code from same repo
-    from tests import scenario as original
+    import scenario as original
     for budget, water in ((900000,20),(600000,12),(1400000,36)):
         assert ns["model"](budget=budget,water=water) == original.model(budget=budget,water=water)
 
