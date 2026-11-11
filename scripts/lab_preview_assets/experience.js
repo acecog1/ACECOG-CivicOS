@@ -89,7 +89,21 @@
       scope:"FICTIONAL_LOCAL_ONLY_NO_LEGAL_EFFECT",
       source_note:"Abbreviated synthetic Riverbend fixture; NOT a canonical 279-event fork",
       seed_last_selected:latest.seed,
-      ...latest.payload
+      ...latest.payload,
+      provenance:{
+        source_checkout_revision:latest.payload.browser_runtime?.source_revision || "unrecorded-local-build",
+        source_manifest_sha256:latest.payload.browser_runtime?.source_manifest_sha256 || null,
+        runtime_manifest_sha256:latest.payload.browser_runtime?.runtime_manifest_sha256 || null,
+        pyodide_version:latest.payload.browser_runtime?.pyodide_version || null,
+        pyodide_root_lock_sha256:latest.payload.browser_runtime?.pyodide_root_lock_sha256 || null,
+        scipy_version:latest.payload.browser_runtime?.scipy || null,
+        numpy_version:latest.payload.browser_runtime?.numpy || null,
+        core_root_status:latest.payload.browser_runtime?.core_root_status || "UNATTESTED",
+        raw_chain_events_included:false,
+        independent_verifier_included:false,
+        user_generated_content_is_authentic:false,
+        limitation:"Visitor-generated synthetic summaries are editable. Chain-head alone does not authenticate evidence; replay requires matching independent source/runtime and full event history."
+      }
     };
     const blob=new Blob([JSON.stringify(record,null,2)+"\n"],{type:"application/json"});
     const url=URL.createObjectURL(blob);
@@ -108,7 +122,14 @@
       format:"ACECOG-LOCAL-SCENARIO-RECIPE-v0.2",
       limitation:"Synthetic fixture, not a shareable link or canonical Riverbend fork",
       assumptions:latest.payload.alternative.inputs,
-      expected_chain_head:latest.payload.alternative.chain_head
+      expected_chain_head:latest.payload.alternative.chain_head,
+      source_checkout_revision:latest.payload.browser_runtime?.source_revision || "unrecorded-local-build",
+      source_manifest_sha256:latest.payload.browser_runtime?.source_manifest_sha256 || null,
+      runtime_manifest_sha256:latest.payload.browser_runtime?.runtime_manifest_sha256 || null,
+      pyodide_version:latest.payload.browser_runtime?.pyodide_version || null,
+      scipy_version:latest.payload.browser_runtime?.scipy || null,
+      independent_authentication:false,
+      notice:"Recipe is fictional, visitor-controlled and cannot authenticate a civic decision. Identical inputs may differ across scientific runtime versions."
     },null,2);
     try {
       if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error("Clipboard unavailable");
