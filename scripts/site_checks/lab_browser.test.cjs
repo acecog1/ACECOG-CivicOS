@@ -192,6 +192,19 @@ test("P2 local export is evidence-bounded and mobile results reflow", async () =
     assert.equal(exportDoc.scope,"FICTIONAL_LOCAL_ONLY_NO_LEGAL_EFFECT");
     assert.ok(exportDoc.alternative.chain_head);
     assert.equal(JSON.stringify(exportDoc).includes("X-Lab-Token"),false);
+    await a.page.locator("#copy-recipe").click();
+    await a.page.waitForFunction(() => /copied|Manual copy|unavailable/i.test(
+      document.getElementById("export-status").textContent),null,{timeout:10000});
+    const copyStatus=await a.page.locator("#export-status").innerText();
+    assert.match(copyStatus,/copied|unavailable/i);
+    if (/unavailable/i.test(copyStatus)) {
+      assert.match(await a.page.locator("#recipe-fallback").inputValue(),/LOCAL-SCENARIO-RECIPE/);
+    }
+    await a.page.addScriptTag({path:require.resolve("axe-core/axe.min.js")});
+    const ax=await a.page.evaluate(() => axe.run(document, {
+      runOnly:{type:"tag",values:["wcag2a","wcag2aa","wcag21a","wcag21aa","wcag22aa"]}
+    }));
+    assert.deepEqual(ax.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),[]);
     const m=await a.page.evaluate(()=>({
       viewport:document.documentElement.clientWidth,
       scroll:document.documentElement.scrollWidth
