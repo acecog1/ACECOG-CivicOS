@@ -21,7 +21,8 @@ def test_no_automatic_third_party_resources_or_forms():
     for f in glob.glob(os.path.join(OUT, "*.html")) + glob.glob(os.path.join(OUT, "*.css")) + glob.glob(os.path.join(OUT, "*.js")):
         text = open(f, encoding="utf-8").read()
         assert not re.search(r"(?:src|action)=[\\\"']?https?://", text), f
-        assert not re.search(r"url\\(\\s*[\\\"']?https?://", text), f
+        assert not any(token in text for token in ('url(https://', 'url(http://',
+                    'url("https://', 'url("http://', "url('https://", "url('http://")), f
         assert "<form" not in text and "document.cookie" not in text, f
     about = open(os.path.join(OUT, "about.html"), encoding="utf-8").read()
     url = "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
