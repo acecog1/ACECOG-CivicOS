@@ -67,7 +67,7 @@ STATUS = {
 
 
 def configured() -> bool:
-    host = os.environ.get("BG2_PUBLIC_HOST", "")
+    host = os.environ.get("BG2_PUBLIC_HOST") or os.environ.get("RENDER_EXTERNAL_HOSTNAME", "")
     signing = os.environ.get("BG2_SIGNING_KEY", "")
     mode = os.environ.get("BG2_MODE", "staging")
     return (
@@ -165,7 +165,7 @@ def app(environ, start_response):
         return json_reply(start_response, {"status": "ready", "mode": os.environ.get("BG2_MODE", "staging")})
     if not configured():
         return message(start_response, 503, "Service not configured")
-    host = os.environ["BG2_PUBLIC_HOST"]
+    host = os.environ.get("BG2_PUBLIC_HOST") or os.environ["RENDER_EXTERNAL_HOSTNAME"]
     if environ.get("HTTP_HOST") != host:
         return message(start_response, 403, "Invalid host")
     origin = "https://" + host
