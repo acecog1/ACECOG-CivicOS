@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/DeliberationPost.schema.json",
+  "title": "DeliberationPost",
+  "description": "Process record (8.4, 43.4.1).",
+  "x-acecog-object": "DeliberationPost",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "8.4, 43.4.1",
+  "x-acecog-engine": "deliberation_post",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "proposition_version_id",
+    "author",
+    "text",
+    "visibility"
+  ],
+  "properties": {
+    "proposition_id": {
+      "type": "string"
+    },
+    "proposition_version_id": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "visibility": {
+      "enum": [
+        "public",
+        "private"
+      ]
+    },
+    "to_actor_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "position": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Actual.schema.json",
+  "title": "Actual",
+  "description": "Process record (8.8).",
+  "x-acecog-object": "Actual",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "8.8",
+  "x-acecog-engine": "actual",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "node_id",
+    "actual_cost",
+    "baseline_version_id"
+  ],
+  "properties": {
+    "node_id": {
+      "type": "string"
+    },
+    "actual_cost": {
+      "type": "number"
+    },
+    "observed_at": {
+      "type": "string"
+    },
+    "ingested_at": {
+      "type": "string"
+    },
+    "baseline_version_id": {
+      "type": "string"
+    },
+    "variance": {
+      "type": "number"
+    }
+  }
+}

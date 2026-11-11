@@ -1,0 +1,57 @@
+# ACECOG continuous integration (Gate 2 exit criterion: contract tests pass in CI).
+# Runs on every push and pull request to main.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Contract and acceptance tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-ci.txt
+      - name: Install pinned dependencies
+        run: pip install -r requirements-ci.txt
+      - name: Run the test suite
+        run: python -m pytest -q
+      - name: Check the published contract matches the code
+        run: |
+          python scripts/gen_openapi.py
+          git diff --exit-code -- docs/api/openapi.yaml docs/api/schemas \
+            || { echo "::error::docs/api is stale. Run: python scripts/gen_openapi.py and commit."; exit 1; }
+
+  supply-chain:
+    name: Supply chain (ASR-10)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Scan dependencies for known vulnerabilities
+        run: |
+          pip install pip-audit cyclonedx-bom bandit
+          pip-audit -r requirements-ci.txt
+      - name: Static security analysis of the engine (Bandit; CodeQL takes over when the repo is public)
+        run: bandit -r src scripts -ll -ii
+      - name: Generate the software bill of materials
+        run: cyclonedx-py requirements requirements-ci.txt --output-file sbom.cdx.json
+      - uses: actions/upload-artifact@v7
+        with:
+          name: sbom
+          path: sbom.cdx.json

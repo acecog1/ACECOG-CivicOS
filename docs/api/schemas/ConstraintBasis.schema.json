@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ConstraintBasis.schema.json",
+  "title": "ConstraintBasis",
+  "description": "Process record (20.1).",
+  "x-acecog-object": "ConstraintBasis",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "20.1",
+  "x-acecog-engine": "constraint_basis",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "constraint_id",
+    "evidence_id",
+    "adopted_by_decision_id"
+  ],
+  "properties": {
+    "constraint_id": {
+      "type": "string"
+    },
+    "evidence_id": {
+      "type": "string"
+    },
+    "adopted_by_decision_id": {
+      "type": "string"
+    }
+  }
+}

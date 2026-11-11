@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Delegation.schema.json",
+  "title": "Delegation",
+  "description": "Process record (17.3, CL-029, CL-064).",
+  "x-acecog-object": "Delegation",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "17.3, CL-029, CL-064",
+  "x-acecog-engine": "delegation",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "principal",
+    "delegate",
+    "decision_class",
+    "active"
+  ],
+  "properties": {
+    "principal": {
+      "type": "string"
+    },
+    "delegate": {
+      "type": "string"
+    },
+    "decision_class": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "reconfirm_by_day": {
+      "type": "integer"
+    },
+    "assigned_at_seq": {
+      "type": "integer"
+    }
+  }
+}

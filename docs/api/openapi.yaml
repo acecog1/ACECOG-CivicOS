@@ -1,0 +1,3178 @@
+openapi: 3.1.0
+info:
+  title: ACECOG Civic OS API
+  version: 0.1.0
+  summary: Command and query contract derived from ACECOG v0.24 (change log CL-041).
+  description: '**What this is.** The front counter of the ACECOG Civic OS: every request any client (desktop, conversational
+    assistant, mobile)
+
+    can make, and exactly what comes back, including refusals and escalations. Derived from the ACECOG specification (v0.24),
+
+    Sections 7 (objects), 8 (state machines), 9 (provenance), 11.6 (one API, three clients), 14 (invariants), and 43.2 (Assurance
+    Controls).
+
+
+    **Two halves (11.6.2).** *Commands* change state and are all `POST /v0/commands/<name>`. *Queries* only read and are all
+    `GET /v0/queries/...`.
+
+
+    **Every command is a governed transaction (8.1).** It arrives in a `CommandEnvelope`, independently re-checks authority,
+
+    binds to the rule versions in force when it starts (8.9), and returns a `CommandResult` whose `outcome` is one of:
+
+
+    * `accepted` (HTTP 200): the change happened; `result` holds the new object versions.
+
+    * `escalated` (HTTP 202): the action was routed to human authority as an Exception Proposition; nothing was decided automatically.
+
+    * `refused` (HTTP 422): nothing changed; `refusal` names the rule, usually by invariant ID, so the reason can be traced
+    to the spec.
+
+
+    Refused and escalated commands are still recorded in the hash-chained event log.
+
+
+    **Status (8.0).** Decisions, commitments and published results carry four separate status axes. Nothing is labeled binding
+
+    without a Legal Effect Declaration (invariant 26 ASR-STATUS-001).
+
+
+    **Assistant-drafted commands** must carry `human_confirmation` naming the person who reviewed the exact payload (24.3).
+
+
+    **MVP status.** The reference implementation stores everything in one local SQLite file (spec 11.5) and solves with a
+
+    small deterministic LP/QP solver (Phase 1 profile, 13.1). Caller authentication (WBS 1.3.2) is not yet in place: the
+
+    actor_id in each command is trusted. Do not use for real decisions until it is.
+
+    '
+  license:
+    name: Draft for review
+servers:
+- url: http://127.0.0.1:8765
+  description: Local installation
+tags:
+- name: Civic body and rules
+- name: Membership and participation
+- name: Evidence and optimization
+- name: Baseline, commitment, execution
+- name: Records, exit, configuration
+- name: Queries
+paths:
+  /v0/commands/civic-bodies.create:
+    post:
+      tags:
+      - Civic body and rules
+      operationId: civic_bodies_create
+      summary: Create a civic body with its founding members.
+      description: 'Specification: 7, 17.2, MVP-100.'
+      x-spec-refs: 7, 17.2, MVP-100
+      x-enforces: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_civic_bodies_create'
+            examples:
+              create_riverbend_commons:
+                summary: Create Riverbend Commons
+                value:
+                  command_id: c-0001
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    name: Riverbend Commons
+                    jurisdiction: Riverbend (reference scenario 26.1)
+                    gml_level: 1
+                    founding_members:
+                    - actor_id: ana
+                      display_name: Ana (Facilitator/Clerk)
+                      roles:
+                      - facilitator
+                    - actor_id: ben
+                      display_name: Ben (City Manager)
+                      roles:
+                      - city_manager
+                    - actor_id: cara
+                      display_name: Cara
+                      roles:
+                      - member
+                    - actor_id: dev
+                      display_name: Dev
+                      roles:
+                      - member
+                    - actor_id: eli
+                      display_name: Eli
+                      roles:
+                      - member
+                    - actor_id: fay
+                      display_name: Fay
+                      roles:
+                      - member
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/governance-processes.adopt:
+    post:
+      tags:
+      - Civic body and rules
+      operationId: governance_processes_adopt
+      summary: 'Adopt the rules for how each kind of decision is made: method, threshold, and who may take part.'
+      description: 'Specification: 17.5, 4.2. Enforces: TRU-ACCESS-001, GOV-AUTHPATH-001.'
+      x-spec-refs: 17.5, 4.2
+      x-enforces:
+      - TRU-ACCESS-001
+      - GOV-AUTHPATH-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_governance_processes_adopt'
+            examples:
+              adopt_decision_classes:
+                summary: Adopt decision classes
+                value:
+                  command_id: c-0003
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    decision_classes:
+                    - name: annual_budget
+                      method: direct_vote
+                      approval_threshold: 0.5
+                      quorum: 0.5
+                      min_attestation: verified
+                    - name: routine_rebalance
+                      method: consent
+                      approval_threshold: 1.0
+                      quorum: 0.5
+                      min_attestation: verified
+                    - name: minor_rebalance
+                      method: consent
+                      approval_threshold: 1.0
+                      quorum: 0.5
+                      min_attestation: verified
+                    - name: change_control
+                      method: direct_vote
+                      approval_threshold: 0.6
+                      quorum: 0.5
+                      min_attestation: verified
+                    - name: advisory_poll
+                      method: direct_vote
+                      approval_threshold: 0.5
+                      quorum: 0.1
+                      min_attestation: self_attested
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/authorities.grant:
+    post:
+      tags:
+      - Civic body and rules
+      operationId: authorities_grant
+      summary: Give a person or role the authority to do specific things.
+      description: 'Specification: 7, 12.0.1, 23.1. Enforces: GOV-AUTHPATH-001, TRU-MONITOR-001.'
+      x-spec-refs: 7, 12.0.1, 23.1
+      x-enforces:
+      - GOV-AUTHPATH-001
+      - TRU-MONITOR-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_authorities_grant'
+            examples:
+              grant_execution_authority:
+                summary: Grant execution authority
+                value:
+                  command_id: c-0004
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    grantee_actor_id: ben
+                    actions:
+                    - create_baseline
+                    - commit
+                    - post_actuals
+                    - records_officer
+              appoint_a_monitoring_role_selected_by_de:
+                summary: Appoint a monitoring role selected by decision
+                value:
+                  command_id: c-0045
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    grantee_actor_id: cara
+                    actions:
+                    - approve_disbursement
+                    monitoring_role: true
+                    rotation_terms: 12-month term; recall by change_control vote
+                    selected_by_decision_id: decision-0003
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/delegation-envelopes.adopt:
+    post:
+      tags:
+      - Civic body and rules
+      operationId: delegation_envelopes_adopt
+      summary: Set the bounded space inside which routine decisions may be made automatically.
+      description: 'Specification: 5.9, 8.7. Enforces: GOV-ENVELOPE-001.'
+      x-spec-refs: 5.9, 8.7
+      x-enforces:
+      - GOV-ENVELOPE-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_delegation_envelopes_adopt'
+            examples:
+              adopt_envelope_with_default_thresholds:
+                summary: Adopt envelope with default thresholds
+                value:
+                  command_id: c-0009
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    decision_class: routine_rebalance
+                    tolerance: 25000
+                    authorized_resolver: ben
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/legal-effect-declarations.adopt:
+    post:
+      tags:
+      - Civic body and rules
+      operationId: legal_effect_declarations_adopt
+      summary: Record which law or charter gives a class of decisions legal effect.
+      description: 'Specification: 43.2 ASR-08, 8.0. Enforces: ASR-STATUS-001.'
+      x-spec-refs: 43.2 ASR-08, 8.0
+      x-enforces:
+      - ASR-STATUS-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_legal_effect_declarations_adopt'
+            examples:
+              adopt_a_legal_effect_declaration:
+                summary: Adopt a Legal Effect Declaration
+                value:
+                  command_id: c-0130
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    decision_class: advisory_poll
+                    legal_status: Consultative
+                    enabling_authority: Riverbend Charter s. 4.2 (fixture)
+                    effective_date: '2027-01-01'
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/compliance-packs.adopt:
+    post:
+      tags:
+      - Civic body and rules
+      operationId: compliance_packs_adopt
+      summary: Adopt a jurisdiction's legal rule bundle. Packs may only add constraints.
+      description: 'Specification: 43.4. Enforces: GOV-FRAMEWORK-001.'
+      x-spec-refs: '43.4'
+      x-enforces:
+      - GOV-FRAMEWORK-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_compliance_packs_adopt'
+            examples:
+              adopt_the_pilot-state_pack:
+                summary: Adopt the pilot-state pack
+                value:
+                  command_id: c-0015
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    pack_id: pilot-state
+                    edition: '0.1'
+                    rules:
+                    - rule: open_meeting_guard
+                      effect: add_constraint
+                      legal_basis: State open meetings law (to confirm, 43.8)
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/change-requests.put-in-force:
+    post:
+      tags:
+      - Civic body and rules
+      operationId: change_requests_put_in_force
+      summary: Put an approved change in force, once, exactly as approved (the decision names the target and a hash of the
+        change). Applies only to transactions that start afterward.
+      description: 'Specification: 8.9; CL-046. Enforces: DPP-IMMUTABLE-001, GOV-AUTHPATH-001.'
+      x-spec-refs: 8.9; CL-046
+      x-enforces:
+      - DPP-IMMUTABLE-001
+      - GOV-AUTHPATH-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_change_requests_put_in_force'
+            examples:
+              put_an_approved_change_in_force:
+                summary: Put an approved change in force
+                value:
+                  command_id: c-0115
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    target_type: governance_process
+                    target_id: governance_process-0001
+                    changes:
+                      decision_classes:
+                      - name: annual_budget
+                        method: direct_vote
+                        approval_threshold: 0.9
+                        quorum: 0.5
+                        min_attestation: verified
+                        min_attestation_confidence: 0.75
+                        delegation_disclosure_threshold: 0.05
+                        delegation_reconfirm_days: 365
+                      - name: routine_rebalance
+                        method: consent
+                        approval_threshold: 1.0
+                        quorum: 0.5
+                        min_attestation: verified
+                        min_attestation_confidence: 0.75
+                        delegation_disclosure_threshold: 0.05
+                        delegation_reconfirm_days: 365
+                      - name: minor_rebalance
+                        method: consent
+                        approval_threshold: 1.0
+                        quorum: 0.5
+                        min_attestation: verified
+                        min_attestation_confidence: 0.75
+                        delegation_disclosure_threshold: 0.05
+                        delegation_reconfirm_days: 365
+                      - name: change_control
+                        method: direct_vote
+                        approval_threshold: 0.6
+                        quorum: 0.5
+                        min_attestation: verified
+                        min_attestation_confidence: 0.75
+                        delegation_disclosure_threshold: 0.05
+                        delegation_reconfirm_days: 365
+                      - name: advisory_poll
+                        method: direct_vote
+                        approval_threshold: 0.5
+                        quorum: 0.1
+                        min_attestation: self_attested
+                        min_attestation_confidence: 0.75
+                        delegation_disclosure_threshold: 0.05
+                        delegation_reconfirm_days: 365
+                    decision_id: decision-0009
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/credentials.issue:
+    post:
+      tags:
+      - Membership and participation
+      operationId: credentials_issue
+      summary: Record that a member is a unique, eligible member at an identity tier.
+      description: 'Specification: 7, 17.5. Enforces: TRU-ELIG-001, TRU-ACCESS-001.'
+      x-spec-refs: 7, 17.5
+      x-enforces:
+      - TRU-ELIG-001
+      - TRU-ACCESS-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_credentials_issue'
+            examples:
+              issue_a_self-attested_credential:
+                summary: Issue a self-attested credential
+                value:
+                  command_id: c-0101
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    member_actor_id: gil
+                    tier: self_attested
+                    attestation_confidence: 0.6
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/interest-declarations.record:
+    post:
+      tags:
+      - Membership and participation
+      operationId: interest_declarations_record
+      summary: Declare a personal interest in a proposition; this blocks deliberating and voting on it.
+      description: 'Specification: 43.4, 43.7. Enforces: CMP-004.'
+      x-spec-refs: 43.4, 43.7
+      x-enforces:
+      - CMP-004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_interest_declarations_record'
+            examples:
+              declare_an_interest:
+                summary: Declare an interest
+                value:
+                  command_id: c-0019
+                  actor_id: eli
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    proposition_id: proposition-0001
+                    description: Owns property adjoining the trail project
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/delegations.assign:
+    post:
+      tags:
+      - Membership and participation
+      operationId: delegations_assign
+      summary: Delegate your participation in a decision class to another member.
+      description: 'Specification: 17.3; CL-029.'
+      x-spec-refs: 17.3; CL-029
+      x-enforces: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_delegations_assign'
+            examples:
+              delegate_a_decision_class:
+                summary: Delegate a decision class
+                value:
+                  command_id: c-0021
+                  actor_id: fay
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    decision_class: change_control
+                    delegate_actor_id: dev
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/delegations.revoke:
+    post:
+      tags:
+      - Membership and participation
+      operationId: delegations_revoke
+      summary: Withdraw a delegation.
+      description: 'Specification: 17.3.'
+      x-spec-refs: '17.3'
+      x-enforces: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_delegations_revoke'
+            examples:
+              revoke_a_delegation:
+                summary: Revoke a delegation
+                value:
+                  command_id: c-0024
+                  actor_id: cara
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    decision_class: advisory_poll
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/propositions.submit:
+    post:
+      tags:
+      - Membership and participation
+      operationId: propositions_submit
+      summary: Submit a frozen proposition version for a decision.
+      description: 'Specification: 8.3, MVP-101. Enforces: DPP-IMMUTABLE-001, TRU-ELIG-001.'
+      x-spec-refs: 8.3, MVP-101
+      x-enforces:
+      - DPP-IMMUTABLE-001
+      - TRU-ELIG-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_propositions_submit'
+            examples:
+              submit_a_portfolio_proposition:
+                summary: Submit a portfolio proposition
+                value:
+                  command_id: c-0011
+                  actor_id: cara
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    decision_class: annual_budget
+                    title: FY27 improvement portfolio (Plan A)
+                    body: Adopt the FY27 portfolio model with a $900k budget and a 20 ML/yr watershed ceiling.
+                    requested_action:
+                      type: adopt_portfolio_model
+                      model:
+                        budget: 900000
+                        nodes:
+                        - id: i01
+                          name: Riverside trail repair
+                          cost: 120000
+                          value: 70
+                        - id: i02
+                          name: Storm drain upgrade
+                          cost: 220000
+                          value: 150
+                        - id: i03
+                          name: Community garden expansion
+                          cost: 60000
+                          value: 40
+                        - id: i04
+                          name: Library HVAC replacement
+                          cost: 180000
+                          value: 90
+                        - id: i05
+                          name: Main Street bike lanes
+                          cost: 150000
+                          value: 95
+                          depends_on:
+                          - i02
+                        - id: i06
+                          name: Tree canopy planting
+                          cost: 80000
+                          value: 65
+                        - id: i07
+                          name: Senior center roof
+                          cost: 140000
+                          value: 100
+                        - id: i08
+                          name: Town hall solar array
+                          cost: 200000
+                          value: 110
+                        - id: i09
+                          name: Playground resurfacing
+                          cost: 70000
+                          value: 45
+                        - id: i10
+                          name: Wetland restoration
+                          cost: 110000
+                          value: 85
+                        objectives:
+                        - id: obj-public-value
+                          name: Total public value score
+                        constraints:
+                        - id: eco-water-ceiling
+                          name: Watershed draw ceiling (ML/yr)
+                          kind: hard
+                          coefficients:
+                            i03: 8
+                            i06: 12
+                            i09: 2
+                            i10: 5
+                          limit: 22
+                        - id: crew-capacity
+                          name: Public works crew-weeks
+                          kind: hard
+                          coefficients:
+                            i01: 6
+                            i02: 10
+                            i04: 4
+                            i05: 8
+                            i06: 4
+                            i07: 6
+                            i09: 3
+                            i10: 5
+                          limit: 30
+                        - id: appropriation-limit
+                          name: Non-grant spending limited to the appropriation
+                          kind: hard
+                          coefficients:
+                            i01: 120000
+                            i03: 60000
+                            i04: 180000
+                            i05: 150000
+                            i07: 140000
+                            i08: 200000
+                            i09: 70000
+                          limit: 650000
+              assistant-drafted_proposition_with_human:
+                summary: Assistant-drafted proposition with human confirmation
+                value:
+                  command_id: c-0137
+                  actor_id: cara
+                  client: assistant
+                  payload:
+                    civic_body_id: cb-0001
+                    decision_class: advisory_poll
+                    title: Library hours poll
+                    body: Should Saturday hours extend to 6pm?
+                    requested_action:
+                      type: advisory
+                  human_confirmation:
+                    confirmed_by: cara
+                    reviewed_payload_hash: 74b0c14f7bf30c71e745deab1d2efafa1d3ce3fbb8a45097c62d68dec6a81ce7
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/propositions.amend:
+    post:
+      tags:
+      - Membership and participation
+      operationId: propositions_amend
+      summary: Amend a proposition. Creates a new version; the old version stays.
+      description: 'Specification: 8.4. Enforces: DPP-IMMUTABLE-001.'
+      x-spec-refs: '8.4'
+      x-enforces:
+      - DPP-IMMUTABLE-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_propositions_amend'
+            examples:
+              amend_a_proposition:
+                summary: Amend a proposition
+                value:
+                  command_id: c-0013
+                  actor_id: cara
+                  client: desktop
+                  payload:
+                    proposition_id: proposition-0001
+                    body: 'Amended: watershed ceiling tightened to 20 ML/yr.'
+                    requested_action:
+                      type: adopt_portfolio_model
+                      model:
+                        budget: 900000
+                        nodes:
+                        - id: i01
+                          name: Riverside trail repair
+                          cost: 120000
+                          value: 70
+                        - id: i02
+                          name: Storm drain upgrade
+                          cost: 220000
+                          value: 150
+                        - id: i03
+                          name: Community garden expansion
+                          cost: 60000
+                          value: 40
+                        - id: i04
+                          name: Library HVAC replacement
+                          cost: 180000
+                          value: 90
+                        - id: i05
+                          name: Main Street bike lanes
+                          cost: 150000
+                          value: 95
+                          depends_on:
+                          - i02
+                        - id: i06
+                          name: Tree canopy planting
+                          cost: 80000
+                          value: 65
+                        - id: i07
+                          name: Senior center roof
+                          cost: 140000
+                          value: 100
+                        - id: i08
+                          name: Town hall solar array
+                          cost: 200000
+                          value: 110
+                        - id: i09
+                          name: Playground resurfacing
+                          cost: 70000
+                          value: 45
+                        - id: i10
+                          name: Wetland restoration
+                          cost: 110000
+                          value: 85
+                        objectives:
+                        - id: obj-public-value
+                          name: Total public value score
+                        constraints:
+                        - id: eco-water-ceiling
+                          name: Watershed draw ceiling (ML/yr)
+                          kind: hard
+                          coefficients:
+                            i03: 8
+                            i06: 12
+                            i09: 2
+                            i10: 5
+                          limit: 20
+                        - id: crew-capacity
+                          name: Public works crew-weeks
+                          kind: hard
+                          coefficients:
+                            i01: 6
+                            i02: 10
+                            i04: 4
+                            i05: 8
+                            i06: 4
+                            i07: 6
+                            i09: 3
+                            i10: 5
+                          limit: 30
+                        - id: appropriation-limit
+                          name: Non-grant spending limited to the appropriation
+                          kind: hard
+                          coefficients:
+                            i01: 120000
+                            i03: 60000
+                            i04: 180000
+                            i05: 150000
+                            i07: 140000
+                            i08: 200000
+                            i09: 70000
+                          limit: 650000
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/deliberation.post:
+    post:
+      tags:
+      - Membership and participation
+      operationId: deliberation_post
+      summary: Post to the deliberation record on a proposition.
+      description: 'Specification: 8.4, 43.4.1. Enforces: CMP-003, CMP-004.'
+      x-spec-refs: 8.4, 43.4.1
+      x-enforces:
+      - CMP-003
+      - CMP-004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_deliberation_post'
+            examples:
+              post_to_the_public_record:
+                summary: Post to the public record
+                value:
+                  command_id: c-0017
+                  actor_id: dev
+                  client: desktop
+                  payload:
+                    proposition_id: proposition-0001
+                    text: I support Plan A; the drain upgrade is overdue.
+                    visibility: public
+                    position: support
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/votes.cast:
+    post:
+      tags:
+      - Membership and participation
+      operationId: votes_cast
+      summary: Vote or consent on a proposition.
+      description: 'Specification: 17.3, 17.5. Enforces: TRU-ELIG-001, CMP-004.'
+      x-spec-refs: 17.3, 17.5
+      x-enforces:
+      - TRU-ELIG-001
+      - CMP-004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_votes_cast'
+            examples:
+              cast_a_vote:
+                summary: Cast a vote
+                value:
+                  command_id: c-0025
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    proposition_id: proposition-0001
+                    choice: 'yes'
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/decisions.close:
+    post:
+      tags:
+      - Membership and participation
+      operationId: decisions_close
+      summary: Close a decision, tally it, and record the Collective Will.
+      description: 'Specification: 17.4, 8.4, MVP-102. Enforces: TRU-ELIG-001, ASR-STATUS-001.'
+      x-spec-refs: 17.4, 8.4, MVP-102
+      x-enforces:
+      - TRU-ELIG-001
+      - ASR-STATUS-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_decisions_close'
+            examples:
+              close_a_decision:
+                summary: Close a decision
+                value:
+                  command_id: c-0035
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    proposition_id: proposition-0001
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/evidence.record:
+    post:
+      tags:
+      - Evidence and optimization
+      operationId: evidence_record
+      summary: Record evidence with its epistemic class.
+      description: 'Specification: 20.1.'
+      x-spec-refs: '20.1'
+      x-enforces: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_evidence_record'
+            examples:
+              record_estimated_evidence:
+                summary: Record estimated evidence
+                value:
+                  command_id: c-0089
+                  actor_id: cara
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    subject: Projected 2030 watershed yield
+                    value: 18
+                    epistemic_class: Estimated
+                    confidence: 0.7
+                    source: County hydrology model
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/constraints.attach-evidence:
+    post:
+      tags:
+      - Evidence and optimization
+      operationId: constraints_attach_evidence
+      summary: Use evidence as the basis of a constraint. Uncertain evidence needs a decision first.
+      description: 'Specification: 20.1. Enforces: EVD-NORM-001.'
+      x-spec-refs: '20.1'
+      x-enforces:
+      - EVD-NORM-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_constraints_attach_evidence'
+            examples:
+              attach_evidence_adopted_by_a_decision:
+                summary: Attach evidence adopted by a decision
+                value:
+                  command_id: c-0099
+                  actor_id: cara
+                  client: desktop
+                  payload:
+                    constraint_id: eco-water-ceiling
+                    evidence_id: evidence-0001
+                    adopted_by_decision_id: decision-0007
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/optimization-runs.request:
+    post:
+      tags:
+      - Evidence and optimization
+      operationId: optimization_runs_request
+      summary: Ask the solver for an allocation under the approved model.
+      description: 'Specification: 8.6, 13.1, MVP-103. Enforces: OPT-CNST-001, OPT-REPRO-001, OPT-NONCOMP-001.'
+      x-spec-refs: 8.6, 13.1, MVP-103
+      x-enforces:
+      - OPT-CNST-001
+      - OPT-REPRO-001
+      - OPT-NONCOMP-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_optimization_runs_request'
+            examples:
+              request_a_strict-lane_run:
+                summary: Request a strict-lane run
+                value:
+                  command_id: c-0049
+                  actor_id: cara
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    model_version_id: portfolio_model-0001@v1
+                    lane: strict
+                    seed: 0
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/baselines.create:
+    post:
+      tags:
+      - Baseline, commitment, execution
+      operationId: baselines_create
+      summary: Freeze an approved, commit-eligible result as the baseline.
+      description: 'Specification: 8.5. Enforces: OPT-REPRO-001, GOV-AUTHPATH-001.'
+      x-spec-refs: '8.5'
+      x-enforces:
+      - OPT-REPRO-001
+      - GOV-AUTHPATH-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_baselines_create'
+            examples:
+              create_the_baseline:
+                summary: Create the baseline
+                value:
+                  command_id: c-0052
+                  actor_id: ben
+                  client: desktop
+                  payload:
+                    decision_id: decision-0001
+                    run_id: optimization_run-0003
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/commitments.reserve:
+    post:
+      tags:
+      - Baseline, commitment, execution
+      operationId: commitments_reserve
+      summary: Reserve resources for the baseline, without double-allocating.
+      description: 'Specification: 8.7, 19.5, MVP-104. Enforces: GOV-AUTHPATH-001.'
+      x-spec-refs: 8.7, 19.5, MVP-104
+      x-enforces:
+      - GOV-AUTHPATH-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_commitments_reserve'
+            examples:
+              reserve_the_commitment:
+                summary: Reserve the commitment
+                value:
+                  command_id: c-0055
+                  actor_id: ben
+                  client: desktop
+                  payload:
+                    baseline_id: baseline-0001
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/actuals.post:
+    post:
+      tags:
+      - Baseline, commitment, execution
+      operationId: actuals_post
+      summary: Post what actually happened. Never alters the baseline.
+      description: 'Specification: 8.8, MVP-105. Enforces: EXE-BASELINE-001.'
+      x-spec-refs: 8.8, MVP-105
+      x-enforces:
+      - EXE-BASELINE-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_actuals_post'
+            examples:
+              post_an_actual:
+                summary: Post an actual
+                value:
+                  command_id: c-0058
+                  actor_id: ben
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    node_id: i02
+                    actual_cost: 224000.0
+                    observed_at: '2027-03-31'
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/rebalances.propose:
+    post:
+      tags:
+      - Baseline, commitment, execution
+      operationId: rebalances_propose
+      summary: Propose a routine reallocation. Inside the envelope it is resolved; otherwise it escalates.
+      description: 'Specification: 5.9, 8.7, 5.11, MVP-106, MVP-107. Enforces: GOV-ENVELOPE-001, GOV-EXCEPT-001.'
+      x-spec-refs: 5.9, 8.7, 5.11, MVP-106, MVP-107
+      x-enforces:
+      - GOV-ENVELOPE-001
+      - GOV-EXCEPT-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_rebalances_propose'
+            examples:
+              propose_a_routine_rebalance:
+                summary: Propose a routine rebalance
+                value:
+                  command_id: c-0060
+                  actor_id: ben
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    decision_class: routine_rebalance
+                    from_node_id: i05
+                    to_node_id: i01
+                    amount: 10000
+                    confidence: 0.95
+                    reversibility: 3
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/exceptions.resolve:
+    post:
+      tags:
+      - Baseline, commitment, execution
+      operationId: exceptions_resolve
+      summary: Resolve an Exception Proposition by the authority it names.
+      description: 'Specification: 5.11, 8.9, MVP-108. Enforces: GOV-EXCEPT-001, DPP-IMMUTABLE-001.'
+      x-spec-refs: 5.11, 8.9, MVP-108
+      x-enforces:
+      - GOV-EXCEPT-001
+      - DPP-IMMUTABLE-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_exceptions_resolve'
+            examples:
+              resolve_an_exception_by_decision:
+                summary: Resolve an exception by decision
+                value:
+                  command_id: c-0079
+                  actor_id: ben
+                  client: desktop
+                  payload:
+                    exception_proposition_id: exception_proposition-0005
+                    resolution: Declined; alternative shift approved
+                    decision_id: decision-0005
+              resolve_an_exception_with_a_recorded_con:
+                summary: Resolve an exception with a recorded constraint relaxation
+                value:
+                  command_id: c-0088
+                  actor_id: ben
+                  client: desktop
+                  payload:
+                    exception_proposition_id: exception_proposition-0006
+                    resolution: Approved with a recorded relaxation
+                    decision_id: decision-0006
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/exports.create:
+    post:
+      tags:
+      - Records, exit, configuration
+      operationId: exports_create
+      summary: Export everything needed to continue governance elsewhere.
+      description: 'Specification: 23.3, ASR-11, MVP-110. Enforces: TRU-EXIT-001.'
+      x-spec-refs: 23.3, ASR-11, MVP-110
+      x-enforces:
+      - TRU-EXIT-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_exports_create'
+            examples:
+              export_the_civic_body:
+                summary: Export the civic body
+                value:
+                  command_id: c-0145
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/retention-schedules.adopt:
+    post:
+      tags:
+      - Records, exit, configuration
+      operationId: retention_schedules_adopt
+      summary: Adopt a records retention period for a record class.
+      description: 'Specification: 43.2 ASR-05.'
+      x-spec-refs: 43.2 ASR-05
+      x-enforces: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_retention_schedules_adopt'
+            examples:
+              adopt_a_retention_schedule:
+                summary: Adopt a retention schedule
+                value:
+                  command_id: c-0142
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    record_class: deliberation_post
+                    retain_days: 730
+                    destruction_authority: records_officer
+                    legal_basis: Pilot-state records schedule (to confirm)
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/records.delete:
+    post:
+      tags:
+      - Records, exit, configuration
+      operationId: records_delete
+      summary: Delete a record. Allowed only by schedule or legal order, and recorded.
+      description: 'Specification: 43.2 ASR-05, CMP-005.'
+      x-spec-refs: 43.2 ASR-05, CMP-005
+      x-enforces: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_records_delete'
+            examples:
+              delete_a_record_after_its_retention_peri:
+                summary: Delete a record after its retention period
+                value:
+                  command_id: c-0144
+                  actor_id: ben
+                  client: desktop
+                  payload:
+                    record_id: deliberation_post-0001
+                    record_class: deliberation_post
+                    created_days_ago: 800
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/commands/configuration.set:
+    post:
+      tags:
+      - Records, exit, configuration
+      operationId: configuration_set
+      summary: Change a deployment setting. Settings cannot disable Assurance Controls.
+      description: 'Specification: 43.2, 14.0. Enforces: GOV-FRAMEWORK-001.'
+      x-spec-refs: 43.2, 14.0
+      x-enforces:
+      - GOV-FRAMEWORK-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CommandEnvelope'
+              - type: object
+                properties:
+                  payload:
+                    $ref: '#/components/schemas/Payload_configuration_set'
+            examples:
+              attempt_to_disable_an_assurance_control_:
+                summary: Attempt to disable an Assurance Control (refused)
+                value:
+                  command_id: c-0141
+                  actor_id: ana
+                  client: desktop
+                  payload:
+                    civic_body_id: cb-0001
+                    setting: asr.audit_log
+                    value: false
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '202':
+          description: Escalated to human authority
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '422':
+          description: Refused by a governance rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+        '400':
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v0/queries/civic-bodies/{id}:
+    get:
+      tags:
+      - Queries
+      operationId: q_civic_bodies_id
+      summary: Civic body, its members, decision classes, and adopted packs.
+      description: 'Specification: 7.'
+      x-spec-refs: '7'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/propositions/{id}:
+    get:
+      tags:
+      - Queries
+      operationId: q_propositions_id
+      summary: Every version of a proposition, deliberation record, and votes.
+      description: 'Specification: 8.3, 8.4, MVP-101.'
+      x-spec-refs: 8.3, 8.4, MVP-101
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/decisions/{id}:
+    get:
+      tags:
+      - Queries
+      operationId: q_decisions_id
+      summary: A decision with its four status axes.
+      description: 'Specification: 8.0.'
+      x-spec-refs: '8.0'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/decisions/{id}/provenance:
+    get:
+      tags:
+      - Queries
+      operationId: q_decisions_id_provenance
+      summary: Decision Provenance Packet.
+      description: 'Specification: 9.'
+      x-spec-refs: '9'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionProvenancePacket'
+        '404':
+          description: Not found
+  /v0/queries/decisions/{id}/replay:
+    get:
+      tags:
+      - Queries
+      operationId: q_decisions_id_replay
+      summary: Replay the decision's optimization from its bound versions and compare hashes.
+      description: 'Specification: 9.1, MVP-109.'
+      x-spec-refs: 9.1, MVP-109
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/baselines/{id}:
+    get:
+      tags:
+      - Queries
+      operationId: q_baselines_id
+      summary: A baseline version and its lineage.
+      description: 'Specification: 8.5.'
+      x-spec-refs: '8.5'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/portfolio/{civic_body_id}:
+    get:
+      tags:
+      - Queries
+      operationId: q_portfolio_civic_body_id
+      summary: Portfolio nodes, budgets, commitments, actuals, and variance.
+      description: 'Specification: 5.2, 8.8.'
+      x-spec-refs: 5.2, 8.8
+      parameters:
+      - name: civic_body_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/exceptions/{id}:
+    get:
+      tags:
+      - Queries
+      operationId: q_exceptions_id
+      summary: 'An Exception Proposition: the conflict and the authority required.'
+      description: 'Specification: 5.11.'
+      x-spec-refs: '5.11'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/delegations/{civic_body_id}:
+    get:
+      tags:
+      - Queries
+      operationId: q_delegations_civic_body_id
+      summary: Delegation chains with concentration disclosure.
+      description: 'Specification: 17.3; CL-029.'
+      x-spec-refs: 17.3; CL-029
+      parameters:
+      - name: civic_body_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/feed/{actor_id}:
+    get:
+      tags:
+      - Queries
+      operationId: q_feed_actor_id
+      summary: A member's feed. Every item states why it is shown; order is deterministic.
+      description: 'Specification: 11.6.6, UIX-NEUTRAL-003.'
+      x-spec-refs: 11.6.6, UIX-NEUTRAL-003
+      parameters:
+      - name: actor_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/events:
+    get:
+      tags:
+      - Queries
+      operationId: q_events
+      summary: The hash-chained event log (supports ?after=seq).
+      description: 'Specification: 11.3, ASR-04.'
+      x-spec-refs: 11.3, ASR-04
+      parameters:
+      - name: after
+        in: query
+        schema:
+          type: integer
+        description: Return events after this sequence number.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+  /v0/queries/exports/{id}:
+    get:
+      tags:
+      - Queries
+      operationId: q_exports_id
+      summary: A completed export package.
+      description: 'Specification: ASR-11.'
+      x-spec-refs: ASR-11
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found
+components:
+  schemas:
+    LegalStatus:
+      type: object
+      description: Legal-status axis (8.0, ASR-08). Binding only with a Legal Effect Declaration (invariant 26 ASR-STATUS-001).
+      required:
+      - value
+      properties:
+        value:
+          enum:
+          - Advisory
+          - Consultative
+          - Binding
+        legal_effect_declaration_id:
+          type:
+          - string
+          - 'null'
+        enabling_authority:
+          type:
+          - string
+          - 'null'
+        effective_date:
+          type:
+          - string
+          - 'null'
+    Status:
+      type: object
+      description: The four separate status axes every decision, commitment, and published result carries (8.0).
+      required:
+      - lifecycle_state
+      - legal_status
+      - delivery_readiness
+      - epistemic_class
+      properties:
+        lifecycle_state:
+          enum:
+          - Draft
+          - Proposed
+          - Validated
+          - Deliberated
+          - Approved
+          - Baselined
+          - Optimized
+          - Resolved
+          - Committed
+          - Executing
+          - Measured
+          - Reconciled
+          - Rejected
+          - Remanded
+          - Deferred
+          - Suspended
+          - Superseded
+          - Canceled
+          - Exception
+        legal_status:
+          $ref: '#/components/schemas/LegalStatus'
+        delivery_readiness:
+          enum:
+          - Proposed
+          - Funded but incomplete
+          - Operationally verified
+          - Breached
+          - Not applicable
+        epistemic_class: &id003
+          enum:
+          - Observed
+          - Reported
+          - Estimated
+          - Assumed
+          - Scenario output
+          - Hypothesis
+          - Not applicable
+    ObjectHeader:
+      type: object
+      description: Fields every first-class object carries (Section 7 preamble).
+      required:
+      - id
+      - version_id
+      - object_type
+      - civic_body_id
+      - created_in_transaction
+      properties:
+        id:
+          type: string
+          description: Stable object identity (Section 7).
+        version_id:
+          type: string
+          description: Immutable version identity.
+        object_type: &id001
+          type: string
+        civic_body_id:
+          type:
+          - string
+          - 'null'
+        owner:
+          type:
+          - string
+          - 'null'
+        scope:
+          type:
+          - string
+          - 'null'
+        effective_from:
+          type:
+          - string
+          - 'null'
+        effective_to:
+          type:
+          - string
+          - 'null'
+        authority_basis:
+          type:
+          - string
+          - 'null'
+          description: Authority or decision that permitted this version.
+        confidence:
+          type:
+          - number
+          - 'null'
+        supersedes:
+          type:
+          - string
+          - 'null'
+          description: Prior version this one replaces (lineage).
+        created_in_transaction: *id001
+    Refusal:
+      type: object
+      description: Why a command was refused. Refusals are themselves recorded transactions (8.1).
+      required:
+      - code
+      - reason
+      properties:
+        code:
+          enum:
+          - AUTHORITY_MISSING
+          - AI_CONFIRMATION_REQUIRED
+          - ELIGIBILITY
+          - ATTESTATION_TIER
+          - RECUSED
+          - OPEN_MEETING_GUARD
+          - LAYER_RULE
+          - PARTICIPATION_FEE
+          - SELF_APPOINTMENT
+          - SCHEMA
+          - NOT_FOUND
+          - VERSION_CONFLICT
+          - HARD_CONSTRAINT
+          - NOT_PSD
+          - NOT_COMMIT_ELIGIBLE
+          - DOUBLE_ALLOCATION
+          - BASELINE_IMMUTABLE
+          - EVIDENCE_NOT_ADOPTED
+          - RETENTION
+          - ENVELOPE_INVALID
+          - STATE
+          - CHANGE_MISMATCH
+          - CHANGE_ALREADY_APPLIED
+          - APPROVAL_MISMATCH
+          - APPROVAL_ALREADY_USED
+          - SELF_GRANT
+          - WILDCARD_GRANT
+        reason: *id001
+        invariant_id:
+          type:
+          - string
+          - 'null'
+          description: Section 14 invariant ID, e.g. GOV-AUTHPATH-001.
+        control_id:
+          type:
+          - string
+          - 'null'
+          description: Assurance Control (43.2) or requirement ID.
+        conflicting_layer:
+          type:
+          - string
+          - 'null'
+          description: Protection layer (14.0) a configuration conflicts with.
+    Escalation:
+      type: object
+      description: An action routed to human authority instead of being decided automatically (5.11, 8.7).
+      required:
+      - exception_proposition_id
+      - authority_required
+      - governing_conflict
+      properties:
+        exception_proposition_id: *id001
+        authority_required: *id001
+        governing_conflict: *id001
+        failed_tests:
+          type: array
+          items: *id001
+    CommandEnvelope:
+      type: object
+      description: Wrapper for every state-changing command (11.6.2). The same envelope is used by every client (11.6.1).
+      required:
+      - command_id
+      - actor_id
+      - client
+      - payload
+      properties:
+        command_id:
+          type: string
+          description: 'Idempotency key: resending the same command_id returns the original result and changes nothing (8.1).'
+        actor_id: *id001
+        client:
+          enum:
+          - desktop
+          - assistant
+          - mobile
+          - integration
+        human_confirmation:
+          type:
+          - object
+          - 'null'
+          description: 'Required when client is ''assistant'': the human who reviewed and confirmed the drafted command (24.3,
+            UIX-NEUTRAL-002).'
+          properties:
+            confirmed_by: *id001
+            reviewed_payload_hash: *id001
+        payload:
+          type: object
+    CommandResult:
+      type: object
+      required:
+      - transaction_id
+      - outcome
+      - bound_versions
+      properties:
+        transaction_id: *id001
+        outcome:
+          enum:
+          - accepted
+          - refused
+          - escalated
+        event_ids:
+          type: array
+          items: *id001
+        result:
+          type:
+          - object
+          - 'null'
+        refusal:
+          oneOf:
+          - $ref: '#/components/schemas/Refusal'
+          - type: 'null'
+        escalation:
+          oneOf:
+          - $ref: '#/components/schemas/Escalation'
+          - type: 'null'
+        bound_versions:
+          type: object
+          description: Versions in force this transaction is bound to (8.9 version binding).
+        status:
+          oneOf:
+          - $ref: '#/components/schemas/Status'
+          - type: 'null'
+    Event:
+      type: object
+      description: Entry in the append-only, hash-chained event log (11.3, ASR-04).
+      required:
+      - seq
+      - event_id
+      - type
+      - transaction_id
+      - at
+      - data
+      - prev_hash
+      - hash
+      properties:
+        seq:
+          type: integer
+        event_id: *id001
+        type: *id001
+        transaction_id: *id001
+        at: *id001
+        data:
+          type: object
+        prev_hash: *id001
+        hash: *id001
+    DecisionProvenancePacket:
+      type: object
+      description: 'Section 9: everything needed to reconstruct why a decision occurred.'
+      required:
+      - decision_id
+      - inputs
+      - governance
+      - model
+      - run
+      - analysis
+      - deliberation
+      - disposition
+      - outcome
+      - lineage
+      properties:
+        inputs:
+          type: object
+        governance:
+          type: object
+        model:
+          type: object
+        run:
+          type: object
+        analysis:
+          type: object
+        deliberation:
+          type: object
+        disposition:
+          type: object
+        outcome:
+          type: object
+        lineage:
+          type: object
+        decision_id: *id001
+        status:
+          $ref: '#/components/schemas/Status'
+    Payload_civic_bodies_create:
+      type: object
+      required:
+      - name
+      - founding_members
+      properties:
+        name: *id001
+        jurisdiction: *id001
+        gml_level:
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+        founding_members:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+            - actor_id
+            - display_name
+            properties:
+              actor_id: *id001
+              display_name: *id001
+              roles:
+                type: array
+                items: *id001
+    Payload_governance_processes_adopt:
+      type: object
+      required:
+      - civic_body_id
+      - decision_classes
+      properties:
+        civic_body_id: *id001
+        decision_classes:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+            - name
+            - method
+            - approval_threshold
+            - min_attestation
+            properties:
+              name: *id001
+              method:
+                enum:
+                - direct_vote
+                - consent
+              approval_threshold: &id002
+                type: number
+                minimum: 0
+                maximum: 1
+              quorum: *id002
+              min_attestation:
+                enum:
+                - self_attested
+                - verified
+                description: Minimum identity tier to take part in this decision class (17.5 eligibility assurance; CL-028).
+              min_attestation_confidence:
+                type: number
+                minimum: 0
+                maximum: 1
+                description: Below this, a result is flagged low-confidence and excluded from GML-2+ commitment (invariant
+                  13). Default 0.75.
+              participation_fee:
+                type: number
+                description: Must be 0; any fee is refused (invariant 24 TRU-ACCESS-001).
+              delegation_disclosure_threshold: *id002
+              delegation_reconfirm_days:
+                type: integer
+                minimum: 1
+    Payload_authorities_grant:
+      type: object
+      required:
+      - civic_body_id
+      - grantee_actor_id
+      - actions
+      properties:
+        civic_body_id: *id001
+        grantee_actor_id: *id001
+        actions:
+          type: array
+          items: *id001
+        monitoring_role:
+          type: boolean
+          description: Approval or monitoring authority (12.0.1).
+        selected_by_decision_id:
+          type:
+          - string
+          - 'null'
+        rotation_terms:
+          type:
+          - string
+          - 'null'
+    Payload_delegation_envelopes_adopt:
+      type: object
+      required:
+      - civic_body_id
+      - decision_class
+      - tolerance
+      properties:
+        civic_body_id: *id001
+        decision_class: *id001
+        tolerance:
+          type: number
+          description: Largest reallocation the envelope may resolve automatically.
+        confidence_threshold:
+          description: 0-1, default 0.90 (5.9).
+        min_reversibility:
+          description: 0-3, default 2 (5.9).
+        authorized_resolver: *id001
+    Payload_legal_effect_declarations_adopt:
+      type: object
+      required:
+      - civic_body_id
+      - decision_class
+      - legal_status
+      - enabling_authority
+      properties:
+        civic_body_id: *id001
+        decision_class: *id001
+        legal_status:
+          enum:
+          - Consultative
+          - Binding
+        enabling_authority:
+          type: string
+          description: Citation of the law or charter provision that gives the result effect.
+        effective_date: *id001
+    Payload_compliance_packs_adopt:
+      type: object
+      required:
+      - civic_body_id
+      - pack_id
+      - edition
+      - rules
+      properties:
+        civic_body_id: *id001
+        pack_id: *id001
+        edition: *id001
+        rules:
+          type: array
+          items:
+            type: object
+            required:
+            - rule
+            - effect
+            properties:
+              rule: *id001
+              effect:
+                enum:
+                - add_constraint
+                - relax
+              legal_basis: *id001
+              target: *id001
+    Payload_change_requests_put_in_force:
+      type: object
+      required:
+      - civic_body_id
+      - target_type
+      - target_id
+      - changes
+      - decision_id
+      properties:
+        civic_body_id: *id001
+        target_type:
+          enum:
+          - delegation_envelope
+          - governance_process
+        target_id: *id001
+        changes:
+          type: object
+        decision_id: *id001
+    Payload_credentials_issue:
+      type: object
+      required:
+      - civic_body_id
+      - member_actor_id
+      - tier
+      properties:
+        civic_body_id: *id001
+        member_actor_id: *id001
+        tier:
+          enum:
+          - self_attested
+          - verified
+        attestation_confidence: *id002
+    Payload_interest_declarations_record:
+      type: object
+      required:
+      - civic_body_id
+      - proposition_id
+      - description
+      properties:
+        civic_body_id: *id001
+        proposition_id: *id001
+        description: *id001
+    Payload_delegations_assign:
+      type: object
+      required:
+      - civic_body_id
+      - decision_class
+      - delegate_actor_id
+      properties:
+        civic_body_id: *id001
+        decision_class: *id001
+        delegate_actor_id: *id001
+    Payload_delegations_revoke:
+      type: object
+      required:
+      - civic_body_id
+      - decision_class
+      properties:
+        civic_body_id: *id001
+        decision_class: *id001
+    Payload_propositions_submit:
+      type: object
+      required:
+      - civic_body_id
+      - decision_class
+      - title
+      - body
+      - requested_action
+      properties:
+        civic_body_id: *id001
+        decision_class: *id001
+        title: *id001
+        body: *id001
+        requested_action:
+          type: object
+          description: Machine-readable action the proposition asks for (17.6), e.g. adopt_portfolio_model.
+        competes_with:
+          type:
+          - string
+          - 'null'
+    Payload_propositions_amend:
+      type: object
+      required:
+      - proposition_id
+      - body
+      properties:
+        proposition_id: *id001
+        body: *id001
+        requested_action:
+          type: object
+    Payload_deliberation_post:
+      type: object
+      required:
+      - proposition_id
+      - text
+      - visibility
+      properties:
+        proposition_id: *id001
+        text: *id001
+        visibility:
+          enum:
+          - public
+          - private
+        to_actor_id:
+          type:
+          - string
+          - 'null'
+        position:
+          enum:
+          - support
+          - object
+          - comment
+          - minority_report
+    Payload_votes_cast:
+      type: object
+      required:
+      - proposition_id
+      - choice
+      properties:
+        proposition_id: *id001
+        choice:
+          enum:
+          - 'yes'
+          - 'no'
+          - abstain
+          - consent
+          - object
+    Payload_decisions_close:
+      type: object
+      required:
+      - proposition_id
+      properties:
+        proposition_id: *id001
+    Payload_evidence_record:
+      type: object
+      required:
+      - civic_body_id
+      - subject
+      - value
+      - epistemic_class
+      properties:
+        civic_body_id: *id001
+        subject: *id001
+        value: {}
+        epistemic_class: *id003
+        confidence:
+          type:
+          - number
+          - 'null'
+        source: *id001
+    Payload_constraints_attach_evidence:
+      type: object
+      required:
+      - constraint_id
+      - evidence_id
+      properties:
+        constraint_id: *id001
+        evidence_id: *id001
+        adopted_by_decision_id:
+          type:
+          - string
+          - 'null'
+    Payload_optimization_runs_request:
+      type: object
+      required:
+      - civic_body_id
+      - model_version_id
+      properties:
+        civic_body_id: *id001
+        model_version_id: *id001
+        lane:
+          enum:
+          - strict
+          - best_effort
+          description: Strict (commit-eligible) or exploration (9.1).
+        seed:
+          type: integer
+        q_matrix:
+          type:
+          - array
+          - 'null'
+          description: Optional pairwise interaction terms; must be positive semidefinite (13.1).
+    Payload_baselines_create:
+      type: object
+      required:
+      - decision_id
+      - run_id
+      properties:
+        decision_id: *id001
+        run_id: *id001
+    Payload_commitments_reserve:
+      type: object
+      required:
+      - baseline_id
+      properties:
+        baseline_id: *id001
+    Payload_actuals_post:
+      type: object
+      required:
+      - civic_body_id
+      - node_id
+      - actual_cost
+      - observed_at
+      properties:
+        civic_body_id: *id001
+        node_id: *id001
+        actual_cost:
+          type: number
+        observed_at: *id001
+        attempt_baseline_update:
+          type: boolean
+    Payload_rebalances_propose:
+      type: object
+      required:
+      - civic_body_id
+      - decision_class
+      - from_node_id
+      - to_node_id
+      - amount
+      properties:
+        civic_body_id: *id001
+        decision_class: *id001
+        from_node_id: *id001
+        to_node_id: *id001
+        amount:
+          type: number
+        confidence:
+          type:
+          - number
+          - 'null'
+        reversibility:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+          maximum: 3
+    Payload_exceptions_resolve:
+      type: object
+      required:
+      - exception_proposition_id
+      - resolution
+      - decision_id
+      properties:
+        exception_proposition_id: *id001
+        resolution: *id001
+        decision_id: *id001
+    Payload_exports_create:
+      type: object
+      required:
+      - civic_body_id
+      properties:
+        civic_body_id: *id001
+    Payload_retention_schedules_adopt:
+      type: object
+      required:
+      - civic_body_id
+      - record_class
+      - retain_days
+      - destruction_authority
+      properties:
+        civic_body_id: *id001
+        record_class: *id001
+        retain_days:
+          type: integer
+          minimum: 0
+        destruction_authority: *id001
+        legal_basis: *id001
+    Payload_records_delete:
+      type: object
+      required:
+      - record_id
+      - record_class
+      - created_days_ago
+      properties:
+        record_id: *id001
+        record_class: *id001
+        created_days_ago:
+          type: integer
+        legal_order:
+          type:
+          - string
+          - 'null'
+    Payload_configuration_set:
+      type: object
+      required:
+      - civic_body_id
+      - setting
+      - value
+      properties:
+        civic_body_id: *id001
+        setting: *id001
+        value: {}
+    domain.ObjectHeader:
+      $ref: schemas/ObjectHeader.schema.json
+      description: 'ObjectHeader (Section 7; Phase 1: build).'
+    domain.CivicBody:
+      $ref: schemas/CivicBody.schema.json
+      description: 'Civic Body (Section 7; Phase 1: build).'
+    domain.GovernanceProcess:
+      $ref: schemas/GovernanceProcess.schema.json
+      description: 'Governance Process (Section 7; Phase 1: build).'
+    domain.Jurisdiction:
+      $ref: schemas/Jurisdiction.schema.json
+      description: 'Jurisdiction (Section 7; Phase 1: build).'
+    domain.PortfolioNode:
+      $ref: schemas/PortfolioNode.schema.json
+      description: 'Portfolio Node (Section 7; Phase 1: build).'
+    domain.Objective:
+      $ref: schemas/Objective.schema.json
+      description: 'Objective (Section 7; Phase 1: build).'
+    domain.Constraint:
+      $ref: schemas/Constraint.schema.json
+      description: 'Constraint (Section 7; Phase 1: build).'
+    domain.Resource:
+      $ref: schemas/Resource.schema.json
+      description: 'Resource (Section 7; Phase 1: build).'
+    domain.Relationship:
+      $ref: schemas/Relationship.schema.json
+      description: 'Relationship (Section 7; Phase 1: build).'
+    domain.Authority:
+      $ref: schemas/Authority.schema.json
+      description: 'Authority (Section 7; Phase 1: build).'
+    domain.DelegationEnvelope:
+      $ref: schemas/DelegationEnvelope.schema.json
+      description: 'Delegation Envelope (Section 7; Phase 1: build).'
+    domain.Decision:
+      $ref: schemas/Decision.schema.json
+      description: 'Decision (Section 7; Phase 1: build).'
+    domain.TreatyCompactAgreement:
+      $ref: schemas/TreatyCompactAgreement.schema.json
+      description: 'Treaty / Compact / Agreement (Section 7; Phase 1: interface).'
+    domain.Evidence:
+      $ref: schemas/Evidence.schema.json
+      description: 'Evidence / Observation (Section 7; Phase 1: build).'
+    domain.FundingInstrument:
+      $ref: schemas/FundingInstrument.schema.json
+      description: 'Funding Instrument (Section 7; Phase 1: build).'
+    domain.ScheduleMilestone:
+      $ref: schemas/ScheduleMilestone.schema.json
+      description: 'Schedule / Milestone (Section 7; Phase 1: build).'
+    domain.Risk:
+      $ref: schemas/Risk.schema.json
+      description: 'Risk (Section 7; Phase 1: build).'
+    domain.ExceptionProposition:
+      $ref: schemas/ExceptionProposition.schema.json
+      description: 'Exception Proposition (Section 7; Phase 1: build).'
+    domain.ActorRoleAgent:
+      $ref: schemas/ActorRoleAgent.schema.json
+      description: 'Actor / Role / Agent (Section 7; Phase 1: build).'
+    domain.MembershipCredential:
+      $ref: schemas/MembershipCredential.schema.json
+      description: 'Membership Credential (Section 7; Phase 1: build).'
+    domain.MaturityFramework:
+      $ref: schemas/MaturityFramework.schema.json
+      description: 'Maturity Framework (Section 7; Phase 1: build).'
+    domain.FloorRevisionProposal:
+      $ref: schemas/FloorRevisionProposal.schema.json
+      description: 'Floor Revision Proposal (FRP) (Section 7; Phase 1: interface).'
+    domain.EcosystemEntity:
+      $ref: schemas/EcosystemEntity.schema.json
+      description: 'Ecosystem Entity (Section 7; Phase 1: interface).'
+    domain.GuardianJurisdiction:
+      $ref: schemas/GuardianJurisdiction.schema.json
+      description: 'Guardian Jurisdiction (Section 7; Phase 1: interface).'
+    domain.NaturalCapitalAccount:
+      $ref: schemas/NaturalCapitalAccount.schema.json
+      description: 'Natural Capital Account (Section 7; Phase 1: interface).'
+    domain.StatementOfRelationship:
+      $ref: schemas/StatementOfRelationship.schema.json
+      description: 'Statement Of Relationship (Section 7; Phase 1: interface).'
+    domain.ResourceCommitmentRegistryEntry:
+      $ref: schemas/ResourceCommitmentRegistryEntry.schema.json
+      description: 'Resource Commitment Registry Entry (Section 7; Phase 1: interface).'
+    domain.CompliancePack:
+      $ref: schemas/CompliancePack.schema.json
+      description: 'Compliance Pack (Section 7; Phase 1: build).'
+    domain.RetentionSchedule:
+      $ref: schemas/RetentionSchedule.schema.json
+      description: 'Retention Schedule (Section 7; Phase 1: build).'
+    domain.LegalEffectDeclaration:
+      $ref: schemas/LegalEffectDeclaration.schema.json
+      description: 'Legal Effect Declaration (Section 7; Phase 1: build).'
+    domain.AcecogIdentity:
+      $ref: schemas/AcecogIdentity.schema.json
+      description: 'ACECOG Identity (Section 7; Phase 1: build).'
+    domain.AssuranceAnchor:
+      $ref: schemas/AssuranceAnchor.schema.json
+      description: 'Assurance Anchor (Section 7; Phase 1: build).'
+    domain.ReconciliationCase:
+      $ref: schemas/ReconciliationCase.schema.json
+      description: 'Reconciliation Case (Section 7; Phase 1: build).'
+    domain.ContinuityOffice:
+      $ref: schemas/ContinuityOffice.schema.json
+      description: 'Continuity Office (Section 7; Phase 1: build).'
+    domain.ContinuityCase:
+      $ref: schemas/ContinuityCase.schema.json
+      description: 'Continuity Case (Section 7; Phase 1: build).'
+    domain.ComplianceModule:
+      $ref: schemas/ComplianceModule.schema.json
+      description: 'Compliance Module (Section 7; Phase 1: build).'
+    domain.ControlMapping:
+      $ref: schemas/ControlMapping.schema.json
+      description: 'Control Mapping (Section 7; Phase 1: interface).'
+    domain.EngagementRecord:
+      $ref: schemas/EngagementRecord.schema.json
+      description: 'Engagement Record (Section 7; Phase 1: interface).'
+    domain.InterestDeclaration:
+      $ref: schemas/InterestDeclaration.schema.json
+      description: 'Interest Declaration (Section 7; Phase 1: build).'
+    domain.Proposition:
+      $ref: schemas/Proposition.schema.json
+      description: 'Proposition (Section 8; Phase 1: build).'
+    domain.Vote:
+      $ref: schemas/Vote.schema.json
+      description: 'Vote (Section 8; Phase 1: build).'
+    domain.Delegation:
+      $ref: schemas/Delegation.schema.json
+      description: 'Delegation (Section 8; Phase 1: build).'
+    domain.DeliberationPost:
+      $ref: schemas/DeliberationPost.schema.json
+      description: 'DeliberationPost (Section 8; Phase 1: build).'
+    domain.PortfolioModel:
+      $ref: schemas/PortfolioModel.schema.json
+      description: 'PortfolioModel (Section 8; Phase 1: build).'
+    domain.OptimizationRun:
+      $ref: schemas/OptimizationRun.schema.json
+      description: 'OptimizationRun (Section 8; Phase 1: build).'
+    domain.Baseline:
+      $ref: schemas/Baseline.schema.json
+      description: 'Baseline (Section 8; Phase 1: build).'
+    domain.Commitment:
+      $ref: schemas/Commitment.schema.json
+      description: 'Commitment (Section 8; Phase 1: build).'
+    domain.Actual:
+      $ref: schemas/Actual.schema.json
+      description: 'Actual (Section 8; Phase 1: build).'
+    domain.ConstraintBasis:
+      $ref: schemas/ConstraintBasis.schema.json
+      description: 'ConstraintBasis (Section 8; Phase 1: build).'
+    domain.Export:
+      $ref: schemas/Export.schema.json
+      description: 'Export (Section 8; Phase 1: build).'
+    domain.Setting:
+      $ref: schemas/Setting.schema.json
+      description: 'Setting (Section 8; Phase 1: build).'

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/MaturityFramework.schema.json",
+  "title": "MaturityFramework",
+  "description": "Graduated institutional rigor; Phase 1 builds GML-0 and GML-1 controls.",
+  "x-acecog-object": "Maturity Framework",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 4.2, 4.3",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "levels"
+  ],
+  "properties": {
+    "levels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "level"
+        ],
+        "properties": {
+          "level": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3,
+            "description": "Governance Maturity Level (4.2)."
+          },
+          "controls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "reference": {
+      "type": "boolean"
+    }
+  }
+}

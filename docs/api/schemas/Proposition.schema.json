@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Proposition.schema.json",
+  "title": "Proposition",
+  "description": "Process record (8.2, 8.3).",
+  "x-acecog-object": "Proposition",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "8.2, 8.3",
+  "x-acecog-engine": "proposition",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "decision_class",
+    "title",
+    "proposer",
+    "state",
+    "bound_process_version"
+  ],
+  "properties": {
+    "decision_class": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requested_action": {},
+    "competes_with": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proposer": {
+      "type": "string"
+    },
+    "client": {
+      "type": "string"
+    },
+    "bound_process_version": {
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "Draft",
+        "Proposed",
+        "Validated",
+        "Returned for correction",
+        "Deliberated",
+        "Approved",
+        "Rejected",
+        "Superseded",
+        "Withdrawn"
+      ]
+    },
+    "ai_changes": {
+      "type": "array",
+      "description": "Every AI-introduced change, flagged (INV-AT-15)."
+    }
+  }
+}

@@ -1,0 +1,74 @@
+name: Site build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Install pinned engine dependencies
+        run: pip install -r requirements-ci.txt
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Install pinned browser checks
+        run: |
+          npm ci --prefix scripts/site_checks
+          cd scripts/site_checks
+          npx playwright install --with-deps chromium
+      - name: Fetch self-hosted fonts (Public Sans, JetBrains Mono; SIL Open Font License)
+        run: |
+          set -e
+          mkdir -p /tmp/fonts scripts/site_assets/fonts
+          cd /tmp/fonts
+          npm pack @fontsource/public-sans@5 @fontsource/jetbrains-mono@5 >/dev/null
+          for t in *.tgz; do tar -xzf "$t" && mv package "${t%.tgz}"; done
+          cp fontsource-public-sans-*/files/public-sans-latin-{400,600,800}-normal.woff2 "$GITHUB_WORKSPACE/scripts/site_assets/fonts/"
+          cp fontsource-jetbrains-mono-*/files/jetbrains-mono-latin-400-normal.woff2 "$GITHUB_WORKSPACE/scripts/site_assets/fonts/"
+          cp fontsource-public-sans-*/LICENSE "$GITHUB_WORKSPACE/scripts/site_assets/fonts/OFL-public-sans.txt" || true
+          cp fontsource-jetbrains-mono-*/LICENSE "$GITHUB_WORKSPACE/scripts/site_assets/fonts/OFL-jetbrains-mono.txt" || true
+      - name: Prove failing acceptance tests stop subsequent artifact commands
+        run: python scripts/site_checks/check_gate.py
+      - name: Exact-commit acceptance and contract checks
+        run: |
+          python -m pytest -q
+          python scripts/gen_openapi.py
+          git diff --exit-code -- docs/api
+      - name: Required release security checks
+        run: |
+          pip install pip-audit bandit
+          pip-audit -r requirements-ci.txt
+          bandit -r src scripts -ll -ii
+          npm audit --prefix scripts/site_checks --audit-level=high
+      - name: Build the site from the engine
+        env:
+          SITE_DOMAIN: ${{ vars.SITE_DOMAIN }}
+          SITE_CONTACT: ${{ vars.SITE_CONTACT }}
+        run: python scripts/build_site.py
+      - name: Adversarial browser and accessibility checks on this artifact
+        run: npm test --prefix scripts/site_checks
+      - name: Retain browser evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: bg1-browser-${{ github.sha }}
+          path: build/site-evidence
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: build/site

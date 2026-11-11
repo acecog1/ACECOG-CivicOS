@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ExceptionProposition.schema.json",
+  "title": "ExceptionProposition",
+  "description": "Structured governance question raised by unresolved conflict or infeasibility.",
+  "x-acecog-object": "Exception Proposition",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 5.11, 8.9",
+  "x-acecog-engine": "exception_proposition",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "governing_conflict",
+    "authority_required",
+    "state"
+  ],
+  "properties": {
+    "governing_conflict": {
+      "type": "string"
+    },
+    "authority_required": {
+      "type": "string"
+    },
+    "failed_tests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "context": {},
+    "state": {
+      "enum": [
+        "Routed",
+        "Resolved",
+        "Closed",
+        "Withdrawn"
+      ]
+    },
+    "cumulative": {
+      "type": "boolean"
+    }
+  }
+}

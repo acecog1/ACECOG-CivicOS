@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/EcosystemEntity.schema.json",
+  "title": "EcosystemEntity",
+  "description": "Rights-holding ecosystem represented as a legal person (Part V).",
+  "x-acecog-object": "Ecosystem Entity",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "interface",
+  "x-acecog-spec": "7, 37",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "guardian_jurisdiction_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

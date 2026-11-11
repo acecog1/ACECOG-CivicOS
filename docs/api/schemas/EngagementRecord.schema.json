@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/EngagementRecord.schema.json",
+  "title": "EngagementRecord",
+  "description": "Operator, implementer or auditor engagement; outcome-linked fees refused.",
+  "x-acecog-object": "Engagement Record",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "interface",
+  "x-acecog-spec": "7, 43.6",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "engagement_type",
+    "fee_basis"
+  ],
+  "properties": {
+    "engagement_type": {
+      "enum": [
+        "operator",
+        "implementer",
+        "auditor"
+      ]
+    },
+    "fee_basis": {
+      "type": "string"
+    },
+    "staff": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

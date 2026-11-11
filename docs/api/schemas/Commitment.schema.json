@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Commitment.schema.json",
+  "title": "Commitment",
+  "description": "Process record (8.7, 19.5).",
+  "x-acecog-object": "Commitment",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "8.7, 19.5",
+  "x-acecog-engine": "commitment",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "baseline_version_id",
+    "amount",
+    "state"
+  ],
+  "properties": {
+    "baseline_id": {
+      "type": "string"
+    },
+    "baseline_version_id": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "lines": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "Amount per portfolio node."
+    },
+    "state": {
+      "enum": [
+        "Reserved",
+        "Committed",
+        "Released",
+        "Canceled"
+      ]
+    }
+  }
+}

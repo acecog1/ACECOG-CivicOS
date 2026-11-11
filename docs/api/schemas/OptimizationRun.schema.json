@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/OptimizationRun.schema.json",
+  "title": "OptimizationRun",
+  "description": "Process record (8.6, 13.1, 9.1).",
+  "x-acecog-object": "OptimizationRun",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "8.6, 13.1, 9.1",
+  "x-acecog-engine": "optimization_run",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "model_version_id",
+    "config",
+    "state"
+  ],
+  "properties": {
+    "model_version_id": {
+      "type": "string"
+    },
+    "config": {
+      "type": "object",
+      "required": [
+        "solver",
+        "profile",
+        "lane",
+        "seed"
+      ],
+      "properties": {
+        "solver": {
+          "type": "string"
+        },
+        "profile": {
+          "type": "string"
+        },
+        "lane": {
+          "type": "string"
+        },
+        "seed": {
+          "type": "integer"
+        }
+      }
+    },
+    "state": {
+      "type": "string"
+    },
+    "result": {},
+    "rejection": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

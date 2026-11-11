@@ -1,0 +1,18 @@
+{
+  "_about": "Optimization result hashes from the reference scenario (tests/scenario.py, spec 26.1), recorded with the pinned versions in requirements-ci.txt. If a dependency update changes any of these, historical decisions would stop replaying exactly (OPT-REPRO-001, MVP-109). See tests/test_replay_golden.py.",
+  "recorded_with": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "runs": {
+    "optimization_run-0002@v1": "bb796751fae7e67e7be54d53759699f7cce077a88a63040478dd55743fa3d2bd",
+    "optimization_run-0003@v1": "08a83dc01dca8a383beeae8576a4d86196a1e3e934b077c85fdb7168a74378ca"
+  },
+  "verified_with": [
+    {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "where": "CI on main, commit 355ae97 (Dependabot #6), 10 Nov 2026: hashes unchanged"
+    }
+  ]
+}

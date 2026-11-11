@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ReconciliationCase.schema.json",
+  "title": "ReconciliationCase",
+  "description": "A suspected duplicate identity under review.",
+  "x-acecog-object": "Reconciliation Case",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 23.1.1",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "identity_ids",
+    "state"
+  ],
+  "properties": {
+    "identity_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "state": {
+      "enum": [
+        "Open",
+        "Merged",
+        "Dismissed"
+      ]
+    },
+    "recounted_decision_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

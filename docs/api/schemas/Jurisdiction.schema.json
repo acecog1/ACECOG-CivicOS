@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Jurisdiction.schema.json",
+  "title": "Jurisdiction",
+  "description": "Self-governing authority boundary.",
+  "x-acecog-object": "Jurisdiction",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 22",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "parent_jurisdiction_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "boundary": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "legal_basis": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

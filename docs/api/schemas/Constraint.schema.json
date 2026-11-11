@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Constraint.schema.json",
+  "title": "Constraint",
+  "description": "Boundary on feasible action or state, with authority and provenance.",
+  "x-acecog-object": "Constraint",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 5.4, 20.1",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "kind",
+    "limit"
+  ],
+  "properties": {
+    "kind": {
+      "enum": [
+        "hard",
+        "soft",
+        "floor",
+        "ceiling",
+        "balance"
+      ]
+    },
+    "limit": {
+      "type": "number"
+    },
+    "applies_to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "adopted_by_decision_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

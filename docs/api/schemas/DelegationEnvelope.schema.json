@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/DelegationEnvelope.schema.json",
+  "title": "DelegationEnvelope",
+  "description": "Bounded decision space for a role or computational agent. Only a valid envelope can resolve anything.",
+  "x-acecog-object": "Delegation Envelope",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "5.9, 8.7, 4.2",
+  "x-acecog-engine": "delegation_envelope",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "decision_class",
+    "tolerance",
+    "authorized_resolver"
+  ],
+  "properties": {
+    "decision_class": {
+      "type": "string"
+    },
+    "tolerance": {
+      "type": "number",
+      "minimum": 0,
+      "description": "T: per-action tolerance (5.9)."
+    },
+    "aggregate_tolerance": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "Per-period tolerance; default 3 x T in any rolling 30 days (CL-059, CL-060)."
+    },
+    "risk_limit": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "confidence_threshold": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "min_reversibility": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "authorized_resolver": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "valid": {
+      "type": "boolean",
+      "description": "An envelope that fails validation is stored inert, with its errors (5.9)."
+    },
+    "validation_errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "if": {
+    "properties": {
+      "valid": {
+        "const": true
+      }
+    },
+    "required": [
+      "valid"
+    ]
+  },
+  "then": {
+    "properties": {
+      "authorized_resolver": {
+        "type": "string"
+      },
+      "confidence_threshold": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  }
+}

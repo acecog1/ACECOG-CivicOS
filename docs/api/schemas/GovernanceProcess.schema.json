@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/GovernanceProcess.schema.json",
+  "title": "GovernanceProcess",
+  "description": "Authorized procedure for turning propositions and participation into legitimate decisions.",
+  "x-acecog-object": "Governance Process",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 17.5, 4.2",
+  "x-acecog-engine": "governance_process",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "decision_classes"
+  ],
+  "properties": {
+    "decision_classes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "method",
+          "approval_threshold",
+          "quorum"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "method": {
+            "enum": [
+              "direct_vote",
+              "consent",
+              "consensus",
+              "supermajority",
+              "delegated"
+            ]
+          },
+          "approval_threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "quorum": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "min_tier": {
+            "enum": [
+              "Provisional",
+              "Vouched",
+              "Documented",
+              "Verified"
+            ]
+          },
+          "full_confidence_tier": {
+            "enum": [
+              "Provisional",
+              "Vouched",
+              "Documented",
+              "Verified"
+            ]
+          },
+          "secret_ballot": {
+            "type": "boolean",
+            "description": "Ballot secrecy for this class (CL-069, ASR-07)."
+          },
+          "constituency_tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Constituencies this class affects (CL-058)."
+          },
+          "materiality_threshold": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "delegation_disclosure_threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "delegation_reconfirm_days": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "amendment_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Threshold for amending this process; the ratchet applies (invariant 21)."
+    }
+  }
+}

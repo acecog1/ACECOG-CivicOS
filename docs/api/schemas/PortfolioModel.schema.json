@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/PortfolioModel.schema.json",
+  "title": "PortfolioModel",
+  "description": "Process record (5, 13.1).",
+  "x-acecog-object": "PortfolioModel",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "5, 13.1",
+  "x-acecog-engine": "portfolio_model",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "budget",
+    "nodes",
+    "objectives",
+    "constraints"
+  ],
+  "properties": {
+    "budget": {
+      "type": "number"
+    },
+    "nodes": {
+      "type": "array"
+    },
+    "objectives": {
+      "type": "array"
+    },
+    "constraints": {
+      "type": "array"
+    }
+  }
+}

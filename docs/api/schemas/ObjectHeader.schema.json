@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ObjectHeader.schema.json",
+  "title": "ObjectHeader",
+  "description": "Fields every first-class object carries (Section 7).",
+  "type": "object",
+  "required": [
+    "id",
+    "version_id",
+    "object_type",
+    "civic_body_id",
+    "created_in_transaction"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable identity."
+    },
+    "version_id": {
+      "type": "string",
+      "pattern": "@v[0-9]+$",
+      "description": "Immutable version identity: <id>@v<n>."
+    },
+    "object_type": {
+      "type": "string"
+    },
+    "civic_body_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Owning Civic Body; one hash chain per body (CL-068)."
+    },
+    "lifecycle_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "owner": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "effective_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 date or date-time."
+    },
+    "effective_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 date or date-time."
+    },
+    "authority_basis": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Authority or decision that permitted this version."
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "classifications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Prior version this one replaces."
+    },
+    "created_in_transaction": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

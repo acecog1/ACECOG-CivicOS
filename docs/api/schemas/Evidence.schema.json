@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Evidence.schema.json",
+  "title": "Evidence",
+  "description": "Information about state, performance, effects or conditions.",
+  "x-acecog-object": "Evidence / Observation",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 20.1",
+  "x-acecog-engine": "evidence",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "subject",
+    "epistemic_class"
+  ],
+  "properties": {
+    "subject": {
+      "type": "string"
+    },
+    "value": {},
+    "epistemic_class": {
+      "enum": [
+        "Observed",
+        "Reported",
+        "Estimated",
+        "Assumed",
+        "Scenario output",
+        "Hypothesis"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

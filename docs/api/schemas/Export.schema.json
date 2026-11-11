@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Export.schema.json",
+  "title": "Export",
+  "description": "Process record (23.3, ASR-11).",
+  "x-acecog-object": "Export",
+  "x-acecog-section": "8",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "23.3, ASR-11",
+  "x-acecog-engine": "export",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "package_sha256",
+    "event_count"
+  ],
+  "properties": {
+    "package_sha256": {
+      "type": "string"
+    },
+    "event_count": {
+      "type": "integer"
+    }
+  }
+}

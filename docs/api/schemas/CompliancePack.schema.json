@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/CompliancePack.schema.json",
+  "title": "CompliancePack",
+  "description": "Versioned bundle of jurisdiction rules; may only add constraints (invariant 19).",
+  "x-acecog-object": "Compliance Pack",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 43.4",
+  "x-acecog-engine": "compliance_pack",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "pack_id",
+    "edition",
+    "rules"
+  ],
+  "properties": {
+    "pack_id": {
+      "type": "string"
+    },
+    "edition": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "array"
+    },
+    "module_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "composition_hash": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Carried into provenance (CMP-015)."
+    }
+  }
+}

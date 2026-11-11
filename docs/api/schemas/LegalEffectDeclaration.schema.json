@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/LegalEffectDeclaration.schema.json",
+  "title": "LegalEffectDeclaration",
+  "description": "Legal status of a decision class and the authority conferring it (CL-067).",
+  "x-acecog-object": "Legal Effect Declaration",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 43.2 ASR-08, 8.0",
+  "x-acecog-engine": "legal_effect_declaration",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "decision_class",
+    "legal_status",
+    "enabling_authority",
+    "effective_date"
+  ],
+  "properties": {
+    "decision_class": {
+      "type": "string"
+    },
+    "legal_status": {
+      "enum": [
+        "Advisory",
+        "Consultative",
+        "Binding"
+      ]
+    },
+    "enabling_authority": {
+      "type": "string"
+    },
+    "effective_date": {
+      "type": "string"
+    },
+    "adopted_by_decision_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "counsel_opinion_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/Objective.schema.json",
+  "title": "Objective",
+  "description": "Approved outcome, value or optimization criterion.",
+  "x-acecog-object": "Objective",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 5.3",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "weight": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "non_compensable": {
+      "type": "boolean"
+    },
+    "floor": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "constituency_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

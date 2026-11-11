@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/ControlMapping.schema.json",
+  "title": "ControlMapping",
+  "description": "Link from an ASR or AI control to an external framework control.",
+  "x-acecog-object": "Control Mapping",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "interface",
+  "x-acecog-spec": "7, 43.2, 43.5",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "control_id",
+    "framework_control"
+  ],
+  "properties": {
+    "control_id": {
+      "type": "string"
+    },
+    "framework_control": {
+      "type": "string"
+    },
+    "evidence_template": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

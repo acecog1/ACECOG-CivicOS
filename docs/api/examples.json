@@ -1,0 +1,871 @@
+{
+ "civic-bodies.create": {
+  "create_riverbend_commons": {
+   "summary": "Create Riverbend Commons",
+   "envelope": {
+    "command_id": "c-0001",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "name": "Riverbend Commons",
+     "jurisdiction": "Riverbend (reference scenario 26.1)",
+     "gml_level": 1,
+     "founding_members": [
+      {
+       "actor_id": "ana",
+       "display_name": "Ana (Facilitator/Clerk)",
+       "roles": [
+        "facilitator"
+       ]
+      },
+      {
+       "actor_id": "ben",
+       "display_name": "Ben (City Manager)",
+       "roles": [
+        "city_manager"
+       ]
+      },
+      {
+       "actor_id": "cara",
+       "display_name": "Cara",
+       "roles": [
+        "member"
+       ]
+      },
+      {
+       "actor_id": "dev",
+       "display_name": "Dev",
+       "roles": [
+        "member"
+       ]
+      },
+      {
+       "actor_id": "eli",
+       "display_name": "Eli",
+       "roles": [
+        "member"
+       ]
+      },
+      {
+       "actor_id": "fay",
+       "display_name": "Fay",
+       "roles": [
+        "member"
+       ]
+      }
+     ]
+    }
+   }
+  }
+ },
+ "governance-processes.adopt": {
+  "adopt_decision_classes": {
+   "summary": "Adopt decision classes",
+   "envelope": {
+    "command_id": "c-0003",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "decision_classes": [
+      {
+       "name": "annual_budget",
+       "method": "direct_vote",
+       "approval_threshold": 0.5,
+       "quorum": 0.5,
+       "min_attestation": "verified"
+      },
+      {
+       "name": "routine_rebalance",
+       "method": "consent",
+       "approval_threshold": 1.0,
+       "quorum": 0.5,
+       "min_attestation": "verified"
+      },
+      {
+       "name": "minor_rebalance",
+       "method": "consent",
+       "approval_threshold": 1.0,
+       "quorum": 0.5,
+       "min_attestation": "verified"
+      },
+      {
+       "name": "change_control",
+       "method": "direct_vote",
+       "approval_threshold": 0.6,
+       "quorum": 0.5,
+       "min_attestation": "verified"
+      },
+      {
+       "name": "advisory_poll",
+       "method": "direct_vote",
+       "approval_threshold": 0.5,
+       "quorum": 0.1,
+       "min_attestation": "self_attested"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "authorities.grant": {
+  "grant_execution_authority": {
+   "summary": "Grant execution authority",
+   "envelope": {
+    "command_id": "c-0004",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "grantee_actor_id": "ben",
+     "actions": [
+      "create_baseline",
+      "commit",
+      "post_actuals",
+      "records_officer"
+     ]
+    }
+   }
+  },
+  "appoint_a_monitoring_role_selected_by_de": {
+   "summary": "Appoint a monitoring role selected by decision",
+   "envelope": {
+    "command_id": "c-0045",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "grantee_actor_id": "cara",
+     "actions": [
+      "approve_disbursement"
+     ],
+     "monitoring_role": true,
+     "rotation_terms": "12-month term; recall by change_control vote",
+     "selected_by_decision_id": "decision-0003"
+    }
+   }
+  }
+ },
+ "delegation-envelopes.adopt": {
+  "adopt_envelope_with_default_thresholds": {
+   "summary": "Adopt envelope with default thresholds",
+   "envelope": {
+    "command_id": "c-0009",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "decision_class": "routine_rebalance",
+     "tolerance": 25000,
+     "authorized_resolver": "ben"
+    }
+   }
+  }
+ },
+ "propositions.submit": {
+  "submit_a_portfolio_proposition": {
+   "summary": "Submit a portfolio proposition",
+   "envelope": {
+    "command_id": "c-0011",
+    "actor_id": "cara",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "decision_class": "annual_budget",
+     "title": "FY27 improvement portfolio (Plan A)",
+     "body": "Adopt the FY27 portfolio model with a $900k budget and a 20 ML/yr watershed ceiling.",
+     "requested_action": {
+      "type": "adopt_portfolio_model",
+      "model": {
+       "budget": 900000,
+       "nodes": [
+        {
+         "id": "i01",
+         "name": "Riverside trail repair",
+         "cost": 120000,
+         "value": 70
+        },
+        {
+         "id": "i02",
+         "name": "Storm drain upgrade",
+         "cost": 220000,
+         "value": 150
+        },
+        {
+         "id": "i03",
+         "name": "Community garden expansion",
+         "cost": 60000,
+         "value": 40
+        },
+        {
+         "id": "i04",
+         "name": "Library HVAC replacement",
+         "cost": 180000,
+         "value": 90
+        },
+        {
+         "id": "i05",
+         "name": "Main Street bike lanes",
+         "cost": 150000,
+         "value": 95,
+         "depends_on": [
+          "i02"
+         ]
+        },
+        {
+         "id": "i06",
+         "name": "Tree canopy planting",
+         "cost": 80000,
+         "value": 65
+        },
+        {
+         "id": "i07",
+         "name": "Senior center roof",
+         "cost": 140000,
+         "value": 100
+        },
+        {
+         "id": "i08",
+         "name": "Town hall solar array",
+         "cost": 200000,
+         "value": 110
+        },
+        {
+         "id": "i09",
+         "name": "Playground resurfacing",
+         "cost": 70000,
+         "value": 45
+        },
+        {
+         "id": "i10",
+         "name": "Wetland restoration",
+         "cost": 110000,
+         "value": 85
+        }
+       ],
+       "objectives": [
+        {
+         "id": "obj-public-value",
+         "name": "Total public value score"
+        }
+       ],
+       "constraints": [
+        {
+         "id": "eco-water-ceiling",
+         "name": "Watershed draw ceiling (ML/yr)",
+         "kind": "hard",
+         "coefficients": {
+          "i03": 8,
+          "i06": 12,
+          "i09": 2,
+          "i10": 5
+         },
+         "limit": 22
+        },
+        {
+         "id": "crew-capacity",
+         "name": "Public works crew-weeks",
+         "kind": "hard",
+         "coefficients": {
+          "i01": 6,
+          "i02": 10,
+          "i04": 4,
+          "i05": 8,
+          "i06": 4,
+          "i07": 6,
+          "i09": 3,
+          "i10": 5
+         },
+         "limit": 30
+        },
+        {
+         "id": "appropriation-limit",
+         "name": "Non-grant spending limited to the appropriation",
+         "kind": "hard",
+         "coefficients": {
+          "i01": 120000,
+          "i03": 60000,
+          "i04": 180000,
+          "i05": 150000,
+          "i07": 140000,
+          "i08": 200000,
+          "i09": 70000
+         },
+         "limit": 650000
+        }
+       ]
+      }
+     }
+    }
+   }
+  },
+  "assistant-drafted_proposition_with_human": {
+   "summary": "Assistant-drafted proposition with human confirmation",
+   "envelope": {
+    "command_id": "c-0137",
+    "actor_id": "cara",
+    "client": "assistant",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "decision_class": "advisory_poll",
+     "title": "Library hours poll",
+     "body": "Should Saturday hours extend to 6pm?",
+     "requested_action": {
+      "type": "advisory"
+     }
+    },
+    "human_confirmation": {
+     "confirmed_by": "cara",
+     "reviewed_payload_hash": "74b0c14f7bf30c71e745deab1d2efafa1d3ce3fbb8a45097c62d68dec6a81ce7"
+    }
+   }
+  }
+ },
+ "propositions.amend": {
+  "amend_a_proposition": {
+   "summary": "Amend a proposition",
+   "envelope": {
+    "command_id": "c-0013",
+    "actor_id": "cara",
+    "client": "desktop",
+    "payload": {
+     "proposition_id": "proposition-0001",
+     "body": "Amended: watershed ceiling tightened to 20 ML/yr.",
+     "requested_action": {
+      "type": "adopt_portfolio_model",
+      "model": {
+       "budget": 900000,
+       "nodes": [
+        {
+         "id": "i01",
+         "name": "Riverside trail repair",
+         "cost": 120000,
+         "value": 70
+        },
+        {
+         "id": "i02",
+         "name": "Storm drain upgrade",
+         "cost": 220000,
+         "value": 150
+        },
+        {
+         "id": "i03",
+         "name": "Community garden expansion",
+         "cost": 60000,
+         "value": 40
+        },
+        {
+         "id": "i04",
+         "name": "Library HVAC replacement",
+         "cost": 180000,
+         "value": 90
+        },
+        {
+         "id": "i05",
+         "name": "Main Street bike lanes",
+         "cost": 150000,
+         "value": 95,
+         "depends_on": [
+          "i02"
+         ]
+        },
+        {
+         "id": "i06",
+         "name": "Tree canopy planting",
+         "cost": 80000,
+         "value": 65
+        },
+        {
+         "id": "i07",
+         "name": "Senior center roof",
+         "cost": 140000,
+         "value": 100
+        },
+        {
+         "id": "i08",
+         "name": "Town hall solar array",
+         "cost": 200000,
+         "value": 110
+        },
+        {
+         "id": "i09",
+         "name": "Playground resurfacing",
+         "cost": 70000,
+         "value": 45
+        },
+        {
+         "id": "i10",
+         "name": "Wetland restoration",
+         "cost": 110000,
+         "value": 85
+        }
+       ],
+       "objectives": [
+        {
+         "id": "obj-public-value",
+         "name": "Total public value score"
+        }
+       ],
+       "constraints": [
+        {
+         "id": "eco-water-ceiling",
+         "name": "Watershed draw ceiling (ML/yr)",
+         "kind": "hard",
+         "coefficients": {
+          "i03": 8,
+          "i06": 12,
+          "i09": 2,
+          "i10": 5
+         },
+         "limit": 20
+        },
+        {
+         "id": "crew-capacity",
+         "name": "Public works crew-weeks",
+         "kind": "hard",
+         "coefficients": {
+          "i01": 6,
+          "i02": 10,
+          "i04": 4,
+          "i05": 8,
+          "i06": 4,
+          "i07": 6,
+          "i09": 3,
+          "i10": 5
+         },
+         "limit": 30
+        },
+        {
+         "id": "appropriation-limit",
+         "name": "Non-grant spending limited to the appropriation",
+         "kind": "hard",
+         "coefficients": {
+          "i01": 120000,
+          "i03": 60000,
+          "i04": 180000,
+          "i05": 150000,
+          "i07": 140000,
+          "i08": 200000,
+          "i09": 70000
+         },
+         "limit": 650000
+        }
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "compliance-packs.adopt": {
+  "adopt_the_pilot-state_pack": {
+   "summary": "Adopt the pilot-state pack",
+   "envelope": {
+    "command_id": "c-0015",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "pack_id": "pilot-state",
+     "edition": "0.1",
+     "rules": [
+      {
+       "rule": "open_meeting_guard",
+       "effect": "add_constraint",
+       "legal_basis": "State open meetings law (to confirm, 43.8)"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "deliberation.post": {
+  "post_to_the_public_record": {
+   "summary": "Post to the public record",
+   "envelope": {
+    "command_id": "c-0017",
+    "actor_id": "dev",
+    "client": "desktop",
+    "payload": {
+     "proposition_id": "proposition-0001",
+     "text": "I support Plan A; the drain upgrade is overdue.",
+     "visibility": "public",
+     "position": "support"
+    }
+   }
+  }
+ },
+ "interest-declarations.record": {
+  "declare_an_interest": {
+   "summary": "Declare an interest",
+   "envelope": {
+    "command_id": "c-0019",
+    "actor_id": "eli",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "proposition_id": "proposition-0001",
+     "description": "Owns property adjoining the trail project"
+    }
+   }
+  }
+ },
+ "delegations.assign": {
+  "delegate_a_decision_class": {
+   "summary": "Delegate a decision class",
+   "envelope": {
+    "command_id": "c-0021",
+    "actor_id": "fay",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "decision_class": "change_control",
+     "delegate_actor_id": "dev"
+    }
+   }
+  }
+ },
+ "delegations.revoke": {
+  "revoke_a_delegation": {
+   "summary": "Revoke a delegation",
+   "envelope": {
+    "command_id": "c-0024",
+    "actor_id": "cara",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "decision_class": "advisory_poll"
+    }
+   }
+  }
+ },
+ "votes.cast": {
+  "cast_a_vote": {
+   "summary": "Cast a vote",
+   "envelope": {
+    "command_id": "c-0025",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "proposition_id": "proposition-0001",
+     "choice": "yes"
+    }
+   }
+  }
+ },
+ "decisions.close": {
+  "close_a_decision": {
+   "summary": "Close a decision",
+   "envelope": {
+    "command_id": "c-0035",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "proposition_id": "proposition-0001"
+    }
+   }
+  }
+ },
+ "optimization-runs.request": {
+  "request_a_strict-lane_run": {
+   "summary": "Request a strict-lane run",
+   "envelope": {
+    "command_id": "c-0049",
+    "actor_id": "cara",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "model_version_id": "portfolio_model-0001@v1",
+     "lane": "strict",
+     "seed": 0
+    }
+   }
+  }
+ },
+ "baselines.create": {
+  "create_the_baseline": {
+   "summary": "Create the baseline",
+   "envelope": {
+    "command_id": "c-0052",
+    "actor_id": "ben",
+    "client": "desktop",
+    "payload": {
+     "decision_id": "decision-0001",
+     "run_id": "optimization_run-0003"
+    }
+   }
+  }
+ },
+ "commitments.reserve": {
+  "reserve_the_commitment": {
+   "summary": "Reserve the commitment",
+   "envelope": {
+    "command_id": "c-0055",
+    "actor_id": "ben",
+    "client": "desktop",
+    "payload": {
+     "baseline_id": "baseline-0001"
+    }
+   }
+  }
+ },
+ "actuals.post": {
+  "post_an_actual": {
+   "summary": "Post an actual",
+   "envelope": {
+    "command_id": "c-0058",
+    "actor_id": "ben",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "node_id": "i02",
+     "actual_cost": 224000.0,
+     "observed_at": "2027-03-31"
+    }
+   }
+  }
+ },
+ "rebalances.propose": {
+  "propose_a_routine_rebalance": {
+   "summary": "Propose a routine rebalance",
+   "envelope": {
+    "command_id": "c-0060",
+    "actor_id": "ben",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "decision_class": "routine_rebalance",
+     "from_node_id": "i05",
+     "to_node_id": "i01",
+     "amount": 10000,
+     "confidence": 0.95,
+     "reversibility": 3
+    }
+   }
+  }
+ },
+ "exceptions.resolve": {
+  "resolve_an_exception_by_decision": {
+   "summary": "Resolve an exception by decision",
+   "envelope": {
+    "command_id": "c-0079",
+    "actor_id": "ben",
+    "client": "desktop",
+    "payload": {
+     "exception_proposition_id": "exception_proposition-0005",
+     "resolution": "Declined; alternative shift approved",
+     "decision_id": "decision-0005"
+    }
+   }
+  },
+  "resolve_an_exception_with_a_recorded_con": {
+   "summary": "Resolve an exception with a recorded constraint relaxation",
+   "envelope": {
+    "command_id": "c-0088",
+    "actor_id": "ben",
+    "client": "desktop",
+    "payload": {
+     "exception_proposition_id": "exception_proposition-0006",
+     "resolution": "Approved with a recorded relaxation",
+     "decision_id": "decision-0006"
+    }
+   }
+  }
+ },
+ "evidence.record": {
+  "record_estimated_evidence": {
+   "summary": "Record estimated evidence",
+   "envelope": {
+    "command_id": "c-0089",
+    "actor_id": "cara",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "subject": "Projected 2030 watershed yield",
+     "value": 18,
+     "epistemic_class": "Estimated",
+     "confidence": 0.7,
+     "source": "County hydrology model"
+    }
+   }
+  }
+ },
+ "constraints.attach-evidence": {
+  "attach_evidence_adopted_by_a_decision": {
+   "summary": "Attach evidence adopted by a decision",
+   "envelope": {
+    "command_id": "c-0099",
+    "actor_id": "cara",
+    "client": "desktop",
+    "payload": {
+     "constraint_id": "eco-water-ceiling",
+     "evidence_id": "evidence-0001",
+     "adopted_by_decision_id": "decision-0007"
+    }
+   }
+  }
+ },
+ "credentials.issue": {
+  "issue_a_self-attested_credential": {
+   "summary": "Issue a self-attested credential",
+   "envelope": {
+    "command_id": "c-0101",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "member_actor_id": "gil",
+     "tier": "self_attested",
+     "attestation_confidence": 0.6
+    }
+   }
+  }
+ },
+ "change-requests.put-in-force": {
+  "put_an_approved_change_in_force": {
+   "summary": "Put an approved change in force",
+   "envelope": {
+    "command_id": "c-0115",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "target_type": "governance_process",
+     "target_id": "governance_process-0001",
+     "changes": {
+      "decision_classes": [
+       {
+        "name": "annual_budget",
+        "method": "direct_vote",
+        "approval_threshold": 0.9,
+        "quorum": 0.5,
+        "min_attestation": "verified",
+        "min_attestation_confidence": 0.75,
+        "delegation_disclosure_threshold": 0.05,
+        "delegation_reconfirm_days": 365
+       },
+       {
+        "name": "routine_rebalance",
+        "method": "consent",
+        "approval_threshold": 1.0,
+        "quorum": 0.5,
+        "min_attestation": "verified",
+        "min_attestation_confidence": 0.75,
+        "delegation_disclosure_threshold": 0.05,
+        "delegation_reconfirm_days": 365
+       },
+       {
+        "name": "minor_rebalance",
+        "method": "consent",
+        "approval_threshold": 1.0,
+        "quorum": 0.5,
+        "min_attestation": "verified",
+        "min_attestation_confidence": 0.75,
+        "delegation_disclosure_threshold": 0.05,
+        "delegation_reconfirm_days": 365
+       },
+       {
+        "name": "change_control",
+        "method": "direct_vote",
+        "approval_threshold": 0.6,
+        "quorum": 0.5,
+        "min_attestation": "verified",
+        "min_attestation_confidence": 0.75,
+        "delegation_disclosure_threshold": 0.05,
+        "delegation_reconfirm_days": 365
+       },
+       {
+        "name": "advisory_poll",
+        "method": "direct_vote",
+        "approval_threshold": 0.5,
+        "quorum": 0.1,
+        "min_attestation": "self_attested",
+        "min_attestation_confidence": 0.75,
+        "delegation_disclosure_threshold": 0.05,
+        "delegation_reconfirm_days": 365
+       }
+      ]
+     },
+     "decision_id": "decision-0009"
+    }
+   }
+  }
+ },
+ "legal-effect-declarations.adopt": {
+  "adopt_a_legal_effect_declaration": {
+   "summary": "Adopt a Legal Effect Declaration",
+   "envelope": {
+    "command_id": "c-0130",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "decision_class": "advisory_poll",
+     "legal_status": "Consultative",
+     "enabling_authority": "Riverbend Charter s. 4.2 (fixture)",
+     "effective_date": "2027-01-01"
+    }
+   }
+  }
+ },
+ "configuration.set": {
+  "attempt_to_disable_an_assurance_control_": {
+   "summary": "Attempt to disable an Assurance Control (refused)",
+   "envelope": {
+    "command_id": "c-0141",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "setting": "asr.audit_log",
+     "value": false
+    }
+   }
+  }
+ },
+ "retention-schedules.adopt": {
+  "adopt_a_retention_schedule": {
+   "summary": "Adopt a retention schedule",
+   "envelope": {
+    "command_id": "c-0142",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001",
+     "record_class": "deliberation_post",
+     "retain_days": 730,
+     "destruction_authority": "records_officer",
+     "legal_basis": "Pilot-state records schedule (to confirm)"
+    }
+   }
+  }
+ },
+ "records.delete": {
+  "delete_a_record_after_its_retention_peri": {
+   "summary": "Delete a record after its retention period",
+   "envelope": {
+    "command_id": "c-0144",
+    "actor_id": "ben",
+    "client": "desktop",
+    "payload": {
+     "record_id": "deliberation_post-0001",
+     "record_class": "deliberation_post",
+     "created_days_ago": 800
+    }
+   }
+  }
+ },
+ "exports.create": {
+  "export_the_civic_body": {
+   "summary": "Export the civic body",
+   "envelope": {
+    "command_id": "c-0145",
+    "actor_id": "ana",
+    "client": "desktop",
+    "payload": {
+     "civic_body_id": "cb-0001"
+    }
+   }
+  }
+ }
+}

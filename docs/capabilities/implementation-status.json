@@ -1,0 +1,290 @@
+{
+  "spec_version": "0.24",
+  "technical_snapshot_date": "2026-11-10",
+  "gap_states": {
+    "G-001": {
+      "req": "Jurisdiction, Portfolio Node, Objective, Constraint, Resource and Relationship are first-class objects, each with its own identity, versions and lineage (7, 7.1)",
+      "status": "Partial"
+    },
+    "G-002": {
+      "req": "Funding Instrument, Appropriation type only in Phase 1 (5.13)",
+      "status": "Missing"
+    },
+    "G-003": {
+      "req": "Schedule/Milestone (18) and Risk (21) objects",
+      "status": "Missing"
+    },
+    "G-004": {
+      "req": "Actor/Role/Agent is a versioned object carrying `accountability_path` and `approval_track_record` at GML-1+ (12.0.1)",
+      "status": "Partial"
+    },
+    "G-005": {
+      "req": "Maturity Framework: reference GML-0 and GML-1 controls and the transition rules (4.2, CL-059)",
+      "status": "Partial"
+    },
+    "G-006": {
+      "req": "Treaty, Floor Revision Proposal, the Part V objects, Control Mapping and Engagement Record are interface only (13.6)",
+      "status": "Interface only"
+    },
+    "G-049": {
+      "req": "Every stored object version conforms to its schema (15)",
+      "status": "Partial"
+    },
+    "G-007": {
+      "req": "Proposition states per 8.3, including the clerk's validate, *Returned for correction* (CL-063), schedule-deliberation and publish-provenance actions",
+      "status": "Partial"
+    },
+    "G-008": {
+      "req": "Execution states Issued and Acknowledged, interface only at the external-system boundary (8.8, 19.6)",
+      "status": "Interface only"
+    },
+    "G-010": {
+      "req": "One hash chain per Civic Body (CL-068, ASR-04)",
+      "status": "Partial"
+    },
+    "G-011": {
+      "req": "Version binding includes the Compliance Pack composition hash (CMP-015, CMP-016)",
+      "status": "Partial"
+    },
+    "G-012": {
+      "req": "Delegation rules (CL-064): concentration flag at max(5%, 2 members); lapse with reminder; mid-vote change rule; recusal passes through",
+      "status": "Partial"
+    },
+    "G-013": {
+      "req": "`secret_ballot` per decision class (CL-069, ASR-07)",
+      "status": "Missing"
+    },
+    "G-014": {
+      "req": "Constituency tags (CL-058), materiality threshold (CL-051), cumulative Exception Proposition reviewed at every GML level (CL-070)",
+      "status": "Missing"
+    },
+    "G-015": {
+      "req": "Amend a Governance Process under the ratchet (invariant 21)",
+      "status": "Missing"
+    },
+    "G-016": {
+      "req": "Revoke a credential; revoke or recall an authority; monitoring roles record rotation *and* recall terms (CL-066)",
+      "status": "Partial"
+    },
+    "G-017": {
+      "req": "Envelope per-period tolerance (default 3 \u00d7 T in any rolling 30 days), risk limit, separation of duties (CL-059, CL-060)",
+      "status": "Partial"
+    },
+    "G-018": {
+      "req": "GML-1 second approver (CL-052); local administrator scope (CL-053)",
+      "status": "Missing"
+    },
+    "G-019": {
+      "req": "No sanction may reduce participation access (invariant 18)",
+      "status": "Missing"
+    },
+    "G-020": {
+      "req": "Pilot electorate (CL-065): residents' first cycle advisory, second binding or with an assurance of recognition; capacity for 2,000 registered / 200 active residents",
+      "status": "Missing"
+    },
+    "G-021": {
+      "req": "ACECOG Identity, Assurance Anchors as keyed hashes (key held by the body), four tiers, vouching limits (5 per 12 months, ring check), Reconciliation with merge and recount, identity commands; credentials link to an identity",
+      "status": "Missing"
+    },
+    "G-009": {
+      "req": "Assurance-sensitive results: margin compared with the at-risk count (23.1.1; replaces the CL-047 confidence minimum)",
+      "status": "Partial"
+    },
+    "G-023": {
+      "req": "Continuity Offices and Cases: state machine, authority graph, warrant, sunset, safeguards. Founding goes through an External Convener case, replacing the fixed founding-charter authorities (CL-044)",
+      "status": "Missing"
+    },
+    "G-032": {
+      "req": "Canonical objective: maximize c\u1d40x \u2212 \u00bdx\u1d40Qx with Q positive semidefinite (CL-055)",
+      "status": "Met"
+    },
+    "G-033": {
+      "req": "Replay tolerance: objective within 1e-6 relative, allocations within $0.01 (CL-061)",
+      "status": "Partial"
+    },
+    "G-034": {
+      "req": "A solution may not raise the score by pushing a protected floor below its minimum; an unavoidable shortfall is recorded as a breach (invariant 9)",
+      "status": "Missing"
+    },
+    "G-035": {
+      "req": "Critical path, early and late dates, float, and leveling against one capacity constraint (18)",
+      "status": "Missing"
+    },
+    "G-036": {
+      "req": "Variance classified as Within Tolerance, Delegated Rebalance or Exception (8.8)",
+      "status": "Partial"
+    },
+    "G-037": {
+      "req": "Ecosystem Endowment Simulator v0.1, standalone (42, CL-072)",
+      "status": "Missing"
+    },
+    "G-038": {
+      "req": "Second-jurisdiction test fixture for the federation invariants (13.1; federation itself is interface only)",
+      "status": "Missing"
+    },
+    "G-024": {
+      "req": "Pack composition from versioned modules by layer; stricter rule wins; conflicts flagged to counsel; composition hash; a mid-cycle edition does not apply to a transaction in progress (43.4)",
+      "status": "Partial"
+    },
+    "G-025": {
+      "req": "Colorado module rules encoded and confirmed (43.4.2)",
+      "status": "Missing"
+    },
+    "G-026": {
+      "req": "Retention default is permanent; destruction leaves a sealed placeholder (CL-054)",
+      "status": "Partial"
+    },
+    "G-027": {
+      "req": "A Legal Effect Declaration is adopted only by a recorded decision, with a counsel opinion reference and an effective date (CL-067)",
+      "status": "Partial"
+    },
+    "G-028": {
+      "req": "ASR-02 operator access logged and visible to the tenant (CMP-008); ASR-09 incidents recorded as events",
+      "status": "Missing"
+    },
+    "G-029": {
+      "req": "ASR-03 encryption at rest with key custody declared; ASR-07 credentials stored apart from participation records",
+      "status": "Missing"
+    },
+    "G-030": {
+      "req": "ASR-10 supply chain: SBOM, dependency scanning, signed releases",
+      "status": "Partial"
+    },
+    "G-031": {
+      "req": "ASR-06 accessibility, WCAG 2.2 AA, across all three clients",
+      "status": "Missing"
+    },
+    "G-039": {
+      "req": "Conversational drafting: the draft matches the desktop form field for field, every AI-introduced change is flagged, and a side-by-side view is available (CL-056)",
+      "status": "Missing"
+    },
+    "G-040": {
+      "req": "AI-generated or translated text is labeled (AI-LABEL-001)",
+      "status": "Missing"
+    },
+    "G-041": {
+      "req": "Caller authentication and authorization; MFA for authority holders; passkeys (ASR-01)",
+      "status": "Missing"
+    },
+    "G-042": {
+      "req": "Threat model, API and data layers",
+      "status": "Missing"
+    },
+    "G-044": {
+      "req": "Desktop structured surface; Facilitator/Clerk (30.9) and City Manager (30.8) journeys",
+      "status": "Missing"
+    },
+    "G-045": {
+      "req": "Resident tier of the mobile PWA (11.6.5, CL-049)",
+      "status": "Missing"
+    },
+    "G-046": {
+      "req": "Guest Proposer submission with a read-only fit-check preview (30.5)",
+      "status": "Missing"
+    },
+    "G-047": {
+      "req": "Escalate command (30.8)",
+      "status": "Missing"
+    },
+    "G-048": {
+      "req": "Notification engine, push for relevant deadlines (11.2, CL-059)",
+      "status": "Partial"
+    },
+    "G-050": {
+      "req": "Contract tests pass in CI (Gate 2 exit criterion)",
+      "status": "Met"
+    },
+    "G-051": {
+      "req": "Schemas for every Section 7 object, referenced from the OpenAPI contract (15)",
+      "status": "Met"
+    },
+    "G-053": {
+      "req": "The 61 Phase 1 acceptance tests not yet fully automated (section 3, including the two R-45 checks in G-062) run in CI (the capacity test and federation fixture are sized separately in G-020 and G-038)",
+      "status": "Missing"
+    },
+    "G-052": {
+      "req": "Local-first packaging: installer, backup, restore, exit drill (11.5)",
+      "status": "Missing"
+    },
+    "G-054": {
+      "req": "An approval authorizes only its own subject: appointments, evidence adoption and baselines are bound to the approving decision by a hash, as CL-046 does for change requests (R-33)",
+      "status": "Met"
+    },
+    "G-055": {
+      "req": "No self-grants of authority; no `\"*\"` grant after founding (R-34)",
+      "status": "Met"
+    },
+    "G-056": {
+      "req": "A recused member's vote doesn't count through a delegate (R-35)",
+      "status": "Missing"
+    },
+    "G-057": {
+      "req": "Envelope tests use confidence and reversibility from evidence and model records, require authority to propose, and select envelopes by affected scope (R-36)",
+      "status": "Partial"
+    },
+    "G-058": {
+      "req": "Commitment state machine per 8.7: Pending, Reserved/Committed, Released, Fulfilled, with compensating transactions (R-41)",
+      "status": "Partial"
+    },
+    "G-059": {
+      "req": "Resolving an exception re-runs hard-constraint, budget and balance checks, and records any relaxation as a new constraint version (R-43)",
+      "status": "Met"
+    },
+    "G-060": {
+      "req": "A record's age and class for deletion come from the record, not the caller (R-44)",
+      "status": "Partial"
+    },
+    "G-061": {
+      "req": "Refusals cite the right rule ID; QP runs report shadow prices as \"not computed\" rather than zero (R-46)",
+      "status": "Partial"
+    },
+    "G-062": {
+      "req": "MVP-105 and INV-AT-13 exercise the real code path, so each check can fail (R-45)",
+      "status": "Partial"
+    }
+  },
+  "acceptance_coverage": [
+    [
+      "MVP-100..114",
+      "15",
+      "11",
+      ""
+    ],
+    [
+      "INV-AT (Build invariants)",
+      "16",
+      "4 (04, 08, 17, 26)",
+      ""
+    ],
+    [
+      "CMP-001..009, 012..016",
+      "14",
+      "8 (001\u2013007, 012)",
+      ""
+    ],
+    [
+      "CONT-AT-01..09",
+      "9",
+      "0",
+      ""
+    ],
+    [
+      "UIX-NEUTRAL-001..004",
+      "4",
+      "4",
+      ""
+    ],
+    [
+      "JNY-GRAD, CIT, MGR, FAC (30.5, 30.7\u201330.9)",
+      "30",
+      "0",
+      ""
+    ],
+    [
+      "Total",
+      "88",
+      "27",
+      ""
+    ]
+  ]
+}

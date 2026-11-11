@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/CivicBody.schema.json",
+  "title": "CivicBody",
+  "description": "Self-identifying body of people capable of self-governance.",
+  "x-acecog-object": "Civic Body",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 17.2, 4.2",
+  "x-acecog-engine": "civic_body",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "name",
+    "gml_level"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "jurisdiction_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gml_level": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Governance Maturity Level (4.2)."
+    },
+    "maturity_framework_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

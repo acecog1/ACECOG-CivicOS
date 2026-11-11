@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/RetentionSchedule.schema.json",
+  "title": "RetentionSchedule",
+  "description": "Record-class retention periods and destruction authority.",
+  "x-acecog-object": "Retention Schedule",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "build",
+  "x-acecog-spec": "7, 43.2 ASR-05",
+  "x-acecog-engine": "retention_schedule",
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "record_class",
+    "destruction_authority"
+  ],
+  "properties": {
+    "record_class": {
+      "type": "string"
+    },
+    "retain_days": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "null = permanent (the default, CL-054)."
+    },
+    "destruction_authority": {
+      "type": "string"
+    },
+    "legal_basis": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

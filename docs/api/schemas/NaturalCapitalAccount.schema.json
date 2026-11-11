@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acecog.org/schemas/v0.24/NaturalCapitalAccount.schema.json",
+  "title": "NaturalCapitalAccount",
+  "description": "Ledger of an ecosystem's stocks and flows (Part V).",
+  "x-acecog-object": "Natural Capital Account",
+  "x-acecog-section": "7",
+  "x-acecog-phase1": "interface",
+  "x-acecog-spec": "7, 36.2",
+  "x-acecog-engine": null,
+  "allOf": [
+    {
+      "$ref": "ObjectHeader.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "ecosystem_entity_id"
+  ],
+  "properties": {
+    "ecosystem_entity_id": {
+      "type": "string"
+    },
+    "stocks": {
+      "type": "array"
+    },
+    "flows": {
+      "type": "array"
+    }
+  }
+}
