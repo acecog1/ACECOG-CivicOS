@@ -63,6 +63,10 @@ def test_configuration_fail_closed_and_health(monkeypatch):
     monkeypatch.setenv("BG2_SIGNING_KEY", "test-only-key-012345678901234567890123456789")
     monkeypatch.setenv("BG2_PUBLIC_HOST", "*")
     assert request(path="/api/config")["status"] == 503
+    monkeypatch.delenv("BG2_PUBLIC_HOST")
+    monkeypatch.setenv("RENDER_EXTERNAL_HOSTNAME", "sandbox.example.org")
+    assert request(path="/api/config")["status"] == 200
+    monkeypatch.delenv("RENDER_EXTERNAL_HOSTNAME")
 
 
 def test_hosted_assets_and_browser_safety_headers():
@@ -133,3 +137,18 @@ def test_wsgi_successful_approved_response_without_persistence():
     assert out["alternative"]["chain_head"]
     assert out["reference"]["chain_head"]
     assert "Set-Cookie" not in res["headers"]
+
+def test_timeout_returns_504_and_releases_compute_gate(monkeypatch):
+    import subprocess
+
+    def slow(_):
+        raise subprocess.TimeoutExpired(cmd="synthetic-worker", timeout=12)
+
+    monkeypatch.setattr(gateway, "compare_worker", slow)
+    token = get_token()
+    body = json.dumps(gateway.lab.parameters()).encode()
+    out = request("POST", "/api/compare", body, HTTP_X_LAB_TOKEN=token)
+    assert out["status"] == 504
+    # The semaphore must be released so the next visitor is not blocked forever.
+    assert gateway.inflight.acquire(blocking=False)
+    gateway.inflight.release()
