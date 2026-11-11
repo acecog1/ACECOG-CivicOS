@@ -21,10 +21,23 @@ test("sovereign browser worker runs original CivicOS decision, solver and reject
     assert.match(await page.locator("h1").innerText(),/Scenario Laboratory/);
     await page.locator('[data-preset="votes"]').click();
     await page.locator("#run").click();
+    // Cold-start WASM must lock every scenario-changing input; a slow
+    // 30+ MB runtime load must never make a stale decision exportable.
+    await page.waitForFunction(()=>
+      document.querySelector("#lab-form")?.getAttribute("aria-busy")==="true",
+      null,{timeout:15000});
+    assert.equal(await page.locator("#budget").isDisabled(),true);
+    assert.equal(await page.locator("#water").isDisabled(),true);
+    assert.equal(await page.locator("#random").isDisabled(),true);
+    assert.equal(await page.locator('[data-preset="budget"]').isDisabled(),true);
+    assert.equal(await page.locator('input[name="vote-cara"]').first().isDisabled(),true);
     await page.waitForFunction(()=>/Run complete|unavailable/i.test(
       document.getElementById("form-status")?.textContent),null,{timeout:140000});
     const status=await page.locator("#form-status").innerText();
     assert.match(status,/Run complete/,status);
+    await page.waitForFunction(() => document.querySelector("#budget")?.disabled === false);
+    assert.equal(await page.locator("#random").isEnabled(),true);
+    assert.equal(await page.locator("#scenario-tools").isVisible(),true);
     const content=await page.locator("#results").innerText();
     assert.match(content,/Plan A approved/);
     assert.match(content,/Plan A rejected/);
