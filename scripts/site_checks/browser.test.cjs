@@ -12,7 +12,10 @@ let server, browser, base;
 before(async () => {
   fs.mkdirSync(evidence, { recursive: true });
   server = http.createServer((req, res) => {
-    const file = path.join(root, new URL(req.url, 'http://localhost').pathname);
+    let pathname = new URL(req.url, 'http://localhost').pathname;
+    // Simulate the default GitHub Pages project subpath before publication.
+    if (pathname.startsWith('/ACECOG-CivicOS/')) pathname = pathname.slice('/ACECOG-CivicOS'.length);
+    const file = path.join(root, pathname);
     if (!file.startsWith(root + path.sep) || !fs.existsSync(file) || !fs.statSync(file).isFile()) {
       res.writeHead(404).end(); return;
     }
@@ -121,5 +124,42 @@ for (const width of [1280, 390]) test(`pages accessible with no external request
       await page.screenshot({path:path.join(evidence, `${width}-${file}.png`),fullPage:true});
     }
     assert.deepEqual(errors, []); assert.deepEqual(external, []);
+  } finally { await page.close(); }
+});
+
+// Q-31: viewport shrinking approximates 200% zoom reflow on a 320px
+// device. Actual browser zoom and native assistive technology remain QA tasks.
+for (const width of [320, 195, 160]) test(`enlarged-text layout has no root clipping at ${width} CSS px`, async () => {
+  const page = await browser.newPage({viewport:{width,height:900},reducedMotion:'reduce'});
+  try {
+    for (const file of ['index.html','verify.html','built.html','about.html']) {
+      await page.goto(base+'/'+file);
+      await page.waitForLoadState('networkidle');
+      const measure = await page.evaluate(() => ({
+        viewport:document.documentElement.clientWidth,
+        root:document.documentElement.scrollWidth,
+        body:document.body.scrollWidth
+      }));
+      assert.ok(measure.root <= measure.viewport+1,
+                `${width} ${file} root overflow ${JSON.stringify(measure)}`);
+      assert.ok(measure.body <= measure.viewport+1,
+                `${width} ${file} body overflow ${JSON.stringify(measure)}`);
+    }
+  } finally { await page.close(); }
+});
+test('project Pages subpath and nested-frame navigation keep record verification', async () => {
+  const page=await browser.newPage({viewport:{width:390,height:900},reducedMotion:'reduce'});
+  try {
+    const project=base+'/ACECOG-CivicOS/';
+    await page.goto(project+'index.html');
+    await page.waitForFunction(() => document.querySelector('.chain-status')?.textContent.includes('check out'));
+    await page.getByRole('link',{name:'Check the record'}).click();
+    assert.ok(page.url().startsWith(project),page.url());
+    await page.waitForFunction(() => document.querySelector('.chain-status')?.textContent.includes('check out'));
+    await page.setContent(`<iframe title="Riverbend read-only demonstration" src="${project}index.html" style="width:100%;height:650px"></iframe>`);
+    const inner=page.frameLocator('iframe');
+    await inner.locator('.chain-status').getByText(/All \d+ records check out/).waitFor();
+    await inner.getByRole('link',{name:'Check the record'}).click();
+    await inner.locator('.chain-status').getByText(/All \d+ records check out/).waitFor();
   } finally { await page.close(); }
 });

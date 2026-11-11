@@ -78,3 +78,25 @@ footer p { max-width: var(--measure); }
 
 .scroll:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
 [hidden] { display: none !important; }
+
+/* Q-31 enlarged-text and narrow layout: do not hide viewport overflow.
+   Evidence tables remain horizontally scrollable and keyboard focusable. */
+main, main > section, .hero, .steps, .steps > li, .scroll, .chain, .top, nav {
+  min-width: 0;
+  max-width: 100%;
+}
+h1, h2, h3, p, li, blockquote, .status, .chain-status, footer, .hash {
+  overflow-wrap: anywhere;
+}
+.scroll { width: 100%; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; }
+.scroll table { width: max-content; min-width: 100%; max-width: none; }
+.scroll td, .scroll th { overflow-wrap: normal; }
+.hash, .hash code { overflow-wrap: anywhere; word-break: break-word; }
+@media (max-width: 360px) {
+  .top { display: block; }
+  nav { margin-top: .4rem; gap: .25rem .75rem; }
+  .steps > li { padding: 2rem 0 1.1rem; }
+  .steps > li::before { position: static; display: block; margin: 0 0 .4rem; }
+  h1 { font-size: clamp(1.75rem, 12vw, 2.2rem); }
+  h2 { font-size: 1.35rem; }
+}
