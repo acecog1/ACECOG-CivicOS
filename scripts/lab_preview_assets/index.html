@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Riverbend Scenario Laboratory — Local Preview</title>
+  <meta name="description" content="Local-only, fictional CivicOS governance simulator.">
+  <link rel="stylesheet" href="/lab.css">
+  <script src="/lab.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to simulator</a>
+  <header class="site-head">
+    <div class="container">
+      <p class="eyebrow">Accelerated Ecological Governance · CivicOS</p>
+      <h1>Riverbend Scenario Laboratory</h1>
+      <p class="lede">Explore how different budgets, resource constraints, and fictional votes change a civic decision and its consequences.</p>
+      <p class="warning" role="note"><strong>Development preview only.</strong> Riverbend Commons is fictional. Every result is advisory, synthetic and without legal effect. This local application is not the public beta or an official civic service.</p>
+    </div>
+  </header>
+  <main class="container" id="main">
+    <div class="layout">
+      <section class="panel" aria-labelledby="controls-title">
+        <h2 id="controls-title">1. Adjust the scenario</h2>
+        <p class="subtle">Controls determine a new, isolated synthetic run. Refreshing the page resets to defaults; it never silently changes a prior run.</p>
+        <form id="lab-form">
+          <div class="fields">
+            <label for="budget">Annual investment budget <span class="unit">USD</span></label>
+            <input id="budget" name="budget" type="number" required min="400000" max="1400000" step="10000" value="900000">
+            <label for="water">Watershed draw limit <span class="unit">ML/year</span></label>
+            <input id="water" name="water" type="number" required min="5" max="40" step="1" value="20">
+            <label for="crew">Public works crew capacity <span class="unit">crew-weeks</span></label>
+            <input id="crew" name="crew" type="number" required min="10" max="50" step="1" value="30">
+            <label for="appropriation">Non-grant appropriation ceiling <span class="unit">USD</span></label>
+            <input id="appropriation" name="appropriation" type="number" required min="250000" max="850000" step="10000" value="650000">
+          </div>
+          <fieldset>
+            <legend>2. Cast simulated Plan A votes</legend>
+            <p class="subtle">Only fictional members may vote. Eli has declared an interest and remains recused. Changing a vote creates a different history; it never edits the reference record.</p>
+            <div id="vote-controls"><p>Loading fictional members…</p></div>
+          </fieldset>
+          <div class="actions">
+            <button type="submit" class="primary" id="run">Run with CivicOS engine</button>
+            <button type="button" id="random">Surprise me</button>
+            <button type="button" id="reset">Restore defaults</button>
+          </div>
+          <p id="seed-info" class="subtle" aria-live="polite"></p>
+          <p id="form-status" role="status" aria-live="polite">Loading local simulator…</p>
+        </form>
+      </section>
+      <section class="panel" id="results-panel" aria-labelledby="results-title">
+        <h2 id="results-title">3. Compare the consequences</h2>
+        <div id="results" aria-live="polite">
+          <p class="subtle">Select <strong>Run with CivicOS engine</strong> to compare the canonical model inputs with your alternative. No result has been computed yet.</p>
+        </div>
+      </section>
+    </div>
+    <section class="panel" aria-labelledby="method-title">
+      <h2 id="method-title">How this works</h2>
+      <p>A local Python process runs the actual CivicOS governance commands, vote/recusal checks and deterministic SciPy portfolio optimizer. Each run has its own transaction history and verification digest. Where a proposal is rejected, the engine does not create its portfolio baseline or synthetic funding commitment.</p>
+      <p><strong>Important:</strong> This is an abbreviated lab fixture sharing Riverbend's project definitions, not a fork of the published 279-event reference chain. Narratives describe modeled results; they do not establish effects on actual people, budgets, law or ecosystems.</p>
+    </section>
+  </main>
+  <footer class="container subtle">ACECOG Riverbend · Local development evidence only · No telemetry, real civic records or external API calls.</footer>
+</body>
+</html>
