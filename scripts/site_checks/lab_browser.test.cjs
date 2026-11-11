@@ -290,3 +290,29 @@ test("randomize freezes assumptions and discards delayed seed after newer edit",
     assert.equal(await a.page.locator("#scenario-tools").isVisible(),false);
   } finally { release(); await a.context.close(); }
 });
+
+test("successful solver unlocks inputs and keeps the matching result exportable", async () => {
+  const a=await openLab(390);
+  let release,reached;
+  const latch=new Promise(resolve=>{release=resolve;});
+  const intercepted=new Promise(resolve=>{reached=resolve;});
+  try {
+    await a.page.route("**/api/compare",async route=>{reached();await latch;await route.continue();});
+    await a.page.locator('[data-preset="votes"]').click();
+    await a.page.locator("#run").click();
+    await intercepted;
+    assert.equal(await a.page.locator("#budget").isDisabled(),true);
+    assert.equal(await a.page.locator('[data-preset="water"]').isDisabled(),true);
+    assert.equal(await a.page.locator("#lab-form").getAttribute("aria-busy"),"true");
+    release();
+    await a.page.waitForFunction(()=>/Run complete/.test(document.querySelector("#form-status").textContent),null,{timeout:30000});
+    assert.equal(await a.page.locator("#budget").isEnabled(),true);
+    assert.equal(await a.page.locator('[data-preset="water"]').isEnabled(),true);
+    assert.equal(await a.page.locator("#random").isEnabled(),true);
+    assert.equal(await a.page.locator("#lab-form").getAttribute("aria-busy"),"false");
+    assert.match(await a.page.locator("#results").innerText(),/Plan A rejected/);
+    assert.equal(await a.page.locator("#scenario-tools").isVisible(),true);
+    assert.equal(await a.page.locator("#run-history button").isEnabled(),true);
+    assert.deepEqual(a.errors,[]);
+  } finally { release(); await a.context.close(); }
+});
