@@ -51,6 +51,7 @@
     const p=presets[key];
     if (!p) return;
     applyInputs(p);
+    document.dispatchEvent(new Event("acecog:inputs-changed"));
     expireViewedResult();
     clearSelectedPreset();
     document.querySelector('[data-preset="'+key+'"]').setAttribute("aria-pressed","true");
@@ -68,6 +69,7 @@
       b.textContent="Restore run "+item.run+": "+item.status+" · "+inputSummary(item.inputs);
       b.addEventListener("click",()=>{
         applyInputs(item.inputs);
+        document.dispatchEvent(new Event("acecog:inputs-changed"));
         expireViewedResult();
         clearSelectedPreset();
         $("scenario-description").textContent="Restored inputs from run "+item.run+". Select Run to reproduce or adjust them.";
