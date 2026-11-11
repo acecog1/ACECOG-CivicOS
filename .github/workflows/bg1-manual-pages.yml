@@ -1,0 +1,133 @@
+# Q-31 / BG-1: manual-only, owner-and-QA exact-SHA release control.
+# No deploy on PR or push. Owner MUST independently approve first publication.
+name: BG-1 manually gated Pages publication
+
+on:
+  workflow_dispatch:
+    inputs:
+      approved_sha:
+        description: Exact 40-character public-main commit SHA approved for first release
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bg1-pages-first-publication
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    name: Verify owner, QA and host-notice release gates
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Require exact SHA and independent release attestations
+        env:
+          REQUESTED: ${{ inputs.approved_sha }}
+          OWNER_APPROVED: ${{ vars.BG1_OWNER_PUBLICATION_GO_SHA }}
+          QA_APPROVED: ${{ vars.BG1_QA_GO_SHA }}
+          HOST_NOTICE_APPROVED: ${{ vars.BG1_DUAL_HOST_NOTICE_GO_SHA }}
+        run: |
+          set -euo pipefail
+          [[ "$REQUESTED" =~ ^[a-f0-9]{40}$ ]] || { echo "::error::Expected full release SHA"; exit 1; }
+          test "$REQUESTED" = "$GITHUB_SHA" || { echo "::error::Manual release is not main HEAD"; exit 1; }
+          test "$REQUESTED" = "$(git rev-parse HEAD)" || { echo "::error::Checkout SHA mismatch"; exit 1; }
+          test -n "$OWNER_APPROVED" && test "$OWNER_APPROVED" = "$REQUESTED" || { echo "::error::Owner first-publication Go missing or wrong SHA"; exit 1; }
+          test -n "$QA_APPROVED" && test "$QA_APPROVED" = "$REQUESTED" || { echo "::error::Independent BG-1 QA Go missing or wrong SHA"; exit 1; }
+          test -n "$HOST_NOTICE_APPROVED" && test "$HOST_NOTICE_APPROVED" = "$REQUESTED" || { echo "::error::Dual-provider notice approval missing or wrong SHA"; exit 1; }
+          echo "Exact-SHA owner/QA/notice conditions matched."
+
+  build:
+    name: Rebuild, test, scan and retain source fingerprint
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Install dependencies and Chromium
+        run: |
+          set -euo pipefail
+          pip install -r requirements-ci.txt
+          npm ci --prefix scripts/site_checks
+          cd scripts/site_checks
+          npx playwright install --with-deps chromium
+      - name: Fetch exact self-hosted font versions
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/bg1-fonts scripts/site_assets/fonts
+          cd /tmp/bg1-fonts
+          npm pack @fontsource/public-sans@5.3.0 @fontsource/jetbrains-mono@5.3.0 >/dev/null
+          for t in *.tgz; do tar -xzf "$t" && mv package "${t%.tgz}"; done
+          cp fontsource-public-sans-*/files/public-sans-latin-{400,600,800}-normal.woff2 "$GITHUB_WORKSPACE/scripts/site_assets/fonts/"
+          cp fontsource-jetbrains-mono-*/files/jetbrains-mono-latin-400-normal.woff2 "$GITHUB_WORKSPACE/scripts/site_assets/fonts/"
+          cp fontsource-public-sans-*/LICENSE "$GITHUB_WORKSPACE/scripts/site_assets/fonts/OFL-public-sans.txt"
+          cp fontsource-jetbrains-mono-*/LICENSE "$GITHUB_WORKSPACE/scripts/site_assets/fonts/OFL-jetbrains-mono.txt"
+      - name: Negative-gate, contract and acceptance tests
+        run: |
+          set -euo pipefail
+          python scripts/site_checks/check_gate.py
+          python -m pytest -q
+          python scripts/gen_openapi.py
+          git diff --exit-code -- docs/api
+      - name: Supply chain and security checks
+        run: |
+          set -euo pipefail
+          pip install pip-audit bandit
+          pip-audit -r requirements-ci.txt
+          bandit -r src scripts -ll -ii
+          npm audit --prefix scripts/site_checks --audit-level=high
+      - name: Build Riverbend from real engine for default project Pages path
+        env:
+          SITE_DOMAIN: ""
+          SITE_CONTACT: morgan@acecog.org
+        run: |
+          python scripts/build_site.py
+          test ! -e build/site/CNAME || { echo "::error::No old subdomain CNAME allowed"; exit 1; }
+      - name: Browser, enlarged text, frame and adversarial record checks
+        run: npm test --prefix scripts/site_checks
+      - name: Capture exact SHA and all static asset hashes
+        run: |
+          set -euo pipefail
+          mkdir -p build/site-evidence
+          find build/site -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum > build/site-evidence/release-file-sha256.txt
+          printf 'release_sha=%s\n' "$GITHUB_SHA" > build/site-evidence/release-identity.txt
+          test -s build/site-evidence/release-file-sha256.txt
+      - name: Archive QA evidence privately in Actions artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: bg1-release-evidence-${{ github.sha }}
+          path: build/site-evidence
+      - name: Package Pages artifact without publishing it
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: build/site
+
+  deploy:
+    name: Publish only after protected environment approval
+    needs: [preflight, build]
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy the authorized site artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
