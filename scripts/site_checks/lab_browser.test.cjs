@@ -59,7 +59,7 @@ async function openLab(width=390) {
   });
   page.on("pageerror", e => errors.push(e.message));
   await page.goto(base + "/");
-  await page.locator("#form-status").getByText(/Ready/).waitFor();
+  await page.waitForFunction(() => document.getElementById("form-status").textContent.includes("Ready"));
   return {context, page, thirdParty, errors};
 }
 
@@ -69,7 +69,7 @@ test("visitor changes two votes; actual CivicOS rejects Plan A without ghost fun
     await a.page.locator('input[name="vote-cara"][value="no"]').check();
     await a.page.locator('input[name="vote-dev"][value="no"]').check();
     await a.page.locator("#run").click();
-    await a.page.locator("#form-status").getByText(/Run complete/).waitFor({timeout:30000});
+    await a.page.waitForFunction(() => document.getElementById("form-status").textContent.includes("Run complete"), null, {timeout:30000});
     const content = await a.page.locator("#results").innerText();
     assert.match(content, /Reference/);
     assert.match(content, /Plan A approved/);
@@ -89,7 +89,7 @@ test("budget and resource changes show engine-backed allocations and evidence", 
     await a.page.locator("#water").fill("12");
     await a.page.locator("#crew").fill("20");
     await a.page.locator("#run").click();
-    await a.page.locator("#form-status").getByText(/Run complete/).waitFor({timeout:30000});
+    await a.page.waitForFunction(() => document.getElementById("form-status").textContent.includes("Run complete"), null, {timeout:30000});
     const content=await a.page.locator("#results").innerText();
     assert.match(content, /Initiative funding comparison/);
     assert.match(content, /binding constraints/i);
@@ -106,9 +106,9 @@ test("explicit seeded randomization, no automatic refresh randomization, mobile 
   try {
     assert.equal(await a.page.locator("#budget").inputValue(), "900000");
     await a.page.locator("#random").click();
-    await a.page.locator("#seed-info").getByText(/Random input seed/).waitFor();
+    await a.page.waitForFunction(() => document.getElementById("seed-info").textContent.includes("Random input seed"));
     await a.page.reload();
-    await a.page.locator("#form-status").getByText(/Ready/).waitFor();
+    await a.page.waitForFunction(() => document.getElementById("form-status").textContent.includes("Ready"));
     assert.equal(await a.page.locator("#budget").inputValue(), "900000");
     assert.equal(await a.page.locator("#seed-info").innerText(), "");
     assert.equal(await a.page.locator(".vote-row").count(), 6);
