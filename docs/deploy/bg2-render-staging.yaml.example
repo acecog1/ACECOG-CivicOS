@@ -1,0 +1,23 @@
+# STAGING TEMPLATE ONLY — not an active root render.yaml. Founder GO exists,
+# but this is NOT authorization to create a billable service without account
+# consent or to bypass independent BG-2 QA.
+services:
+  - type: web
+    name: acecog-bg2-laboratory-staging
+    runtime: python
+    plan: 1c-2g
+    region: oregon
+    branch: feature/bg2-hosted-staging-gateway
+    autoDeployTrigger: 'off'
+    healthCheckPath: /healthz
+    buildCommand: pip install -r requirements-bg2.txt && python scripts/bg2_prepare_assets.py
+    startCommand: gunicorn --worker-class gthread --workers 1 --threads 4 --timeout 30 --bind 0.0.0.0:$PORT scripts.bg2_wsgi:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.18
+      - key: BG2_MODE
+        value: staging
+      - key: BG2_SIGNING_KEY
+        generateValue: true
+# Render supplies RENDER_EXTERNAL_HOSTNAME (used for exact Host and Origin).
+# Do not add DNS, custom domains, iframe permission, AI models or databases.
