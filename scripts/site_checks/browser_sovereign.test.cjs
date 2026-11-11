@@ -2,6 +2,7 @@
 // Intentionally outside BG-1's immutable published-site test suite.
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
 const { chromium } = require("playwright");
 
 const base = process.env.ACECOG_BROWSER_BASE || "http://127.0.0.1:8781";
@@ -42,6 +43,20 @@ test("sovereign browser worker runs original CivicOS decision, solver and reject
     assert.match(content,/Plan A approved/);
     assert.match(content,/Plan A rejected/);
     assert.match(content,/No Plan A optimization, baseline or synthetic funding commitment/);
+    const downloadPromise=page.waitForEvent("download");
+    await page.locator("#download-evidence").click();
+    const download=await downloadPromise;
+    const record=JSON.parse(fs.readFileSync(await download.path(),"utf8"));
+    const origin=record.provenance;
+    assert.match(origin.source_manifest_sha256,/^[a-f0-9]{64}$/);
+    assert.match(origin.runtime_manifest_sha256,/^[a-f0-9]{64}$/);
+    assert.match(origin.pyodide_version,/^314[.]0[.]7$/);
+    assert.match(origin.scipy_version,/^\\d+\\.\\d+/);
+    assert.equal(origin.raw_chain_events_included,false);
+    assert.equal(origin.independent_verifier_included,false);
+    assert.equal(origin.user_generated_content_is_authentic,false);
+    assert.equal(origin.core_root_status,"UNPINNED_OBSERVED_ONLY_BLOCK_RELEASE");
+    assert.equal(record.browser_runtime.source_manifest_sha256,origin.source_manifest_sha256);
     assert.equal(outside.length,0,"Third-party network requests: "+outside.join(", "));
     assert.deepEqual(browserErrors,[]);
     await context.close();
@@ -89,6 +104,10 @@ test("same-browser deterministic seeds and full native-vs-WASM funded portfolio 
       observed.repeat.alternative.optimization.result_hash);
     assert.equal(observed.run.alternative.browser_runtime,undefined);
     assert.equal(observed.run.browser_runtime.mode,"client-only");
+    assert.match(observed.run.browser_runtime.source_manifest_sha256,/^[0-9a-f]{64}$/);
+    assert.match(observed.run.browser_runtime.runtime_manifest_sha256,/^[0-9a-f]{64}$/);
+    assert.equal(observed.run.browser_runtime.core_root_release_attestation,"NOT_INDEPENDENTLY_APPROVED");
+    assert.equal(observed.run.browser_runtime.independently_authenticated,false);
     assert.match(observed.run.browser_runtime.scipy,/^\d+\.\d+\.\d+/);
     assert.equal(observed.run.reference.decision.result,"approved");
     assert.equal(observed.run.alternative.decision.result,"approved");
