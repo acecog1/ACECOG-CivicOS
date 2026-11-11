@@ -235,6 +235,7 @@
       setStatus("Ready. Change variables, change votes, then run the engine.", false);
       $("lab-form").addEventListener("submit", run);
       $("lab-form").addEventListener("input", () => { lastSeed = null; });
+      document.addEventListener("acecog:inputs-changed", () => { lastSeed = null; });
       $("random").addEventListener("click", randomize);
       $("reset").addEventListener("click", function () {
         updateInputs(config.defaults);
