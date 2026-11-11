@@ -34,6 +34,19 @@ jobs:
           python -m pytest -q tests/test_browser_lab_bundle.py
       - name: Vendor pinned Pyodide+SciPy into local static artifacts
         run: python scripts/vendor_browser_pyodide.py
+      - name: Prepare fixed native SciPy comparison evidence (not public)
+        run: |
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          sys.path[:0]=["scripts","tests","src"]
+          import experiment_riverbend as lab
+          p=lab.parameters(budget=600000,water=12,crew=20,appropriation=350000)
+          result=lab.compare(p)
+          Path("build/browser-lab/native-parity-golden.json").write_text(
+              json.dumps(result,sort_keys=True),encoding="utf-8")
+          print("Native funded reference, solver:",result["alternative"]["optimization"]["solver_config"])
+          PY
       - name: Test actual local-only WebAssembly simulator in Chromium
         run: |
           python -m http.server 8781 --bind 127.0.0.1 --directory build/browser-lab > /tmp/browser-lab-server.log 2>&1 &
