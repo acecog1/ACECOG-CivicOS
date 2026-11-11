@@ -14,7 +14,7 @@ DEST = Path(__file__).resolve().parents[1] / "build" / "bg2-assets"
 
 COMMON = {
     "index.html": {
-        "Riverbend Scenario Laboratory — Local Preview": "Riverbend Scenario Laboratory — Hosted Synthetic Preview",
+        "Riverbend Scenario Laboratory — Guided Local Preview": "Riverbend Scenario Laboratory — Hosted Synthetic Preview",
         "Local-only, fictional CivicOS governance simulator.": "Fictional CivicOS governance simulator; hosted synthetic demonstration.",
         "Development preview only.": "Synthetic demonstration only.",
         "This local application is not the public beta or an official civic service.": "This hosted sandbox is not an official civic service.",
@@ -45,7 +45,7 @@ def make_assets(dest: Path = DEST) -> None:
         text = (SOURCE / name).read_text(encoding="utf-8")
         for old, new in COMMON.get(name, {}).items():
             if text.count(old) != 1:
-                raise RuntimeError(f"Hosting copy contract drift: {name} expected one known marker")
+                raise RuntimeError(f"Hosting copy contract drift: {name} missing or repeated marker {old!r}")
             text = text.replace(old, new, 1)
         (dest / name).write_text(text, encoding="utf-8")
     html = (dest / "index.html").read_text(encoding="utf-8")
