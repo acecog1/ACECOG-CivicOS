@@ -6,6 +6,29 @@
   const displayNames = {ana:"Ana",ben:"Ben",cara:"Cara",dev:"Dev",eli:"Eli",fay:"Fay"};
   let config = null;
   let lastSeed = null;
+  let busy = false;
+  let inputRevision = 0;
+
+  // Freeze all scenario-changing controls for a single in-flight run or random
+  // selection. Run/history/export consumers get a distinct busy event.
+  function setBusy(value) {
+    busy = value;
+    document.querySelectorAll('#lab-form input, #lab-form button, [data-preset], #run-history button')
+      .forEach(el => { el.disabled = value; });
+    $("lab-form").setAttribute("aria-busy", String(value));
+    $("results-panel").setAttribute("aria-busy", String(value));
+    document.dispatchEvent(new CustomEvent("acecog:busy", {detail:{busy:value}}));
+  }
+
+  function markInputsChanged() {
+    inputRevision += 1;
+    lastSeed = null;
+  }
+
+  function sameInputs(expected) {
+    try { return JSON.stringify(parametersFromForm()) === expected; }
+    catch (_) { return false; }
+  }
 
   function add(tag, parent, text, cls) {
     const el = document.createElement(tag);
@@ -129,6 +152,33 @@
       add("td", tr, after === null ? "Not authorized" : money(after));
       add("td", tr, before === null || after === null ? "—" : money(after - before));
     });
+    // Visuals are a second, accessible view of the actual solver outputs;
+    // the exact-value table above remains available for nonvisual review.
+    const amounts = [...Object.values((b && b.allocations) || {}),
+                     ...Object.values((a && a.allocations) || {})];
+    const maximum = Math.max(1, ...amounts.map(Number));
+    const figure = add("figure", parent, null, "allocation-chart");
+    add("figcaption", figure, "Visual comparison of initiative allocations from the CivicOS engine");
+    const legend = add("p", figure, "Reference = dark bar; alternative = lighter bar. A missing bar means not authorized, not zero funding.", "subtle");
+    legend.className += " allocation-legend";
+    ids.forEach(id => {
+      const row = add("div", figure, null, "allocation-visual-row");
+      add("strong", row, id, "initiative-label");
+      [["Reference", b], ["Alternative", a]].forEach(([label, solution]) => {
+        const amount = solution ? solution.allocations[id] : null;
+        const group = add("div", row, null, "allocation-track");
+        add("span", group, label, "allocation-track-label");
+        if (amount === null || amount === undefined) {
+          add("span", group, "Not authorized", "allocation-not-authorized");
+        } else {
+          const track = add("span", group, null, "allocation-bar-background");
+          const fill = add("span", track, null,
+            label === "Reference" ? "allocation-bar-reference" : "allocation-bar-alternative");
+          fill.style.width = Math.max(0, Math.min(100, 100 * Number(amount) / maximum)) + "%";
+          add("span", group, money(amount), "allocation-value");
+        }
+      });
+    });
   }
 
   function showResult(payload) {
@@ -166,37 +216,65 @@
 
   async function run(evt) {
     if (evt) evt.preventDefault();
-    if (!config) return;
+    if (!config || busy) return;
+    let started = false;
     try {
       const params = parametersFromForm();
-      setStatus("Computing two independent CivicOS branches…", false);
-      $("run").disabled = true;
+      const revision = inputRevision;
+      const inputKey = JSON.stringify(params);
+      const seedForRun = lastSeed;
+      // Never leave a previous run exportable while a newer run is pending.
+      setBusy(true);
+      started = true;
+      setStatus("Computing two independent CivicOS branches… Inputs are locked until the result returns.", false);
       const result = await request("/api/compare", {
         method:"POST",
         headers:{"Content-Type":"application/json","X-Lab-Token":config.token},
-        body:JSON.stringify(params)
+        body:inputKey
       });
+      // Defense in depth against forced DOM edits, stale Worker callbacks and
+      // future alternate input paths. Disabled controls alone are insufficient.
+      if (revision !== inputRevision || !sameInputs(inputKey)) {
+        setStatus("Assumptions changed during computation. Older result discarded; run the updated scenario.", true);
+        return;
+      }
       showResult(result);
+      document.dispatchEvent(new CustomEvent("acecog:result", {detail:{payload:result,seed:seedForRun}}));
       setStatus("Run complete. No public records or real civic actions were changed.", false);
     } catch (err) {
-      setStatus(err.message || "The local simulation failed.", true);
+      setStatus(err.message || "The local simulation failed. No result was accepted.", true);
     } finally {
-      $("run").disabled = false;
+      if (started) setBusy(false);
     }
   }
 
   async function randomize() {
-    if (!config) return;
+    if (!config || busy) return;
+    const revision = inputRevision;
+    let started = false;
     try {
       const bytes = new Uint32Array(1);
       crypto.getRandomValues(bytes);
-      lastSeed = bytes[0];
-      const data = await request("/api/random?seed=" + encodeURIComponent(String(lastSeed)));
+      const seed = bytes[0];
+      setBusy(true);
+      started = true;
+      setStatus("Selecting reproducible fictional assumptions… Inputs are locked until ready.", false);
+      const data = await request("/api/random?seed=" + encodeURIComponent(String(seed)));
+      if (revision !== inputRevision) {
+        setStatus("Assumptions changed during randomization. Older random selection discarded.", true);
+        return;
+      }
       updateInputs(data.parameters);
-      $("seed-info").textContent = "Random input seed: " + String(lastSeed) +
+      document.dispatchEvent(new Event("acecog:inputs-changed"));
+      lastSeed = seed;
+      $("seed-info").textContent = "Random input seed: " + String(seed) +
         ". Select Run to compute the effect; the solver itself remains deterministic.";
       setStatus("New reproducible inputs selected, not yet run.", false);
-    } catch (err) { setStatus(err.message, true); }
+    } catch (err) {
+      setStatus(err.message || "Randomization unavailable. No inputs changed.", true);
+    } finally {
+      if (started) setBusy(false);
+    }
   }
 
   async function main() {
@@ -206,10 +284,14 @@
       updateInputs(config.defaults);
       setStatus("Ready. Change variables, change votes, then run the engine.", false);
       $("lab-form").addEventListener("submit", run);
+      $("lab-form").addEventListener("input", markInputsChanged);
+      $("lab-form").addEventListener("change", markInputsChanged);
+      document.addEventListener("acecog:inputs-changed", markInputsChanged);
       $("random").addEventListener("click", randomize);
       $("reset").addEventListener("click", function () {
+        if (busy) return;
         updateInputs(config.defaults);
-        lastSeed = null;
+        document.dispatchEvent(new Event("acecog:inputs-changed"));
         $("seed-info").textContent = "";
         setStatus("Reference assumptions restored. Select Run to compare again.", false);
       });

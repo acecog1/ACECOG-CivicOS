@@ -104,7 +104,8 @@ def create_server(port: int = 8767) -> ThreadingHTTPServer:
                 return
             assets = {"/": ("index.html", "text/html; charset=utf-8"),
                       "/lab.js": ("lab.js", "text/javascript; charset=utf-8"),
-                      "/lab.css": ("lab.css", "text/css; charset=utf-8")}
+                      "/lab.css": ("lab.css", "text/css; charset=utf-8"),
+                      "/experience.js": ("experience.js", "text/javascript; charset=utf-8")}
             if path.path not in assets:
                 return self._send(404, {"error": "Not found"})
             name, ctype = assets[path.path]
