@@ -23,7 +23,6 @@ BROWSER_COPIES = {
     "This local application is not the public beta or an official civic service.":
         "This is a fictional, advisory simulation without legal effect; it does not represent any real government.",
     "A local Python process runs": "Your browser runs",
-    "The local simulator": "The browser-only simulator",
     "Local development evidence only · No telemetry, real civic records or external API calls. No public sharing service.":
         "Browser-only civic laboratory · No simulation requests leave this device. Static hosting still receives ordinary page requests. No accounts, cookies, real civic records, or public sharing service.",
 }
