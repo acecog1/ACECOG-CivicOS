@@ -66,3 +66,20 @@ def test_no_browser_executable_runtime_external_host_references(tmp_path):
         assert "http://cdn" not in code
         assert "render.com" not in code
     assert not (target/"vendor/pyodide").exists(), "Runtime vendoring must be a separate explicit build"
+
+
+def test_generated_browser_lab_carries_manifest_bound_evidence_and_honest_scope(tmp_path):
+    target = tmp_path / "dist"
+    build.build(target)
+    worker = (target / "browser-engine-worker.mjs").read_text(encoding="utf-8")
+    experience = (target / "experience.js").read_text(encoding="utf-8")
+    for field in ("source_revision", "source_manifest_sha256",
+                  "runtime_manifest_sha256", "core_root_status",
+                  "independently_authenticated"):
+        assert field in worker
+    assert "bundle-manifest" not in worker, "Placeholder SHA must never be exported"
+    for field in ("raw_chain_events_included:false", "independent_verifier_included:false",
+                  "user_generated_content_is_authentic:false", "source_checkout_revision",
+                  "runtime_manifest_sha256", "source_manifest_sha256"):
+        assert field in experience
+    assert "Visitor-generated synthetic summaries are editable" in experience
