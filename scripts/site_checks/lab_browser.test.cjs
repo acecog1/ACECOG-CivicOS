@@ -128,3 +128,76 @@ test("explicit seeded randomization, no automatic refresh randomization, mobile 
     assert.deepEqual(a.errors, []);
   } finally { await a.context.close(); }
 });
+
+
+test("P2 guided vote dilemma shows a governed refusal and no phantom allocation", async () => {
+  const a=await openLab(1280);
+  try {
+    assert.match(await a.page.locator("#challenge-title").innerText(), /Choose a question/);
+    await a.page.locator('[data-preset="votes"]').click();
+    assert.equal(await a.page.locator('[data-preset="votes"]').getAttribute("aria-pressed"),"true");
+    assert.equal(await a.page.locator('input[name="vote-cara"]:checked').inputValue(),"no");
+    assert.equal(await a.page.locator('input[name="vote-dev"]:checked').inputValue(),"no");
+    await a.page.locator("#run").click();
+    await a.page.waitForFunction(() => document.getElementById("form-status").textContent.includes("Run complete"),null,{timeout:30000});
+    assert.match(await a.page.locator("#results").innerText(), /Plan A rejected/);
+    assert.match(await a.page.locator("#results").innerText(), /Not authorized/);
+    assert.equal(await a.page.locator("#scenario-tools").isVisible(),true);
+    assert.equal(await a.page.locator("#run-history li").count(),1);
+    assert.deepEqual(a.thirdParty,[]);
+    assert.deepEqual(a.errors,[]);
+  } finally { await a.context.close(); }
+});
+
+test("P2 visual allocations and tab-only history reproduce user choices", async () => {
+  const a=await openLab(1280);
+  try {
+    await a.page.locator('[data-preset="water"]').click();
+    await a.page.locator("#run").click();
+    await a.page.waitForFunction(() => document.getElementById("form-status").textContent.includes("Run complete"),null,{timeout:30000});
+    assert.ok(await a.page.locator(".allocation-chart").count()>0,"Engine-backed allocation graphic missing");
+    await a.page.locator('[data-preset="budget"]').click();
+    assert.equal(await a.page.locator("#scenario-tools").isVisible(),false,"Stale result remained exportable");
+    await a.page.locator("#run").click();
+    await a.page.waitForFunction(() => document.getElementById("form-status").textContent.includes("Run complete"),null,{timeout:30000});
+    assert.equal(await a.page.locator("#run-history li").count(),2);
+    await a.page.locator("#run-history li").last().locator("button").click();
+    assert.equal(await a.page.locator("#budget").inputValue(),"900000");
+    assert.equal(await a.page.locator("#water").inputValue(),"10");
+    assert.equal(await a.page.locator("#scenario-tools").isVisible(),false);
+    await a.page.reload();
+    await a.page.waitForFunction(() => document.getElementById("form-status").textContent.includes("Ready"));
+    assert.equal(await a.page.locator("#run-history li").count(),1);
+    assert.match(await a.page.locator("#run-history").innerText(),/Run the first scenario/);
+    assert.deepEqual(a.thirdParty,[]);
+    assert.deepEqual(a.errors,[]);
+  } finally { await a.context.close(); }
+});
+
+test("P2 local export is evidence-bounded and mobile results reflow", async () => {
+  const a=await openLab(320);
+  try {
+    await a.page.locator("#mode-expert").click();
+    assert.equal(await a.page.locator("#mode-expert").getAttribute("aria-pressed"),"true");
+    await a.page.locator('[data-preset="budget"]').click();
+    await a.page.locator("#run").click();
+    await a.page.waitForFunction(() => document.getElementById("form-status").textContent.includes("Run complete"),null,{timeout:30000});
+    const downloadPromise=a.page.waitForEvent("download");
+    await a.page.locator("#download-evidence").click();
+    const download=await downloadPromise;
+    assert.match(download.suggestedFilename(),/acecog-riverbend-experiment-v02\.json/);
+    const fs=require("node:fs");
+    const exportDoc=JSON.parse(fs.readFileSync(await download.path(),"utf8"));
+    assert.equal(exportDoc.format,"ACECOG-LOCAL-EXPERIMENT-EVIDENCE-v0.2");
+    assert.equal(exportDoc.scope,"FICTIONAL_LOCAL_ONLY_NO_LEGAL_EFFECT");
+    assert.ok(exportDoc.alternative.chain_head);
+    assert.equal(JSON.stringify(exportDoc).includes("X-Lab-Token"),false);
+    const m=await a.page.evaluate(()=>({
+      viewport:document.documentElement.clientWidth,
+      scroll:document.documentElement.scrollWidth
+    }));
+    assert.ok(m.scroll<=m.viewport+1,"P2 root overflow: "+JSON.stringify(m));
+    assert.deepEqual(a.thirdParty,[]);
+    assert.deepEqual(a.errors,[]);
+  } finally { await a.context.close(); }
+});
