@@ -126,7 +126,7 @@ def test_randomization_is_seeded_and_is_not_a_governance_action(app):
     b = fetch(app, "/api/random?seed=42")
     assert a[0] == b[0] == 200
     assert a[1] == b[1]
-    assert a[1]["parameters"]["votes"]["eli"] if "eli" in a[1]["parameters"]["votes"] else True
+    assert "eli" not in a[1]["parameters"]["votes"]
     assert fetch(app, "/api/random?seed=-1")[0] == 400
     assert fetch(app, "/api/random?seed=xyz")[0] == 400
     assert fetch(app, "/api/random")[0] == 400
