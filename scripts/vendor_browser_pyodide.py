@@ -14,6 +14,7 @@ import sys
 import urllib.request
 
 VERSION = "314.0.7"
+PINNED_LOCK_SHA256 = "5dc2fc119108bc148c7457dc86e7675b5c87e1cafd420b9c34c1eaef7b36c010"
 UPSTREAM = f"https://cdn.jsdelivr.net/pyodide/v{VERSION}/full/"
 DEST = Path(__file__).resolve().parents[1] / "build" / "browser-lab" / "vendor" / "pyodide"
 ROOT_ASSETS = (
@@ -52,6 +53,8 @@ def normalized(name: str) -> str:
 def vendor(dest: Path = DEST) -> dict:
     dest.mkdir(parents=True,exist_ok=True)
     observed = {name: download(name,dest/name) for name in ROOT_ASSETS}
+    if observed["pyodide-lock.json"] != PINNED_LOCK_SHA256:
+        raise RuntimeError("Pinned Pyodide root package lock digest mismatch")
     lock = json.loads((dest/"pyodide-lock.json").read_text(encoding="utf-8"))
     packages = lock.get("packages")
     if not isinstance(packages,dict):
@@ -87,7 +90,7 @@ def vendor(dest: Path = DEST) -> dict:
         "version":VERSION,
         "build_source":"version-pinned upstream CDN downloaded only during controlled build",
         "root_lock_sha256":observed["pyodide-lock.json"],
-        "lock_sha_status":"UNAPPROVED_EXTERNAL_ROOT_PENDING_RELEASE_QA",
+        "lock_sha_status":"PINNED_DIGEST_OBSERVED_IN_FEASIBILITY_RUN_PENDING_INDEPENDENT_RELEASE_QA",
         "package_roots":list(PACKAGE_ROOTS),
         "packages":sorted(selected),
         "bytes":total,
