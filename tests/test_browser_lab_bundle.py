@@ -35,7 +35,7 @@ def test_static_bundle_is_self_hosted_and_source_pinned(tmp_path):
     assert "wasm-unsafe-eval" in html
     assert "worker-src 'self'" in html
     assert "connect-src 'self'" in html
-    assert "no legal effect" in html.lower()
+    assert "without legal effect" in html.lower()
     assert not (target/"api").exists()
     code = (target/"lab.js").read_text(encoding="utf-8")
     assert "window.AcecogBrowserLab.fetch" in code
