@@ -129,6 +129,33 @@
       add("td", tr, after === null ? "Not authorized" : money(after));
       add("td", tr, before === null || after === null ? "—" : money(after - before));
     });
+    // Visuals are a second, accessible view of the actual solver outputs;
+    // the exact-value table above remains available for nonvisual review.
+    const amounts = [...Object.values((b && b.allocations) || {}),
+                     ...Object.values((a && a.allocations) || {})];
+    const maximum = Math.max(1, ...amounts.map(Number));
+    const figure = add("figure", parent, null, "allocation-chart");
+    add("figcaption", figure, "Visual comparison of initiative allocations from the CivicOS engine");
+    const legend = add("p", figure, "Reference = dark bar; alternative = lighter bar. A missing bar means not authorized, not zero funding.", "subtle");
+    legend.className += " allocation-legend";
+    ids.forEach(id => {
+      const row = add("div", figure, null, "allocation-visual-row");
+      add("strong", row, id, "initiative-label");
+      [["Reference", b], ["Alternative", a]].forEach(([label, solution]) => {
+        const amount = solution ? solution.allocations[id] : null;
+        const group = add("div", row, null, "allocation-track");
+        add("span", group, label, "allocation-track-label");
+        if (amount === null || amount === undefined) {
+          add("span", group, "Not authorized", "allocation-not-authorized");
+        } else {
+          const track = add("span", group, null, "allocation-bar-background");
+          const fill = add("span", track, null,
+            label === "Reference" ? "allocation-bar-reference" : "allocation-bar-alternative");
+          fill.style.width = Math.max(0, Math.min(100, 100 * Number(amount) / maximum)) + "%";
+          add("span", group, money(amount), "allocation-value");
+        }
+      });
+    });
   }
 
   function showResult(payload) {
@@ -177,6 +204,7 @@
         body:JSON.stringify(params)
       });
       showResult(result);
+      document.dispatchEvent(new CustomEvent("acecog:result", {detail:{payload:result,seed:lastSeed}}));
       setStatus("Run complete. No public records or real civic actions were changed.", false);
     } catch (err) {
       setStatus(err.message || "The local simulation failed.", true);
@@ -206,6 +234,7 @@
       updateInputs(config.defaults);
       setStatus("Ready. Change variables, change votes, then run the engine.", false);
       $("lab-form").addEventListener("submit", run);
+      $("lab-form").addEventListener("input", () => { lastSeed = null; });
       $("random").addEventListener("click", randomize);
       $("reset").addEventListener("click", function () {
         updateInputs(config.defaults);
