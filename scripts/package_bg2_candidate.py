@@ -102,7 +102,8 @@ def _verify_runtime_inventory(files: dict[str, bytes], manifest: dict) -> None:
         total += len(data)
     if total != manifest.get("bytes") or manifest.get("version") != runtime.VERSION:
         raise RuntimeError("Packaged runtime footprint/version mismatch")
-    if manifest.get("root_lock_sha256") != runtime.PINNED_LOCK_SHA256:
+    if (manifest.get("root_lock_sha256") != runtime.PINNED_LOCK_SHA256 or
+            inventory.get("pyodide-lock.json") != runtime.PINNED_LOCK_SHA256):
         raise RuntimeError("Unrecognized packaged runtime lock")
 
 
@@ -145,7 +146,10 @@ def verify_review_zip(path: Path, expected_sha: str | None = None) -> dict:
         raise RuntimeError("Git checkout/source manifest/release identity mismatch")
     _verify_source_inventory(payload, src)
     _verify_runtime_inventory(payload, wasm)
-    if wasm.get("core_root_status") != manifest.get("runtime_pin_status"):
+    if (wasm.get("core_root_status") not in (
+            "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA",
+            "UNPINNED_OBSERVED_ONLY_BLOCK_RELEASE") or
+            wasm.get("core_root_status") != manifest.get("runtime_pin_status")):
         raise RuntimeError("Runtime pin approval claim disagrees with asset manifest")
     if manifest.get("releasable") is not False:
         raise RuntimeError("BG-2 candidate must not self-authorize public publication")
