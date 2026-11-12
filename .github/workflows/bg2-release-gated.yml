@@ -51,6 +51,12 @@ jobs:
       DEDICATED_HOST_REPO: ${{ vars.BG2_DEDICATED_HOST_REPO }}
       GH_TOKEN: ${{ github.token }}
     steps:
+      - name: Refuse non-default-branch dispatch (no silent skip)
+        run: |
+          set -euo pipefail
+          test "${GITHUB_EVENT_NAME:-}" = "workflow_dispatch" || { echo "::error::Manual dispatch required"; exit 1; }
+          test "${GITHUB_REF:-}" = "refs/heads/main" || { echo "::error::Protected default-branch dispatch required"; exit 1; }
+          test "${GITHUB_REPOSITORY:-}" = "acecog1/ACECOG-CivicOS" || { echo "::error::Unexpected preflight repository"; exit 1; }
       - name: Refuse absent/contradictory/unauthorized attestation before checkout
         run: |
           set -euo pipefail
