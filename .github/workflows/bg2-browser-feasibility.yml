@@ -16,6 +16,17 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Pull-request event GITHUB_SHA may identify a generated merge commit.
+          # Check out the actual candidate SOURCE HEAD for truthful provenance.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Verify checkout is exact candidate source, not merge-ref SHA
+        env:
+          SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SOURCE_HEAD"
       - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
@@ -31,9 +42,30 @@ jobs:
       - name: Extract and verify source-only browser distribution
         run: |
           python scripts/build_browser_lab.py
-          python -m pytest -q tests/test_browser_lab_bundle.py tests/test_browser_runtime_pins.py
+          python -m pytest -q tests/test_browser_lab_bundle.py tests/test_browser_runtime_pins.py tests/test_bg2_package.py
       - name: Vendor pinned Pyodide+SciPy into local static artifacts
         run: python scripts/vendor_browser_pyodide.py
+      - name: Package isolated fully hashed BG-2 review artifact without publishing
+        env:
+          SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SOURCE_HEAD"
+          mkdir -p build/bg2-artifacts
+          python scripts/package_bg2_candidate.py build \
+            --source-sha "$SOURCE_HEAD" \
+            --vendor-source build/browser-lab/vendor/pyodide \
+            --output "build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+          python scripts/package_bg2_candidate.py verify \
+            --source-sha "$SOURCE_HEAD" \
+            --output "build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+          sha256sum "build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+      - name: Upload reproducible independent-review ZIP (NEVER Pages deployment)
+        uses: actions/upload-artifact@v7
+        with:
+          name: bg2-review-only-${{ github.event.pull_request.head.sha || github.sha }}
+          path: build/bg2-artifacts/bg2-review-*.zip
+          if-no-files-found: error
       - name: Prepare fixed native SciPy comparison evidence (not public)
         run: |
           python - <<'PY'
