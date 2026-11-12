@@ -128,6 +128,7 @@ def main():
     for name,obj in [("bg2-sbom.cdx.json",sbom),
                      ("bg2-license-disposition.json",disposition)]:
         (args.output_dir/name).write_text(json.dumps(obj,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    print("Undetermined wheel licenses:",json.dumps(disposition["undetermined_license_items"],sort_keys=True))
     print("SBOM package count:",disposition["package_count"],
           "unknown license items:",len(disposition["undetermined_license_items"]),
           "independent license disposition: PENDING")
