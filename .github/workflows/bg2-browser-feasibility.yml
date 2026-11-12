@@ -186,7 +186,7 @@ jobs:
             build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json \
             build/bg2-evidence/publisher-root-verification.json \
             build/bg2-evidence/bg2-sbom.cdx.json \
-            build/bg2-evidence/bg2-license-disposition.json
+            build/bg2-evidence/bg2-license-disposition.json \
             build/bg2-evidence/bg2-exact-wheel-notice-probe.json; do
             if test -f "$file"; then cp "$file" build/bg2-release-evidence/; fi
           done
