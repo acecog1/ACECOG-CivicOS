@@ -15,6 +15,8 @@ from pathlib import Path
 import re
 import sys
 import urllib.request
+import urllib.error
+import time
 
 VERSION = "314.0.7"
 PINNED_LOCK_SHA256 = "5dc2fc119108bc148c7457dc86e7675b5c87e1cafd420b9c34c1eaef7b36c010"
@@ -58,13 +60,24 @@ def download(name: str, destination: Path, expected_sha: str | None = None) -> s
     req = urllib.request.Request(UPSTREAM + name, headers={"User-Agent":"ACECOG-Pyodide-vendor-PoC"})
     # nosec B310: req URL is a fixed HTTPS allowlist host plus validated filename;
     # redirects are checked against that same host and versioned path before use.
-    with urllib.request.urlopen(req, timeout=60) as response:  # nosec B310
-        from urllib.parse import urlsplit
-        final = urlsplit(response.geturl())
-        if (final.scheme != "https" or final.hostname != "cdn.jsdelivr.net"
-                or final.path != f"/pyodide/v{VERSION}/full/{name}"):
-            raise RuntimeError("Unexpected upstream redirect")
-        data = response.read(MAX_DOWNLOAD + 1)
+    # Retry only transient network transport failures against the SAME pinned
+    # version/HTTPS origin. Never retry checksum, redirect or content failures.
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=45) as response:  # nosec B310
+                from urllib.parse import urlsplit
+                final = urlsplit(response.geturl())
+                if (final.scheme != "https" or final.hostname != "cdn.jsdelivr.net"
+                        or final.path != f"/pyodide/v{VERSION}/full/{name}"):
+                    raise RuntimeError("Unexpected upstream redirect")
+                data = response.read(MAX_DOWNLOAD + 1)
+            break
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+            if attempt == 2:
+                raise RuntimeError(
+                    f"Pinned upstream HTTPS asset unavailable after bounded retries: {name}"
+                ) from exc
+            time.sleep(1 << attempt)
     if len(data) > MAX_DOWNLOAD:
         raise RuntimeError(f"Upstream asset oversized: {name}")
     observed = hashlib.sha256(data).hexdigest()
