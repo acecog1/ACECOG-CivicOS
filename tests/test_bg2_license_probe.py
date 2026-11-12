@@ -50,3 +50,40 @@ def test_empty_or_missing_dependency_set_rejected(tmp_path,monkeypatch):
     state["packages"]=[]
     with pytest.raises(RuntimeError,match="Incomplete"):
         probe.probe(folder)
+
+
+def test_pinned_review_packet_contains_exact_notice_sbom_and_fails_on_tamper(tmp_path,monkeypatch):
+    import json
+    from scripts import package_bg2_candidate as pack
+    folder,wheel,state=_wheel(tmp_path,monkeypatch)
+    state["root_lock_sha256"]=vendor.PINNED_LOCK_SHA256
+    site=tmp_path/"site"
+    (site/"vendor").mkdir()
+    # The actual vendor directory must live within this source-relative site.
+    folder.rename(site/"vendor"/"pyodide")
+    folder=site/"vendor"/"pyodide"
+    monkeypatch.setattr(pack.license_sbom, "build_inventory",
+                        lambda _folder:({"bomFormat":"CycloneDX","specVersion":"1.6"},
+                                       {"acceptance":"HOLD","package_count":1}))
+    pack._make_unapproved_license_packet(site)
+    files=pack._listed_files(site)
+    names={
+      "third_party/bg2-exact-wheel-notice-probe.json":"license_probe_sha256",
+      "third_party/bg2-sbom.cdx.json":"sbom_sha256",
+      "third_party/bg2-license-disposition.json":"license_disposition_sha256",
+      "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt":"notices_candidate_sha256"
+    }
+    manifest={key:pack.sha256(files[path]) for path,key in names.items()}
+    manifest["license_sbom_approved"]=False
+    pack._verify_unapproved_license_packet(files,manifest,state)
+    bad=dict(files)
+    bad.pop("third_party/bg2-sbom.cdx.json")
+    with pytest.raises(RuntimeError,match="third-party notice evidence"):
+        pack._verify_unapproved_license_packet(bad,manifest,state)
+    bad=dict(files)
+    bad["third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"]+=b"unauthorized notice"
+    with pytest.raises(RuntimeError,match="mismatched pinned notice"):
+        pack._verify_unapproved_license_packet(bad,manifest,state)
+    assert b"NOT AN APPROVED NOTICE SET" in files["third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"]
+    probe_receipt=json.loads(files["third_party/bg2-exact-wheel-notice-probe.json"])
+    assert probe_receipt["wheels"][0]["wheel_sha256"]==state["files_sha256"][wheel.name]
