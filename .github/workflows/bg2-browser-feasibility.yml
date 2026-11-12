@@ -38,7 +38,7 @@ jobs:
           pip install -r requirements-ci.txt
           npm ci --prefix scripts/site_checks
           cd scripts/site_checks
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium firefox webkit
       - name: Extract and verify source-only browser distribution
         run: |
           python scripts/build_browser_lab.py
@@ -118,6 +118,21 @@ jobs:
           python -m http.server 8781 --bind 127.0.0.1 --directory build/bg2-served > /tmp/browser-lab-server.log 2>&1 &
           sleep 2
           node --test scripts/site_checks/browser_sovereign.test.cjs
+      - name: R2 cross-engine real WASM qualification against verified artifact
+        run: |
+          set -euo pipefail
+          for engine in chromium firefox webkit; do
+            BG2_BROWSER="$engine" \
+            BG2_QUAL_REPORT="build/bg2-evidence/bg2-r2-$engine.json" \
+            node --test scripts/site_checks/bg2_qualify.test.cjs
+          done
+      - name: Upload BG-2 browser timing/network/axe qualification evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: bg2-r2-browser-qualification-${{ github.event.pull_request.head.sha || github.sha }}
+          path: build/bg2-evidence/bg2-r2-*.json
+          if-no-files-found: warn
       - name: Inventory exact observed source and core root hashes — NOT release pins
         if: always()
         run: |

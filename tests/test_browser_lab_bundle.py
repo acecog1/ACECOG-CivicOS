@@ -36,6 +36,9 @@ def test_static_bundle_is_self_hosted_and_source_pinned(tmp_path):
     assert "worker-src 'self'" in html
     assert "connect-src 'self'" in html
     assert "without legal effect" in html.lower()
+    for disclosure in ("visitor-controlled simulation", "no legal or municipal authority",
+                       "not a fork of BG-1", "not independently authenticated institutional records"):
+        assert disclosure in html
     assert not (target/"api").exists()
     code = (target/"lab.js").read_text(encoding="utf-8")
     assert "window.AcecogBrowserLab.fetch" in code

@@ -87,6 +87,10 @@
     const record={
       format:"ACECOG-LOCAL-EXPERIMENT-EVIDENCE-v0.2",
       scope:"FICTIONAL_LOCAL_ONLY_NO_LEGAL_EFFECT",
+      simulation_control:"FICTIONAL_VISITOR_CONTROLLED",
+      legal_or_municipal_authority:"NONE",
+      canonical_279_event_fork:false,
+      institutional_record_independently_authenticated:false,
       source_note:"Abbreviated synthetic Riverbend fixture; NOT a canonical 279-event fork",
       seed_last_selected:latest.seed,
       ...latest.payload,
@@ -120,6 +124,10 @@
     if (!latest) return;
     const recipe=JSON.stringify({
       format:"ACECOG-LOCAL-SCENARIO-RECIPE-v0.2",
+      simulation_control:"FICTIONAL_VISITOR_CONTROLLED",
+      legal_or_municipal_authority:"NONE",
+      canonical_279_event_fork:false,
+      institutional_record_independently_authenticated:false,
       limitation:"Synthetic fixture, not a shareable link or canonical Riverbend fork",
       assumptions:latest.payload.alternative.inputs,
       expected_chain_head:latest.payload.alternative.chain_head,

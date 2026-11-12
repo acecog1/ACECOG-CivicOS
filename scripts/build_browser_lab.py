@@ -23,7 +23,7 @@ STATIC = ROOT / "scripts" / "browser_lab"
 BROWSER_COPIES = {
     "Development preview only.": "Browser-only synthetic laboratory.",
     "This local application is not the public beta or an official civic service.":
-        "This is a fictional, advisory simulation without legal effect; it does not represent any real government.",
+        "This is a fictional, visitor-controlled simulation with no legal or municipal authority. It does not represent a real government; it is not a fork of BG-1's canonical 279-event history. Exported results are not independently authenticated institutional records.",
     "A local Python process runs": "Your browser runs",
     "Local development evidence only · No telemetry, real civic records or external API calls. No public sharing service.":
         "Browser-only civic laboratory · No simulation requests leave this device. Static hosting still receives ordinary page requests. No accounts, cookies, real civic records, or public sharing service.",
