@@ -79,9 +79,28 @@ jobs:
               json.dumps(result,sort_keys=True),encoding="utf-8")
           print("Native funded reference, solver:",result["alternative"]["optimization"]["solver_config"])
           PY
-      - name: Test actual local-only WebAssembly simulator in Chromium
+      - name: Verify and stage the packaged ZIP itself for browser tests
         run: |
-          python -m http.server 8781 --bind 127.0.0.1 --directory build/browser-lab > /tmp/browser-lab-server.log 2>&1 &
+          set -euo pipefail
+          SOURCE_HEAD="$(git rev-parse HEAD)"
+          ARCHIVE="build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+          python scripts/package_bg2_candidate.py verify --source-sha "$SOURCE_HEAD" --output "$ARCHIVE"
+          python - "$ARCHIVE" <<'PY'
+          import sys
+          from pathlib import Path
+          from zipfile import ZipFile
+          archive=Path(sys.argv[1])
+          target=Path("build/bg2-served")
+          if target.exists():
+              raise SystemExit("Refuse stale BG-2 browser content")
+          target.mkdir(parents=True)
+          with ZipFile(archive) as z:
+              z.extractall(target)
+          print("Chromium tests will serve ONLY verified ZIP bytes:", archive)
+          PY
+      - name: Test the verified packaged WebAssembly artifact in Chromium
+        run: |
+          python -m http.server 8781 --bind 127.0.0.1 --directory build/bg2-served > /tmp/browser-lab-server.log 2>&1 &
           sleep 2
           node --test scripts/site_checks/browser_sovereign.test.cjs
       - name: Inventory exact observed source and core root hashes — NOT release pins
