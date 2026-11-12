@@ -8,11 +8,26 @@
   let lastSeed = null;
   let busy = false;
   let inputRevision = 0;
+  let progressTicker = null;
 
   // Freeze all scenario-changing controls for a single in-flight run or random
   // selection. Run/history/export consumers get a distinct busy event.
   function setBusy(value) {
     busy = value;
+    if (progressTicker !== null) {
+      clearInterval(progressTicker);
+      progressTicker = null;
+    }
+    if (value) {
+      const started = Date.now();
+      progressTicker = setInterval(() => {
+        if (!busy) return;
+        const seconds = Math.floor((Date.now() - started) / 1000);
+        setStatus("Still preparing the local WebAssembly simulation (" + seconds +
+          " seconds). Inputs remain locked. If it fails, reload the page to retry. " +
+          "No civic records are changed.", false);
+      }, 15000);
+    }
     document.querySelectorAll('#lab-form input, #lab-form button, [data-preset], #run-history button')
       .forEach(el => { el.disabled = value; });
     $("lab-form").setAttribute("aria-busy", String(value));
@@ -73,8 +88,11 @@
     host.replaceChildren();
     config.voters.forEach((actor) => {
       const row = add("div", host, null, "vote-row");
-      add("span", row, displayNames[actor] || actor, "vote-name");
+      const person = add("span", row, displayNames[actor] || actor, "vote-name");
+      person.id = "vote-person-" + actor;
       const options = add("div", row, null, "vote-options");
+      options.setAttribute("role", "radiogroup");
+      options.setAttribute("aria-labelledby", person.id);
       ["yes", "no", "abstain"].forEach((choice) => {
         const label = add("label", options, null, "vote-choice");
         const input = add("input", label);
@@ -86,7 +104,10 @@
       });
     });
     const row = add("div", host, null, "vote-row");
-    add("span", row, displayNames[config.recused] || config.recused, "vote-name");
+    const recusedName = displayNames[config.recused] || config.recused;
+    row.setAttribute("role", "note");
+    row.setAttribute("aria-label", recusedName + " — recused, voting prohibited");
+    add("span", row, recusedName, "vote-name");
     add("span", row, "Recused — voting prohibited", "recused");
   }
 
@@ -242,7 +263,9 @@
       document.dispatchEvent(new CustomEvent("acecog:result", {detail:{payload:result,seed:seedForRun}}));
       setStatus("Run complete. No public records or real civic actions were changed.", false);
     } catch (err) {
-      setStatus(err.message || "The local simulation failed. No result was accepted.", true);
+      setStatus((err.message || "The local simulation failed.") +
+        " No result was accepted or exported. Restore defaults and run again; " +
+        "if the WebAssembly worker did not start, reload this page to retry.", true);
     } finally {
       if (started) setBusy(false);
     }
@@ -271,7 +294,8 @@
         ". Select Run to compute the effect; the solver itself remains deterministic.";
       setStatus("New reproducible inputs selected, not yet run.", false);
     } catch (err) {
-      setStatus(err.message || "Randomization unavailable. No inputs changed.", true);
+      setStatus((err.message || "Randomization unavailable.") +
+        " No inputs changed. Retry or reload this page.", true);
     } finally {
       if (started) setBusy(false);
     }
@@ -296,7 +320,8 @@
         setStatus("Reference assumptions restored. Select Run to compare again.", false);
       });
     } catch (err) {
-      setStatus("Local engine unavailable: " + err.message, true);
+      setStatus("Local engine unavailable: " + err.message +
+        ". Reload this page to retry. No public records can be changed here.", true);
       $("run").disabled = true;
     }
   }

@@ -1,0 +1,53 @@
+{
+  "schema": "ACECOG-BG2-UPSTREAM-LICENSE-SOURCES-v0.1",
+  "retrieved_utc_date": "2026-11-12",
+  "purpose": "Source text audit aid; NOT a completed redistribution packet",
+  "version_caveat": "Pyodide 314.0.7 runtime and exact SciPy wheel compiled component attribution/CPython micro-version still independently unverified; raw upstream license files alone do not establish distribution compliance.",
+  "independent_reviewer_signoff": "PENDING",
+  "records": [
+    {
+      "id": "Pyodide MPL 2.0",
+      "upstream_repo": "pyodide/pyodide",
+      "upstream_tag": "314.0.7",
+      "upstream_commit": "b1e4fcc2488962f6360a97f19b9982d6fdb5d16f",
+      "upstream_path": "LICENSE",
+      "upstream_blob_sha1": "a612ad9813b006ce81d1ee438dd784da99a54007",
+      "dest": "docs/evidence/bg2-license-sources/pyodide-MPL-2.0-LICENSE.txt",
+      "pin_rule": "Git blob SHA-1, SHA-256 generated/verified from candidate bytes",
+      "notice_status": "CANDIDATE_REQUIRES_INDEPENDENT_LICENSE_AND_APPLICABILITY_REVIEW"
+    },
+    {
+      "id": "SciPy BSD-3-Clause",
+      "upstream_repo": "scipy/scipy",
+      "upstream_tag": "v1.18.0",
+      "upstream_commit": "54ef5423f2e4376230ec3bfda6912a07a50958e3",
+      "upstream_path": "LICENSE.txt",
+      "upstream_blob_sha1": "1032aece8a8109d67f238de6865d8b08e750a8c0",
+      "dest": "docs/evidence/bg2-license-sources/scipy-1.18.0-LICENSE.txt",
+      "pin_rule": "Git blob SHA-1, SHA-256 generated/verified from candidate bytes",
+      "notice_status": "CANDIDATE_REQUIRES_INDEPENDENT_LICENSE_AND_APPLICABILITY_REVIEW"
+    },
+    {
+      "id": "SciPy source-bundled notices index",
+      "upstream_repo": "scipy/scipy",
+      "upstream_tag": "v1.18.0",
+      "upstream_commit": "54ef5423f2e4376230ec3bfda6912a07a50958e3",
+      "upstream_path": "LICENSES_bundled.txt",
+      "upstream_blob_sha1": "68d75f62d9395b91f430df687fae2e278af6d0c4",
+      "dest": "docs/evidence/bg2-license-sources/scipy-1.18.0-LICENSES_bundled.txt",
+      "pin_rule": "Git blob SHA-1, SHA-256 generated/verified from candidate bytes",
+      "notice_status": "CANDIDATE_REQUIRES_INDEPENDENT_LICENSE_AND_APPLICABILITY_REVIEW"
+    },
+    {
+      "id": "CPython 3.14.0 PSF license stack",
+      "upstream_repo": "python/cpython",
+      "upstream_tag": "v3.14.0",
+      "upstream_commit": "ebf955df7a89ed0c7968f79faec1de49f61ed7cb",
+      "upstream_path": "LICENSE",
+      "upstream_blob_sha1": "20cf39097c68baa17cc566b64e76d34ebf034044",
+      "dest": "docs/evidence/bg2-license-sources/cpython-3.14.0-LICENSE.txt",
+      "pin_rule": "Git blob SHA-1, SHA-256 generated/verified from candidate bytes",
+      "notice_status": "CANDIDATE_REQUIRES_INDEPENDENT_LICENSE_AND_APPLICABILITY_REVIEW"
+    }
+  ]
+}
