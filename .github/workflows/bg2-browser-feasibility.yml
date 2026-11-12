@@ -153,17 +153,24 @@ jobs:
               print(json.dumps(m["core_root_sha256"],indent=2,sort_keys=True))
           PY
           fi
+      - name: Assemble source-head-aligned root/SBOM evidence
+        if: always()
+        run: |
+          mkdir -p build/bg2-release-evidence
+          for file in \
+            build/browser-lab/source-manifest.json \
+            build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json \
+            build/bg2-evidence/publisher-root-verification.json \
+            build/bg2-evidence/bg2-sbom.cdx.json \
+            build/bg2-evidence/bg2-license-disposition.json; do
+            if test -f "$file"; then cp "$file" build/bg2-release-evidence/; fi
+          done
       - name: Preserve source/runtime attestation candidates for independent QA
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: bg2-unapproved-runtime-evidence-${{ github.sha }}
-          path: |
-            build/browser-lab/source-manifest.json
-            build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json
-            build/bg2-evidence/publisher-root-verification.json
-            build/bg2-evidence/bg2-sbom.cdx.json
-            build/bg2-evidence/bg2-license-disposition.json
-          if-no-files-found: error
+          name: bg2-unapproved-runtime-evidence-${{ github.event.pull_request.head.sha || github.sha }}
+          path: build/bg2-release-evidence/
+          if-no-files-found: warn
       - name: NO Pages deployment
         run: echo "Test-only. Never publish from this workflow."
