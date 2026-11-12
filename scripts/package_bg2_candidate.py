@@ -22,9 +22,19 @@ from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 if __package__:
     from scripts import build_browser_lab as source
     from scripts import vendor_browser_pyodide as runtime
+    from scripts import bg2_license_probe as license_probe
+    from scripts import build_bg2_sbom as license_sbom
+    from scripts import bg2_license_texts as license_texts
 else:
     import build_browser_lab as source
     import vendor_browser_pyodide as runtime
+    # Direct CLI invocation needs the repository root for sibling packages
+    # whose own imports use the canonical scripts.* module path.
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from scripts import bg2_license_probe as license_probe
+    from scripts import build_bg2_sbom as license_sbom
+    from scripts import bg2_license_texts as license_texts
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "ACECOG-BG2-STATIC-REVIEW-PACK-v1"
@@ -76,6 +86,13 @@ def _build_input_paths() -> tuple[str, ...]:
         "scripts/package_bg2_candidate.py",
         "scripts/verify_bg2_upstream.py",
         "scripts/build_bg2_sbom.py",
+        "scripts/bg2_license_probe.py",
+        "scripts/bg2_license_texts.py",
+        "docs/evidence/bg2-license-upstream-sources-v0.1.json",
+        "docs/evidence/bg2-license-sources/pyodide-MPL-2.0-LICENSE.txt",
+        "docs/evidence/bg2-license-sources/scipy-1.18.0-LICENSE.txt",
+        "docs/evidence/bg2-license-sources/scipy-1.18.0-LICENSES_bundled.txt",
+        "docs/evidence/bg2-license-sources/cpython-3.14.0-LICENSE.txt",
         "scripts/bg2_stage.py",
         "docs/evidence/bg2-pyodide-core-candidate-pins-v1.json",
     }
@@ -122,7 +139,7 @@ def _verify_checkout_against_package(payload: dict[str, bytes],
         source.build(dest)
         rebuilt = _listed_files(dest)
         archived = {name:data for name,data in payload.items()
-                    if not name.startswith("vendor/pyodide/")}
+                    if not name.startswith(("vendor/pyodide/","third_party/"))}
         if rebuilt != archived:
             raise RuntimeError("Packaged application differs from reproducible Git source")
 
@@ -148,7 +165,8 @@ def _verify_source_inventory(files: dict[str, bytes], manifest: dict) -> None:
     source_files = manifest.get("files")
     if not isinstance(source_files, dict) or not source_files:
         raise RuntimeError("Missing source-file inventory")
-    unvendored = {name for name in files if not name.startswith("vendor/pyodide/")}
+    unvendored = {name for name in files
+                  if not name.startswith(("vendor/pyodide/","third_party/"))}
     if unvendored != set(source_files) | {"source-manifest.json"}:
         raise RuntimeError("Unlisted or missing browser application asset")
     for name, expected in source_files.items():
@@ -181,6 +199,109 @@ def _verify_runtime_inventory(files: dict[str, bytes], manifest: dict) -> None:
     if (manifest.get("root_lock_sha256") != runtime.PINNED_LOCK_SHA256 or
             inventory.get("pyodide-lock.json") != runtime.PINNED_LOCK_SHA256):
         raise RuntimeError("Unrecognized packaged runtime lock")
+
+
+def _make_unapproved_license_packet(site: Path) -> None:
+    """User-accessible *evidence* in pinned review ZIP, not a legal notice grant.
+
+    Every contained wheel is verified against the Pyodide lock and inspected
+    for real embedded notices. Absent SciPy/CPython/full MPL notices remain
+    prominently unresolved. Distribution is permanently blocked until review.
+    """
+    root = site/"vendor"/"pyodide"
+    inspection = license_probe.probe(root)
+    sbom, disposition = license_sbom.build_inventory(root)
+    if (disposition.get("acceptance") != "HOLD" or
+            inspection.get("release_licensing_acceptance") != "HOLD"):
+        raise RuntimeError("License review must remain explicitly unapproved")
+    folder = site/"third_party"
+    folder.mkdir(parents=True)
+    license_texts.copy_verified(ROOT,folder)
+    (folder/"bg2-exact-wheel-notice-probe.json").write_text(
+        json.dumps(inspection,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    (folder/"bg2-sbom.cdx.json").write_text(
+        json.dumps(sbom,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    (folder/"bg2-license-disposition.json").write_text(
+        json.dumps(disposition,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    text = [
+        "ACECOG BG-2 — THIRD PARTY LICENSE EVIDENCE / NOT AN APPROVED NOTICE SET",
+        "Public release prohibited: source, bundled components and redistribution",
+        "conditions remain for independent qualified review.",
+        "",
+        "Runtime: Pyodide "+runtime.VERSION+" (MPL-2.0 and included CPython);",
+        "root lock SHA-256: "+runtime.PINNED_LOCK_SHA256,
+        "This fixture is fictional, visitor controlled, and not BG-1's 279-event fork.",
+        "",
+        "Exact-version upstream source reference links (review pending):"
+    ]
+    for label,url in sorted(inspection["source_of_truth_links"].items()):
+        text.extend([label, url])
+    text.extend(["", "Actual vendored wheel contents and license evidence:"])
+    for wheel in inspection["wheels"]:
+        text.extend(["", wheel["name"]+" "+wheel["version"],
+                     "Wheel SHA-256 "+wheel["wheel_sha256"],
+                     "Source package page "+wheel["source_package_page"],
+                     "Wheel METADATA license expression: "+
+                     (wheel["license_expression_from_wheel"] or "UNDETERMINED"),
+                     "Embedded wheel notice count "+
+                     str(len(wheel["embedded_notice_files"]))])
+        for filename,info in sorted(wheel["embedded_notice_files"].items()):
+            text.extend(["", "=== "+filename+" ===",
+                         info["embedded_notice_utf8"] or
+                         "Non-UTF8 or binary notice: consult wheel hash and extraction record"])
+    text.extend(["", "Full upstream versioned license SOURCE texts are in the",
+                 "third_party/upstream_license_sources/ directory, with exact Git",
+                 "blob provenance in third_party/LICENSE_SOURCE_PROVENANCE.json.",
+                 "Applicability to compiled WASM/wheel binaries is still unverified.",
+                 "", "CRITICAL UNRESOLVED REDISTRIBUTION REQUIREMENTS:"])
+    text.extend("* "+item for item in inspection["still_missing"])
+    text.extend(["", "No independent license or pinset approval was granted."])
+    (folder/"THIRD_PARTY_NOTICES_CANDIDATE.txt").write_text(
+        "\n".join(text)+"\n",encoding="utf-8")
+
+
+def _verify_unapproved_license_packet(files: dict[str,bytes],
+                                      manifest: dict, wasm: dict) -> None:
+    """Pinned review candidates must include complete inspectable evidence.
+
+    Presence is NOT qualified licensing approval: the release status stays HOLD.
+    """
+    keys = {
+        "third_party/bg2-exact-wheel-notice-probe.json":"license_probe_sha256",
+        "third_party/bg2-sbom.cdx.json":"sbom_sha256",
+        "third_party/bg2-license-disposition.json":"license_disposition_sha256",
+        "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt":"notices_candidate_sha256",
+    }
+    source_paths=license_texts.verify_packet(files)
+    keys["third_party/LICENSE_SOURCE_PROVENANCE.json"]="upstream_source_manifest_sha256"
+    for name in source_paths:
+        if name!="third_party/LICENSE_SOURCE_PROVENANCE.json":
+            keys[name]=None
+    if set(n for n in files if n.startswith("third_party/")) != set(keys):
+        raise RuntimeError("Incomplete/extra third-party notice evidence in pinned package")
+    for path,field in keys.items():
+        expected=(manifest.get(field) if field else manifest.get("file_sha256",{}).get(path))
+        if expected != sha256(files[path]):
+            raise RuntimeError("Missing/mismatched pinned notice/SBOM evidence: "+path)
+    if "NOT AN APPROVED NOTICE SET" not in files[
+            "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"].decode("utf-8"):
+        raise RuntimeError("Missing explicit redistribution HOLD")
+    probe = json.loads(files["third_party/bg2-exact-wheel-notice-probe.json"])
+    sbom = json.loads(files["third_party/bg2-sbom.cdx.json"])
+    status = json.loads(files["third_party/bg2-license-disposition.json"])
+    if (probe.get("release_licensing_acceptance") != "HOLD" or
+            probe.get("pyodide_lock_sha256") != wasm.get("root_lock_sha256") or
+            len(probe.get("wheels",[])) != len(wasm.get("packages",[])) or
+            sbom.get("bomFormat") != "CycloneDX" or
+            status.get("acceptance") != "HOLD" or
+            status.get("package_count") != len(wasm.get("packages",[]))):
+        raise RuntimeError("Incomplete or falsely approved license packet")
+    hashes = wasm.get("files_sha256",{})
+    actual = {w["wheel"]:w["wheel_sha256"] for w in probe["wheels"]}
+    if any(hashes.get(name) != digest for name,digest in actual.items()):
+        raise RuntimeError("Notice inventory is not bound to actual locked wheel bytes")
+    if manifest.get("license_sbom_approved") is not False:
+        raise RuntimeError("Do not infer legal approval from notice evidence")
 
 
 def verify_review_zip(path: Path, expected_sha: str | None = None) -> dict:
@@ -222,6 +343,10 @@ def verify_review_zip(path: Path, expected_sha: str | None = None) -> dict:
         raise RuntimeError("Git checkout/source manifest/release identity mismatch")
     _verify_source_inventory(payload, src)
     _verify_runtime_inventory(payload, wasm)
+    if wasm.get("core_root_status") == "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA":
+        _verify_unapproved_license_packet(payload,manifest,wasm)
+    elif any(k.startswith("third_party/") for k in payload):
+        raise RuntimeError("Unpinned feasibility candidate may not claim notice packet")
     if (wasm.get("core_root_status") not in (
             "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA",
             "UNPINNED_OBSERVED_ONLY_BLOCK_RELEASE") or
@@ -260,6 +385,8 @@ def build_candidate(output: Path, expected_sha: str, vendor_source: Path) -> dic
         source.build(site)
         shutil.copytree(vendor_source, site/"vendor"/"pyodide")
         runtime_manifest = runtime.verify_vendor_directory(site/"vendor"/"pyodide")
+        if runtime_manifest.get("core_root_status") == "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA":
+            _make_unapproved_license_packet(site)
         files = _listed_files(site)
         src_manifest = json.loads(files["source-manifest.json"])
         if src_manifest.get("source_revision") != sha:
@@ -276,6 +403,11 @@ def build_candidate(output: Path, expected_sha: str, vendor_source: Path) -> dic
             "source_manifest_sha256":digests["source-manifest.json"],
             "runtime_manifest_sha256":digests["vendor/pyodide/acecog-runtime-manifest.json"],
             "runtime_pin_status":runtime_manifest["core_root_status"],
+            "license_probe_sha256":digests.get("third_party/bg2-exact-wheel-notice-probe.json"),
+            "sbom_sha256":digests.get("third_party/bg2-sbom.cdx.json"),
+            "license_disposition_sha256":digests.get("third_party/bg2-license-disposition.json"),
+            "notices_candidate_sha256":digests.get("third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"),
+            "upstream_source_manifest_sha256":digests.get("third_party/LICENSE_SOURCE_PROVENANCE.json"),
             "scenario_kind":src_manifest["scenario_kind"],
             "artifact_tree_sha256":sha256(canonical(digests)),
             "file_sha256":digests,

@@ -113,6 +113,13 @@ def build(dest: Path = DEST) -> None:
         "<p class=\"subtle\">Select <strong>Run with CivicOS engine</strong> to compare the embedded synthetic reference fixture with your alternative.",
         "index.html",
     )
+    html = replace_one(
+        html, '<footer class="container subtle">',
+        '<footer class="container subtle">'
+        '<a href="./third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt">'
+        'Third-party license source evidence (NOT YET APPROVED)</a> · ',
+        "index.html",
+    )
     (dest / "index.html").write_text(html, encoding="utf-8")
     js = (PUBLIC / "lab.js").read_text(encoding="utf-8")
     js = replace_one(
