@@ -94,12 +94,24 @@ jobs:
           set -euo pipefail
           python scripts/package_bg2_candidate.py verify --source-sha "$EXPECTED_SHA" --output "build/bg2-controlled/bg2-review-$EXPECTED_SHA.zip"
           python - <<'PY'
-          import json,os
+          import hashlib,json,os
           from pathlib import Path
           from zipfile import ZipFile
           base=Path("build/bg2-controlled")
           with ZipFile(base/f"bg2-review-{os.environ['EXPECTED_SHA']}.zip") as z:
               receipt=json.loads(z.read("release-manifest.json"))
+              required={
+                "third_party/bg2-exact-wheel-notice-probe.json":"license_probe_sha256",
+                "third_party/bg2-sbom.cdx.json":"sbom_sha256",
+                "third_party/bg2-license-disposition.json":"license_disposition_sha256",
+                "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt":"notices_candidate_sha256",
+              }
+              for name,field in required.items():
+                  assert hashlib.sha256(z.read(name)).hexdigest()==receipt[field]
+              assert hashlib.sha256(z.read(
+                  "third_party/bg2-sbom.cdx.json")).hexdigest()==os.environ["APPROVED_SBOM_HASH"]
+              assert b"NOT AN APPROVED NOTICE SET" in z.read(
+                  "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt")
           sbom=json.loads((base/"bg2-sbom.cdx.json").read_text())
           root=json.loads((base/"publisher-root-verification.json").read_text())
           assert receipt["source_revision"]==os.environ["EXPECTED_SHA"]
