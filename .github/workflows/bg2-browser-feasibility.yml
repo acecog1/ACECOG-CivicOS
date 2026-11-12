@@ -126,6 +126,10 @@ jobs:
             BG2_QUAL_REPORT="build/bg2-evidence/bg2-r2-$engine.json" \
             node --test scripts/site_checks/bg2_qualify.test.cjs
           done
+      - name: R2 controlled worker failure, page reload and throttled-network Chromium
+        run: |
+          BG2_RESILIENCE_REPORT=build/bg2-evidence/bg2-r2-resilience.json \
+          node --test scripts/site_checks/bg2_resilience.test.cjs
       - name: Upload BG-2 browser timing/network/axe qualification evidence
         if: always()
         uses: actions/upload-artifact@v7
