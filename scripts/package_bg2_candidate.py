@@ -24,6 +24,7 @@ if __package__:
     from scripts import vendor_browser_pyodide as runtime
     from scripts import bg2_license_probe as license_probe
     from scripts import build_bg2_sbom as license_sbom
+    from scripts import bg2_license_texts as license_texts
 else:
     import build_browser_lab as source
     import vendor_browser_pyodide as runtime
@@ -33,6 +34,7 @@ else:
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     from scripts import bg2_license_probe as license_probe
     from scripts import build_bg2_sbom as license_sbom
+    from scripts import bg2_license_texts as license_texts
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "ACECOG-BG2-STATIC-REVIEW-PACK-v1"
@@ -85,6 +87,12 @@ def _build_input_paths() -> tuple[str, ...]:
         "scripts/verify_bg2_upstream.py",
         "scripts/build_bg2_sbom.py",
         "scripts/bg2_license_probe.py",
+        "scripts/bg2_license_texts.py",
+        "docs/evidence/bg2-license-upstream-sources-v0.1.json",
+        "docs/evidence/bg2-license-sources/pyodide-MPL-2.0-LICENSE.txt",
+        "docs/evidence/bg2-license-sources/scipy-1.18.0-LICENSE.txt",
+        "docs/evidence/bg2-license-sources/scipy-1.18.0-LICENSES_bundled.txt",
+        "docs/evidence/bg2-license-sources/cpython-3.14.0-LICENSE.txt",
         "scripts/bg2_stage.py",
         "docs/evidence/bg2-pyodide-core-candidate-pins-v1.json",
     }
@@ -208,6 +216,7 @@ def _make_unapproved_license_packet(site: Path) -> None:
         raise RuntimeError("License review must remain explicitly unapproved")
     folder = site/"third_party"
     folder.mkdir(parents=True)
+    license_texts.copy_verified(ROOT,folder)
     (folder/"bg2-exact-wheel-notice-probe.json").write_text(
         json.dumps(inspection,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     (folder/"bg2-sbom.cdx.json").write_text(
@@ -240,7 +249,11 @@ def _make_unapproved_license_packet(site: Path) -> None:
             text.extend(["", "=== "+filename+" ===",
                          info["embedded_notice_utf8"] or
                          "Non-UTF8 or binary notice: consult wheel hash and extraction record"])
-    text.extend(["", "CRITICAL UNRESOLVED REDISTRIBUTION REQUIREMENTS:"])
+    text.extend(["", "Full upstream versioned license SOURCE texts are in the",
+                 "third_party/upstream_license_sources/ directory, with exact Git",
+                 "blob provenance in third_party/LICENSE_SOURCE_PROVENANCE.json.",
+                 "Applicability to compiled WASM/wheel binaries is still unverified.",
+                 "", "CRITICAL UNRESOLVED REDISTRIBUTION REQUIREMENTS:"])
     text.extend("* "+item for item in inspection["still_missing"])
     text.extend(["", "No independent license or pinset approval was granted."])
     (folder/"THIRD_PARTY_NOTICES_CANDIDATE.txt").write_text(
@@ -259,10 +272,16 @@ def _verify_unapproved_license_packet(files: dict[str,bytes],
         "third_party/bg2-license-disposition.json":"license_disposition_sha256",
         "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt":"notices_candidate_sha256",
     }
+    source_paths=license_texts.verify_packet(files)
+    keys["third_party/LICENSE_SOURCE_PROVENANCE.json"]="upstream_source_manifest_sha256"
+    for name in source_paths:
+        if name!="third_party/LICENSE_SOURCE_PROVENANCE.json":
+            keys[name]=None
     if set(n for n in files if n.startswith("third_party/")) != set(keys):
         raise RuntimeError("Incomplete/extra third-party notice evidence in pinned package")
     for path,field in keys.items():
-        if manifest.get(field) != sha256(files[path]):
+        expected=(manifest.get(field) if field else manifest.get("file_sha256",{}).get(path))
+        if expected != sha256(files[path]):
             raise RuntimeError("Missing/mismatched pinned notice/SBOM evidence: "+path)
     if "NOT AN APPROVED NOTICE SET" not in files[
             "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"].decode("utf-8"):
@@ -388,6 +407,7 @@ def build_candidate(output: Path, expected_sha: str, vendor_source: Path) -> dic
             "sbom_sha256":digests.get("third_party/bg2-sbom.cdx.json"),
             "license_disposition_sha256":digests.get("third_party/bg2-license-disposition.json"),
             "notices_candidate_sha256":digests.get("third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"),
+            "upstream_source_manifest_sha256":digests.get("third_party/LICENSE_SOURCE_PROVENANCE.json"),
             "scenario_kind":src_manifest["scenario_kind"],
             "artifact_tree_sha256":sha256(canonical(digests)),
             "file_sha256":digests,
