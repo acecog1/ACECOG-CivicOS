@@ -71,9 +71,11 @@ def test_pinned_review_packet_contains_exact_notice_sbom_and_fails_on_tamper(tmp
       "third_party/bg2-exact-wheel-notice-probe.json":"license_probe_sha256",
       "third_party/bg2-sbom.cdx.json":"sbom_sha256",
       "third_party/bg2-license-disposition.json":"license_disposition_sha256",
-      "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt":"notices_candidate_sha256"
+      "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt":"notices_candidate_sha256",
+      "third_party/LICENSE_SOURCE_PROVENANCE.json":"upstream_source_manifest_sha256"
     }
     manifest={key:pack.sha256(files[path]) for path,key in names.items()}
+    manifest["file_sha256"]={name:pack.sha256(data) for name,data in files.items()}
     manifest["license_sbom_approved"]=False
     pack._verify_unapproved_license_packet(files,manifest,state)
     bad=dict(files)
@@ -87,3 +89,15 @@ def test_pinned_review_packet_contains_exact_notice_sbom_and_fails_on_tamper(tmp
     assert b"NOT AN APPROVED NOTICE SET" in files["third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"]
     probe_receipt=json.loads(files["third_party/bg2-exact-wheel-notice-probe.json"])
     assert probe_receipt["wheels"][0]["wheel_sha256"]==state["files_sha256"][wheel.name]
+
+    import json
+    source_manifest=json.loads(files["third_party/LICENSE_SOURCE_PROVENANCE.json"])
+    assert len(source_manifest["records"])==4
+    for record in source_manifest["records"]:
+        name=record["dest"].rsplit("/",1)[-1]
+        path="third_party/upstream_license_sources/"+name
+        assert path in files
+        bad=dict(files)
+        bad[path]=files[path]+b"tampered"
+        with pytest.raises(RuntimeError,match="Altered upstream license file"):
+            pack._verify_unapproved_license_packet(bad,manifest,state)
