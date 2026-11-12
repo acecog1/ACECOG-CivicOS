@@ -7,9 +7,15 @@ from __future__ import annotations
 
 import hashlib
 from pathlib import Path
+import re
 from zipfile import ZipFile
 
 NATIVE_SUFFIXES = (".so", ".wasm", ".a", ".dylib", ".dll", ".pyd")
+
+
+def is_native(name: str) -> bool:
+    lower = name.lower()
+    return lower.endswith(NATIVE_SUFFIXES) or bool(re.search(r"\.so(?:\.[0-9]+)+$", lower))
 
 
 def inventory_wheel(wheel: Path, expected_sha256: str) -> list[dict]:
@@ -17,13 +23,15 @@ def inventory_wheel(wheel: Path, expected_sha256: str) -> list[dict]:
     if actual != expected_sha256:
         raise RuntimeError("Wheel SHA-256 mismatch: " + wheel.name)
     entries = []
+    seen: set[str] = set()
     with ZipFile(wheel) as archive:
         for info in sorted(archive.infolist(), key=lambda item: item.filename):
             name = info.filename
-            if info.is_dir() or not name.lower().endswith(NATIVE_SUFFIXES):
+            if name.startswith("/") or ".." in Path(name).parts or "\\" in name or not name or name in seen:
+                raise RuntimeError("Unsafe or duplicate wheel member: " + name)
+            seen.add(name)
+            if info.is_dir() or not is_native(name):
                 continue
-            if name.startswith("/") or ".." in Path(name).parts or "\\" in name:
-                raise RuntimeError("Unsafe wheel member: " + name)
             data = archive.read(info)
             entries.append({
                 "wheel": wheel.name,
