@@ -3,6 +3,7 @@
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
+const path = require("node:path");
 const { chromium } = require("playwright");
 
 const base = process.env.ACECOG_BROWSER_BASE || "http://127.0.0.1:8781";
@@ -111,9 +112,10 @@ test("same-browser deterministic seeds and full native-vs-WASM funded portfolio 
     assert.match(observed.run.browser_runtime.scipy,/^\d+\.\d+\.\d+/);
     assert.equal(observed.run.reference.decision.result,"approved");
     assert.equal(observed.run.alternative.decision.result,"approved");
-    const goldenResponse=await fetch(base+"/native-parity-golden.json");
-    assert.equal(goldenResponse.status,200);
-    const native=await goldenResponse.json();
+    // Never ship the native test fixture in the reviewed/public WASM ZIP.
+    // Load the independently generated baseline from test-runner disk only.
+    const fixture=path.resolve(__dirname,"../../build/browser-lab/native-parity-golden.json");
+    const native=JSON.parse(fs.readFileSync(fixture,"utf8"));
     assert.deepEqual(observed.run.alternative.decision.result,native.alternative.decision.result);
     assert.deepEqual(observed.run.alternative.portfolio_adopted,native.alternative.portfolio_adopted);
     assert.deepEqual(observed.run.alternative.baseline_created,native.alternative.baseline_created);
