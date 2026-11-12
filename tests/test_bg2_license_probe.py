@@ -34,6 +34,7 @@ def test_exact_wheel_notice_contents_and_hold(tmp_path,monkeypatch):
     notices=out["wheels"][0]["embedded_notice_files"]
     assert list(notices)==["fictional-1.2.3.dist-info/licenses/LICENSE"]
     assert notices[next(iter(notices))]["bytes"]==len("MIT original notice")
+    assert notices[next(iter(notices))]["embedded_notice_utf8"]=="MIT original notice"
     assert "SciPy 1.18.0" in " ".join(out["source_of_truth_links"])
 
 

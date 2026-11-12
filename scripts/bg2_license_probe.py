@@ -56,10 +56,13 @@ def probe(vendor_dir: Path) -> dict:
                     raise RuntimeError("Oversize wheel license document: " + key)
                 license_files[n] = {"sha256": hashlib.sha256(data).hexdigest(),
                                     "bytes": len(data),
-                                    "utf8_usable": bool(data and data.count(b"\x00") == 0)}
+                                    "utf8_usable": bool(data and data.count(b"\x00") == 0),
+                                    "embedded_notice_utf8": data.decode("utf-8", errors="replace")
+                                    if data and data.count(b"\x00") == 0 else None}
         expression = metadata.get("License-Expression") or metadata.get("License") or ""
         listing.append({"package_key":key, "wheel":name, "name":real_name,
                         "version":version, "wheel_sha256":expected,
+                        "source_package_page":"https://pypi.org/project/"+real_name+"/"+version+"/",
                         "license_expression_from_wheel":expression,
                         "license_classifiers":[c for c in metadata.get_all("Classifier",[])
                                                if c.startswith("License ::")],
