@@ -38,6 +38,20 @@ test("BG2-R2 "+engineName+": sovereign scenario, busy race, export, mobile, acce
     await page.waitForFunction(()=>document.querySelector("#form-status")?.textContent.includes("Ready"),null,{timeout:25000});
     assert.match(await page.locator("h1").innerText(),/Scenario Laboratory/);
     assert.equal((await page.locator("#lab-form").getAttribute("aria-busy")),null);
+    // A11Y-01: the five eligible voters MUST have person-named radio groups.
+    for(const person of ["Ana","Ben","Cara","Dev","Fay"]){
+      const group=page.getByRole("radiogroup",{name:person,exact:true});
+      assert.equal(await group.count(),1,"Missing accessible group for "+person);
+      for(const choice of ["Yes","No","Abstain"]){
+        assert.equal(await group.getByRole("radio",{name:choice,exact:true}).count(),1,
+                     "Unlabelled "+person+"/"+choice+" choice");
+      }
+    }
+    assert.equal(await page.getByRole("note",{name:/Eli.*recused.*voting prohibited/i}).count(),1);
+    assert.equal(await page.locator("#results").getAttribute("aria-live"),null);
+    assert.equal(await page.locator("#results").getAttribute("role"),"region");
+    assert.equal(await page.locator("#form-status").getAttribute("role"),"status");
+
     const skip=page.locator('a.skip-link');
     assert.equal(await skip.getAttribute("href"),"#main");
     await page.keyboard.press("Tab");
