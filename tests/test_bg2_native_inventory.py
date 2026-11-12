@@ -47,3 +47,16 @@ def test_versioned_native_and_non_native_traversal_rejected(tmp_path: Path):
         archive.writestr("../escape.txt", b"not native")
     with pytest.raises(RuntimeError, match="Unsafe or duplicate"):
         inventory_wheel(unsafe, hashlib.sha256(unsafe.read_bytes()).hexdigest())
+
+
+def test_rejects_duplicate_member_names(tmp_path: Path):
+    from warnings import catch_warnings, simplefilter
+
+    wheel = tmp_path / "duplicate.whl"
+    with catch_warnings():
+        simplefilter("ignore", UserWarning)
+        with ZipFile(wheel, "w") as archive:
+            archive.writestr("pkg/module.so", b"first")
+            archive.writestr("pkg/module.so", b"second")
+    with pytest.raises(RuntimeError, match="Unsafe or duplicate wheel member"):
+        inventory_wheel(wheel, hashlib.sha256(wheel.read_bytes()).hexdigest())
