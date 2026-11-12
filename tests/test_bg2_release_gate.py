@@ -18,7 +18,8 @@ def test_bg2_manual_approval_gates_without_deploy():
        "BG2_RELEASE_ARTIFACT_SHA256","BG2_APPROVED_SBOM_SHA256"):
         assert token in s
     assert 'test "$signed" = "$EXPECTED_SHA"' in s
-    assert 'test "$DEDICATED_HOST_REPO" != "$GITHUB_REPOSITORY"' in s
+    assert 'test "$STAGING_URL" = "https://acecog.org/beta"' in s
+    assert "BG2_DEDICATED_HOST_REPO" not in s
     assert "sha256sum -c -" in s
     assert "python scripts/package_bg2_candidate.py verify" in s
     assert "gh run download" in s
@@ -44,5 +45,23 @@ def test_default_branch_ref_guard(event, ref, repo, allowed):
     env = {**os.environ, "GITHUB_EVENT_NAME": event,
            "GITHUB_REF": ref, "GITHUB_REPOSITORY": repo}
     result = subprocess.run(["bash", "-c", script], env=env,
+                            capture_output=True, text=True, check=False)
+    assert (result.returncode == 0) is allowed, result.stdout + result.stderr
+
+
+@pytest.mark.parametrize("staging_url,allowed", [
+    ("https://acecog.org/beta", True),
+    ("https://acecog.org/", False),
+    ("http://acecog.org/beta", False),
+    ("https://acecog.com/beta", False),
+    ("", False),
+])
+def test_owner_staging_target_fail_closed(staging_url, allowed):
+    """The release check rejects other public origins or paths before an approved rollout."""
+    workflow = (ROOT/".github/workflows/bg2-release-gated.yml").read_text()
+    gate = next(line.strip() for line in workflow.splitlines()
+                if 'test "$STAGING_URL" = "https://acecog.org/beta"' in line)
+    env = {**os.environ, "STAGING_URL": staging_url}
+    result = subprocess.run(["bash", "-c", gate], env=env,
                             capture_output=True, text=True, check=False)
     assert (result.returncode == 0) is allowed, result.stdout + result.stderr
