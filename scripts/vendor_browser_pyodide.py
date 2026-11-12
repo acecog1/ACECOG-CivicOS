@@ -9,6 +9,8 @@ from __future__ import annotations
 import hashlib
 import json
 import argparse
+import os
+import tempfile
 from pathlib import Path
 import re
 import sys
@@ -77,10 +79,11 @@ def normalized(name: str) -> str:
     return re.split(r"[<>=!; \[]", name.strip(), maxsplit=1)[0].lower().replace("_","-")
 
 
-def vendor(dest: Path = DEST, core_pinset: Path | None = None) -> dict:
-    # Feasibility mode inventories observed hashes but cannot authorize release.
-    expected = load_root_pinset(core_pinset) if core_pinset is not None else None
-    dest.mkdir(parents=True,exist_ok=True)
+def _build_clean(stage: Path, expected: dict[str,str] | None) -> dict:
+    if stage.exists() and any(stage.iterdir()):
+        raise RuntimeError("Refusing to populate nonempty WASM staging directory")
+    stage.mkdir(parents=True,exist_ok=True)
+    dest = stage
     observed = {
         "pyodide-lock.json": download(
             "pyodide-lock.json",dest/"pyodide-lock.json",PINNED_LOCK_SHA256)
@@ -137,7 +140,69 @@ def vendor(dest: Path = DEST, core_pinset: Path | None = None) -> dict:
         "files_sha256":observed
     }
     (dest/"acecog-runtime-manifest.json").write_text(json.dumps(manifest,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    verify_vendor_directory(dest)
     return manifest
+
+
+def verify_vendor_directory(dest: Path) -> dict:
+    """Validate a complete closed asset set; reject leftovers and partial builds."""
+    if not dest.is_dir() or dest.is_symlink():
+        raise RuntimeError("WASM vendor directory absent or unsafe")
+    manifest_path = dest/"acecog-runtime-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    expected = manifest.get("files_sha256",{})
+    if not isinstance(expected,dict) or not all(
+            isinstance(k,str) and isinstance(v,str) and re.fullmatch(r"[a-f0-9]{64}",v)
+            for k,v in expected.items()):
+        raise RuntimeError("Invalid WASM runtime file inventory")
+    files = {p.name for p in dest.iterdir() if p.is_file() and not p.is_symlink()}
+    if files != set(expected)|{"acecog-runtime-manifest.json"}:
+        raise RuntimeError("Incomplete or contaminated WASM runtime directory")
+    if any(p.is_dir() or p.is_symlink() for p in dest.iterdir()):
+        raise RuntimeError("Nested or linked WASM runtime assets forbidden")
+    total = 0
+    for name,digest in expected.items():
+        if not name or "/" in name or "\\" in name or name.startswith("."):
+            raise RuntimeError("Unsafe WASM manifest path")
+        asset = dest/name
+        observed = hashlib.sha256(asset.read_bytes()).hexdigest()
+        verify_digest(name,observed,digest)
+        total += asset.stat().st_size
+    if total != manifest.get("bytes") or manifest.get("root_lock_sha256") != PINNED_LOCK_SHA256:
+        raise RuntimeError("WASM runtime closure/lock mismatch")
+    if set(CORE_ROOT_ASSETS) - set(expected) or "pyodide-lock.json" not in expected:
+        raise RuntimeError("Incomplete core WASM dependency set")
+    return manifest
+
+
+def vendor(dest: Path = DEST, core_pinset: Path | None = None) -> dict:
+    """Build an entirely fresh closure, validate, then promote or restore old.
+
+    In-flight assets are never mixed with an existing target directory.
+    A Python exception during download, verification or promotion cannot leave
+    a partially updated target visible to subsequent packaging steps.
+    """
+    expected = load_root_pinset(core_pinset) if core_pinset is not None else None
+    dest = Path(dest)
+    if dest.is_symlink() or (dest.exists() and not dest.is_dir()):
+        raise RuntimeError("Unsafe WASM vendoring target")
+    dest.parent.mkdir(parents=True,exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix=".bg2-vendor-stage-",dir=dest.parent) as tmp:
+        root=Path(tmp)
+        stage=root/"new"
+        stage.mkdir()
+        manifest=_build_clean(stage,expected)
+        backup=root/"old"
+        had_old=dest.exists()
+        if had_old:
+            os.replace(dest,backup)
+        try:
+            os.replace(stage,dest)
+        except BaseException:
+            if had_old and backup.exists():
+                os.replace(backup,dest)
+            raise
+        return manifest
 
 
 if __name__=="__main__":
