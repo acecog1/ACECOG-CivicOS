@@ -115,7 +115,7 @@ def build_inventory(directory: Path) -> tuple[dict,dict]:
       "core_runtime_mpl2_plus_cpython_bundled_licenses_review":"PENDING",
       "wheel_license_attribution_and_republication_review":"PENDING",
       "independent_legal_or_security_license_review":"PENDING",
-      "acceptance":"HOLD"},
+      "acceptance":"HOLD"}
     return sbom,disposition
 
 def main():

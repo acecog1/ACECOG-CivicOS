@@ -25,7 +25,7 @@ def load_https(url: str, limit: int) -> bytes:
     if urlsplit(url).scheme!="https":
         raise RuntimeError("Only HTTPS upstream release URLs are permitted")
     req=Request(url,headers={"User-Agent":"ACECOG-BG2-official-source-attestation"})
-    with urlopen(req,timeout=100) as response:
+    with urlopen(req,timeout=100) as response:  # nosec B310 — fixed official HTTPS release API or checked GitHub asset
         final=urlsplit(response.geturl())
         # The release API, GitHub assets and GitHub's signed asset-CDN redirect
         # are allowed, not arbitrary mirrors.
