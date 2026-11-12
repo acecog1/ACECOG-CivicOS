@@ -87,3 +87,45 @@ def test_manifest_maintains_nonrelease_flag_without_pinset():
     assert "UNPINNED_OBSERVED_ONLY_BLOCK_RELEASE" in source
     assert "NOT_YET_INDEPENDENTLY_CERTIFIED" in source
     assert "--approved-root-pinset" in source
+
+
+def test_transient_upstream_error_retries_only_same_pinned_https_url(tmp_path,monkeypatch):
+    from urllib.error import URLError
+    payload=b"stable bytes"
+    attempts=[]
+    class Response:
+        def geturl(self):
+            return v.UPSTREAM+"pyodide.mjs"
+        def read(self,limit):
+            return payload
+        def __enter__(self):
+            return self
+        def __exit__(self,*args):
+            return None
+    def retry(req,timeout):
+        attempts.append(req.full_url)
+        if len(attempts)<3:
+            raise URLError("simulated transient network failure")
+        return Response()
+    monkeypatch.setattr(v.urllib.request,"urlopen",retry)
+    monkeypatch.setattr(v.time,"sleep",lambda _: None)
+    expected=hashlib.sha256(payload).hexdigest()
+    dest=tmp_path/"pyodide.mjs"
+    assert v.download("pyodide.mjs",dest,expected)==expected
+    assert attempts==[v.UPSTREAM+"pyodide.mjs"]*3
+    assert dest.read_bytes()==payload
+
+
+def test_permanent_network_error_leaves_no_vendor_asset(tmp_path,monkeypatch):
+    from urllib.error import URLError
+    attempts=[]
+    def fail(req,timeout):
+        attempts.append(req.full_url)
+        raise URLError("unavailable")
+    monkeypatch.setattr(v.urllib.request,"urlopen",fail)
+    monkeypatch.setattr(v.time,"sleep",lambda _: None)
+    target=tmp_path/"pyodide.asm.wasm"
+    with pytest.raises(RuntimeError,match="after bounded retries"):
+        v.download("pyodide.asm.wasm",target,"a"*64)
+    assert len(attempts)==3
+    assert not target.exists()
