@@ -29,5 +29,21 @@ def test_rejects_unsafe_native_member(tmp_path: Path):
     with ZipFile(wheel, "w") as archive:
         archive.writestr("../escape.so", b"x")
     digest = hashlib.sha256(wheel.read_bytes()).hexdigest()
-    with pytest.raises(RuntimeError, match="Unsafe wheel member"):
+    with pytest.raises(RuntimeError, match="Unsafe or duplicate wheel member"):
         inventory_wheel(wheel, digest)
+
+
+def test_versioned_native_and_non_native_traversal_rejected(tmp_path: Path):
+    wheel = tmp_path / "versioned.whl"
+    with ZipFile(wheel, "w") as archive:
+        archive.writestr("lib/libopenblas.so.1", b"candidate")
+        archive.writestr("lib/libboost.so.1.2.3", b"candidate")
+        archive.writestr("pkg/readme.txt", b"plain")
+    digest = hashlib.sha256(wheel.read_bytes()).hexdigest()
+    paths = [item["member_path"] for item in inventory_wheel(wheel, digest)]
+    assert paths == ["lib/libboost.so.1.2.3", "lib/libopenblas.so.1"]
+    unsafe = tmp_path / "unsafe-text.whl"
+    with ZipFile(unsafe, "w") as archive:
+        archive.writestr("../escape.txt", b"not native")
+    with pytest.raises(RuntimeError, match="Unsafe or duplicate"):
+        inventory_wheel(unsafe, hashlib.sha256(unsafe.read_bytes()).hexdigest())
