@@ -10,6 +10,8 @@ import ast
 import hashlib
 import json
 import os
+import re
+import subprocess
 from pathlib import Path
 import shutil
 
@@ -63,6 +65,19 @@ def replace_one(content: str, old: str, new: str, file: str):
     if content.count(old) != 1:
         raise RuntimeError(f"Upstream UI changed; required exact marker count not one: {file}: {old[:60]!r}")
     return content.replace(old, new, 1)
+
+
+def checked_out_source_revision() -> str:
+    try:
+        sha = subprocess.check_output(
+            ["git", "rev-parse", "--verify", "HEAD"],
+            cwd=ROOT, text=True, stderr=subprocess.DEVNULL, timeout=10,
+        ).strip().lower()
+    except (OSError, subprocess.SubprocessError):
+        return "unrecorded-local-build"
+    if not re.fullmatch(r"[0-9a-f]{40}", sha):
+        raise RuntimeError("Git checkout has invalid source revision")
+    return sha
 
 
 def build(dest: Path = DEST) -> None:
@@ -124,7 +139,9 @@ def build(dest: Path = DEST) -> None:
         "schema": "ACECOG-browser-lab-source-v0.1",
         "mode": "synthetic-advisory-no-legal-effect",
         "scenario_kind": "abbreviated-isolated-synthetic-not-279-event-fork",
-        "source_revision": os.environ.get("GITHUB_SHA", "unrecorded-local-build"),
+        # GitHub pull_request GITHUB_SHA may be a synthetic merge commit;
+        # bind the manifest to actual checked-out HEAD, not the event SHA.
+        "source_revision": checked_out_source_revision(),
         "runtime": "Pyodide version pinned by vendor manifest; solver output parity still needs proof",
         "files": {str(p.relative_to(dest)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
     }
