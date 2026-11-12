@@ -60,6 +60,69 @@ def git_tree() -> str:
     return value
 
 
+def _build_input_paths() -> tuple[str, ...]:
+    # The fixed, reviewable list of all tracked source inputs used to generate
+    # visitor-visible runtime content (including extraction/packaging logic).
+    files = {
+        "scripts/lab_preview_assets/index.html",
+        "scripts/lab_preview_assets/lab.js",
+        "scripts/lab_preview_assets/lab.css",
+        "scripts/lab_preview_assets/experience.js",
+        "scripts/browser_lab/browser-api.js",
+        "scripts/browser_lab/browser-engine-worker.mjs",
+        "tests/scenario.py",
+        "scripts/build_browser_lab.py",
+        "scripts/vendor_browser_pyodide.py",
+        "scripts/package_bg2_candidate.py",
+    }
+    files.update(name for name, _target in source.FILES)
+    return tuple(sorted(files))
+
+
+def _read_git_blob(path: str) -> bytes:
+    result = subprocess.run(
+        ["git", "show", "HEAD:" + path],
+        cwd=ROOT, capture_output=True, timeout=10, check=False,
+    )
+    if result.returncode:
+        raise RuntimeError("Missing exact Git source input: " + path)
+    return result.stdout
+
+
+def _source_input_hashes() -> dict[str, str]:
+    result = {}
+    for name in _build_input_paths():
+        file = ROOT/name
+        if not file.is_file() or file.is_symlink():
+            raise RuntimeError("Missing/unsafe checked-out source: " + name)
+        live = file.read_bytes()
+        if live != _read_git_blob(name):
+            raise RuntimeError("Source input differs from Git HEAD: " + name)
+        result[name] = sha256(live)
+    return result
+
+
+def _verify_checkout_against_package(payload: dict[str, bytes],
+                                     source_revision: str,
+                                     source_tree: str,
+                                     source_inputs: dict[str,str]) -> None:
+    """Independently rebuild unvendored sources from the *exact* Git checkout.
+
+    A self-consistent but forged release manifest must not pass this check.
+    """
+    exact_checkout(source_revision)
+    if git_tree() != source_tree or _source_input_hashes() != source_inputs:
+        raise RuntimeError("Exact Git source input/tree provenance mismatch")
+    with tempfile.TemporaryDirectory(prefix=".bg2-rebuild-") as tmp:
+        dest = Path(tmp)/"source"
+        source.build(dest)
+        rebuilt = _listed_files(dest)
+        archived = {name:data for name,data in payload.items()
+                    if not name.startswith("vendor/pyodide/")}
+        if rebuilt != archived:
+            raise RuntimeError("Packaged application differs from reproducible Git source")
+
+
 def _listed_files(directory: Path) -> dict[str, bytes]:
     files = {}
     for p in sorted(directory.rglob("*")):
@@ -81,6 +144,9 @@ def _verify_source_inventory(files: dict[str, bytes], manifest: dict) -> None:
     source_files = manifest.get("files")
     if not isinstance(source_files, dict) or not source_files:
         raise RuntimeError("Missing source-file inventory")
+    unvendored = {name for name in files if not name.startswith("vendor/pyodide/")}
+    if unvendored != set(source_files) | {"source-manifest.json"}:
+        raise RuntimeError("Unlisted or missing browser application asset")
     for name, expected in source_files.items():
         if not isinstance(name, str) or not isinstance(expected, str) or not re.fullmatch(r"[a-f0-9]{64}", expected):
             raise RuntimeError("Invalid source-file digest")
@@ -161,12 +227,21 @@ def verify_review_zip(path: Path, expected_sha: str | None = None) -> dict:
         raise RuntimeError("BG-2 candidate must not self-authorize public publication")
     if manifest.get("scenario_kind") != src.get("scenario_kind"):
         raise RuntimeError("BG-2 noncanonical scenario lineage mismatch")
+    inputs = manifest.get("git_source_inputs_sha256")
+    if (not isinstance(inputs,dict) or set(inputs) != set(_build_input_paths()) or
+            not all(isinstance(value,str) and re.fullmatch(r"[a-f0-9]{64}",value)
+                    for value in inputs.values())):
+        raise RuntimeError("BG-2 exact Git source input inventory absent")
+    if expected_sha is not None:
+        _verify_checkout_against_package(payload,expected_sha,
+                                         manifest["source_tree_sha"],inputs)
     return manifest
 
 
 def build_candidate(output: Path, expected_sha: str, vendor_source: Path) -> dict:
     """Clean staging -> verify -> deterministic archive -> one atomic replace."""
     sha = exact_checkout(expected_sha)
+    source_input_hashes = _source_input_hashes()
     output = Path(output)
     vendor_source = Path(vendor_source)
     if output.is_symlink() or (output.exists() and not output.is_file()):
@@ -193,6 +268,7 @@ def build_candidate(output: Path, expected_sha: str, vendor_source: Path) -> dic
             "state":"REVIEW_ARTIFACT_ONLY_PUBLICATION_HOLD",
             "source_revision":sha,
             "source_tree_sha":git_tree(),
+            "git_source_inputs_sha256":source_input_hashes,
             "source_manifest_sha256":digests["source-manifest.json"],
             "runtime_manifest_sha256":digests["vendor/pyodide/acecog-runtime-manifest.json"],
             "runtime_pin_status":runtime_manifest["core_root_status"],
