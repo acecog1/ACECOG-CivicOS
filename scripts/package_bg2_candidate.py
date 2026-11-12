@@ -76,6 +76,7 @@ def _build_input_paths() -> tuple[str, ...]:
         "scripts/package_bg2_candidate.py",
         "scripts/verify_bg2_upstream.py",
         "scripts/build_bg2_sbom.py",
+        "scripts/bg2_stage.py",
         "docs/evidence/bg2-pyodide-core-candidate-pins-v1.json",
     }
     files.update(name for name, _target in source.FILES)
