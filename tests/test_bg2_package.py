@@ -149,3 +149,51 @@ def test_failed_vendor_promotion_restores_original(tmp_path,monkeypatch):
     assert (target/"old").read_bytes()==b"prior complete vendor output"
     assert not (target/"new").exists()
     assert not list(tmp_path.glob(".bg2-vendor-stage-*"))
+
+
+def test_source_checkout_drift_rejected_before_zip_promotion(tmp_path,monkeypatch):
+    vendor_folder=_fixture_vendor(tmp_path,monkeypatch)
+    sha=builder.checked_out_source_revision()
+    output=tmp_path/"review.zip"
+    pack.build_candidate(output,sha,vendor_folder)
+    original=output.read_bytes()
+    actual=pack._read_git_blob
+    def injected_wrong_blob(name):
+        if name=="scripts/lab_preview_assets/lab.js":
+            return b"uncommitted replacement bytes"
+        return actual(name)
+    monkeypatch.setattr(pack,"_read_git_blob",injected_wrong_blob)
+    with pytest.raises(RuntimeError,match="Source input differs from Git HEAD"):
+        pack.build_candidate(output,sha,vendor_folder)
+    assert output.read_bytes()==original
+
+
+def test_self_consistent_forged_manifest_fails_exact_git_rebuild(tmp_path,monkeypatch):
+    # Even if an adversary adjusts *every* included hash to match an altered
+    # JavaScript asset, release verification must compare against the exact
+    # reviewed Git tree rather than accepting mutually consistent claims.
+    vendor_folder=_fixture_vendor(tmp_path,monkeypatch)
+    sha=builder.checked_out_source_revision()
+    good=tmp_path/"good.zip"
+    pack.build_candidate(good,sha,vendor_folder)
+    with ZipFile(good) as z:
+        files={name:z.read(name) for name in z.namelist()}
+    files["lab.js"]+=b"\n// forged browser code\n"
+    source_manifest=json.loads(files["source-manifest.json"])
+    source_manifest["files"]["lab.js"]=pack.sha256(files["lab.js"])
+    files["source-manifest.json"]=(
+        json.dumps(source_manifest,indent=2,sort_keys=True)+"\n").encode()
+    release=json.loads(files["release-manifest.json"])
+    content={k:v for k,v in files.items() if k!="release-manifest.json"}
+    hashes={k:pack.sha256(v) for k,v in content.items()}
+    release["file_sha256"]=hashes
+    release["source_manifest_sha256"]=hashes["source-manifest.json"]
+    release["artifact_tree_sha256"]=pack.sha256(pack.canonical(hashes))
+    files["release-manifest.json"]=pack.canonical(release)+b"\n"
+    forged=tmp_path/"forged.zip"
+    with ZipFile(forged,"w",compression=ZIP_DEFLATED) as z:
+        for name,data in sorted(files.items()):
+            z.writestr(name,data)
+    with pytest.raises(RuntimeError,match="differs from reproducible Git source"):
+        pack.verify_review_zip(forged,sha)
+    assert pack.verify_review_zip(good,sha)["source_revision"]==sha
