@@ -56,7 +56,7 @@ test("sovereign browser worker runs original CivicOS decision, solver and reject
     assert.equal(origin.raw_chain_events_included,false);
     assert.equal(origin.independent_verifier_included,false);
     assert.equal(origin.user_generated_content_is_authentic,false);
-    assert.equal(origin.core_root_status,"UNPINNED_OBSERVED_ONLY_BLOCK_RELEASE");
+    assert.equal(origin.core_root_status,"EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA");
     assert.equal(record.browser_runtime.source_manifest_sha256,origin.source_manifest_sha256);
     assert.equal(outside.length,0,"Third-party network requests: "+outside.join(", "));
     assert.deepEqual(browserErrors,[]);

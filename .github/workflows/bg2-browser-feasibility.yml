@@ -43,8 +43,23 @@ jobs:
         run: |
           python scripts/build_browser_lab.py
           python -m pytest -q tests/test_browser_lab_bundle.py tests/test_browser_runtime_pins.py tests/test_bg2_package.py
-      - name: Vendor pinned Pyodide+SciPy into local static artifacts
-        run: python scripts/vendor_browser_pyodide.py
+      - name: R1 verify candidate hashes against publisher SHA256 of official release archive
+        run: |
+          set -euo pipefail
+          python -m scripts.verify_bg2_upstream \
+            --pinset docs/evidence/bg2-pyodide-core-candidate-pins-v1.json \
+            --output build/bg2-evidence/publisher-root-verification.json
+      - name: R1 fail-closed vendoring with exact root pinset (QA approval still pending)
+        run: |
+          python scripts/vendor_browser_pyodide.py \
+            --approved-root-pinset docs/evidence/bg2-pyodide-core-candidate-pins-v1.json
+      - name: R1 full vendored wheel/license/SBOM inventory
+        run: |
+          python -m scripts.build_bg2_sbom \
+            --vendor build/browser-lab/vendor/pyodide \
+            --output-dir build/bg2-evidence
+          test -s build/bg2-evidence/bg2-sbom.cdx.json
+          test -s build/bg2-evidence/bg2-license-disposition.json
       - name: Package isolated fully hashed BG-2 review artifact without publishing
         env:
           SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -118,8 +133,8 @@ jobs:
           p=Path("build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json")
           if p.exists():
               m=json.loads(p.read_text())
-              assert m["core_root_status"] == "UNPINNED_OBSERVED_ONLY_BLOCK_RELEASE"
-              print("CANDIDATE CORE ROOT DIGESTS — INDEPENDENT QA NOT YET APPROVED")
+              assert m["core_root_status"] == "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA"
+              print("VERIFIED AGAINST OFFICIAL RELEASE ARCHIVE; INDEPENDENT QA/LEGAL APPROVAL STILL PENDING")
               print(json.dumps(m["core_root_sha256"],indent=2,sort_keys=True))
           PY
           fi
@@ -131,6 +146,9 @@ jobs:
           path: |
             build/browser-lab/source-manifest.json
             build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json
-          if-no-files-found: warn
+            build/bg2-evidence/publisher-root-verification.json
+            build/bg2-evidence/bg2-sbom.cdx.json
+            build/bg2-evidence/bg2-license-disposition.json
+          if-no-files-found: error
       - name: NO Pages deployment
         run: echo "Test-only. Never publish from this workflow."

@@ -74,6 +74,9 @@ def _build_input_paths() -> tuple[str, ...]:
         "scripts/build_browser_lab.py",
         "scripts/vendor_browser_pyodide.py",
         "scripts/package_bg2_candidate.py",
+        "scripts/verify_bg2_upstream.py",
+        "scripts/build_bg2_sbom.py",
+        "docs/evidence/bg2-pyodide-core-candidate-pins-v1.json",
     }
     files.update(name for name, _target in source.FILES)
     return tuple(sorted(files))
