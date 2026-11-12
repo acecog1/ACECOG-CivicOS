@@ -27,8 +27,12 @@ if __package__:
 else:
     import build_browser_lab as source
     import vendor_browser_pyodide as runtime
-    import bg2_license_probe as license_probe
-    import build_bg2_sbom as license_sbom
+    # Direct CLI invocation needs the repository root for sibling packages
+    # whose own imports use the canonical scripts.* module path.
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from scripts import bg2_license_probe as license_probe
+    from scripts import build_bg2_sbom as license_sbom
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "ACECOG-BG2-STATIC-REVIEW-PACK-v1"

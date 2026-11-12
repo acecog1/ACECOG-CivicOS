@@ -58,7 +58,7 @@ def test_pinned_review_packet_contains_exact_notice_sbom_and_fails_on_tamper(tmp
     folder,wheel,state=_wheel(tmp_path,monkeypatch)
     state["root_lock_sha256"]=vendor.PINNED_LOCK_SHA256
     site=tmp_path/"site"
-    (site/"vendor").mkdir()
+    (site/"vendor").mkdir(parents=True)
     # The actual vendor directory must live within this source-relative site.
     folder.rename(site/"vendor"/"pyodide")
     folder=site/"vendor"/"pyodide"
