@@ -10,7 +10,7 @@ const base = process.env.ACECOG_BROWSER_BASE || "http://127.0.0.1:8781";
 test("sovereign browser worker runs original CivicOS decision, solver and rejection", {timeout:180000}, async () => {
   const browser = await chromium.launch({headless:true});
   try {
-    const context = await browser.newContext({viewport:{width:1280,height:900},serviceWorkers:"block"});
+    const context = await browser.newContext({viewport:{width:1280,height:900},serviceWorkers:"block",acceptDownloads:true});
     const page = await context.newPage();
     const outside=[], browserErrors=[];
     page.on("request",req=>{
