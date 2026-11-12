@@ -86,3 +86,12 @@ def test_generated_browser_lab_carries_manifest_bound_evidence_and_honest_scope(
                   "runtime_manifest_sha256", "source_manifest_sha256"):
         assert field in experience
     assert "Visitor-generated synthetic summaries are editable" in experience
+
+
+def test_generated_browser_exposes_pending_legal_source_bundle_to_visitor(tmp_path):
+    target=tmp_path/"dist"
+    build.build(target)
+    html=(target/"index.html").read_text(encoding="utf-8")
+    assert 'href="./third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"' in html
+    assert "Third-party license source evidence (NOT YET APPROVED)" in html
+    assert "No legal or municipal authority" in html or "no legal or municipal authority" in html
