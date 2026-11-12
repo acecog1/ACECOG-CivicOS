@@ -168,7 +168,9 @@ def verify_vendor_directory(dest: Path) -> dict:
         observed = hashlib.sha256(asset.read_bytes()).hexdigest()
         verify_digest(name,observed,digest)
         total += asset.stat().st_size
-    if total != manifest.get("bytes") or manifest.get("root_lock_sha256") != PINNED_LOCK_SHA256:
+    if (total != manifest.get("bytes") or
+            manifest.get("root_lock_sha256") != PINNED_LOCK_SHA256 or
+            expected.get("pyodide-lock.json") != PINNED_LOCK_SHA256):
         raise RuntimeError("WASM runtime closure/lock mismatch")
     if set(CORE_ROOT_ASSETS) - set(expected) or "pyodide-lock.json" not in expected:
         raise RuntimeError("Incomplete core WASM dependency set")
