@@ -17,7 +17,10 @@ SOURCE_MANIFEST = "docs/evidence/bg2-license-upstream-sources-v0.1.json"
 
 
 def git_blob_sha(data: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+    # Git object identity uses SHA-1 by specification, never as the security digest.
+    # Archive integrity separately uses SHA-256 and the source manifest.
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data,
+                        usedforsecurity=False).hexdigest()
 
 
 def records_from_manifest(data: bytes) -> list[dict]:
