@@ -17,8 +17,14 @@ import subprocess
 import tempfile
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 
-from scripts import build_browser_lab as source
-from scripts import vendor_browser_pyodide as runtime
+# Support both `python -m scripts.package_bg2_candidate` (preferred) and the
+# direct CLI path used by operators; do not mask unrelated missing dependencies.
+if __package__:
+    from scripts import build_browser_lab as source
+    from scripts import vendor_browser_pyodide as runtime
+else:
+    import build_browser_lab as source
+    import vendor_browser_pyodide as runtime
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "ACECOG-BG2-STATIC-REVIEW-PACK-v1"
