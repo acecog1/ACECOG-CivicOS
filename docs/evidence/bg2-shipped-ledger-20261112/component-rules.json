@@ -1,0 +1,558 @@
+[
+  {
+    "id": "numpy",
+    "name": "NumPy 2.4.6",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/LICENSE.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "scipy",
+    "name": "SciPy 1.18.0",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/LICENSES_bundled.txt",
+      "originals/wheel-texts/scipy-1.18.0.dist-info/LICENSE.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Complete numerical/header attribution, actual pybind11 and include/link receipts pending"
+  },
+  {
+    "id": "rpds",
+    "name": "rpds-py 0.30.0",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/rpds-sdist/LICENSE",
+      "originals/wheel-texts/rpds_py-0.30.0.dist-info/licenses/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "openblas",
+    "name": "OpenBLAS 0.3.31 / GotoBLAS",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/openblas/GotoBLAS_00License.txt",
+      "originals/openblas/LICENSE",
+      "originals/openblas/reference/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "lapack",
+    "name": "LAPACK 3.12.0",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/openblas/lapack-netlib/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "libf2c",
+    "name": "libf2c from CLAPACK 3.2.1",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/clapack/F2CLIBS/libf2c/Notice"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Seven recipe patches/extras and selected object notices pending; CLAPACK numerical sources not inferred shipped"
+  },
+  {
+    "id": "uarray",
+    "name": "uarray (SciPy snapshot)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/_lib/_uarray/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "duccfft",
+    "name": "duccfft 0.40.0 / pyduccfft",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/subprojects/duccfft/LICENSE.md",
+      "originals/wheel-texts/scipy/fft/_duccfft/LICENSE.md"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "dop",
+    "name": "DOP (SciPy snapshot)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/integrate/src/LICENSE_DOP"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "fmm",
+    "name": "fast_matrix_market (SciPy snapshot)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/fast_float/LICENSE-MIT",
+      "originals/scipy-sdist/scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/ryu/LICENSE-Boost",
+      "originals/scipy-sdist/scipy/io/_fast_matrix_market/LICENSE.txt",
+      "originals/scipy-sdist/scipy/io/_fast_matrix_market/src/pystreambuf.h"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "direct",
+    "name": "DIRECT (2.0.4 ancestry)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/optimize/_direct/COPYING"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "highs",
+    "name": "HiGHS 1.12.0 / filereaderlp / pdqsort",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/subprojects/highs/extern/filereaderlp/LICENSE",
+      "originals/scipy-sdist/subprojects/highs/extern/pdqsort/license.txt",
+      "originals/scipy-sdist/subprojects/highs/LICENSE.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "tnc",
+    "name": "TNC (SciPy snapshot)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/optimize/tnc/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "trlib",
+    "name": "trlib (SciPy snapshot)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/optimize/_trlib/trlib_private.h"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "superlu",
+    "name": "SuperLU 7.0.1 / COLAMD",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/LICENSES_bundled.txt",
+      "originals/scipy-sdist/scipy/sparse/linalg/_dsolve/SuperLU/License.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "arpack",
+    "name": "ARPACK / arnaud translation",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/sparse/linalg/_eigen/arpack/arnaud/ARPACK_LICENSE.txt",
+      "originals/scipy-sdist/scipy/sparse/linalg/_eigen/arpack/arnaud/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "propack",
+    "name": "PROPACK translation",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/sparse/linalg/_propack/PROPACK/LICENSE",
+      "originals/scipy-sdist/scipy/sparse/linalg/_propack/PROPACK/PROPACK_LICENSE.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "qhull",
+    "name": "Qhull 8.0.2",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/spatial/COPYING_QHULL.txt",
+      "originals/scipy-sdist/subprojects/qhull_r/libqhull_r/COPYING.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Human must accept original-source availability and applicable modification notices; selected source patches not established."
+  },
+  {
+    "id": "xsf",
+    "name": "xsf 0.2.2 / Cephes / Faddeeva / qd / mdspan",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/subprojects/xsf/include/xsf/third_party/kokkos/mdspan.hpp",
+      "originals/scipy-sdist/subprojects/xsf/LICENSE",
+      "originals/scipy-sdist/subprojects/xsf/LICENSES_bundled.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "boost",
+    "name": "Boost.Math 1.91.0 vs external Boost 1.84.0",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/subprojects/boost_math/math/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "pybind11",
+    "name": "pybind11 (actual installed version UNKNOWN)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/LICENSES_bundled.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "unuran",
+    "name": "UNU.RAN 1.9.0",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/subprojects/unuran/license.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "biasedurn",
+    "name": "Biasedurn / copied NumPy random code",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/stats/biasedurn/license.txt",
+      "originals/wheel-texts/numpy/random/LICENSE.md"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "ndimage",
+    "name": "ndimage (SciPy snapshot)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/scipy/ndimage/LICENSE.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "numpy-pocketfft",
+    "name": "NumPy pocketfft",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "numpy-lapack",
+    "name": "NumPy lapack_lite",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "numpy-core",
+    "name": "NumPy core portable/header contribution candidates",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "numpy-random",
+    "name": "NumPy random generators/distributions",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/LICENSE.md",
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+      "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "rust",
+    "name": "Rust 1.97.1 binary std marker",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/rust/COPYRIGHT",
+      "originals/rust/LICENSE-APACHE",
+      "originals/rust/LICENSE-MIT"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual rustc -Vv, target/features and COPYRIGHT-library.html absent; Rust 1.93 global recipe is not this wheel identity"
+  },
+  {
+    "id": "crate-rpds-1.2.0",
+    "name": "rpds-1.2.0",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/crates/rpds-1.2.0/LICENSE.md"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "crate-pyo3-0.27.2",
+    "name": "pyo3-0.27.2",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/crates/pyo3-0.27.2/LICENSE-APACHE",
+      "originals/crates/pyo3-0.27.2/LICENSE-MIT",
+      "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-APACHE",
+      "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-MIT"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "crate-pyo3-ffi-0.27.2",
+    "name": "pyo3-ffi-0.27.2",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/crates/pyo3-ffi-0.27.2/LICENSE-APACHE",
+      "originals/crates/pyo3-ffi-0.27.2/LICENSE-MIT"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "crate-triomphe-0.1.15",
+    "name": "triomphe-0.1.15",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/crates/triomphe-0.1.15/LICENSE-APACHE",
+      "originals/crates/triomphe-0.1.15/LICENSE-MIT"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "cargo-context",
+    "name": "Other Cargo.lock crates: target/host applicability unresolved",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/crates/archery-1.2.2/LICENSE.md",
+      "originals/crates/autocfg-1.5.0/LICENSE-APACHE",
+      "originals/crates/autocfg-1.5.0/LICENSE-MIT",
+      "originals/crates/cc-1.2.48/LICENSE-APACHE",
+      "originals/crates/cc-1.2.48/LICENSE-MIT",
+      "originals/crates/find-msvc-tools-0.1.5/LICENSE-APACHE",
+      "originals/crates/find-msvc-tools-0.1.5/LICENSE-MIT",
+      "originals/crates/heck-0.5.0/LICENSE-APACHE",
+      "originals/crates/heck-0.5.0/LICENSE-MIT",
+      "originals/crates/indoc-2.0.7/LICENSE-APACHE",
+      "originals/crates/indoc-2.0.7/LICENSE-MIT",
+      "originals/crates/libc-0.2.177/LICENSE-APACHE",
+      "originals/crates/libc-0.2.177/LICENSE-MIT",
+      "originals/crates/memoffset-0.9.1/LICENSE",
+      "originals/crates/once_cell-1.21.3/LICENSE-APACHE",
+      "originals/crates/once_cell-1.21.3/LICENSE-MIT",
+      "originals/crates/portable-atomic-1.11.1/LICENSE-APACHE",
+      "originals/crates/portable-atomic-1.11.1/LICENSE-MIT",
+      "originals/crates/proc-macro2-1.0.103/LICENSE-APACHE",
+      "originals/crates/proc-macro2-1.0.103/LICENSE-MIT",
+      "originals/crates/pyo3-0.27.2/LICENSE-APACHE",
+      "originals/crates/pyo3-0.27.2/LICENSE-MIT",
+      "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-APACHE",
+      "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-MIT",
+      "originals/crates/pyo3-build-config-0.27.2/LICENSE-APACHE",
+      "originals/crates/pyo3-build-config-0.27.2/LICENSE-MIT",
+      "originals/crates/pyo3-ffi-0.27.2/LICENSE-APACHE",
+      "originals/crates/pyo3-ffi-0.27.2/LICENSE-MIT",
+      "originals/crates/pyo3-macros-0.27.2/LICENSE-APACHE",
+      "originals/crates/pyo3-macros-0.27.2/LICENSE-MIT",
+      "originals/crates/pyo3-macros-backend-0.27.2/LICENSE-APACHE",
+      "originals/crates/pyo3-macros-backend-0.27.2/LICENSE-MIT",
+      "originals/crates/python3-dll-a-0.2.14/LICENSE",
+      "originals/crates/quote-1.0.42/LICENSE-APACHE",
+      "originals/crates/quote-1.0.42/LICENSE-MIT",
+      "originals/crates/rpds-1.2.0/LICENSE.md",
+      "originals/crates/rustversion-1.0.22/LICENSE-APACHE",
+      "originals/crates/rustversion-1.0.22/LICENSE-MIT",
+      "originals/crates/shlex-1.3.0/LICENSE-APACHE",
+      "originals/crates/shlex-1.3.0/LICENSE-MIT",
+      "originals/crates/syn-2.0.111/LICENSE-APACHE",
+      "originals/crates/syn-2.0.111/LICENSE-MIT",
+      "originals/crates/target-lexicon-0.13.3/LICENSE",
+      "originals/crates/triomphe-0.1.15/LICENSE-APACHE",
+      "originals/crates/triomphe-0.1.15/LICENSE-MIT",
+      "originals/crates/unicode-ident-1.0.22/LICENSE-APACHE",
+      "originals/crates/unicode-ident-1.0.22/LICENSE-MIT",
+      "originals/crates/unicode-ident-1.0.22/LICENSE-UNICODE",
+      "originals/crates/unindent-0.2.4/LICENSE-APACHE",
+      "originals/crates/unindent-0.2.4/LICENSE-MIT"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "26 lock entries are not 26 proven runtime components; proc macros/build helpers/Windows branches must remain context pending actual target/features tree"
+  },
+  {
+    "id": "pyodide",
+    "name": "Pyodide 314.0.7",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/pyodide-source/LICENSE",
+      "originals/pyodide-source/src/js/vendor/stackframe/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "cpython",
+    "name": "CPython 3.14.2",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/cpython/Doc/license.rst",
+      "originals/cpython/LICENSE",
+      "originals/cpython/Modules/expat/COPYING"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "CPython LICENSE/Doc/license.rst/Expat text preserved; HACL, libmpdec and other selected embedded header notices/source mapping incomplete."
+  },
+  {
+    "id": "hiwire",
+    "name": "hiwire 6a1e67280a15d929ebeceee54a6358c9c8d5f697",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/hiwire/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "libffi",
+    "name": "libffi 3.4.4 + f08493d249d2067c8b3207ba46693dd858f95db3",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/libffi/LICENSE",
+      "originals/libffi/LICENSE-BUILDTOOLS"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "liblzma",
+    "name": "liblzma 5.2.2",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/xz/COPYING",
+      "originals/xz/COPYING.GPLv2",
+      "originals/xz/COPYING.GPLv3",
+      "originals/xz/COPYING.LGPLv2.1"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "sqlite",
+    "name": "SQLite 3.39.0",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/sqlite/tea/license.terms"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Collected tea/license.terms is Tcl extension context, NOT the sqlite3.c public-domain header. Actual selected sqlite3.c notice/source receipt is missing."
+  },
+  {
+    "id": "zstd",
+    "name": "zstd 1.5.7",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/zstd/COPYING",
+      "originals/zstd/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "zlib",
+    "name": "zlib 1.3.1",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/zlib/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "bzip2",
+    "name": "bzip2 1.0.6",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/bzip2/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected source/header/object receipt and qualified applicability decision pending"
+  },
+  {
+    "id": "emscripten",
+    "name": "Emscripten 5.0.3 selected JS/system runtime",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/emscripten/LICENSE",
+      "originals/emscripten/system/lib/compiler-rt/LICENSE.TXT",
+      "originals/emscripten/system/lib/libc/musl/COPYRIGHT",
+      "originals/emscripten/system/lib/libcxx/LICENSE.TXT",
+      "originals/emscripten/system/lib/libcxxabi/LICENSE.TXT",
+      "originals/emscripten/system/lib/libunwind/LICENSE.TXT",
+      "originals/emscripten/system/lib/llvm-libc/LICENSE.TXT",
+      "originals/emscripten/system/lib/mimalloc/LICENSE"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual selected SDK/system objects and embedded mini-lz4/liblz4.js notices incomplete; source-only mimalloc/libunwind/LLVM files are not proven selected."
+  },
+  {
+    "id": "lbfgsb",
+    "name": "L-BFGS-B C translation (SciPy snapshot)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/LICENSES_bundled.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual optimize/__lbfgsb.c inherited header notice not separately preserved; source/header mapping pending"
+  },
+  {
+    "id": "lapjvsp",
+    "name": "LAPJVsp (SciPy snapshot)",
+    "evidence_basis": "Preserved COMPONENT_REVIEW.md technical handback; module/source association unless binary marker explicitly recorded",
+    "notice_ids": [
+      "originals/scipy-sdist/LICENSES_bundled.txt"
+    ],
+    "selected_license_option": "HUMAN_REVIEW_PENDING",
+    "unresolved": "Actual sparse/csgraph/_matching.pyx and selected header notice mapping pending"
+  }
+]

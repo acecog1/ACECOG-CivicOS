@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "id": 14011669639,
+    "run": 43371657753,
+    "source_sha": "8cd6031bd1dd7aff9e266c0abeb729d9d015bc59",
+    "source_tree": "96dca9c35b0484743d6db6a6eadd79a0eed00194",
+    "inner_zip_sha256": "c8fa9aa4bf97ec977966167dde2eb02db3681f96b2486df614f2e74f64c85a52",
+    "inner_zip_bytes": 24004439,
+    "zip_entries": 208,
+    "payload_files": 207,
+    "sbom_sha256": "ebe4f0ef7af96d8c34f561c9a41ec2d444b720f71b08216df5dd39ff90caf39f",
+    "inventory_sha256": "981bd16b5187e603177126146ee6f649eaf23b968419d903bb67513322686856",
+    "compiled_manifest_sha256": "4df0a02c11680269ceb46a84d21ad4407c59ee73d5dde001f346102615837753",
+    "prior_map_sha256": "0ecc5f9bf3976570c265025c2182a898800b4484dac9e40fb5819abc84ba4a84"
+  },
+  "checks": {
+    "payload_digests": 207,
+    "native_members": 123,
+    "notice_records": 166,
+    "original_texts": 164,
+    "all_member_status": "UNKNOWN_BLOCKING",
+    "extra_missing_native_members": 0,
+    "legal_approval": false
+  },
+  "component_count": 46
+}
