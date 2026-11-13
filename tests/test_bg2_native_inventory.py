@@ -85,3 +85,13 @@ def test_lock_authority_and_complete_dependency_closure(tmp_path, monkeypatch):
         inventory_locked(lock, {})
     with pytest.raises(RuntimeError, match="Extra wheel"):
         inventory_locked(lock, {wheel.name: raw, "extra.whl": raw})
+
+
+def test_candidate_notice_header_utf8_regression():
+    """Guard customer-visible notice heading against double-encoded punctuation."""
+    import inspect
+    from scripts import package_bg2_candidate
+
+    source = inspect.getsource(package_bg2_candidate._make_unapproved_license_packet)
+    assert "ACECOG BG-2 — THIRD PARTY LICENSE EVIDENCE" in source
+    assert "â€”" not in source

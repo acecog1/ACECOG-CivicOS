@@ -25,6 +25,23 @@ def test_direct_packager_cli_imports_without_pythonpath(tmp_path):
     assert "--source-sha" in result.stdout
 
 
+def test_pinned_roots_reject_self_consistent_replacement(monkeypatch):
+    # Updating every manifest hash cannot replace a source-pinned core root.
+    raw = {name: ("original:"+name).encode() for name in vendor.ROOT_ASSETS}
+    original = {name: pack.sha256(data) for name, data in raw.items()}
+    monkeypatch.setattr(vendor, "PINNED_LOCK_SHA256", original["pyodide-lock.json"])
+    monkeypatch.setattr(vendor, "load_root_pinset", lambda _: {
+        name: original[name] for name in vendor.CORE_ROOT_ASSETS})
+    raw["pyodide.asm.wasm"] = b"forged replacement root"
+    files = {"vendor/pyodide/"+name: data for name, data in raw.items()}
+    manifest = {"files_sha256": {name: pack.sha256(data) for name,data in raw.items()},
+        "bytes": sum(map(len,raw.values())), "version": vendor.VERSION,
+        "root_lock_sha256": vendor.PINNED_LOCK_SHA256,
+        "core_root_status": "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA"}
+    with pytest.raises(RuntimeError, match="Upstream asset SHA-256 mismatch"):
+        pack._verify_runtime_inventory(files, manifest)
+
+
 def _fixture_vendor(tmp_path, monkeypatch):
     folder = tmp_path/"fake-pyodide"
     folder.mkdir()

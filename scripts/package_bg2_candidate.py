@@ -202,6 +202,10 @@ def _verify_runtime_inventory(files: dict[str, bytes], manifest: dict) -> None:
     if (manifest.get("root_lock_sha256") != runtime.PINNED_LOCK_SHA256 or
             inventory.get("pyodide-lock.json") != runtime.PINNED_LOCK_SHA256):
         raise RuntimeError("Unrecognized packaged runtime lock")
+    if manifest.get("core_root_status") == "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA":
+        pins = runtime.load_root_pinset(ROOT/"docs/evidence/bg2-pyodide-core-candidate-pins-v1.json")
+        for name, expected in pins.items():
+            runtime.verify_digest(name, inventory.get(name, ""), expected)
 
 
 def _make_unapproved_license_packet(site: Path) -> None:
@@ -234,7 +238,7 @@ def _make_unapproved_license_packet(site: Path) -> None:
     (folder/"bg2-license-disposition.json").write_text(
         json.dumps(disposition,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     text = [
-        "ACECOG BG-2 â€” THIRD PARTY LICENSE EVIDENCE / NOT AN APPROVED NOTICE SET",
+        "ACECOG BG-2 — THIRD PARTY LICENSE EVIDENCE / NOT AN APPROVED NOTICE SET",
         "Public release prohibited: source, bundled components and redistribution",
         "conditions remain for independent qualified review.",
         "",
