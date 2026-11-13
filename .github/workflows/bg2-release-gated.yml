@@ -127,7 +127,10 @@ jobs:
           assert root["root_files_verified"] is True
           assert root["independent_QA_signoff"]=="REQUIRED"
           PY
-      - name: Archive preflight receipt ONLY — BG-1 and public Pages unchanged
+      - name: Refuse provisional artifacts even when external GO strings match
+        run: |
+          python -m scripts.bg2_publication_gate --zip "build/bg2-controlled/bg2-review-$EXPECTED_SHA.zip"
+      - name: Archive preflight receipt ONLY â€” BG-1 and public Pages unchanged
         run: |
           set -euo pipefail
           mkdir -p build/bg2-prepublication

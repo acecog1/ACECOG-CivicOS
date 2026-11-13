@@ -29,6 +29,7 @@ BROWSER_COPIES = {
         "Browser-only civic laboratory · No simulation requests leave this device. Static hosting still receives ordinary page requests. No accounts, cookies, real civic records, or public sharing service.",
 }
 FILES = [
+    ("LICENSE", "LICENSE.txt"),
     ("src/acecog/__init__.py", "python/src/acecog/__init__.py"),
     ("src/acecog/engine.py", "python/src/acecog/engine.py"),
     ("src/acecog/contract.py", "python/src/acecog/contract.py"),
@@ -117,10 +118,23 @@ def build(dest: Path = DEST) -> None:
         html, '<footer class="container subtle">',
         '<footer class="container subtle">'
         '<a href="./third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt">'
-        'Third-party license source evidence (NOT YET APPROVED)</a> · ',
+        'Third-party license source evidence (NOT YET APPROVED)</a> · '
+        '<a href="./SOURCE_ACCESS.txt">Licenses &amp; source code</a> · ',
         "index.html",
     )
     (dest / "index.html").write_text(html, encoding="utf-8")
+    (dest / "SOURCE_ACCESS.txt").write_text(
+        "ACECOG BG-2 review candidate — PUBLICATION HOLD\n"
+        "ACECOG license: ./LICENSE.txt (AGPL-3.0)\n"
+        "Exact ACECOG source: https://github.com/acecog1/ACECOG-CivicOS/tree/"
+        + checked_out_source_revision() + "\n"
+        "Pyodide MPL-2.0 covered source: https://github.com/pyodide/pyodide/tree/"
+        "b1e4fcc2488962f6360a97f19b9982d6fdb5d16f\n"
+        "Pyodide license text: ./third_party/upstream_license_sources/pyodide-MPL-2.0-LICENSE.txt\n"
+        "Redistribution evidence: ./third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt\n"
+        "Required binary-specific third-party notices/source obligations remain under review.\n"
+        "These links do not certify notice completeness or license approval.\n",
+        encoding="utf-8")
     js = (PUBLIC / "lab.js").read_text(encoding="utf-8")
     js = replace_one(
         js,
@@ -150,7 +164,7 @@ def build(dest: Path = DEST) -> None:
         # bind the manifest to actual checked-out HEAD, not the event SHA.
         "source_revision": checked_out_source_revision(),
         "runtime": "Pyodide version pinned by vendor manifest; solver output parity still needs proof",
-        "files": {str(p.relative_to(dest)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
+        "files": {p.relative_to(dest).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
     }
     (dest / "source-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     if any("https://cdn" in (dest / item).read_text(encoding="utf-8") for item in
