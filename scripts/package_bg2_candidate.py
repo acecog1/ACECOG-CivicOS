@@ -233,7 +233,7 @@ def _make_unapproved_license_packet(site: Path) -> None:
     (folder/"bg2-license-disposition.json").write_text(
         json.dumps(disposition,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     text = [
-        "ACECOG BG-2 â€” THIRD PARTY LICENSE EVIDENCE / NOT AN APPROVED NOTICE SET",
+        "ACECOG BG-2 — THIRD PARTY LICENSE EVIDENCE / NOT AN APPROVED NOTICE SET",
         "Public release prohibited: source, bundled components and redistribution",
         "conditions remain for independent qualified review.",
         "",
