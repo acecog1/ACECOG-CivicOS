@@ -1,0 +1,28 @@
+{
+  "release": "1.97.1",
+  "release_date": "2026-07-16",
+  "tag_object": "bd3cd8fdf9945e13d317642df03363bfa1b4c30e",
+  "commit": "8bab26f4f68e0e26f0bb7960be334d5b520ea452",
+  "tag_api": "https://api.github.com/repos/rust-lang/rust/git/tags/bd3cd8fdf9945e13d317642df03363bfa1b4c30e",
+  "tag_signature_status": "GitHub returned verified:false reason:no_user; no independent signature verification claimed",
+  "manifest_url": "https://static.rust-lang.org/dist/channel-rust-1.97.1.toml",
+  "manifest_sha256": "03569b1886ceb5c05276b50c8431ab111de944cd6140fe1fa7d821dd8e0f29cf",
+  "manifest_checksum_url": "https://static.rust-lang.org/dist/channel-rust-1.97.1.toml.sha256",
+  "checksum_result": "MATCH",
+  "rustc_gzip_sha256": "1c441e430c1cca49dff54a8d59c41038bf6f79f7b8756596cb2f36511a015eba",
+  "rustc_xz_sha256": "9819d0a32d56bd339585319c80260e332779f5541fd66838ab7e016d6c814819",
+  "xz_disposition": "Downloaded and hash matched; unavailable xz decoder. Gzip used for extraction.",
+  "emscripten_std_gzip_sha256": "4878677947b25d42db0962473a5ab6a96c2533cc279feebce1cca6ab8f47af7f",
+  "documentation_attempt": {
+    "url": "https://doc.rust-lang.org/1.97.1/COPYRIGHT-library.html",
+    "result": "HTTP 404; no error response used as a notice"
+  },
+  "scope": {
+    "library_html": "Official release-wide standard-library candidate collection; actual incorporated target subset remains open",
+    "toolchain_html": "Research context; not proof host compiler/toolchain is shipped",
+    "rustc_package": "Evidence acquisition only; compiler executables are not added to runtime",
+    "target_std_package": "Exact Emscripten release reference; not byte correspondence proof for shipped rpds"
+  },
+  "B_U5": "OPEN",
+  "human_legal_decision": "PENDING"
+}

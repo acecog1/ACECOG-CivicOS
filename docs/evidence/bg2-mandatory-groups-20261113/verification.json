@@ -1,0 +1,17 @@
+{
+  "role": "BUILDER_RECHECK_NOT_INDEPENDENT_QA_OR_LEGAL",
+  "runtime_sha256": "c8fa9aa4bf97ec977966167dde2eb02db3681f96b2486df614f2e74f64c85a52",
+  "runtime_bytes": 24004439,
+  "supplement_sha256": "a1192e12a77139a14134fab7323737cd4cee08768b433da884423714295e808d",
+  "supplement_bytes": 3806018,
+  "supplement_entries": 217,
+  "notice_records_checked": 166,
+  "wheel_packages_checked": 10,
+  "embedded_notice_files_checked": 32,
+  "core_files_checked": 4,
+  "native_member_records": 123,
+  "recovered_files": 179,
+  "release": "HOLD",
+  "releasable": false,
+  "license_sbom_approved": false
+}
