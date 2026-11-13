@@ -7,10 +7,22 @@ from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 
 import pytest
+import os
+import subprocess
+import sys
 
 from scripts import build_browser_lab as builder
 from scripts import package_bg2_candidate as pack
 from scripts import vendor_browser_pyodide as vendor
+
+
+def test_direct_packager_cli_imports_without_pythonpath(tmp_path):
+    environment = {key: value for key, value in os.environ.items() if key != "PYTHONPATH"}
+    result = subprocess.run([sys.executable, str(pack.ROOT/"scripts/package_bg2_candidate.py"),
+                             "--help"], cwd=tmp_path, env=environment,
+                            capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+    assert "--source-sha" in result.stdout
 
 
 def _fixture_vendor(tmp_path, monkeypatch):

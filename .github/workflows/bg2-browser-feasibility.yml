@@ -81,6 +81,16 @@ jobs:
             --source-sha "$SOURCE_HEAD" \
             --output "build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
           sha256sum "build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+          # Use the inner packet's SBOM, including its native inventory binding,
+          # for separately uploaded evidence too; do not retain the pre-package SBOM.
+          python - "$SOURCE_HEAD" <<'PY'
+          import sys
+          from pathlib import Path
+          from zipfile import ZipFile
+          with ZipFile(f"build/bg2-artifacts/bg2-review-{sys.argv[1]}.zip") as z:
+              for name in ("bg2-sbom.cdx.json", "bg2-locked-native-inventory.json"):
+                  Path("build/bg2-evidence", name).write_bytes(z.read("third_party/"+name))
+          PY
       - name: R3 offline versioned staging and rollback rehearsal (NO Pages)
         env:
           SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -186,6 +196,7 @@ jobs:
             build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json \
             build/bg2-evidence/publisher-root-verification.json \
             build/bg2-evidence/bg2-sbom.cdx.json \
+            build/bg2-evidence/bg2-locked-native-inventory.json \
             build/bg2-evidence/bg2-license-disposition.json \
             build/bg2-evidence/bg2-exact-wheel-notice-probe.json; do
             if test -f "$file"; then cp "$file" build/bg2-release-evidence/; fi

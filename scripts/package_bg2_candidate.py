@@ -16,11 +16,11 @@ import shutil
 import subprocess
 import tempfile
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
-from scripts import bg2_native_inventory as native_inventory
 
 # Support both `python -m scripts.package_bg2_candidate` (preferred) and the
 # direct CLI path used by operators; do not mask unrelated missing dependencies.
 if __package__:
+    from scripts import bg2_native_inventory as native_inventory
     from scripts import build_browser_lab as source
     from scripts import vendor_browser_pyodide as runtime
     from scripts import bg2_license_probe as license_probe
@@ -33,6 +33,7 @@ else:
     # whose own imports use the canonical scripts.* module path.
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from scripts import bg2_native_inventory as native_inventory
     from scripts import bg2_license_probe as license_probe
     from scripts import build_bg2_sbom as license_sbom
     from scripts import bg2_license_texts as license_texts
