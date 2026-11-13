@@ -57,6 +57,12 @@ def test_pinned_review_packet_contains_exact_notice_sbom_and_fails_on_tamper(tmp
     from scripts import package_bg2_candidate as pack
     folder,wheel,state=_wheel(tmp_path,monkeypatch)
     state["root_lock_sha256"]=vendor.PINNED_LOCK_SHA256
+    lock=json.dumps({"packages":{"fictional":{"file_name":wheel.name,
+         "sha256":state["files_sha256"][wheel.name], "version":"1.2.3", "depends":[]}}}).encode()
+    (folder/"pyodide-lock.json").write_bytes(lock)
+    monkeypatch.setattr(vendor,"PINNED_LOCK_SHA256",hashlib.sha256(lock).hexdigest())
+    monkeypatch.setattr(vendor,"PACKAGE_ROOTS",("fictional",))
+    state["root_lock_sha256"]=vendor.PINNED_LOCK_SHA256
     site=tmp_path/"site"
     (site/"vendor").mkdir(parents=True)
     # The actual vendor directory must live within this source-relative site.
@@ -69,6 +75,7 @@ def test_pinned_review_packet_contains_exact_notice_sbom_and_fails_on_tamper(tmp
     files=pack._listed_files(site)
     names={
       "third_party/bg2-exact-wheel-notice-probe.json":"license_probe_sha256",
+      "third_party/bg2-locked-native-inventory.json":"native_inventory_sha256",
       "third_party/bg2-sbom.cdx.json":"sbom_sha256",
       "third_party/bg2-license-disposition.json":"license_disposition_sha256",
       "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt":"notices_candidate_sha256",
@@ -89,6 +96,15 @@ def test_pinned_review_packet_contains_exact_notice_sbom_and_fails_on_tamper(tmp
     assert b"NOT AN APPROVED NOTICE SET" in files["third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"]
     probe_receipt=json.loads(files["third_party/bg2-exact-wheel-notice-probe.json"])
     assert probe_receipt["wheels"][0]["wheel_sha256"]==state["files_sha256"][wheel.name]
+
+    # A forged inventory plus matching envelope hashes still fails: verification
+    # reconstructs expected members from the pinned lock and actual wheel bytes.
+    forged=dict(files)
+    forged["third_party/bg2-locked-native-inventory.json"]=b'{}'
+    forged_manifest=dict(manifest)
+    forged_manifest["native_inventory_sha256"]=pack.sha256(b'{}')
+    with pytest.raises(RuntimeError,match="Native inventory differs"):
+        pack._verify_unapproved_license_packet(forged,forged_manifest,state)
 
     import json
     source_manifest=json.loads(files["third_party/LICENSE_SOURCE_PROVENANCE.json"])

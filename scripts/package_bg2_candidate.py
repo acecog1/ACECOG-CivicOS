@@ -20,6 +20,7 @@ from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 # Support both `python -m scripts.package_bg2_candidate` (preferred) and the
 # direct CLI path used by operators; do not mask unrelated missing dependencies.
 if __package__:
+    from scripts import bg2_native_inventory as native_inventory
     from scripts import build_browser_lab as source
     from scripts import vendor_browser_pyodide as runtime
     from scripts import bg2_license_probe as license_probe
@@ -32,6 +33,7 @@ else:
     # whose own imports use the canonical scripts.* module path.
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from scripts import bg2_native_inventory as native_inventory
     from scripts import bg2_license_probe as license_probe
     from scripts import build_bg2_sbom as license_sbom
     from scripts import bg2_license_texts as license_texts
@@ -87,12 +89,13 @@ def _build_input_paths() -> tuple[str, ...]:
         "scripts/verify_bg2_upstream.py",
         "scripts/build_bg2_sbom.py",
         "scripts/bg2_license_probe.py",
+        "scripts/bg2_native_inventory.py",
         "scripts/bg2_license_texts.py",
         "docs/evidence/bg2-license-upstream-sources-v0.1.json",
         "docs/evidence/bg2-license-sources/pyodide-MPL-2.0-LICENSE.txt",
         "docs/evidence/bg2-license-sources/scipy-1.18.0-LICENSE.txt",
         "docs/evidence/bg2-license-sources/scipy-1.18.0-LICENSES_bundled.txt",
-        "docs/evidence/bg2-license-sources/cpython-3.14.0-LICENSE.txt",
+        "docs/evidence/bg2-license-sources/cpython-3.14.2-LICENSE.txt",
         "scripts/bg2_stage.py",
         "docs/evidence/bg2-pyodide-core-candidate-pins-v1.json",
     }
@@ -199,6 +202,10 @@ def _verify_runtime_inventory(files: dict[str, bytes], manifest: dict) -> None:
     if (manifest.get("root_lock_sha256") != runtime.PINNED_LOCK_SHA256 or
             inventory.get("pyodide-lock.json") != runtime.PINNED_LOCK_SHA256):
         raise RuntimeError("Unrecognized packaged runtime lock")
+    if manifest.get("core_root_status") == "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA":
+        pins = runtime.load_root_pinset(ROOT/"docs/evidence/bg2-pyodide-core-candidate-pins-v1.json")
+        for name, expected in pins.items():
+            runtime.verify_digest(name, inventory.get(name, ""), expected)
 
 
 def _make_unapproved_license_packet(site: Path) -> None:
@@ -217,6 +224,13 @@ def _make_unapproved_license_packet(site: Path) -> None:
     folder = site/"third_party"
     folder.mkdir(parents=True)
     license_texts.copy_verified(ROOT,folder)
+    native_bytes = (json.dumps(native_inventory.inventory_directory(root),
+                              indent=2, sort_keys=True)+"\n").encode("utf-8")
+    (folder/"bg2-locked-native-inventory.json").write_bytes(native_bytes)
+    sbom.setdefault("externalReferences", []).append({
+        "type": "other", "url": "./bg2-locked-native-inventory.json",
+        "comment": "Actual locked native members; compiled attribution UNKNOWN_BLOCKING",
+        "hashes": [{"alg": "SHA-256", "content": sha256(native_bytes)}]})
     (folder/"bg2-exact-wheel-notice-probe.json").write_text(
         json.dumps(inspection,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     (folder/"bg2-sbom.cdx.json").write_text(
@@ -271,6 +285,7 @@ def _verify_unapproved_license_packet(files: dict[str,bytes],
         "third_party/bg2-sbom.cdx.json":"sbom_sha256",
         "third_party/bg2-license-disposition.json":"license_disposition_sha256",
         "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt":"notices_candidate_sha256",
+        "third_party/bg2-locked-native-inventory.json":"native_inventory_sha256",
     }
     source_paths=license_texts.verify_packet(files)
     keys["third_party/LICENSE_SOURCE_PROVENANCE.json"]="upstream_source_manifest_sha256"
@@ -297,6 +312,21 @@ def _verify_unapproved_license_packet(files: dict[str,bytes],
             status.get("package_count") != len(wasm.get("packages",[]))):
         raise RuntimeError("Incomplete or falsely approved license packet")
     hashes = wasm.get("files_sha256",{})
+    # Recompute from the actual inner ZIP lock/wheel bytes, rather than trusting
+    # a self-consistent inventory JSON or caller-provided wheel digest.
+    prefix = "vendor/pyodide/"
+    recomputed = native_inventory.inventory_locked(
+        files[prefix+"pyodide-lock.json"],
+        {name[len(prefix):]: data for name, data in files.items()
+         if name.startswith(prefix) and name.endswith(".whl")})
+    if recomputed != json.loads(files["third_party/bg2-locked-native-inventory.json"]):
+        raise RuntimeError("Native inventory differs from locked artifact bytes")
+    native_reference = {"type": "other", "url": "./bg2-locked-native-inventory.json",
+        "comment": "Actual locked native members; compiled attribution UNKNOWN_BLOCKING",
+        "hashes": [{"alg": "SHA-256", "content": sha256(
+            files["third_party/bg2-locked-native-inventory.json"])}]}
+    if native_reference not in sbom.get("externalReferences", []):
+        raise RuntimeError("SBOM lacks exact native inventory reference")
     actual = {w["wheel"]:w["wheel_sha256"] for w in probe["wheels"]}
     if any(hashes.get(name) != digest for name,digest in actual.items()):
         raise RuntimeError("Notice inventory is not bound to actual locked wheel bytes")
@@ -404,6 +434,7 @@ def build_candidate(output: Path, expected_sha: str, vendor_source: Path) -> dic
             "runtime_manifest_sha256":digests["vendor/pyodide/acecog-runtime-manifest.json"],
             "runtime_pin_status":runtime_manifest["core_root_status"],
             "license_probe_sha256":digests.get("third_party/bg2-exact-wheel-notice-probe.json"),
+            "native_inventory_sha256":digests.get("third_party/bg2-locked-native-inventory.json"),
             "sbom_sha256":digests.get("third_party/bg2-sbom.cdx.json"),
             "license_disposition_sha256":digests.get("third_party/bg2-license-disposition.json"),
             "notices_candidate_sha256":digests.get("third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt"),
