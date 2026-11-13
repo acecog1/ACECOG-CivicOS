@@ -7,10 +7,39 @@ from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 
 import pytest
+import os
+import subprocess
+import sys
 
 from scripts import build_browser_lab as builder
 from scripts import package_bg2_candidate as pack
 from scripts import vendor_browser_pyodide as vendor
+
+
+def test_direct_packager_cli_imports_without_pythonpath(tmp_path):
+    environment = {key: value for key, value in os.environ.items() if key != "PYTHONPATH"}
+    result = subprocess.run([sys.executable, str(pack.ROOT/"scripts/package_bg2_candidate.py"),
+                             "--help"], cwd=tmp_path, env=environment,
+                            capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+    assert "--source-sha" in result.stdout
+
+
+def test_pinned_roots_reject_self_consistent_replacement(monkeypatch):
+    # Updating every manifest hash cannot replace a source-pinned core root.
+    raw = {name: ("original:"+name).encode() for name in vendor.ROOT_ASSETS}
+    original = {name: pack.sha256(data) for name, data in raw.items()}
+    monkeypatch.setattr(vendor, "PINNED_LOCK_SHA256", original["pyodide-lock.json"])
+    monkeypatch.setattr(vendor, "load_root_pinset", lambda _: {
+        name: original[name] for name in vendor.CORE_ROOT_ASSETS})
+    raw["pyodide.asm.wasm"] = b"forged replacement root"
+    files = {"vendor/pyodide/"+name: data for name, data in raw.items()}
+    manifest = {"files_sha256": {name: pack.sha256(data) for name,data in raw.items()},
+        "bytes": sum(map(len,raw.values())), "version": vendor.VERSION,
+        "root_lock_sha256": vendor.PINNED_LOCK_SHA256,
+        "core_root_status": "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA"}
+    with pytest.raises(RuntimeError, match="Upstream asset SHA-256 mismatch"):
+        pack._verify_runtime_inventory(files, manifest)
 
 
 def _fixture_vendor(tmp_path, monkeypatch):

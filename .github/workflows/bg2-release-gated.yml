@@ -1,6 +1,6 @@
 # Manual, protected, fail-closed BG-2 first-publication PRE-FLIGHT.
-# No deployment is possible from this workflow: a separate BG-2 host/publisher
-# with independent rollout/rollback approval is still required.
+# No deployment is possible from this workflow: the Owner-selected GoDaddy W+M
+# /beta route requires separately approved staging and restoration evidence.
 name: BG-2 protected publication preflight (NO DEPLOY)
 on:
   workflow_dispatch:
@@ -48,9 +48,15 @@ jobs:
       ENV_REVIEW_GO: ${{ vars.BG2_PROTECTED_ENV_AUDIT_SHA }}
       APPROVED_ZIP_HASH: ${{ vars.BG2_RELEASE_ARTIFACT_SHA256 }}
       APPROVED_SBOM_HASH: ${{ vars.BG2_APPROVED_SBOM_SHA256 }}
-      DEDICATED_HOST_REPO: ${{ vars.BG2_DEDICATED_HOST_REPO }}
+      STAGING_URL: ${{ vars.BG2_STAGING_TARGET_URL }}
       GH_TOKEN: ${{ github.token }}
     steps:
+      - name: Refuse non-default-branch dispatch (no silent skip)
+        run: |
+          set -euo pipefail
+          test "${GITHUB_EVENT_NAME:-}" = "workflow_dispatch" || { echo "::error::Manual dispatch required"; exit 1; }
+          test "${GITHUB_REF:-}" = "refs/heads/main" || { echo "::error::Protected default-branch dispatch required"; exit 1; }
+          test "${GITHUB_REPOSITORY:-}" = "acecog1/ACECOG-CivicOS" || { echo "::error::Unexpected preflight repository"; exit 1; }
       - name: Refuse absent/contradictory/unauthorized attestation before checkout
         run: |
           set -euo pipefail
@@ -64,8 +70,7 @@ jobs:
           done
           test "$APPROVED_ZIP_HASH" = "$ARCHIVE_SHA"
           [[ "$APPROVED_SBOM_HASH" =~ ^[0-9a-f]{64}$ ]] || exit 1
-          [[ "$DEDICATED_HOST_REPO" =~ ^[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+$ ]] || exit 1
-          test "$DEDICATED_HOST_REPO" != "$GITHUB_REPOSITORY"
+          test "$STAGING_URL" = "https://acecog.org/beta" || { echo "::error::Owner-approved GoDaddy beta target required"; exit 1; }
           test "$EXPECTED_SHA" != "4a28737b515bd6d652a05a971822c92aa0ec2057"
       - uses: actions/checkout@v7
         with:
@@ -122,6 +127,9 @@ jobs:
           assert root["root_files_verified"] is True
           assert root["independent_QA_signoff"]=="REQUIRED"
           PY
+      - name: Refuse provisional artifacts even when external GO strings match
+        run: |
+          python -m scripts.bg2_publication_gate --zip "build/bg2-controlled/bg2-review-$EXPECTED_SHA.zip"
       - name: Archive preflight receipt ONLY — BG-1 and public Pages unchanged
         run: |
           set -euo pipefail
@@ -129,8 +137,8 @@ jobs:
           printf '%s\n' "BG-2 preflight, NOT PUBLIC DEPLOYMENT" \
             "source_sha=$EXPECTED_SHA" "zip_sha256=$ARCHIVE_SHA" \
             "review_run=$REVIEW_RUN" "version=$VERSION_ID" \
-            "dedicated_host_repository=$DEDICATED_HOST_REPO" \
-            "independent host deploy/rollback still needs a separate signed action" \
+            "staging_target=$STAGING_URL" \
+            "GoDaddy W+M staging/rollback still requires a separate Owner-approved action" \
             > build/bg2-prepublication/receipt.txt
       - uses: actions/upload-artifact@v7
         with:
