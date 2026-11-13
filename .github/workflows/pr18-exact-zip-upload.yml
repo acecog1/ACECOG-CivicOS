@@ -37,6 +37,7 @@ jobs:
         with:
           artifact-ids: ${{ steps.artifact.outputs.artifact-id }}
           path: roundtrip
+          merge-multiple: true
       - name: Verify downloaded ZIP against original and record receipt
         env:
           ARTIFACT_ID: ${{ steps.artifact.outputs.artifact-id }}
