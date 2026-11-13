@@ -1,0 +1,212 @@
+# BROWSER ONLY — feasibility test; not a publication/deploy workflow.
+# Downloads Pyodide assets at build time, serves them from localhost, and proves
+# the real civic solver runs in a Chromium Worker without a Python web server.
+name: BG-2 sovereign browser feasibility
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wasm-lab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Pull-request event GITHUB_SHA may identify a generated merge commit.
+          # Check out the actual candidate SOURCE HEAD for truthful provenance.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Verify checkout is exact candidate source, not merge-ref SHA
+        env:
+          SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SOURCE_HEAD"
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Install pinned local engine and browser-test dependencies
+        run: |
+          pip install -r requirements-ci.txt
+          npm ci --prefix scripts/site_checks
+          cd scripts/site_checks
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Extract and verify source-only browser distribution
+        run: |
+          python scripts/build_browser_lab.py
+          python -m pytest -q tests/test_browser_lab_bundle.py tests/test_browser_runtime_pins.py tests/test_bg2_package.py tests/test_bg2_upstream_sbom.py tests/test_bg2_staging.py tests/test_bg2_license_probe.py tests/test_bg2_native_inventory.py
+      - name: R1 verify candidate hashes against publisher SHA256 of official release archive
+        run: |
+          set -euo pipefail
+          python -m scripts.verify_bg2_upstream \
+            --pinset docs/evidence/bg2-pyodide-core-candidate-pins-v1.json \
+            --output build/bg2-evidence/publisher-root-verification.json
+      - name: R1 fail-closed vendoring with exact root pinset (QA approval still pending)
+        run: |
+          python scripts/vendor_browser_pyodide.py \
+            --approved-root-pinset docs/evidence/bg2-pyodide-core-candidate-pins-v1.json
+      - name: R1 full vendored wheel/license/SBOM inventory
+        run: |
+          python -m scripts.build_bg2_sbom \
+            --vendor build/browser-lab/vendor/pyodide \
+            --output-dir build/bg2-evidence
+          test -s build/bg2-evidence/bg2-sbom.cdx.json
+          test -s build/bg2-evidence/bg2-license-disposition.json
+      - name: R1 inspect every actual locked wheel's embedded license and attribution evidence
+        run: |
+          python -m scripts.bg2_license_probe \
+            --vendor build/browser-lab/vendor/pyodide \
+            --output build/bg2-evidence/bg2-exact-wheel-notice-probe.json
+          test -s build/bg2-evidence/bg2-exact-wheel-notice-probe.json
+      - name: Package isolated fully hashed BG-2 review artifact without publishing
+        env:
+          SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SOURCE_HEAD"
+          mkdir -p build/bg2-artifacts
+          python scripts/package_bg2_candidate.py build \
+            --source-sha "$SOURCE_HEAD" \
+            --vendor-source build/browser-lab/vendor/pyodide \
+            --output "build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+          python scripts/package_bg2_candidate.py verify \
+            --source-sha "$SOURCE_HEAD" \
+            --output "build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+          sha256sum "build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+          # Use the inner packet's SBOM, including its native inventory binding,
+          # for separately uploaded evidence too; do not retain the pre-package SBOM.
+          python - "$SOURCE_HEAD" <<'PY'
+          import sys
+          from pathlib import Path
+          from zipfile import ZipFile
+          with ZipFile(f"build/bg2-artifacts/bg2-review-{sys.argv[1]}.zip") as z:
+              for name in ("bg2-sbom.cdx.json", "bg2-locked-native-inventory.json"):
+                  Path("build/bg2-evidence", name).write_bytes(z.read("third_party/"+name))
+          PY
+      - name: R3 offline versioned staging and rollback rehearsal (NO Pages)
+        env:
+          SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          ARCHIVE="build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+          ROOT="build/bg2-offline-rehearsal"
+          python -m scripts.bg2_stage stage --root "$ROOT" --version bg2-v0.1 --zip "$ARCHIVE" --source-sha "$SOURCE_HEAD"
+          python -m scripts.bg2_stage select --root "$ROOT" --version bg2-v0.1
+          python -m scripts.bg2_stage stage --root "$ROOT" --version bg2-v0.2 --zip "$ARCHIVE" --source-sha "$SOURCE_HEAD"
+          python -m scripts.bg2_stage select --root "$ROOT" --version bg2-v0.2
+          python -m scripts.bg2_stage rollback --root "$ROOT"
+          grep -F 'bg2-v0.1' "$ROOT/current.json"
+          test ! -f "$ROOT/index.html"  # no BG-1 root mutation
+      - name: Upload reproducible independent-review ZIP (NEVER Pages deployment)
+        uses: actions/upload-artifact@v7
+        with:
+          name: bg2-review-only-${{ github.event.pull_request.head.sha || github.sha }}
+          path: build/bg2-artifacts/bg2-review-*.zip
+          if-no-files-found: error
+      - name: Prepare fixed native SciPy comparison evidence (not public)
+        run: |
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          sys.path[:0]=["scripts","tests","src"]
+          import experiment_riverbend as lab
+          p=lab.parameters(budget=600000,water=12,crew=20,appropriation=350000)
+          result=lab.compare(p)
+          Path("build/browser-lab/native-parity-golden.json").write_text(
+              json.dumps(result,sort_keys=True),encoding="utf-8")
+          print("Native funded reference, solver:",result["alternative"]["optimization"]["solver_config"])
+          PY
+      - name: Verify and stage the packaged ZIP itself for browser tests
+        run: |
+          set -euo pipefail
+          SOURCE_HEAD="$(git rev-parse HEAD)"
+          ARCHIVE="build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip"
+          python scripts/package_bg2_candidate.py verify --source-sha "$SOURCE_HEAD" --output "$ARCHIVE"
+          python - "$ARCHIVE" <<'PY'
+          import sys
+          from pathlib import Path
+          from zipfile import ZipFile
+          archive=Path(sys.argv[1])
+          target=Path("build/bg2-served")
+          if target.exists():
+              raise SystemExit("Refuse stale BG-2 browser content")
+          target.mkdir(parents=True)
+          with ZipFile(archive) as z:
+              z.extractall(target)
+          print("Chromium tests will serve ONLY verified ZIP bytes:", archive)
+          PY
+      - name: Test the verified packaged WebAssembly artifact in Chromium
+        run: |
+          python -m http.server 8781 --bind 127.0.0.1 --directory build/bg2-served > /tmp/browser-lab-server.log 2>&1 &
+          sleep 2
+          node --test scripts/site_checks/browser_sovereign.test.cjs
+      - name: R2 cross-engine real WASM qualification against verified artifact
+        run: |
+          set -euo pipefail
+          for engine in chromium firefox webkit; do
+            BG2_BROWSER="$engine" \
+            BG2_QUAL_REPORT="build/bg2-evidence/bg2-r2-$engine.json" \
+            node --test scripts/site_checks/bg2_qualify.test.cjs
+          done
+      - name: R2 controlled worker failure, page reload and throttled-network Chromium
+        run: |
+          BG2_RESILIENCE_REPORT=build/bg2-evidence/bg2-r2-resilience.json \
+          node --test scripts/site_checks/bg2_resilience.test.cjs
+      - name: Upload BG-2 browser timing/network/axe qualification evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: bg2-r2-browser-qualification-${{ github.event.pull_request.head.sha || github.sha }}
+          path: build/bg2-evidence/bg2-r2-*.json
+          if-no-files-found: warn
+      - name: Inventory exact observed source and core root hashes — NOT release pins
+        if: always()
+        run: |
+          set -e
+          if test -f build/browser-lab/source-manifest.json; then
+            sha256sum build/browser-lab/source-manifest.json
+          fi
+          if test -f build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json; then
+            sha256sum build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json")
+          if p.exists():
+              m=json.loads(p.read_text())
+              assert m["core_root_status"] == "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA"
+              print("VERIFIED AGAINST OFFICIAL RELEASE ARCHIVE; INDEPENDENT QA/LEGAL APPROVAL STILL PENDING")
+              print(json.dumps(m["core_root_sha256"],indent=2,sort_keys=True))
+          PY
+          fi
+      - name: Assemble source-head-aligned root/SBOM evidence
+        if: always()
+        run: |
+          mkdir -p build/bg2-release-evidence
+          for file in \
+            build/browser-lab/source-manifest.json \
+            build/browser-lab/vendor/pyodide/acecog-runtime-manifest.json \
+            build/bg2-evidence/publisher-root-verification.json \
+            build/bg2-evidence/bg2-sbom.cdx.json \
+            build/bg2-evidence/bg2-locked-native-inventory.json \
+            build/bg2-evidence/bg2-license-disposition.json \
+            build/bg2-evidence/bg2-exact-wheel-notice-probe.json; do
+            if test -f "$file"; then cp "$file" build/bg2-release-evidence/; fi
+          done
+      - name: Preserve source/runtime attestation candidates for independent QA
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: bg2-unapproved-runtime-evidence-${{ github.event.pull_request.head.sha || github.sha }}
+          path: build/bg2-release-evidence/
+          if-no-files-found: warn
+      - name: NO Pages deployment
+        run: echo "Test-only. Never publish from this workflow."
