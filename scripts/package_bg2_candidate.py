@@ -16,11 +16,11 @@ import shutil
 import subprocess
 import tempfile
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
-from scripts import bg2_native_inventory as native_inventory
 
 # Support both `python -m scripts.package_bg2_candidate` (preferred) and the
 # direct CLI path used by operators; do not mask unrelated missing dependencies.
 if __package__:
+    from scripts import bg2_native_inventory as native_inventory
     from scripts import build_browser_lab as source
     from scripts import vendor_browser_pyodide as runtime
     from scripts import bg2_license_probe as license_probe
@@ -33,6 +33,7 @@ else:
     # whose own imports use the canonical scripts.* module path.
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from scripts import bg2_native_inventory as native_inventory
     from scripts import bg2_license_probe as license_probe
     from scripts import build_bg2_sbom as license_sbom
     from scripts import bg2_license_texts as license_texts
@@ -201,6 +202,10 @@ def _verify_runtime_inventory(files: dict[str, bytes], manifest: dict) -> None:
     if (manifest.get("root_lock_sha256") != runtime.PINNED_LOCK_SHA256 or
             inventory.get("pyodide-lock.json") != runtime.PINNED_LOCK_SHA256):
         raise RuntimeError("Unrecognized packaged runtime lock")
+    if manifest.get("core_root_status") == "EXACT_PINSET_VERIFIED_PENDING_INDEPENDENT_QA":
+        pins = runtime.load_root_pinset(ROOT/"docs/evidence/bg2-pyodide-core-candidate-pins-v1.json")
+        for name, expected in pins.items():
+            runtime.verify_digest(name, inventory.get(name, ""), expected)
 
 
 def _make_unapproved_license_packet(site: Path) -> None:

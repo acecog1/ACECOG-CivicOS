@@ -62,6 +62,7 @@ def download(name: str, destination: Path, expected_sha: str | None = None) -> s
     # redirects are checked against that same host and versioned path before use.
     # Retry only transient network transport failures against the SAME pinned
     # version/HTTPS origin. Never retry checksum, redirect or content failures.
+    data = None
     for attempt in range(3):
         try:
             with urllib.request.urlopen(req, timeout=45) as response:  # nosec B310
@@ -78,6 +79,8 @@ def download(name: str, destination: Path, expected_sha: str | None = None) -> s
                     f"Pinned upstream HTTPS asset unavailable after bounded retries: {name}"
                 ) from exc
             time.sleep(1 << attempt)
+    if data is None:
+        raise RuntimeError("Pinned upstream download produced no bytes: " + name)
     if len(data) > MAX_DOWNLOAD:
         raise RuntimeError(f"Upstream asset oversized: {name}")
     observed = hashlib.sha256(data).hexdigest()
