@@ -1,0 +1,324 @@
+[
+  {
+    "package": "attrs",
+    "version": "26.1.0",
+    "path": "vendor/pyodide/attrs-26.1.0-py3-none-any.whl",
+    "sha256": "0506ebb8e46c83017941a7239eecb2f74420d332cf1f341bddc43a217ab0bb66",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "attrs-26.1.0.dist-info/licenses/LICENSE",
+        "sha256": "882115c95dfc2af1eeb6714f8ec6d5cbcabf667caff8729f42420da63f714e9f",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 0,
+    "zero_native_is_exclusion": false
+  },
+  {
+    "package": "jsonschema",
+    "version": "4.26.0",
+    "path": "vendor/pyodide/jsonschema-4.26.0-py3-none-any.whl",
+    "sha256": "7ce77bd37ad161555c166d815bf1bc84980fd388a74059c73c9bc9214faa0a6e",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "jsonschema-4.26.0.dist-info/licenses/COPYING",
+        "sha256": "4f92a015a13c4d1a040bef018aa13430b4f1bc73b41b16bb846c346766de7439",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 0,
+    "zero_native_is_exclusion": false
+  },
+  {
+    "package": "jsonschema-specifications",
+    "version": "2025.9.1",
+    "path": "vendor/pyodide/jsonschema_specifications-2025.9.1-py3-none-any.whl",
+    "sha256": "8e4353ea148aca60a2ea2aabbc068a62cf8d3deab5ee3ef91cfb991ecdb61c1b",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "jsonschema_specifications-2025.9.1.dist-info/licenses/COPYING",
+        "sha256": "42dcd63495f87b4eb7c7757afa379bb55a53f94afd7a5f657d9adf57236e515c",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 0,
+    "zero_native_is_exclusion": false
+  },
+  {
+    "package": "numpy",
+    "version": "2.4.6",
+    "path": "vendor/pyodide/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+    "sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "numpy/_core/include/numpy/random/LICENSE.txt",
+        "sha256": "fbc539f47d0cf83bc61378080fb873d5c14630126cacbfe754035c3926daa5ec",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy/ma/LICENSE",
+        "sha256": "05f3b88351988ecfad10abe92c0c50e5875c6452d5009a0084cc291551ffcca6",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy/random/LICENSE.md",
+        "sha256": "103166b62b80443afb9eb3488e052ea06be0cff566b908f199e561fde49af19f",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/LICENSE.txt",
+        "sha256": "1be1df33863f97a7bc1c4d67980bd6c69c9a6fef0a5ee76e6ad6cb91e56e8491",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+        "sha256": "fbc539f47d0cf83bc61378080fb873d5c14630126cacbfe754035c3926daa5ec",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+        "sha256": "3f2c1ffa76383a55ae0aac01c9737cd70050dff63e1f026694fbe9d662573c98",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/highway/LICENSE",
+        "sha256": "e340270d4f64384569a91d546acb5b094d69ce47f0c015db77abb74dc6f815af",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+        "sha256": "211e7d737d6179a08f791ebb0a99897ce7cd2457410c542876d125576edfe910",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
+        "sha256": "c17011467b4fe6e20fbfbeda4df09e58c2bca5480a063e55735a4000a379aad9",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+        "sha256": "a85ca13fdf90160b64a0698215868c13b74d835ad0a4e2ba44713b8c5058a056",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+        "sha256": "a14cc25e10d40a3aa705b7de2fb764a6535d8ee9b2db4e1724900585457dfd55",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/ma/LICENSE",
+        "sha256": "05f3b88351988ecfad10abe92c0c50e5875c6452d5009a0084cc291551ffcca6",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/random/LICENSE.md",
+        "sha256": "103166b62b80443afb9eb3488e052ea06be0cff566b908f199e561fde49af19f",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+        "sha256": "469778be8f33d54e1bcaab28c281cc472916d2d273f835e55bc487d30503face",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+        "sha256": "0e111337b25494a773106695f0e799f642b8567aaacca4f116a74a8177179156",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+        "sha256": "e7d4f4fb20358f314210a892ae17351e04993813646f697ec387385ca2a36918",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+        "sha256": "6f5828a57223d4cc7f8ea505a2623e7b978b242752c1515e355f46ba2cec1800",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+        "sha256": "9d4098846018319cd68e228ee6220361787f73bccbf00237a85e4fc9621b998f",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
+        "sha256": "268b0ca06759d31ea3ca68dd35f20e877916e927b1c2a835e4592a3c4354b1f9",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 15,
+    "zero_native_is_exclusion": false
+  },
+  {
+    "package": "pyrsistent",
+    "version": "0.20.0",
+    "path": "vendor/pyodide/pyrsistent-0.20.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+    "sha256": "6252303d76b705f83c68a78fd2d7860be5b39f84482fee8aced8b52d7fd5ae80",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "pyrsistent-0.20.0.dist-info/licenses/LICENSE.mit",
+        "sha256": "3fd3d3d1ab9c733ee453fbf3bbbaa845440d0d8c20d7b5a039d2e46a2ed7fc01",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 0,
+    "zero_native_is_exclusion": false
+  },
+  {
+    "package": "referencing",
+    "version": "0.37.0",
+    "path": "vendor/pyodide/referencing-0.37.0-py3-none-any.whl",
+    "sha256": "db67659fe2ec73040d2b9785f0c8a7c45b8c1ca03dc2cd8e8b1fbc6f752854d8",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "referencing-0.37.0.dist-info/licenses/COPYING",
+        "sha256": "42dcd63495f87b4eb7c7757afa379bb55a53f94afd7a5f657d9adf57236e515c",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 0,
+    "zero_native_is_exclusion": false
+  },
+  {
+    "package": "rpds-py",
+    "version": "0.30.0",
+    "path": "vendor/pyodide/rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+    "sha256": "9997dcfaee4465d4e877397c0f95fb9ec1dddb0e9da6dac94e96ff9621cdcd05",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "rpds_py-0.30.0.dist-info/licenses/LICENSE",
+        "sha256": "314e4e91be3baa93c0fb4bccc9e4e97cd643eb839b065af921782c2175fe9909",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 1,
+    "zero_native_is_exclusion": false
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.0",
+    "path": "vendor/pyodide/scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+    "sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "scipy/_lib/_uarray/LICENSE",
+        "sha256": "c80c39b5fce06ba4897e14e0b0a88b54458334d951eb1361402ffad2cfb863b4",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "scipy/fft/_duccfft/LICENSE.md",
+        "sha256": "c254b2b5fd30ae3c89d36ba061730563b9760fca04f1b746a1b2c3157da2c789",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "scipy/integrate/LICENSE_DOP",
+        "sha256": "ed9bf58c6d74d3fad9d92d1d67d9bff8141d8ab60de784516b0711364fd43357",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "scipy/spatial/qhull_src/COPYING_QHULL.txt",
+        "sha256": "106d55c931fd6a84822e5345d900273d059f1c27310d02567ccb313c5d18c55d",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      },
+      {
+        "member_path": "scipy-1.18.0.dist-info/LICENSE.txt",
+        "sha256": "221e59f5e910fd7f94e44f0dac77436a11338c285c6346232e4a850a50da0e94",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 107,
+    "zero_native_is_exclusion": false
+  },
+  {
+    "package": "six",
+    "version": "1.17.0",
+    "path": "vendor/pyodide/six-1.17.0-py2.py3-none-any.whl",
+    "sha256": "228c50f73aa7addf2c2ccf2979c256802a59ab69cad8152b31b9443cc8140f42",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "six-1.17.0.dist-info/LICENSE",
+        "sha256": "4375ba20e2b9c6c4e7cad2940a628fd90e95cc3d50ee92aae755715d8ba1fbd0",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 0,
+    "zero_native_is_exclusion": false
+  },
+  {
+    "package": "typing-extensions",
+    "version": "4.15.0",
+    "path": "vendor/pyodide/typing_extensions-4.15.0-py3-none-any.whl",
+    "sha256": "4fec68770a05408e668a4fa53d6bf4f0f684b9dacf820c7c5d6e97d3ad225e29",
+    "distribution": "BUNDLED_WHOLE_WHEEL",
+    "embedded_notices": [
+      {
+        "member_path": "typing_extensions-4.15.0.dist-info/licenses/LICENSE",
+        "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+        "presence": "DIRECT_WHEEL_TEXT",
+        "applicability": "NOT_ACCEPTED"
+      }
+    ],
+    "source_provenance": "See original wheel metadata and ledger notice source records; complete selected-source pin/modification correspondence not established by this addendum",
+    "source_sufficiency": "OPEN_HUMAN_REVIEW",
+    "native_count": 0,
+    "zero_native_is_exclusion": false
+  }
+]
