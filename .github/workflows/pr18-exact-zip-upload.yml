@@ -1,0 +1,65 @@
+name: PR18 exact ZIP upload only
+on:
+  push:
+    branches: [builder/pr18-exact-zip-upload-20261113]
+    paths: [.github/workflows/pr18-exact-zip-upload.yml]
+permissions:
+  contents: read
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Obtain existing committed ZIP without building or unpacking it
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir original
+          curl --fail --location --retry 3 --proto '=https' --tlsv1.2 \
+            https://raw.githubusercontent.com/acecog1/ACECOG-CivicOS/af1543d91bf38ab6abef6be1b7ff7b155ee0b9f2/docs/evidence/bg2-beta-packet-20261113/licensing-source-review.zip \
+            --output original/licensing-source-review.zip
+          echo 'a1192e12a77139a14134fab7323737cd4cee08768b433da884423714295e808d  original/licensing-source-review.zip' | sha256sum --check --strict
+          test "$(stat -c %s original/licensing-source-review.zip)" = 3806018
+          test "$(git hash-object original/licensing-source-review.zip)" = 6e92de03c6a16f40c3c14a13182b8eb3425575d9
+          chmod a-w original/licensing-source-review.zip
+      - name: Upload unchanged ZIP as immutable review artifact
+        id: artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr18-exact-zip-af1543d91bf38ab6abef6be1b7ff7b155ee0b9f2
+          path: original/licensing-source-review.zip
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: false
+          retention-days: 90
+      - name: Download the uploaded artifact for byte comparison
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ steps.artifact.outputs.artifact-id }}
+          path: roundtrip
+      - name: Verify downloaded ZIP against original and record receipt
+        env:
+          ARTIFACT_ID: ${{ steps.artifact.outputs.artifact-id }}
+          ARTIFACT_URL: ${{ steps.artifact.outputs.artifact-url }}
+          OUTER_DIGEST: ${{ steps.artifact.outputs.artifact-digest }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmp original/licensing-source-review.zip roundtrip/licensing-source-review.zip
+          echo 'a1192e12a77139a14134fab7323737cd4cee08768b433da884423714295e808d  roundtrip/licensing-source-review.zip' | sha256sum --check --strict
+          test "$(stat -c %s roundtrip/licensing-source-review.zip)" = 3806018
+          test "$(git hash-object roundtrip/licensing-source-review.zip)" = 6e92de03c6a16f40c3c14a13182b8eb3425575d9
+          {
+            echo 'PR18 ZIP roundtrip: byte-for-byte PASS (Builder transport verification; independent QA remains required).'
+            echo 'Source head: af1543d91bf38ab6abef6be1b7ff7b155ee0b9f2'
+            echo 'Git blob: 6e92de03c6a16f40c3c14a13182b8eb3425575d9'
+            echo 'Inner licensing-source-review.zip SHA-256: a1192e12a77139a14134fab7323737cd4cee08768b433da884423714295e808d'
+            echo 'Inner ZIP bytes: 3806018; unchanged member inventory follows from exact byte comparison.'
+            echo "Artifact ID: $ARTIFACT_ID"
+            echo "Run ID: $GITHUB_RUN_ID; attempt: $GITHUB_RUN_ATTEMPT; workflow commit: $GITHUB_SHA"
+            echo "QA download: $ARTIFACT_URL"
+            echo "GitHub OUTER workflow artifact ZIP SHA-256: $OUTER_DIGEST"
+            echo 'Outer artifact digest is distinct from the inner committed ZIP digest.'
+            echo 'Review only. BG2 HOLD. No build, source/ledger modification, merge, deployment, legal approval or release authorization.'
+            echo 'Artifacts are immutable per ID; authorized deletion/retention expiry remains possible. GitHub login and repository read access are required to download.'
+          } | tee -a "$GITHUB_STEP_SUMMARY"
