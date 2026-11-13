@@ -133,6 +133,10 @@ def build(dest: Path = DEST) -> None:
         "Pyodide license text: ./third_party/upstream_license_sources/pyodide-MPL-2.0-LICENSE.txt\n"
         "Redistribution evidence: ./third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt\n"
         "Required binary-specific third-party notices/source obligations remain under review.\n"
+        "hiwire MPL-2.0 covered source: https://github.com/pyodide/hiwire/tree/6a1e67280a15d929ebeceee54a6358c9c8d5f697\n"
+        "Compiled component/source/notice matrix: ./third_party/compiled_notice_evidence/COMPONENT_REVIEW.md\n"
+        "Full original source texts and provenance: ./third_party/compiled_notice_evidence/manifest.json\n"
+        "Build patches/actual selected inputs and human applicability decisions remain pending.\n"
         "These links do not certify notice completeness or license approval.\n",
         encoding="utf-8")
     js = (PUBLIC / "lab.js").read_text(encoding="utf-8")

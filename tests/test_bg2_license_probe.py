@@ -76,6 +76,7 @@ def test_pinned_review_packet_contains_exact_notice_sbom_and_fails_on_tamper(tmp
     names={
       "third_party/bg2-exact-wheel-notice-probe.json":"license_probe_sha256",
       "third_party/bg2-locked-native-inventory.json":"native_inventory_sha256",
+      "third_party/compiled_notice_evidence/manifest.json":"compiled_notice_manifest_sha256",
       "third_party/bg2-sbom.cdx.json":"sbom_sha256",
       "third_party/bg2-license-disposition.json":"license_disposition_sha256",
       "third_party/THIRD_PARTY_NOTICES_CANDIDATE.txt":"notices_candidate_sha256",

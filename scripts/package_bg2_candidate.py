@@ -21,6 +21,7 @@ from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 # direct CLI path used by operators; do not mask unrelated missing dependencies.
 if __package__:
     from scripts import bg2_native_inventory as native_inventory
+    from scripts import bg2_compiled_notices as compiled_notices
     from scripts import build_browser_lab as source
     from scripts import vendor_browser_pyodide as runtime
     from scripts import bg2_license_probe as license_probe
@@ -34,6 +35,7 @@ else:
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     from scripts import bg2_native_inventory as native_inventory
+    from scripts import bg2_compiled_notices as compiled_notices
     from scripts import bg2_license_probe as license_probe
     from scripts import build_bg2_sbom as license_sbom
     from scripts import bg2_license_texts as license_texts
@@ -89,6 +91,7 @@ def _build_input_paths() -> tuple[str, ...]:
         "scripts/verify_bg2_upstream.py",
         "scripts/build_bg2_sbom.py",
         "scripts/bg2_license_probe.py",
+        "scripts/bg2_compiled_notices.py",
         "scripts/bg2_native_inventory.py",
         "scripts/bg2_license_texts.py",
         "docs/evidence/bg2-license-upstream-sources-v0.1.json",
@@ -99,6 +102,7 @@ def _build_input_paths() -> tuple[str, ...]:
         "scripts/bg2_stage.py",
         "docs/evidence/bg2-pyodide-core-candidate-pins-v1.json",
     }
+    files.update(compiled_notices.source_inputs(ROOT))
     files.update(name for name, _target in source.FILES)
     return tuple(sorted(files))
 
@@ -224,6 +228,12 @@ def _make_unapproved_license_packet(site: Path) -> None:
     folder = site/"third_party"
     folder.mkdir(parents=True)
     license_texts.copy_verified(ROOT,folder)
+    compiled_notices.copy_verified(ROOT,folder)
+    compiled_digest = sha256((folder/"compiled_notice_evidence/manifest.json").read_bytes())
+    sbom.setdefault("externalReferences", []).append({
+        "type": "other", "url": "./compiled_notice_evidence/manifest.json",
+        "comment": "Original source notice evidence; applicability and human acceptance pending",
+        "hashes": [{"alg": "SHA-256", "content": compiled_digest}]})
     native_bytes = (json.dumps(native_inventory.inventory_directory(root),
                               indent=2, sort_keys=True)+"\n").encode("utf-8")
     (folder/"bg2-locked-native-inventory.json").write_bytes(native_bytes)
@@ -267,7 +277,10 @@ def _make_unapproved_license_packet(site: Path) -> None:
                  "third_party/upstream_license_sources/ directory, with exact Git",
                  "blob provenance in third_party/LICENSE_SOURCE_PROVENANCE.json.",
                  "Applicability to compiled WASM/wheel binaries is still unverified.",
-                 "", "CRITICAL UNRESOLVED REDISTRIBUTION REQUIREMENTS:"])
+                 "", "Compiled notice sources: third_party/compiled_notice_evidence/manifest.json",
+                 "Full component/version/inclusion matrix: compiled_notice_evidence/COMPONENT_REVIEW.md",
+                 "Collected source texts include review context, not a determination of shipped components.",
+                 "CRITICAL UNRESOLVED REDISTRIBUTION REQUIREMENTS:"])
     text.extend("* "+item for item in inspection["still_missing"])
     text.extend(["", "No independent license or pinset approval was granted."])
     (folder/"THIRD_PARTY_NOTICES_CANDIDATE.txt").write_text(
@@ -288,9 +301,11 @@ def _verify_unapproved_license_packet(files: dict[str,bytes],
         "third_party/bg2-locked-native-inventory.json":"native_inventory_sha256",
     }
     source_paths=license_texts.verify_packet(files)
+    source_paths.update(compiled_notices.verify_packet(files, ROOT))
+    keys[compiled_notices.PREFIX+"manifest.json"]="compiled_notice_manifest_sha256"
     keys["third_party/LICENSE_SOURCE_PROVENANCE.json"]="upstream_source_manifest_sha256"
     for name in source_paths:
-        if name!="third_party/LICENSE_SOURCE_PROVENANCE.json":
+        if name not in keys:
             keys[name]=None
     if set(n for n in files if n.startswith("third_party/")) != set(keys):
         raise RuntimeError("Incomplete/extra third-party notice evidence in pinned package")
@@ -303,6 +318,11 @@ def _verify_unapproved_license_packet(files: dict[str,bytes],
         raise RuntimeError("Missing explicit redistribution HOLD")
     probe = json.loads(files["third_party/bg2-exact-wheel-notice-probe.json"])
     sbom = json.loads(files["third_party/bg2-sbom.cdx.json"])
+    reference = {"type": "other", "url": "./compiled_notice_evidence/manifest.json",
+        "comment": "Original source notice evidence; applicability and human acceptance pending",
+        "hashes": [{"alg": "SHA-256", "content": sha256(files[compiled_notices.PREFIX+"manifest.json"])}]}
+    if reference not in sbom.get("externalReferences", []):
+        raise RuntimeError("SBOM lacks compiled notice evidence reference")
     status = json.loads(files["third_party/bg2-license-disposition.json"])
     if (probe.get("release_licensing_acceptance") != "HOLD" or
             probe.get("pyodide_lock_sha256") != wasm.get("root_lock_sha256") or
@@ -434,6 +454,7 @@ def build_candidate(output: Path, expected_sha: str, vendor_source: Path) -> dic
             "runtime_manifest_sha256":digests["vendor/pyodide/acecog-runtime-manifest.json"],
             "runtime_pin_status":runtime_manifest["core_root_status"],
             "license_probe_sha256":digests.get("third_party/bg2-exact-wheel-notice-probe.json"),
+            "compiled_notice_manifest_sha256":digests.get("third_party/compiled_notice_evidence/manifest.json"),
             "native_inventory_sha256":digests.get("third_party/bg2-locked-native-inventory.json"),
             "sbom_sha256":digests.get("third_party/bg2-sbom.cdx.json"),
             "license_disposition_sha256":digests.get("third_party/bg2-license-disposition.json"),
