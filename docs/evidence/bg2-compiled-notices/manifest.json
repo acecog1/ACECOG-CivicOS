@@ -1,0 +1,1515 @@
+{
+  "acceptance": "HOLD",
+  "excluded": [
+    {
+      "reason": "macOS installer screenshot; not a WASM runtime notice",
+      "sha256": "76d77efe7ccf2f8cc8e49e340843cf7552c3da011d49e94481d3420f1a57dbba",
+      "source_path": "cpython/Doc/using/mac_installer_03_license.png"
+    }
+  ],
+  "human_legal_review": "NOT_RETAINED_NOT_ACCEPTED",
+  "open_build_receipts": [
+    "SciPy compile commands/include order: Boost.Math 1.91.0 vs external Boost 1.84.0; actual pybind11 version; numerical/header selection",
+    "OpenBLAS RISCV64_GENERIC selected kernels and seven libf2c patches/extras",
+    "Pyodide/Emscripten actual selected SDK/core libraries and source/patch correspondence",
+    "rpds wheel rustc -Vv/target/features and Rust 1.97.1 standard-library COPYRIGHT-library.html"
+  ],
+  "records": [
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "bzip2",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/bzip2/LICENSE",
+      "sha256": "4919cfb14a73cd64fcef67b107613970cf1659a09aa675dba31314f373bc7204",
+      "source_location": "https://github.com/emscripten-ports/bzip2/tree/1.0.6",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "clapack",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/clapack/COPYING",
+      "sha256": "23014869214a231525b38c39fdb5f82364fa24154ac80fdcab2a79671460fd09",
+      "source_location": "https://www.netlib.org/clapack/clapack.tgz",
+      "source_path": "COPYING"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "clapack",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/clapack/F2CLIBS/libf2c/Notice",
+      "sha256": "44561c447e91203ddc747beeca5cc2794d95ee982c17c578670e4f0408bc3904",
+      "source_location": "https://www.netlib.org/clapack/clapack.tgz",
+      "source_path": "F2CLIBS/libf2c/Notice"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "cpython",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/cpython/Doc/copyright.rst",
+      "sha256": "f2c1d094466270ed41fc4dd2904d91b34d58cbb5033403b2de5cc153aba8e608",
+      "source_location": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+      "source_path": "Doc/copyright.rst"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "cpython",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/cpython/Doc/license.rst",
+      "sha256": "c695d550b135e53e38807e76496d1db17d22c40e461d1f3f354c86188d3305dd",
+      "source_location": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+      "source_path": "Doc/license.rst"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "cpython",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/cpython/LICENSE",
+      "sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231",
+      "source_location": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "cpython",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/cpython/Mac/BuildScript/resources/License.rtf",
+      "sha256": "f948498992e522edc050b1c0147e7125c33f16fce2b9fc6e02539b2fb10fdd71",
+      "source_location": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+      "source_path": "Mac/BuildScript/resources/License.rtf"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "cpython",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/cpython/Modules/expat/COPYING",
+      "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534",
+      "source_location": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+      "source_path": "Modules/expat/COPYING"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "cpython",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/cpython/PC/crtlicense.txt",
+      "sha256": "3c71b3ae243121f6f227374cd1ef7c59ed07b1969b330d0e947f91a3a1b3fd73",
+      "source_location": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+      "source_path": "PC/crtlicense.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "cpython",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/cpython/Python/getcopyright.c",
+      "sha256": "cbc69ef3cc68c0eb07dcbe65757d7106d88149cd988f0fe3c12f571bf52b374e",
+      "source_location": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+      "source_path": "Python/getcopyright.c"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "cpython",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/cpython/Tools/msi/bundle/bootstrap/LICENSE.txt",
+      "sha256": "cb95daf98edda8e08a242e1060691b6941f0911692bf468a3f9c5e4b58c09b8f",
+      "source_location": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+      "source_path": "Tools/msi/bundle/bootstrap/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/archery-1.2.2/LICENSE.md",
+      "sha256": "e326b5fef9084c437878cc2184ba6dfa15503f46e5359dd67246f51761ea709f",
+      "source_location": "https://static.crates.io/crates/archery/archery-1.2.2.crate",
+      "source_path": "LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/autocfg-1.5.0/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "source_location": "https://static.crates.io/crates/autocfg/autocfg-1.5.0.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/autocfg-1.5.0/LICENSE-MIT",
+      "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac",
+      "source_location": "https://static.crates.io/crates/autocfg/autocfg-1.5.0.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/cc-1.2.48/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "source_location": "https://static.crates.io/crates/cc/cc-1.2.48.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/cc-1.2.48/LICENSE-MIT",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "source_location": "https://static.crates.io/crates/cc/cc-1.2.48.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/find-msvc-tools-0.1.5/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "source_location": "https://static.crates.io/crates/find-msvc-tools/find-msvc-tools-0.1.5.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/find-msvc-tools-0.1.5/LICENSE-MIT",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "source_location": "https://static.crates.io/crates/find-msvc-tools/find-msvc-tools-0.1.5.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/heck-0.5.0/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "source_location": "https://static.crates.io/crates/heck/heck-0.5.0.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/heck-0.5.0/LICENSE-MIT",
+      "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0",
+      "source_location": "https://static.crates.io/crates/heck/heck-0.5.0.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/indoc-2.0.7/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "source_location": "https://static.crates.io/crates/indoc/indoc-2.0.7.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/indoc-2.0.7/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "source_location": "https://static.crates.io/crates/indoc/indoc-2.0.7.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/libc-0.2.177/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "source_location": "https://static.crates.io/crates/libc/libc-0.2.177.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/libc-0.2.177/LICENSE-MIT",
+      "sha256": "a8d47ff51ca256f56a8932dba07660672dbfe3004257ca8de708aac1415937a1",
+      "source_location": "https://static.crates.io/crates/libc/libc-0.2.177.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/memoffset-0.9.1/LICENSE",
+      "sha256": "3234ac55816264ee7b6c7ee27efd61cf0a1fe775806870e3d9b4c41ea73c5cb1",
+      "source_location": "https://static.crates.io/crates/memoffset/memoffset-0.9.1.crate",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/once_cell-1.21.3/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "source_location": "https://static.crates.io/crates/once_cell/once_cell-1.21.3.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/once_cell-1.21.3/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "source_location": "https://static.crates.io/crates/once_cell/once_cell-1.21.3.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/portable-atomic-1.11.1/LICENSE-APACHE",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_location": "https://static.crates.io/crates/portable-atomic/portable-atomic-1.11.1.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/portable-atomic-1.11.1/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "source_location": "https://static.crates.io/crates/portable-atomic/portable-atomic-1.11.1.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/proc-macro2-1.0.103/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "source_location": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.103.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/proc-macro2-1.0.103/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "source_location": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.103.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-0.27.2/LICENSE-APACHE",
+      "sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+      "source_location": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-0.27.2/LICENSE-MIT",
+      "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+      "source_location": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-APACHE",
+      "sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+      "source_location": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+      "source_path": "pyo3-runtime/LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-MIT",
+      "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+      "source_location": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+      "source_path": "pyo3-runtime/LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-build-config-0.27.2/LICENSE-APACHE",
+      "sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+      "source_location": "https://static.crates.io/crates/pyo3-build-config/pyo3-build-config-0.27.2.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-build-config-0.27.2/LICENSE-MIT",
+      "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+      "source_location": "https://static.crates.io/crates/pyo3-build-config/pyo3-build-config-0.27.2.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-ffi-0.27.2/LICENSE-APACHE",
+      "sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+      "source_location": "https://static.crates.io/crates/pyo3-ffi/pyo3-ffi-0.27.2.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-ffi-0.27.2/LICENSE-MIT",
+      "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+      "source_location": "https://static.crates.io/crates/pyo3-ffi/pyo3-ffi-0.27.2.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-macros-0.27.2/LICENSE-APACHE",
+      "sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+      "source_location": "https://static.crates.io/crates/pyo3-macros/pyo3-macros-0.27.2.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-macros-0.27.2/LICENSE-MIT",
+      "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+      "source_location": "https://static.crates.io/crates/pyo3-macros/pyo3-macros-0.27.2.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-macros-backend-0.27.2/LICENSE-APACHE",
+      "sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+      "source_location": "https://static.crates.io/crates/pyo3-macros-backend/pyo3-macros-backend-0.27.2.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/pyo3-macros-backend-0.27.2/LICENSE-MIT",
+      "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+      "source_location": "https://static.crates.io/crates/pyo3-macros-backend/pyo3-macros-backend-0.27.2.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/python3-dll-a-0.2.14/LICENSE",
+      "sha256": "c760d1f2e4614d58f2b91cd41b9826457989c09041be0219158b8f7f6d3f8763",
+      "source_location": "https://static.crates.io/crates/python3-dll-a/python3-dll-a-0.2.14.crate",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/quote-1.0.42/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "source_location": "https://static.crates.io/crates/quote/quote-1.0.42.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/quote-1.0.42/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "source_location": "https://static.crates.io/crates/quote/quote-1.0.42.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/rpds-1.2.0/LICENSE.md",
+      "sha256": "e326b5fef9084c437878cc2184ba6dfa15503f46e5359dd67246f51761ea709f",
+      "source_location": "https://static.crates.io/crates/rpds/rpds-1.2.0.crate",
+      "source_path": "LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/rustversion-1.0.22/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "source_location": "https://static.crates.io/crates/rustversion/rustversion-1.0.22.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/rustversion-1.0.22/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "source_location": "https://static.crates.io/crates/rustversion/rustversion-1.0.22.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/shlex-1.3.0/LICENSE-APACHE",
+      "sha256": "553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583",
+      "source_location": "https://static.crates.io/crates/shlex/shlex-1.3.0.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/shlex-1.3.0/LICENSE-MIT",
+      "sha256": "4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1",
+      "source_location": "https://static.crates.io/crates/shlex/shlex-1.3.0.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/syn-2.0.111/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "source_location": "https://static.crates.io/crates/syn/syn-2.0.111.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/syn-2.0.111/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "source_location": "https://static.crates.io/crates/syn/syn-2.0.111.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/target-lexicon-0.13.3/LICENSE",
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+      "source_location": "https://static.crates.io/crates/target-lexicon/target-lexicon-0.13.3.crate",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/triomphe-0.1.15/LICENSE-APACHE",
+      "sha256": "a6b7260485462860838b76ad1846d21f1605e6d239141c3aa949a601d992676c",
+      "source_location": "https://static.crates.io/crates/triomphe/triomphe-0.1.15.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/triomphe-0.1.15/LICENSE-MIT",
+      "sha256": "15656cc11a8331f28c0986b8ab97220d3e76f98e60ed388b5ffad37dfac4710c",
+      "source_location": "https://static.crates.io/crates/triomphe/triomphe-0.1.15.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/unicode-ident-1.0.22/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "source_location": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.22.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/unicode-ident-1.0.22/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "source_location": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.22.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/unicode-ident-1.0.22/LICENSE-UNICODE",
+      "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+      "source_location": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.22.crate",
+      "source_path": "LICENSE-UNICODE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/unindent-0.2.4/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "source_location": "https://static.crates.io/crates/unindent/unindent-0.2.4.crate",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "crates",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/crates/unindent-0.2.4/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "source_location": "https://static.crates.io/crates/unindent/unindent-0.2.4.crate",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/LICENSE",
+      "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/site/source/_themes/emscripten_sphinx_rtd_theme/LICENSE",
+      "sha256": "f6b3bcf46d6a06da81b72230b32b22e0f418ecddce55e0501d7f54fb5aa29ba9",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "site/source/_themes/emscripten_sphinx_rtd_theme/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/include/fakesdl/SDL_copying.h",
+      "sha256": "6d6be784609e40e40aa4e1620f3f30968746bffa1577f5896c0ea8de3e4e838c",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/include/fakesdl/SDL_copying.h"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/include/SDL/COPYING",
+      "sha256": "c0340bf02391530fb13cf4170c31253ecd09868fa483553652699584eb4db6ae",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/include/SDL/COPYING"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/include/SDL/SDL_copying.h",
+      "sha256": "78a79ebcbe99ee5726bdd26de8b58e806932cd9760204f2d747376a4696277d5",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/include/SDL/SDL_copying.h"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/lib/compiler-rt/LICENSE.TXT",
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/lib/compiler-rt/LICENSE.TXT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/lib/libc/musl/COPYRIGHT",
+      "sha256": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/lib/libc/musl/COPYRIGHT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/lib/libcxx/LICENSE.TXT",
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/lib/libcxx/LICENSE.TXT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/lib/libcxxabi/LICENSE.TXT",
+      "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/lib/libcxxabi/LICENSE.TXT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/lib/libunwind/LICENSE.TXT",
+      "sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/lib/libunwind/LICENSE.TXT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/lib/llvm-libc/LICENSE.TXT",
+      "sha256": "ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/lib/llvm-libc/LICENSE.TXT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/system/lib/mimalloc/LICENSE",
+      "sha256": "19c99805e7a44a34b297a75d1edea9985e300066dfc024d5c99d4236d4573b5d",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "system/lib/mimalloc/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/third_party/closure-compiler/node-externs/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "third_party/closure-compiler/node-externs/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/third_party/leb128/LICENSE",
+      "sha256": "6d21d47a22d95b919ddeaf8b49a4697909b47310472cb7fe3ad14cf6810d3208",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "third_party/leb128/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/third_party/terser/LICENSE",
+      "sha256": "68335488ef8f917c0feb901ace385f8c919bc81b0b60448a92928a3769fcec8f",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "third_party/terser/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "emscripten",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/emscripten/tools/maint/add_license.py",
+      "sha256": "b88c51f6f994489d5ec3f959d0db16892b448836b2766c1cd05cf8ca7c420aaf",
+      "source_location": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "source_path": "tools/maint/add_license.py"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "hiwire",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/hiwire/LICENSE",
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+      "source_location": "https://github.com/pyodide/hiwire/tree/6a1e67280a15d929ebeceee54a6358c9c8d5f697",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "libffi",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/libffi/LICENSE",
+      "sha256": "2c9c2acb9743e6b007b91350475308aee44691d96aa20eacef8e199988c8c388",
+      "source_location": "https://github.com/libffi/libffi/tree/f08493d249d2067c8b3207ba46693dd858f95db3",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "libffi",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/libffi/LICENSE-BUILDTOOLS",
+      "sha256": "e67978cd18816c0cb7d29aaaacde7b7447402c2fb321a051698890a8eaedda94",
+      "source_location": "https://github.com/libffi/libffi/tree/f08493d249d2067c8b3207ba46693dd858f95db3",
+      "source_path": "LICENSE-BUILDTOOLS"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "openblas",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/openblas/ctest/LICENSE",
+      "sha256": "c1ceeff23f242ddac805ba9d332f58b559454ec00447e65540c0e818f7de69da",
+      "source_location": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+      "source_path": "ctest/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "openblas",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/openblas/GotoBLAS_00License.txt",
+      "sha256": "38d9eb2e3d49d73fa12b18729a112fa949f7887c3ff12be23a02c0c97d9fb5b8",
+      "source_location": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+      "source_path": "GotoBLAS_00License.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "openblas",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/openblas/lapack-netlib/LAPACKE/LICENSE",
+      "sha256": "871f415ebd2fd06c7ab8cc3c0016aa2d26b918622345116e2d0c740b688d4843",
+      "source_location": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+      "source_path": "lapack-netlib/LAPACKE/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "openblas",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/openblas/lapack-netlib/LICENSE",
+      "sha256": "978539245c405775bf347b1256c36df4daf8b69a64b099e94b1d53742201621e",
+      "source_location": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+      "source_path": "lapack-netlib/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "openblas",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/openblas/LICENSE",
+      "sha256": "190b5a9c8d9723fe958ad33916bd7346d96fab3c5ea90832bb02d854f620fcff",
+      "source_location": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "openblas",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/openblas/reference/LICENSE",
+      "sha256": "c1ceeff23f242ddac805ba9d332f58b559454ec00447e65540c0e818f7de69da",
+      "source_location": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+      "source_path": "reference/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "openblas",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/openblas/relapack/LICENSE",
+      "sha256": "abd17b9664b38cfab093e7cca625ac08d3a686fc63142ea58c27bae15969dd3a",
+      "source_location": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+      "source_path": "relapack/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "pyodide-source",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/pyodide-source/LICENSE",
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+      "source_location": "https://github.com/pyodide/pyodide/tree/b1e4fcc2488962f6360a97f19b9982d6fdb5d16f",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "pyodide-source",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/pyodide-source/src/js/vendor/stackframe/LICENSE",
+      "sha256": "899da9d991cb211a3642b84e82a9ae0b4b4e44546fd207e34d7d4ec2eb40f420",
+      "source_location": "https://github.com/pyodide/pyodide/tree/b1e4fcc2488962f6360a97f19b9982d6fdb5d16f",
+      "source_path": "src/js/vendor/stackframe/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "rpds-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/rpds-sdist/LICENSE",
+      "sha256": "314e4e91be3baa93c0fb4bccc9e4e97cd643eb839b065af921782c2175fe9909",
+      "source_location": "https://files.pythonhosted.org/packages/source/r/rpds_py/rpds_py-0.30.0.tar.gz",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "rust",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/rust/COPYRIGHT",
+      "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+      "source_location": "https://github.com/rust-lang/rust/tree/8bab26f4f68e0e26f0bb7960be334d5b520ea452",
+      "source_path": "COPYRIGHT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "rust",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/rust/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "source_location": "https://github.com/rust-lang/rust/tree/8bab26f4f68e0e26f0bb7960be334d5b520ea452",
+      "source_path": "LICENSE-APACHE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "rust",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/rust/LICENSE-MIT",
+      "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
+      "source_location": "https://github.com/rust-lang/rust/tree/8bab26f4f68e0e26f0bb7960be334d5b520ea452",
+      "source_path": "LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/LICENSE.txt",
+      "sha256": "221e59f5e910fd7f94e44f0dac77436a11338c285c6346232e4a850a50da0e94",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/LICENSES_bundled.txt",
+      "sha256": "45b1a2cf4eb57277812fcbca2b6af7d84e98c942a5e4dcc360610f49de16c63f",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "LICENSES_bundled.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/_build_utils/tempita/LICENSE.txt",
+      "sha256": "743b0f4a0087fe3607167113fffab6f2ca069c8da321763697ab5d0d8411634a",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/_build_utils/tempita/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/_external/packaging_version/src/LICENSE.BSD",
+      "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/_external/packaging_version/src/LICENSE.BSD"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/_lib/_uarray/LICENSE",
+      "sha256": "c80c39b5fce06ba4897e14e0b0a88b54458334d951eb1361402ffad2cfb863b4",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/_lib/_uarray/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/fft/_duccfft/LICENSE.md",
+      "sha256": "c254b2b5fd30ae3c89d36ba061730563b9760fca04f1b746a1b2c3157da2c789",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/fft/_duccfft/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/integrate/src/LICENSE_DOP",
+      "sha256": "ed9bf58c6d74d3fad9d92d1d67d9bff8141d8ab60de784516b0711364fd43357",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/integrate/src/LICENSE_DOP"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/fast_float/LICENSE-MIT",
+      "sha256": "e562f3f974ced7e69dd1db77b820b36bcf8f30377f1aa105723fba449c53c4e6",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/fast_float/LICENSE-MIT"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/ryu/LICENSE-Boost",
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/ryu/LICENSE-Boost"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/io/_fast_matrix_market/LICENSE.txt",
+      "sha256": "4421977664ada9a02087ab1b031b50335f02b500e2cb58a1757074f31b4a89f5",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/io/_fast_matrix_market/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/io/_fast_matrix_market/src/pystreambuf.h",
+      "sha256": "017cbea09dcbeade28614de7987d4e5122de2406e1e6715e4fa74d3f2c6791f4",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/io/_fast_matrix_market/src/pystreambuf.h"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/ndimage/LICENSE.txt",
+      "sha256": "606209a000716c5f66e33e180ce08434b96ed17db4975ab9723c6b5fbcc89609",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/ndimage/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/optimize/_direct/COPYING",
+      "sha256": "a7669da81aac1b0539f161cf93d6a94956d24ff476537e0b0579925997eec3f0",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/optimize/_direct/COPYING"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/optimize/_trlib/trlib_private.h",
+      "sha256": "67af20e6d335290c9404f6ef4ab3c43f2273e6af79a5a929a87e2976d0438b7d",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/optimize/_trlib/trlib_private.h"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/optimize/tnc/LICENSE",
+      "sha256": "3df9207af2fdb861af0ae3b22026f163b9bcfab4e525dc4943afe2ffa3f77624",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/optimize/tnc/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/sparse/linalg/_dsolve/SuperLU/License.txt",
+      "sha256": "f0cedf52503b2d42b83411a0a16e6fefac346dfad8fddc66f50050150123470c",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/sparse/linalg/_dsolve/SuperLU/License.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/sparse/linalg/_eigen/arpack/arnaud/ARPACK_LICENSE.txt",
+      "sha256": "53c82c54b92d94ef8c2ffee82e12135c6c3fdf23c3949d7bf6315282b14d6b8b",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/sparse/linalg/_eigen/arpack/arnaud/ARPACK_LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/sparse/linalg/_eigen/arpack/arnaud/LICENSE",
+      "sha256": "f49da99252dee2c12dbd5c71762b0724063f4531de193fbcece550ad9a3b6354",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/sparse/linalg/_eigen/arpack/arnaud/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/sparse/linalg/_propack/PROPACK/LICENSE",
+      "sha256": "f49da99252dee2c12dbd5c71762b0724063f4531de193fbcece550ad9a3b6354",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/sparse/linalg/_propack/PROPACK/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/sparse/linalg/_propack/PROPACK/PROPACK_LICENSE.txt",
+      "sha256": "7f961824c2570a623cb1420269cd4336807776379ac161771aacbecfdcf176c0",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/sparse/linalg/_propack/PROPACK/PROPACK_LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/spatial/COPYING_QHULL.txt",
+      "sha256": "106d55c931fd6a84822e5345d900273d059f1c27310d02567ccb313c5d18c55d",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/spatial/COPYING_QHULL.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/scipy/stats/biasedurn/license.txt",
+      "sha256": "c2bf3b1e5a5cde539b9f8e38b5c870f49db0b5f01c7f9cdd1d1291bafc81d22f",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "scipy/stats/biasedurn/license.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/array_api_compat/array_api_compat/LICENSE",
+      "sha256": "4ffd978e3fa18d058d98c66771cfea7ed634aaf7023cf9612b8b55eee9a8f0fe",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/array_api_compat/array_api_compat/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/array_api_extra/LICENSE",
+      "sha256": "58494398fe147fdce76a68b2decd4c08ce3a1ea237b6d6785001c15f822c6ed6",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/array_api_extra/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/boost_math/math/LICENSE",
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/boost_math/math/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/cobyqa/.github/workflows/license.yml",
+      "sha256": "13f8b813fefcb28457fc72c77fb6913dd4ee043d52841b4e21dff70868c77bbd",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/cobyqa/.github/workflows/license.yml"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/cobyqa/LICENSE",
+      "sha256": "a4d7975be6d6487b7125ce6e79f299a5396b300b1a67e3644a1cf6467b426708",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/cobyqa/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/duccfft/LICENSE.md",
+      "sha256": "c254b2b5fd30ae3c89d36ba061730563b9760fca04f1b746a1b2c3157da2c789",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/duccfft/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/highs/extern/filereaderlp/LICENSE",
+      "sha256": "4374bb8064e5302f5ac6b82fd3e153a36670f04d0a6ee1bc55b3dc3faee923cc",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/highs/extern/filereaderlp/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/highs/extern/pdqsort/license.txt",
+      "sha256": "323fc18e35fcf058d69d684022ef844f206cb8fefb2bac1298fa1767e0b9ae38",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/highs/extern/pdqsort/license.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/highs/LICENSE.txt",
+      "sha256": "10b39dba7b7731175f0705398b6db4320b64add1bd2ed9f9ec5b512a9ef1bd95",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/highs/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/qhull_r/libqhull_r/COPYING.txt",
+      "sha256": "106d55c931fd6a84822e5345d900273d059f1c27310d02567ccb313c5d18c55d",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/qhull_r/libqhull_r/COPYING.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/unuran/license.txt",
+      "sha256": "8d62d5c8e1752ee5c3d3a0f8fd0dd0b45865c243fa282cf5e63f00288a01c5ee",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/unuran/license.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/xsf/include/xsf/third_party/kokkos/mdspan.hpp",
+      "sha256": "63454b51452c23880ee180c525de1418ad639644e052ba2f8f4792d5bd5e054a",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/xsf/include/xsf/third_party/kokkos/mdspan.hpp"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/xsf/LICENSE",
+      "sha256": "632f86f8bd24a264ac49c002f39866f407a38e8cbd8a6568df7596cc7fbe0048",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/xsf/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "scipy-sdist",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/scipy-sdist/subprojects/xsf/LICENSES_bundled.txt",
+      "sha256": "e28d89b1e6c248e98d1f02c946f52556e76e8757bec371cf5a67bffe7aa43cac",
+      "source_location": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+      "source_path": "subprojects/xsf/LICENSES_bundled.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "sqlite",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/sqlite/tea/license.terms",
+      "sha256": "66e056b6e8687f32af30d5187611b98b12a8f46f07aaf62f43585f276e8f0ac9",
+      "source_location": "https://www.sqlite.org/2022/sqlite-autoconf-3390000.tar.gz",
+      "source_path": "tea/license.terms"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy/_core/include/numpy/random/LICENSE.txt",
+      "sha256": "fbc539f47d0cf83bc61378080fb873d5c14630126cacbfe754035c3926daa5ec",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy/_core/include/numpy/random/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy/ma/LICENSE",
+      "sha256": "05f3b88351988ecfad10abe92c0c50e5875c6452d5009a0084cc291551ffcca6",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy/ma/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy/random/LICENSE.md",
+      "sha256": "103166b62b80443afb9eb3488e052ea06be0cff566b908f199e561fde49af19f",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy/random/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/LICENSE.txt",
+      "sha256": "1be1df33863f97a7bc1c4d67980bd6c69c9a6fef0a5ee76e6ad6cb91e56e8491",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+      "sha256": "fbc539f47d0cf83bc61378080fb873d5c14630126cacbfe754035c3926daa5ec",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+      "sha256": "3f2c1ffa76383a55ae0aac01c9737cd70050dff63e1f026694fbe9d662573c98",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/src/highway/LICENSE",
+      "sha256": "e340270d4f64384569a91d546acb5b094d69ce47f0c015db77abb74dc6f815af",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/highway/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt",
+      "sha256": "f7b14309e5f54e5022b26448eefd419988ada2aec01d3c1162d84a0ea8f21f2c",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+      "sha256": "211e7d737d6179a08f791ebb0a99897ce7cd2457410c542876d125576edfe910",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
+      "sha256": "c17011467b4fe6e20fbfbeda4df09e58c2bca5480a063e55735a4000a379aad9",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+      "sha256": "a85ca13fdf90160b64a0698215868c13b74d835ad0a4e2ba44713b8c5058a056",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+      "sha256": "a14cc25e10d40a3aa705b7de2fb764a6535d8ee9b2db4e1724900585457dfd55",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/ma/LICENSE",
+      "sha256": "05f3b88351988ecfad10abe92c0c50e5875c6452d5009a0084cc291551ffcca6",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/ma/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/LICENSE.md",
+      "sha256": "103166b62b80443afb9eb3488e052ea06be0cff566b908f199e561fde49af19f",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+      "sha256": "469778be8f33d54e1bcaab28c281cc472916d2d273f835e55bc487d30503face",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/distributions/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+      "sha256": "0e111337b25494a773106695f0e799f642b8567aaacca4f116a74a8177179156",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+      "sha256": "e7d4f4fb20358f314210a892ae17351e04993813646f697ec387385ca2a36918",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+      "sha256": "6f5828a57223d4cc7f8ea505a2623e7b978b242752c1515e355f46ba2cec1800",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/philox/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+      "sha256": "9d4098846018319cd68e228ee6220361787f73bccbf00237a85e4fc9621b998f",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
+      "sha256": "268b0ca06759d31ea3ca68dd35f20e877916e927b1c2a835e4592a3c4354b1f9",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/rpds_py-0.30.0.dist-info/licenses/LICENSE",
+      "sha256": "314e4e91be3baa93c0fb4bccc9e4e97cd643eb839b065af921782c2175fe9909",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "rpds_py-0.30.0.dist-info/licenses/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/scipy/_lib/_uarray/LICENSE",
+      "sha256": "c80c39b5fce06ba4897e14e0b0a88b54458334d951eb1361402ffad2cfb863b4",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "scipy/_lib/_uarray/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/scipy/fft/_duccfft/LICENSE.md",
+      "sha256": "c254b2b5fd30ae3c89d36ba061730563b9760fca04f1b746a1b2c3157da2c789",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "scipy/fft/_duccfft/LICENSE.md"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/scipy/integrate/LICENSE_DOP",
+      "sha256": "ed9bf58c6d74d3fad9d92d1d67d9bff8141d8ab60de784516b0711364fd43357",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "scipy/integrate/LICENSE_DOP"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/scipy/spatial/qhull_src/COPYING_QHULL.txt",
+      "sha256": "106d55c931fd6a84822e5345d900273d059f1c27310d02567ccb313c5d18c55d",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "scipy/spatial/qhull_src/COPYING_QHULL.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "wheel-texts",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/wheel-texts/scipy-1.18.0.dist-info/LICENSE.txt",
+      "sha256": "221e59f5e910fd7f94e44f0dac77436a11338c285c6346232e4a850a50da0e94",
+      "source_location": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "source_path": "scipy-1.18.0.dist-info/LICENSE.txt"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "xz",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/xz/COPYING",
+      "sha256": "c4f8e14fafe458d84808a4cd8b69f94673ebe2bf8fc992291629a69ac12218f8",
+      "source_location": "https://github.com/xz-mirror/xz/tree/v5.2.2",
+      "source_path": "COPYING"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "xz",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/xz/COPYING.GPLv2",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "source_location": "https://github.com/xz-mirror/xz/tree/v5.2.2",
+      "source_path": "COPYING.GPLv2"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "xz",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/xz/COPYING.GPLv3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "source_location": "https://github.com/xz-mirror/xz/tree/v5.2.2",
+      "source_path": "COPYING.GPLv3"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "xz",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/xz/COPYING.LGPLv2.1",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+      "source_location": "https://github.com/xz-mirror/xz/tree/v5.2.2",
+      "source_path": "COPYING.LGPLv2.1"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "zlib",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/zlib/LICENSE",
+      "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243",
+      "source_location": "https://github.com/madler/zlib/tree/v1.3.1",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "zstd",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/zstd/build/LICENSE",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_location": "https://github.com/python/cpython-source-deps/tree/zstd-1.5.7",
+      "source_path": "build/LICENSE"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "zstd",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/zstd/COPYING",
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+      "source_location": "https://github.com/python/cpython-source-deps/tree/zstd-1.5.7",
+      "source_path": "COPYING"
+    },
+    {
+      "applicability": "REVIEW_CONTEXT_NOT_CONFIRMED_SHIPPED",
+      "component_source": "zstd",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "originals/zstd/LICENSE",
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+      "source_location": "https://github.com/python/cpython-source-deps/tree/zstd-1.5.7",
+      "source_path": "LICENSE"
+    },
+    {
+      "applicability": "TECHNICAL_REVIEW_NOT_LEGAL_ACCEPTANCE",
+      "component_source": "Security/Licensing technical matrix",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "COMPONENT_REVIEW.md",
+      "sha256": "d90c2af4607d3b6333c4e85bea36dd3d26d7fab9e2c3082a26cf1c67470ee538",
+      "source_location": "https://github.com/acecog1/ACECOG-CivicOS/pull/13#issuecomment-6844718499",
+      "source_path": "compiled-component-review.md"
+    },
+    {
+      "applicability": "BUILDER_DERIVED_REVIEW_MAP_NOT_COMPLETE_ATTRIBUTION",
+      "component_source": "Builder member-to-source review map",
+      "license_choice": "HUMAN_REVIEW_PENDING",
+      "path": "native-component-map.json",
+      "sha256": "0ecc5f9bf3976570c265025c2182a898800b4484dac9e40fb5819abc84ba4a84",
+      "source_location": "https://github.com/acecog1/ACECOG-CivicOS/pull/13#issuecomment-6844718499",
+      "source_path": "Derived from fixed native inventory and technical component matrix"
+    }
+  ],
+  "schema": "ACECOG-BG2-COMPILED-NOTICE-EVIDENCE-v1",
+  "source_candidate_reviewed": "09aa4a3ff61f642a5a671dcdc128690c8218a48c"
+}

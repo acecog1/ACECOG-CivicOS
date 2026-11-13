@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Riverbend Scenario Laboratory — Guided Local Preview</title>
+  <meta name="description" content="Local-only, fictional CivicOS governance simulator.">
+  <link rel="stylesheet" href="/lab.css">
+  <script src="/lab.js" defer></script>
+  <script src="/experience.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to simulator</a>
+  <header class="site-head">
+    <div class="container">
+      <p class="eyebrow">Accelerated Ecological Governance · CivicOS</p>
+      <h1>Riverbend Scenario Laboratory</h1>
+      <p class="lede">What should a community do when its resources and its council disagree? Explore a fictional choice, test alternatives, and see which decisions can actually proceed.</p>
+      <p class="warning" role="note"><strong>Development preview only.</strong> Riverbend Commons is fictional. Every result is advisory, synthetic and without legal effect. This local application is not the public beta or an official civic service.</p>
+    </div>
+  </header>
+  <main class="container" id="main">
+    <section class="panel challenge-panel" id="challenge-panel" aria-labelledby="challenge-title">
+      <p class="eyebrow on-light">THE CIVIC DILEMMA · FICTIONAL COMMUNITY</p>
+      <h2 id="challenge-title">1. Choose a question to explore</h2>
+      <p>Riverbend's fictional council is considering a capital improvement plan. Change one assumption—or reverse a vote—to discover how the governed decision and portfolio change. Every preset is a suggested experiment, not an actual policy recommendation.</p>
+      <div class="challenge-grid" aria-label="Suggested experiments">
+        <button type="button" class="challenge-card" data-preset="water" aria-pressed="false"><strong>What if water is scarce?</strong><span>Tighten the watershed limit and crew capacity.</span></button>
+        <button type="button" class="challenge-card" data-preset="budget" aria-pressed="false"><strong>What if funds are cut?</strong><span>Reduce the budget and appropriation ceiling.</span></button>
+        <button type="button" class="challenge-card" data-preset="votes" aria-pressed="false"><strong>What if the council disagrees?</strong><span>Flip two eligible votes and see which actions become unauthorized.</span></button>
+      </div>
+      <p id="scenario-description" role="status" aria-live="polite" class="scenario-description">Start with Riverbend's default assumptions, choose a dilemma above, or change any input yourself.</p>
+    </section>
+    <div class="layout">
+      <section class="panel" aria-labelledby="controls-title">
+        <h2 id="controls-title">2. Make the decisions</h2>
+        <p class="subtle">Try a suggested challenge or set your own limits. These choices create an isolated synthetic run. Nothing changes the original published record.</p>
+        <div class="exploration-mode" role="group" aria-label="Exploration guidance">
+          <span>How much guidance?</span>
+          <button type="button" id="mode-guided" aria-pressed="true">Guided</button>
+          <button type="button" id="mode-expert" aria-pressed="false">Detailed</button>
+        </div>
+        <p id="mode-explanation" class="subtle">Guided: start with one change, run the engine, and compare the results. All controls remain available.</p>
+        <form id="lab-form">
+          <div class="fields">
+            <label for="budget">Annual investment budget <span class="unit">USD</span></label>
+            <input id="budget" name="budget" type="number" required min="400000" max="1400000" step="10000" value="900000">
+            <label for="water">Watershed draw limit <span class="unit">ML/year</span></label>
+            <input id="water" name="water" type="number" required min="5" max="40" step="1" value="20">
+            <label for="crew">Public works crew capacity <span class="unit">crew-weeks</span></label>
+            <input id="crew" name="crew" type="number" required min="10" max="50" step="1" value="30">
+            <label for="appropriation">Non-grant appropriation ceiling <span class="unit">USD</span></label>
+            <input id="appropriation" name="appropriation" type="number" required min="250000" max="850000" step="10000" value="650000">
+          </div>
+          <fieldset>
+            <legend>2. Cast simulated Plan A votes</legend>
+            <p class="subtle">Only fictional members may vote. Eli has declared an interest and remains recused. Changing a vote creates a different history; it never edits the reference record.</p>
+            <div id="vote-controls"><p>Loading fictional members…</p></div>
+          </fieldset>
+          <div class="actions">
+            <button type="submit" class="primary" id="run">Run with CivicOS engine</button>
+            <button type="button" id="random">Surprise me</button>
+            <button type="button" id="reset">Restore defaults</button>
+          </div>
+          <p id="seed-info" class="subtle" aria-live="polite"></p>
+          <p id="form-status" role="status" aria-live="polite">Loading local simulator…</p>
+        </form>
+      </section>
+      <section class="panel" id="results-panel" aria-labelledby="results-title">
+        <h2 id="results-title">3. See the consequences</h2>
+        <div id="results" role="region" aria-labelledby="results-title" tabindex="-1">
+          <p class="subtle">Select <strong>Run with CivicOS engine</strong> to compare the local reference fixture with your alternative. Nothing has been computed for your choices yet.</p>
+        </div>
+        <section id="scenario-tools" class="scenario-tools" aria-labelledby="scenario-tools-title" hidden>
+          <h3 id="scenario-tools-title">Keep your experiment</h3>
+          <p class="subtle">These records stay in this browser tab unless you choose to copy or download them. There is no account, cloud storage, or public sharing link.</p>
+          <div class="actions">
+            <button type="button" id="download-evidence">Download evidence (JSON)</button>
+            <button type="button" id="copy-recipe">Copy scenario recipe</button>
+          </div>
+          <p id="export-status" role="status" aria-live="polite" class="subtle"></p>
+          <label for="recipe-fallback" id="recipe-fallback-label" hidden>Manual copy fallback</label>
+          <textarea id="recipe-fallback" readonly hidden rows="5" class="recipe-fallback"></textarea>
+        </section>
+      </section>
+    </div>
+    <section class="panel" aria-labelledby="history-title">
+      <h2 id="history-title">4. Compare experiments from this visit</h2>
+      <p class="subtle">Up to three recently executed runs are kept only in this tab's memory. Restore any run's inputs and execute again to compare it with a new change. Reloading closes this temporary history.</p>
+      <ol id="run-history" class="run-history"><li>Run the first scenario to start your comparison.</li></ol>
+    </section>
+    <section class="panel" aria-labelledby="method-title">
+      <h2 id="method-title">How this works</h2>
+      <p>A local Python process runs the actual CivicOS governance commands, vote/recusal checks and deterministic SciPy portfolio optimizer. Each run has its own transaction history and verification digest. Where a proposal is rejected, the engine does not create its portfolio baseline or synthetic funding commitment.</p>
+      <p><strong>Important:</strong> This is an abbreviated lab fixture sharing Riverbend's project definitions, not a fork of the published 279-event reference chain. Narratives describe modeled results; they do not establish effects on actual people, budgets, law or ecosystems.</p>
+    </section>
+  </main>
+  <footer class="container subtle">ACECOG Riverbend · Local development evidence only · No telemetry, real civic records or external API calls. No public sharing service.</footer>
+</body>
+</html>
