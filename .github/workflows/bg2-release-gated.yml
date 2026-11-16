@@ -1,3 +1,6 @@
+# Owner 2026-11-16: hands-on/native-device beta acceptance and schedule
+# reconciliation follow initial beta publication. Automated browser qualification
+# remains in bg2-browser-feasibility.yml; no PASS is inferred for manual tests.
 # Manual, protected, fail-closed BG-2 first-publication PRE-FLIGHT.
 # No deployment is possible from this workflow: the Owner-selected GoDaddy W+M
 # /beta route requires separately approved staging and restoration evidence.
@@ -40,10 +43,8 @@ jobs:
       VERSION_ID: ${{ inputs.release_version }}
       OWNER_GO: ${{ vars.BG2_OWNER_PUBLICATION_GO_SHA }}
       R1_QA_GO: ${{ vars.BG2_R1_INDEPENDENT_QA_SHA }}
-      R2_QA_GO: ${{ vars.BG2_R2_INDEPENDENT_QA_SHA }}
       R3_QA_GO: ${{ vars.BG2_R3_INDEPENDENT_QA_SHA }}
       R4_QA_GO: ${{ vars.BG2_R4_INDEPENDENT_QA_SHA }}
-      R5_PLAN_GO: ${{ vars.BG2_R5_PLAN_STEWARD_SHA }}
       LICENSE_QA_GO: ${{ vars.BG2_LICENSE_REVIEW_GO_SHA }}
       ENV_REVIEW_GO: ${{ vars.BG2_PROTECTED_ENV_AUDIT_SHA }}
       APPROVED_ZIP_HASH: ${{ vars.BG2_RELEASE_ARTIFACT_SHA256 }}
@@ -64,7 +65,7 @@ jobs:
           [[ "$ARCHIVE_SHA" =~ ^[0-9a-f]{64}$ ]] || exit 1
           [[ "$REVIEW_RUN" =~ ^[0-9]+$ ]] || exit 1
           [[ "$VERSION_ID" =~ ^bg2-v[0-9]+\.[0-9]+(\.[0-9]+)?$ ]] || exit 1
-          for signed in "$OWNER_GO" "$R1_QA_GO" "$R2_QA_GO" "$R3_QA_GO" "$R4_QA_GO" "$R5_PLAN_GO" "$LICENSE_QA_GO" "$ENV_REVIEW_GO"; do
+          for signed in "$OWNER_GO" "$R1_QA_GO" "$R3_QA_GO" "$R4_QA_GO" "$LICENSE_QA_GO" "$ENV_REVIEW_GO"; do
             test -n "$signed"
             test "$signed" = "$EXPECTED_SHA"
           done
