@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   wasm-lab:
@@ -210,3 +211,33 @@ jobs:
           if-no-files-found: warn
       - name: NO Pages deployment
         run: echo "Test-only. Never publish from this workflow."
+      - name: Assemble full recipient review candidate and retain actual prior BG-1
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          gh run download 42997122922 -R "$GITHUB_REPOSITORY" \
+            --name bg1-release-evidence-4a28737b515bd6d652a05a971822c92aa0ec2057 --dir build/bg1-prior-evidence
+          grep -Fx 'release_sha=4a28737b515bd6d652a05a971822c92aa0ec2057' build/bg1-prior-evidence/release-identity.txt
+          mkdir build/bg2-pages-candidate
+          python -m scripts.snapshot_bg1 --inventory build/bg1-prior-evidence/release-file-sha256.txt \
+            --output build/bg2-pages-candidate/previous-site.zip
+          PACKET_ARGS=()
+          if test -d docs/evidence/bg2-recipient-packet; then
+            PACKET_ARGS=(--recipient-packet docs/evidence/bg2-recipient-packet)
+          fi
+          python -m scripts.prepare_bg2_publication \
+            --previous-site build/bg2-pages-candidate/previous-site.zip \
+            --runtime "build/bg2-artifacts/bg2-review-$SOURCE_HEAD.zip" --source-sha "$SOURCE_HEAD" \
+            --output build/bg2-pages-candidate/site.zip "${PACKET_ARGS[@]}" \
+            > build/bg2-pages-candidate/assembly-receipt.json
+          sha256sum build/bg2-pages-candidate/site.zip build/bg2-pages-candidate/previous-site.zip \
+            > build/bg2-pages-candidate/SHA256SUMS
+      - name: Retain exact full-site candidate for independent review — NO APPROVAL
+        uses: actions/upload-artifact@v7
+        with:
+          name: bg2-pages-candidate
+          path: build/bg2-pages-candidate/
+          if-no-files-found: error
+          retention-days: 90

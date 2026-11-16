@@ -5,7 +5,9 @@ licensing closure, legal approval or completed live rollback is asserted.
 
 ## Artifacts and source
 
-The candidate workflow runs manually at the exact candidate Git revision, consumes
+The browser/WASM workflow also assembles and retains the full-site candidate
+after its qualification checks, allowing independent review before merging the
+new delivery workflows. The separate candidate workflow runs manually at the exact candidate Git revision, consumes
 its successful browser/WASM runtime ZIP and calls the existing exact-Git verifier.
 It downloads retained BG-1 evidence from successful deployment run 42997122922,
 source `4a28737b515bd6d652a05a971822c92aa0ec2057`, then captures each anonymously
