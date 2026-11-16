@@ -1,0 +1,55 @@
+name: BG-2 publication candidate (NO DEPLOY)
+on:
+  workflow_dispatch:
+    inputs:
+      runtime_run:
+        description: Successful exact-head browser/WASM run
+        type: string
+        required: true
+permissions:
+  contents: read
+  actions: read
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RUNTIME_RUN: ${{ inputs.runtime_run }}
+      SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Fetch only successful exact-head runtime and retained BG-1 evidence
+        run: |
+          set -euo pipefail
+          [[ "$RUNTIME_RUN" =~ ^[0-9]+$ ]]
+          test "$GITHUB_REPOSITORY" = acecog1/ACECOG-CivicOS
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUNTIME_RUN" > runtime-run.json
+          jq -e --arg sha "$SOURCE_SHA" '.head_sha == $sha and .conclusion == "success" and .name == "BG-2 sovereign browser feasibility" and .head_repository.full_name == "acecog1/ACECOG-CivicOS"' runtime-run.json
+          gh run download "$RUNTIME_RUN" -R "$GITHUB_REPOSITORY" --name "bg2-review-only-$SOURCE_SHA" --dir runtime
+          gh run download 42997122922 -R "$GITHUB_REPOSITORY" --name bg1-release-evidence-4a28737b515bd6d652a05a971822c92aa0ec2057 --dir bg1
+          grep -Fx 'release_sha=4a28737b515bd6d652a05a971822c92aa0ec2057' bg1/release-identity.txt
+      - name: Capture actual prior BG-1 and assemble pending recipient candidate
+        run: |
+          set -euo pipefail
+          mkdir candidate
+          python -m scripts.snapshot_bg1 --inventory bg1/release-file-sha256.txt --output candidate/previous-site.zip > previous-sha256.txt
+          PACKET_ARGS=()
+          if test -d docs/evidence/bg2-recipient-packet; then
+            PACKET_ARGS=(--recipient-packet docs/evidence/bg2-recipient-packet)
+          fi
+          python -m scripts.prepare_bg2_publication --previous-site candidate/previous-site.zip \
+            --runtime "runtime/bg2-review-$SOURCE_SHA.zip" --source-sha "$SOURCE_SHA" \
+            --output candidate/site.zip "${PACKET_ARGS[@]}" > candidate/assembly-receipt.json
+          sha256sum candidate/site.zip candidate/previous-site.zip > candidate/SHA256SUMS
+      - uses: actions/upload-artifact@v7
+        with:
+          name: bg2-pages-candidate
+          path: candidate/
+          if-no-files-found: error
+          retention-days: 90

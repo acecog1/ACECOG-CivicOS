@@ -29,14 +29,22 @@ The completed live rollback exercise and hands-on/native-device acceptance follo
 A documented recovery method and preserved prior deployment are still needed before touching the host.
 
 ## Final QA / closeout
+Formal qualified human legal review is queued with final QA under the Owner's
+2026-11-16 direction. Mandatory recipient notices and matching covered-source
+checks still require evidence-backed Security/Licensing closure before publication.
+No missing mandatory duty is converted into an accepted historical residual.
+
 Schedule management remains required: working WBS8 actuals, remaining effort, dependencies,
 forecast, synchronized XLSX/XER and independent review belong in final QA/closeout.
 They are not initial beta publication criteria; no R5 plan attestation is required by preflight.
 Issued WBS8/FS v0.24 remain unchanged.
 
 ## Engineering status
-This scoped correction removes outdated R2 manual/native acceptance and R5 schedule attestations
-from the existing preflight. Automated three-engine/resilience tests are unchanged.
-The preflight still has no deployment step. The provisional artifact verifier still refuses publication.
-A recipient-ready artifact format and a genuine Pages publish/restore path remain separate implementation
-work; no unearned approval or completed deployment is represented by this change.
+The legacy preflight remains a non-deployment historical workflow. The new
+`bg2-pages-candidate.yml` assembles a candidate and preserves actual served BG-1
+bytes against its retained deployment inventory. `bg2-pages-delivery.yml` provides
+manual publish/restore using protected exact-source/archive/decision/previous-site
+pins and required independent environment review. The verifier has a positive
+path for a complete externally pinned decision and rejects pending mandatory
+claims, unsafe ZIPs and mismatched bytes. Neither workflow fabricates acceptance.
+See `bg2-pages-delivery-v1.md` for operation and remaining review requirements.

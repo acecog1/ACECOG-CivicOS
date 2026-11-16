@@ -1,0 +1,13 @@
+{
+  "artifact_id": 14025412613,
+  "run_id": 43402653200,
+  "reader": "System.IO.Compression.ZipArchive",
+  "outer_sha256": "bbdcf91c30f7ea9a9f595bea281dd2d135331524504d6628e21857a4418bd001",
+  "outer_bytes": 3806186,
+  "outer_entries": 1,
+  "inner_name": "licensing-source-review.zip",
+  "inner_bytes": 3806018,
+  "inner_sha256": "a1192e12a77139a14134fab7323737cd4cee08768b433da884423714295e808d",
+  "status": "PASS_BUILDER_RECHECK",
+  "independent_qa": "separate existing acceptance retained"
+}

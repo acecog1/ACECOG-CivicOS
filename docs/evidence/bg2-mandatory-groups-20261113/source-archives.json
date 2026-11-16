@@ -1,0 +1,130 @@
+[
+  {
+    "key": "rust-1.97.1",
+    "url": "https://static.rust-lang.org/dist/2026-07-16/rustc-1.97.1-x86_64-unknown-linux-gnu.tar.gz",
+    "bytes": 136691516,
+    "sha256": "1c441e430c1cca49dff54a8d59c41038bf6f79f7b8756596cb2f36511a015eba",
+    "archive_basename": "rustc-1.97.1.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "rust-std-emscripten",
+    "url": "https://static.rust-lang.org/dist/2026-07-16/rust-std-1.97.1-wasm32-unknown-emscripten.tar.gz",
+    "bytes": 34824746,
+    "sha256": "4878677947b25d42db0962473a5ab6a96c2533cc279feebce1cca6ab8f47af7f",
+    "archive_basename": "rust-std-1.97.1-wasm32-unknown-emscripten.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "recipes",
+    "url": "https://codeload.github.com/pyodide/pyodide-recipes/tar.gz/fc8587207ecbf0fb54305d5da25ab7ed70f126d3",
+    "bytes": 4442805,
+    "sha256": "4006322b8bd37e52ec1464884576f18351741168f48c5f243da1d1bd11eb1fc2",
+    "archive_basename": "recipes.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "pyodide",
+    "url": "https://codeload.github.com/pyodide/pyodide/tar.gz/b1e4fcc2488962f6360a97f19b9982d6fdb5d16f",
+    "bytes": 1465591,
+    "sha256": "a9c7ac66311ed7e0805b9970054ee5be4f69d02204d28bffe4b017310a24bad9",
+    "archive_basename": "pyodide-source.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "cpython",
+    "url": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+    "bytes": 30601597,
+    "sha256": "c609e078adab90e2c6bacb6afafacd5eaf60cd94cf670f1e159565725fcd448d",
+    "archive_basename": "cpython.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "emscripten",
+    "url": "https://codeload.github.com/emscripten-core/emscripten/tar.gz/5.0.3",
+    "bytes": 34467113,
+    "sha256": "b32ce4192bae12f15b06b1eec67b7ea6ac8ae809fc81230a43354c3c24251360",
+    "archive_basename": "emscripten.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "sqlite",
+    "url": "https://www.sqlite.org/2022/sqlite-autoconf-3390000.tar.gz",
+    "bytes": 3064015,
+    "sha256": "e90bcaef6dd5813fcdee4e867f6b65f3c9bfd0aec0f1017f9f3bbce1e4ed09e2",
+    "archive_basename": "sqlite.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "hiwire",
+    "url": "https://codeload.github.com/pyodide/hiwire/tar.gz/6a1e67280a15d929ebeceee54a6358c9c8d5f697",
+    "bytes": 27264,
+    "sha256": "0d64144f149c0de3bd157551421833c6c16fdc0492c312a6325ffc25d185c93c",
+    "archive_basename": "hiwire.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "scipy",
+    "url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+    "bytes": 30774447,
+    "sha256": "67b2ad2ad54c72ca6d04975a9b2df8c3638c34ddd5b28738e94fc2b57929d378",
+    "archive_basename": "scipy-sdist.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "numpy",
+    "url": "https://codeload.github.com/numpy/numpy/tar.gz/v2.4.6",
+    "bytes": 9771643,
+    "sha256": "b46be52dd93229a2738b05015f6b675b1e224d14759d982c01d8d6509c8fa298",
+    "archive_basename": "numpy.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "openblas",
+    "url": "https://codeload.github.com/OpenMathLib/OpenBLAS/tar.gz/76f1be470c9b9f80dc6e27407e13b975df436489",
+    "bytes": 25267574,
+    "sha256": "61766f34d0fe10e649672c376fec2956edd83a134f7ac6d0cb32bc70592e8a37",
+    "archive_basename": "openblas.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "libf2c",
+    "url": "https://web.archive.org/web/20260509221335/https://www.netlib.org/clapack/clapack.tgz",
+    "bytes": 7211104,
+    "sha256": "6dc4c382164beec8aaed8fd2acc36ad24232c406eda6db462bd4c41d5e455fac",
+    "archive_basename": "clapack.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "rpds",
+    "url": "https://files.pythonhosted.org/packages/source/r/rpds_py/rpds_py-0.30.0.tar.gz",
+    "bytes": 69469,
+    "sha256": "dd8ff7cf90014af0c0f787eea34794ebf6415242ee1d6fa91eaba725cc441e84",
+    "archive_basename": "rpds-sdist.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "libffi",
+    "url": "https://codeload.github.com/libffi/libffi/tar.gz/f08493d249d2067c8b3207ba46693dd858f95db3",
+    "bytes": 595072,
+    "sha256": "0c4e5647b79e21b900eb872dd98a3e0a66be12b36ad89677f61fd901a2615778",
+    "archive_basename": "libffi.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "xz",
+    "url": "https://codeload.github.com/xz-mirror/xz/tar.gz/v5.2.2",
+    "bytes": 617029,
+    "sha256": "578694987c14d73b2d075f477d89006522b91c88890f45a1d231cd29d555e00e",
+    "archive_basename": "xz.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  },
+  {
+    "key": "zstd",
+    "url": "https://codeload.github.com/python/cpython-source-deps/tar.gz/refs/tags/zstd-1.5.7",
+    "bytes": 2440298,
+    "sha256": "f24b52470d12f466e9fa4fcc94e6c530625ada51d7b36de7fdc6ed7e6f499c8e",
+    "archive_basename": "zstd.tar.gz",
+    "retrieval": "Download URL, verify SHA-256, then extract listed exact member paths. Source archive hash alone does not attest prebuilt binary correspondence."
+  }
+]
