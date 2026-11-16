@@ -1,0 +1,1623 @@
+{
+  "acceptance": "HOLD",
+  "members": [
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/_core/_multiarray_umath.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "f24e4d01250fc9d8bb4382727813914324a0bd792c3419f2dfade45e29830509",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/_core/lib/libnpymath.a",
+      "member_sha256": "a6924878bce1f8aef5317cce0ecc0bd7222e80a26bc53c2a8eb83588edc16eb4",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/fft/_pocketfft_umath.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "ec3b6453b8720bb6369f279c02107893dad485ac13a831aa29ee096722773a1a",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/linalg/_umath_linalg.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "e10f1c9b69919c48a3abad91f0a227bb9dddea6ba3eac2f96a1aae4a08450a55",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/linalg/lapack_lite.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "578be9fdfbc5f103bb978afe67ecfeffb413f6cb1e8419e136fa4f97398f7ebe",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/_bounded_integers.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "b3355b64811cff5b3d41bcfa8ddb90a4c203d169e2910e6f897afbc4221523a7",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/_common.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "9b8afe8338fef7fe9a49d86f981f9fd607fac507ffbbc53c73c6f4225b23696d",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/_generator.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "3c3ee42ddcbfb5a3d9caf70c7fcb8e1f01d24ee08c9293124a672c68f8cba462",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/_mt19937.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "d3ca63807aea4b0b2caf67122087fa6eadd6f0d84ff4e3bd12a896fa45c64d55",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/_pcg64.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "414becc8e97858aadaa8a2acc784573985c3356e145c7091ea407ca6422c7ab3",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/_philox.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "ab0fc28792ec6eb3d9b8f3c427ce210a6f2e6f4744e7b7adb2da0da055fce5bc",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/_sfc64.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "bffdb1f5c6529feae6a4e3393589fb3827a03d851bb2d34869175267a58bd8a4",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/bit_generator.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "1b293c6ba5e0909d4a4363e75ccf2f5d2dcbd711ca8ddaa4910ecc11c70aa072",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/lib/libnpyrandom.a",
+      "member_sha256": "6afdcbdd29d8d455f6f22729ab1a38b9128b3904a30e365889a441ecc13cc36c",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "NumPy 2.4.6: complete actual wheel license tree retained; per-object selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "numpy/random/mtrand.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "6b2b87ec5dfaabde723369d27845b6107bc76f2935d3456b365787b3aa81b13b",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "a292c1f5d7d8a2208cd5e94fc467604c131cabcd2fc14fed6eefde121e7fabdf"
+    },
+    {
+      "component_candidates": [
+        "rpds-py 0.30.0",
+        "Rust 1.97.1 binary marker; crate/stdlib target selection pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "rpds/rpds.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "faf72eb53a01fc6a4ef6d1704b137517c8da63ef5b1224d749784784fb49cf6f",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "9997dcfaee4465d4e877397c0f95fb9ec1dddb0e9da6dac94e96ff9621cdcd05"
+    },
+    {
+      "component_candidates": [
+        "OpenBLAS 0.3.31",
+        "LAPACK 3.12.0",
+        "libf2c from CLAPACK 3.2.1"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy.libs/libopenblas.so",
+      "member_sha256": "173f7752ae75d8f120e4e36e3e346bb1f0213830971006db6ce2f0473c3f2c5a",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/_cyutility.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "c11c7c77b206b295176e7b6d776dbddf03295b9ef8e7db30d29d74fd9ee530fe",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/_lib/_ccallback_c.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "79e999574291b7fb13edce632702d5b39e6e9a4df2f2d9a9e7f41879ad2729a5",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/_lib/_fpumode.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "9060ce6b18db94ace1739fa11b8a83c8b6e6e9c4a818aef72a4feb08dd93ada2",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/_lib/_test_ccallback.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "c0197b2bae2ae19107a10da213425b1cec5040ebd15a060076dcb2516774d103",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/_lib/_test_deprecation_call.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "f89db67f3433f8548e4c377f1b70fc19dae7faae8c2113164cbda0ba5e53d0bc",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/_lib/_test_deprecation_def.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "a13bed0f86b1b3eddcb8258e9de17a0bec4a9b6235b3f31abce8d7338b1d8ec8",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "uarray"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/_lib/_uarray/_uarray.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "fddafbebebab5ff080b24239c2c2c1d77601cb959827fc0b4658ddbe2a67f9fb",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/_lib/messagestream.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "19a55540c84fa0350b4d67fbf4aa930bf06ea693d5565a19a9d7e6b410554b84",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/cluster/hierarchy/_hierarchy.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "ec0ea1e103261ff94c8638d946aa6ca8727f8c4cbccc6fec720a2e7a81740b8b",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/cluster/hierarchy/_optimal_leaf_ordering.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "f62d01b7dab4d7bda98988ab5f880a91da7a437f9f7b9ea3f11d98471f0e6f66",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/cluster/vq/_vq.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "fef6b3fb9064dba805b01b2bf03ffc3cd0461454e3e06051aa030cbffabe6ce2",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "duccfft 0.40.0",
+        "pyduccfft"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/fft/_duccfft/pyduccfft.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "7ea9663375bd1784a8f28c0c4e6ec95e7d895f651518b1b0d25c95a4c30e2e22",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/fftpack/convolve.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "ee544899d9a7b824320e4e60d8c242d4315014a193f49584aa10a5ed8fc2660b",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "DOP"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/integrate/_dop.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "64a8fe4baf32bf595dfcf650135fad2ee42d9749b5af1e4bcceb74de6fe05b84",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/integrate/_odepack.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "90b7290ad21b73bd189a4ce2dd1a38c02ea5ea2fce51b92b05305ec4987505f5",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/integrate/_quadpack.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "459a34b34b9514c8d94937c3e9b21e6add7fe2aa86573040cc7901f16c20fc6d",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/integrate/_test_multivariate.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "b650da2a18c59acea72f6259c55e785f444baf1f48ea33e75d3d742a79d94e9e",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/integrate/_vode.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "53b612758fc18e0d6bcc405258bc9b0066222651be17d05fc7c1d1328a6964ba",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/interpolate/_dierckx.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "fbaed7fcfccb62b7e93adab999c10ce069ac9858c5fbc8c13c303888e81f3ea6",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/interpolate/_fitpack.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "c6cd9b312696771d90256234b256bff8c67270be08db65dfb9c13175839117db",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/interpolate/_interpnd.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "d74839f11d5f0d278f3c2d8bebe7f7157a4c1c653d0f243f3f0f46ae50e5fd05",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/interpolate/_ppoly.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "538f43cb9ab8f20e847362d7a5bf1a26df2eb46cfcf0d0d79310eae37b065e24",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/interpolate/_rbfinterp_pythran.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "a6dc4ddb1e563bb6eaad6871bad9a508e3ae9216fbef9c16a0a16be4152b0b64",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/interpolate/_rgi_cython.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "2e2e630a7cb100693e4c1a5a50e1eb48058d542195316a0fd5d1da095d7f3dad",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "FMM",
+        "fast_float",
+        "ryu",
+        "pystreambuf"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/io/_fast_matrix_market/_fmm_core.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "946557b6264199141241dd80112a2d253d4ec929ff71c025fe3de434abb37da2",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/io/matlab/_mio5_utils.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "8cd962e1ee1c3c1d1a87cfb390612252fda7d4ebf3dc1d6bdf672ad2d0148a88",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/io/matlab/_mio_utils.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "9fe81a32be165159f62c1f11432c31883b62ba680fbf597ce4facd77ba739a79",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/io/matlab/_streams.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "316446528bd060d964461234255d9e21a9ddd2110c461e9c939f2e1a9aee335f",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_batched_linalg.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "cf6229585c090ddefe6e5f023559b27c825bc929ddc84b8c8221b978ef651787",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_cythonized_array_utils.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "c36637335a0ab2a43abc35eed219257c2153c7e6c9918b224f46481be19221e2",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_decomp_interpolative.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "3c197f4ba4ad3bf4d72f36d6a7e251f96cb2a2b7e653c2444ace15d7dd52b518",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_decomp_update.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "cf0d7ebe73f4adbfb8dacce342dbb13b9f671913e597e64ce40791f7da7c4f01",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_fblas.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "9b325bcdc505dd374590289bca9db19f9bba7f8ed1d7540b8336ca777ae3c54e",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_flapack.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "0ee7be049196ff4a330e9f9e09582f321afaefbc911ec5fcf214420b5cdba507",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_internal_matfuncs.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "cc33dd37c8d61500f7179138787b7f2e6d4364b302e3a65ddf1d3f1da538d18d",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_linalg_pythran.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "6e534c8e2927ee3df1374baa58f603d892e49768084c4f887d4622e66af37200",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_matfuncs_sqrtm_triu.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "7478f4ac5471fd5f045faf60d09bf523f51b96604a92b80b249b4eaac4501c83",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/_solve_toeplitz.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "620c7377ef8f17c870cfe175a7913e88f8b7b9c30f907706fc504f125359a4b9",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/cython_blas.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "5ff7ce0548f4e79ac7bb6febe397e24a2c35bbb91dfcba403730aa7a845202f8",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/linalg/cython_lapack.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "3e09d72e3f2936d421645d7debc3c3f822fd995b46a7e45d1f178813f3599b6f",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/ndimage/_ctest.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "5b2e820f1f46a50a26f6e601391350fa0f112b6700367161e47808b82a11ef01",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/ndimage/_cytest.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "15edfcce450388387c8de5e40f2bf41ffbd4f1636347f63d2825434cdd3d4011",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/ndimage/_nd_image.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "2fd2b5fd1b085f441c29f9b5efb9f476d93244ee956dabff2382e4ba525a5cca",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/ndimage/_ni_label.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "592fff6c8c4a6edf4e3ec40568bd192431fcf128f339702a3e52fe1873a52248",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/ndimage/_rank_filter_1d.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "a9fd81101f721f7c80faceb0e796c2e3f8b9b174d0d86ec0ac811437d37c93c3",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/odr/__odrpack.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "57dae9b88fb1c5338377128755ef27c052c5fa39ca2ccc4afa9c71b653e2aadb",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_bglu_dense.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "28411452d4b0fea499d5c432e012d6f6763ff947fac1f965b40b2ce18a20cd2c",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "DIRECT"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_direct.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "b4c755cb3a690b895aeba9daa9aae8003245e2fae33cee8990d8cb827bc2723e",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_group_columns.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "c5c37a90231f658b794fa48f8be4e80d6ee67666d45adad74e202a795810998d",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "HiGHS 1.12.0; nested notices pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_highspy/_core.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "7f9661ea4eb4464356463cd1407ab0353e521c60c1d843b61900784c2c380569",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "HiGHS 1.12.0; nested notices pending"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_highspy/_highs_options.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "4675774a690353fbb5a0e15f81b10b08344630eea9a511be06dc3bc70eb0342b",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "L-BFGS-B translation"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_lbfgsb.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "af4b8817dc8d2cf826605168bda1f45bc0fbea326a8481ff12fc98c341b80a05",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_lsap.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "f50c6189b9219edb59388724fb71c09c267cf5fd2b5b1c0826e16ec7fea7eff0",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_lsq/givens_elimination.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "6c6b5d306735c46bbb1c4e7b3926d027d5935d44a3181bad295742faefca4384",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_minpack.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "da31da9c91f808c9615a49adf4eb6dbed4efefd74885df875f0e96235f028040",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "TNC"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_moduleTNC.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "aa0dda757f93eeff44ebabc938328847afa60839391ed681f4e50d725ad32e2a",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_pava_pybind.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "318df0e34d5ebbc81bc1ddc61974a1687a2acbf31ffafadded5e4527afad6815",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_slsqplib.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "2a188190b70842f1dcd7272877cd0bde344283f2f09c32aa99601df9f82982cd",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "trlib"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_trlib/_trlib.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "04439128db4fe4cbc6bd5ef72d96d7b8aa79b9f6616320f78500696c97bffe74",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/_zeros.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "109681d28cde476c6f0135f8a59d635eb359a787e6cd29c47b8f266a7c2c6fab",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/optimize/cython_optimize/_zeros.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "21666d3af6e3c11614e0ba87c7078f70eb4665ece7d0540490c260f184c70029",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/signal/_max_len_seq_inner.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "4123bf60c8a3182d3859ad01254f11777b13b2a8af5ec1732e46327ae5d5d200",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/signal/_peak_finding_utils.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "75b0e900c787826be615c537bad9a835e74b77cfc25442c87e80cc773a4adb90",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/signal/_sigtools.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "377b650184bdf8babf7af5bf33bbe524da08d26141c574e6abad704322680778",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/signal/_sosfilt.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "7b0fa2a20349bfb2fa7f907426a8a8d04b4ba122f00567effcade11f123ace5c",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/signal/_spline.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "45b26a0912c4b04b4fcac716f4f93b2bdb5b22352da52433fa529cc1d787c656",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/signal/_upfirdn_apply.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "30ad4f368f2fd7b9348ab2d9bc95ac8ce2f75b54acf5856e907accc1a0c27487",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/_csparsetools.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "df9cd7a49216b82ba7d4389fa927c18f73adbfb90937c268c3e30e549e61bdb0",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/_sparsetools.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "6faefec9cf5e0c51c206db9540993df8b7edc3baa56a699a168c810600cd515a",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/csgraph/_flow.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "ba9659d51139ab8048e7703433c2c45a9500d81407d4167fc50f87bdbb33124c",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/csgraph/_matching.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "7e94bc618119dc617005ab53ec2b1275d4404e29e6e4d1c1fe99f901819041d7",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/csgraph/_min_spanning_tree.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "51934c622d99618c8e835b9b0b088c9fb65286cd90702215217f576bb4acb6c1",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/csgraph/_reordering.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "a84ff0519f94e602e60422ca9fe42aa94a99c95ee3459dfe0221f94cad665ffe",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/csgraph/_shortest_path.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "da834b17ce0363d2e1e40ece8d0f25d8461e1356744ac9b633e7fd758b302b1c",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/csgraph/_tools.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "223dcab52d347f89ab2f2d524e4fd0350d237ed7dcbc282a6cc4d89b110cbbc3",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/csgraph/_traversal.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "9f57a2ec807f1fef28906ad390f55a47e1e0e6bd2468219447c024bdf4f3d688",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "SuperLU 7.0.1",
+        "COLAMD"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/linalg/_dsolve/_superlu.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "3c72469c08a3d31b5d415a9a71ec8c3193e9ec07e4efae7f3641c87662081d01",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "ARPACK / arnaud translation"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/linalg/_eigen/arpack/_arpacklib.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "676fb9c6a0dc879c25fe4bb22f037ad52ced09c59d5d0b1665d645355398439a",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "PROPACK translation"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/sparse/linalg/_propack.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "9de4124cdd3922026424bcfb0e91ec2634ef7c8408fa9e82a6996fd4d0c45d56",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/spatial/_ckdtree.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "e9b44b1e749a198bf0fde116fc9eff64e293d9ca61406b3ab663f50dbbe29193",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/spatial/_distance_pybind.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "351071419e635e6aec25bc9de5caae6499ce05414766311881ababd01d76e5a0",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/spatial/_distance_wrap.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "cea2b451caef15284ffaee5cb71543f4090a33bab78017cdc1be01e7a5b6101f",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/spatial/_hausdorff.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "4707ff1ed78c62457a4d1361eebd7aa8506d0f21c1df7e3c4b1d76ec5fdd3a74",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "Qhull 8.0.2"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/spatial/_qhull.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "4eb8eeb0b73f11ad10c8df7a3597a36f955526fcf04e8b2b98edd018e745be83",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/spatial/_voronoi.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "aae2c9bed76962829fad38bb335b859fee88c58b31d70e33d9458efbb9e9f305",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/spatial/transform/_rigid_transform_cy.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "c20feda4b7c9d67e46faad35ee0878780d086ad426e91ceba99b2bcf241ab587",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/spatial/transform/_rotation_cy.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "713ad18f24bc130b4ed12b5d7049aaf301ef26b3ae30bb9cb16e9919be335f03",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "xsf 0.2.2",
+        "Boost.Math 1.91.0 / external Boost 1.84.0 unresolved"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/special/_comb.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "72512dcbeed2b9ff583ff069fdfa10c6b8dd6e8cca2b5bb6a579500e1089c9c9",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "xsf 0.2.2",
+        "Boost.Math 1.91.0 / external Boost 1.84.0 unresolved"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/special/_ellip_harm_2.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "3a03ef6552ec145c250e0b3da199448d7588eb822720cbc0118f69fdf85994d5",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "xsf 0.2.2",
+        "Boost.Math 1.91.0 / external Boost 1.84.0 unresolved"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/special/_gufuncs.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "692fa8da52069616000469cfafe9873a48ae77ea9a9160eaf531875986f0eefa",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "xsf 0.2.2",
+        "Boost.Math 1.91.0 / external Boost 1.84.0 unresolved"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/special/_specfun.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "90c72bfec79a81ebfe7b8d2606830b07b51187dbb90cce7e8a4f4b61280d8965",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "xsf 0.2.2",
+        "Boost.Math 1.91.0 / external Boost 1.84.0 unresolved"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/special/_special_ufuncs.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "d7e89416902d16d57cb5ffc273eef4f518e38387d32816103d8d5150beb5523c",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "xsf 0.2.2",
+        "Boost.Math 1.91.0 / external Boost 1.84.0 unresolved"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/special/_test_internal.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "269439a372a8fc20b94e628d949932513a2b8a65940ae369111ec57514bde916",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "xsf 0.2.2",
+        "Boost.Math 1.91.0 / external Boost 1.84.0 unresolved"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/special/_ufuncs.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "44f02ce82518f911b094ea319f35534e0db24cf542f899a106162ac34696b3a5",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "xsf 0.2.2",
+        "Boost.Math 1.91.0 / external Boost 1.84.0 unresolved"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/special/_ufuncs_cxx.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "cfbc1fccd7efd6dc49befd15904f2fb4f78fae24fa76aaaca5ef5aa8b80f2a4c",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "xsf 0.2.2",
+        "Boost.Math 1.91.0 / external Boost 1.84.0 unresolved"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/special/cython_special.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "3a5e8465d9b94ae6bda92dd05a839a5b5bbed31ab61d8b6a559cc511913ac974",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_ansari_swilk_statistics.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "228e2d5e051fa284bf1ea7aabba71329c0309552d75e67193161e86f32e536c9",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "Biasedurn",
+        "copied NumPy random source"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_biasedurn.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "b06cfc0d7ad73744d86c1169de599d018f3b390889d3ba71ad139e72e50e6875",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_levy_stable/levyst.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "85d0f74723d86404765316346ff16045b4f13f9be67305db7b1ec6530edbad18",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_qmc_cy.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "3368eafd7449459cb805ec536e7e6a8b838a82ef5331fcc9e3a30747c58493cd",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_qmvnt_cy.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "94332602f2355ced685e249f2a39adb4ffb2a37fcfada85bb420e6a553b6a9a8",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_rcont/rcont.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "f164cb18584002c39ef011e5144484558b4f460997700a6dc3a7d0dd1520a414",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_sobol.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "a651ea1bc39ffd24ba82419fa4d34cb70e5b1b7ee29844b21e347b4ef0ce9e60",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_stats.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "4533a1ce187e4ffc1e9b181b9841ec941e2e0cd9e882b0acea8c5f351869a09d",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "scipy native/source-header attribution still to be completed"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_stats_pythran.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "f10c8899a7e0359f25ea1155bb691b6bd66db6e0ff30759be4705bd12c7d179f",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    },
+    {
+      "component_candidates": [
+        "UNU.RAN 1.9.0"
+      ],
+      "evidence_grade": "SOURCE_GRAPH_AND_MODULE_ASSOCIATION_NOT_OBJECT_PROOF",
+      "member_path": "scipy/stats/_unuran/unuran_wrapper.cpython-314-wasm32-emscripten.so",
+      "member_sha256": "6f1883f6af129e3cbd86bd3a01b3ba338d1bb893905094b5afe37d760a5a266d",
+      "selected_license_option": "HUMAN_REVIEW_PENDING",
+      "source_matrix": "COMPONENT_REVIEW.md",
+      "status": "UNKNOWN_BLOCKING",
+      "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "wheel_sha256": "17ee329a957863516d1bb6a6aaa0c60576fac027e9cd3d43de27f58b5b599b50"
+    }
+  ],
+  "schema": "ACECOG-BG2-NATIVE-COMPONENT-REVIEW-MAP-v1"
+}
