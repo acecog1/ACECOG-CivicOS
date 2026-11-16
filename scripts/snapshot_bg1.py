@@ -3,9 +3,9 @@ import argparse
 import hashlib
 from pathlib import Path
 import re
-import urllib.request
 from urllib.parse import quote
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
+from scripts.bg2_https import fetch_pages
 
 URL = 'https://acecog1.github.io/ACECOG-CivicOS/'
 
@@ -21,10 +21,7 @@ def snapshot(inventory: Path, output: Path) -> str:
             raise RuntimeError('Unsafe prior deployment path')
         if name in files or name.startswith('beta/'):
             raise RuntimeError('Duplicate or unexpected beta in BG-1 inventory')
-        with urllib.request.urlopen(URL + quote(name), timeout=30) as response:
-            if not response.url.startswith(URL):
-                raise RuntimeError('Unexpected BG-1 redirect')
-            data = response.read(240 * 1024 * 1024)
+        data = fetch_pages(URL + quote(name))
         if hashlib.sha256(data).hexdigest() != expected:
             raise RuntimeError('Live BG-1 differs from retained deployment: ' + name)
         files[name] = data

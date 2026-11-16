@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 import time
 import urllib.parse
-import urllib.request
+from scripts.bg2_https import fetch_pages
 
 
 def verify(root: Path, url: str) -> dict:
@@ -22,13 +22,9 @@ def verify(root: Path, url: str) -> dict:
         error = None
         for attempt in range(5):
             try:
-                req = urllib.request.Request(target, headers={'Cache-Control': 'no-cache'})
-                with urllib.request.urlopen(req, timeout=30) as response:
-                    if urllib.parse.urlsplit(response.url).netloc != 'acecog1.github.io':
-                        raise RuntimeError('Unexpected redirect')
-                    actual = hashlib.sha256(response.read(240 * 1024 * 1024)).hexdigest()
-                    if actual != expected:
-                        raise RuntimeError('Served digest mismatch: ' + relative)
+                actual = hashlib.sha256(fetch_pages(target)).hexdigest()
+                if actual != expected:
+                    raise RuntimeError('Served digest mismatch: ' + relative)
                 error = None
                 break
             except Exception as exc:
