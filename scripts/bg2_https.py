@@ -5,6 +5,9 @@ from urllib.parse import urlsplit, unquote
 HOST = 'acecog1.github.io'
 PREFIX = '/ACECOG-CivicOS/'
 LIMIT = 240 * 1024 * 1024
+# Deployment control bytes are recorded by the BG-1 inventory but are not
+# publicly served assets. Their known bytes must still match the retained hash.
+PAGE_CONTROL_FILES = {'.nojekyll': b''}
 
 
 def fetch_pages(url: str) -> bytes:

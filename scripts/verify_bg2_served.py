@@ -6,19 +6,25 @@ import os
 from pathlib import Path
 import time
 import urllib.parse
-from scripts.bg2_https import fetch_pages
+from scripts.bg2_https import fetch_pages, PAGE_CONTROL_FILES
 
 
 def verify(root: Path, url: str) -> dict:
     if not url.startswith('https://acecog1.github.io/ACECOG-CivicOS/'):
         raise RuntimeError('Unexpected Pages origin/path')
-    results = []
+    results, controls = [], []
     for path in sorted(root.rglob('*')):
         if not path.is_file():
             continue
         relative = path.relative_to(root).as_posix()
         target = url.rstrip('/') + '/' + urllib.parse.quote(relative)
         expected = hashlib.sha256(path.read_bytes()).hexdigest()
+        if relative in PAGE_CONTROL_FILES:
+            if path.read_bytes() != PAGE_CONTROL_FILES[relative]:
+                raise RuntimeError('Unexpected deployment control bytes')
+            controls.append({'path': relative, 'sha256': expected,
+                             'status': 'RETAINED_CONTROL_NOT_HTTP_ASSET'})
+            continue
         error = None
         for attempt in range(5):
             try:
@@ -36,6 +42,7 @@ def verify(root: Path, url: str) -> dict:
         results.append({'path': relative, 'sha256': expected})
     return {'url': url, 'operation': os.environ.get('OPERATION'),
             'run_id': os.environ.get('GITHUB_RUN_ID'), 'files': results,
+            'unserved_host_controls': controls,
             'source_sha': os.environ.get('SOURCE_SHA'),
             'candidate_sha256': os.environ.get('CANDIDATE_SHA256'),
             'previous_sha256': os.environ.get('PREVIOUS_SHA256'),

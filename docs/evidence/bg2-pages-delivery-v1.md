@@ -13,6 +13,10 @@ It downloads retained BG-1 evidence from successful deployment run 42997122922,
 source `4a28737b515bd6d652a05a971822c92aa0ec2057`, then captures each anonymously
 served BG-1 asset only when its SHA-256 matches that deployment's inventory.
 Any drift stops assembly. This is a capture of deployed bytes, not a rebuild.
+The retained inventory includes the empty `.nojekyll` deployment control, which
+Pages does not serve as an HTTP asset. Its known empty bytes are preserved only
+when their digest matches the retained inventory; all public assets are fetched.
+The served-byte receipt lists this unserved control separately, never as HTTP PASS.
 
 The `bg2-pages-candidate` artifact retains `site.zip`, `previous-site.zip`, their
 SHA-256 values and an assembly receipt. BG-1 files stay at the same paths, with

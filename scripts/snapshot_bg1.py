@@ -5,7 +5,7 @@ from pathlib import Path
 import re
 from urllib.parse import quote
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
-from scripts.bg2_https import fetch_pages
+from scripts.bg2_https import fetch_pages, PAGE_CONTROL_FILES
 
 URL = 'https://acecog1.github.io/ACECOG-CivicOS/'
 
@@ -21,7 +21,13 @@ def snapshot(inventory: Path, output: Path) -> str:
             raise RuntimeError('Unsafe prior deployment path')
         if name in files or name.startswith('beta/'):
             raise RuntimeError('Duplicate or unexpected beta in BG-1 inventory')
-        data = fetch_pages(URL + quote(name))
+        if name in PAGE_CONTROL_FILES:
+            data = PAGE_CONTROL_FILES[name]
+        else:
+            try:
+                data = fetch_pages(URL + quote(name))
+            except RuntimeError as error:
+                raise RuntimeError('Cannot capture prior deployment path: ' + name) from error
         if hashlib.sha256(data).hexdigest() != expected:
             raise RuntimeError('Live BG-1 differs from retained deployment: ' + name)
         files[name] = data
