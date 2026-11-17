@@ -1,0 +1,113 @@
+{
+  "claims": [
+    {
+      "id": "B-U1",
+      "classification": "R",
+      "disposition": "ACCEPTED_RESIDUAL",
+      "claim": "SciPy/Boost/pybind11/numerical header attribution, Qhull modifications and notice applicability",
+      "basis": "Original numerical/Boost/pybind11/Qhull and exception notices are included. Exact historical include order and compiler version are Owner-accepted conditional provenance uncertainty; no missing mandatory text evidenced.",
+      "evidence_paths": [
+        "beta/legal/original/THIRD_PARTY_NOTICES.txt",
+        "beta/legal/recovered/component-source-matrix.json"
+      ]
+    },
+    {
+      "id": "B-U2",
+      "classification": "R",
+      "disposition": "ACCEPTED_RESIDUAL",
+      "claim": "OpenBLAS/LAPACK/libf2c selected object correspondence",
+      "basis": "Full applicable libf2c and numerical original notices, pinned source archives and seven libf2c modifications are supplied; selected historical kernels/objects remain conditional R.",
+      "evidence_paths": [
+        "beta/legal/original/THIRD_PARTY_NOTICES.txt",
+        "beta/legal/recovered/source-archives.json",
+        "beta/legal/recovered/upstream/recipes/packages/libf2c/patches/0001-fix-arith.h.patch"
+      ]
+    },
+    {
+      "id": "B-U3",
+      "classification": "R",
+      "disposition": "ACCEPTED_RESIDUAL",
+      "claim": "NumPy portable/header/static-archive selection",
+      "basis": "Embedded full NumPy source and notice texts are present; exact static object/header selection remains historical R.",
+      "evidence_paths": [
+        "beta/legal/original/notice-index.json",
+        "beta/legal/recovered/whole-wheel-source-status.json"
+      ]
+    },
+    {
+      "id": "B-U4",
+      "classification": "M",
+      "disposition": "SATISFIED",
+      "claim": "ACECOG AGPL and Pyodide/hiwire MPL matching source and applicable modifications",
+      "basis": "Candidate provides direct pinned ACECOG/Pyodide/hiwire/recipes source links, preserved upstream CPython/SDK and recipe patch files and manifest-bound licensing index. Owner confirmed anonymous accessibility of three GitHub destinations; independent QA/Security must validate final candidate access, no additional downstream covered edits and served paths.",
+      "evidence_paths": [
+        "beta/legal/index.html",
+        "beta/legal/SOURCE_ACCESS.txt",
+        "beta/legal/original/index.html",
+        "beta/legal/recovered/index.html",
+        "beta/legal/recovered/source-archives.json"
+      ]
+    },
+    {
+      "id": "B-U4-core",
+      "classification": "R",
+      "disposition": "ACCEPTED_RESIDUAL",
+      "claim": "CPython HACL/libmpdec/SQLite/mini-lz4 and SDK incorporated text",
+      "basis": "CPython, HACL, libmpdec, mini-lz4, SDK original terms and SQLite core public-domain declaration/full archive source link are present; exact historical object selection remains accepted conditional R.",
+      "evidence_paths": [
+        "beta/legal/recovered/index.html",
+        "beta/legal/recovered/upstream/cpython/LICENSE",
+        "beta/legal/recovered/source-archives.json"
+      ]
+    },
+    {
+      "id": "B-U5",
+      "classification": "R",
+      "disposition": "ACCEPTED_RESIDUAL",
+      "claim": "Rust 1.97.1 standard-library notice applicability",
+      "basis": "Rust 1.97.1 COPYRIGHT-library.html and associated full license/exception texts are included; exact historical rustc target/features/linked subset remain conditional R.",
+      "evidence_paths": [
+        "beta/legal/recovered/upstream/rust-1.97.1/rustc/share/doc/rust/COPYRIGHT-library.html",
+        "beta/legal/recovered/rust-provenance.json"
+      ]
+    },
+    {
+      "id": "HISTORY",
+      "classification": "R",
+      "disposition": "ACCEPTED_RESIDUAL",
+      "claim": "Historical compiler, include, link and selected object logs",
+      "basis": "Owner-accepted conditional historical provenance; cannot waive actual mandatory full notice or covered-source obligation.",
+      "evidence_paths": [
+        "beta/legal/original/dispositions.json",
+        "beta/legal/recovered/component-source-matrix.json"
+      ]
+    },
+    {
+      "id": "CONTEXT",
+      "classification": "C",
+      "disposition": "CONTEXT",
+      "claim": "Excluded, host, proc-macro, optional and architecture-only context",
+      "basis": "Retain evidentiary context without treating excluded components as shipped or silently excluding unresolved shipped bytes.",
+      "evidence_paths": [
+        "beta/legal/recovered/exclusion-classifications.json",
+        "beta/legal/original/notice-index.json"
+      ]
+    },
+    {
+      "id": "DELIVERY",
+      "classification": "M",
+      "disposition": "SATISFIED",
+      "claim": "Candidate recipient notice/source placement",
+      "basis": "Candidate includes all original and recovered notice bytes plus readable legal index, pinned source links and individual patch file links; external live Pages access remains a Release Engineering check after publication.",
+      "evidence_paths": [
+        "beta/legal/index.html",
+        "beta/legal/SOURCE_ACCESS.txt",
+        "beta/legal/THIRD_PARTY_NOTICES.txt",
+        "beta/legal/recovered/index.html"
+      ]
+    }
+  ],
+  "review_status": "BUILDER_EVIDENCE_PROPOSAL__SECURITY_AND_WORKING_QA_INDEPENDENT_SIGNOFF_REQUIRED",
+  "release_approval": "NOT_GRANTED_BY_THIS_FILE",
+  "historical_residual_policy": "Owner-accepted conditional R only, provided all actual required notices/covered source and changes are accessible"
+}

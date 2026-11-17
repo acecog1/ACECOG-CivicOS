@@ -39,14 +39,29 @@ def assemble(previous: Path, runtime: Path, source_sha: str, output: Path,
         files.update({prefix + n: b for n, b in read_archive(archive).items()})
     # This packet is deliberately still pending independent sufficiency review.
     # Recovered exact texts do not automatically settle selected-code applicability.
-    files["beta/legal/index.html"] = b'''<!doctype html><html lang="en"><meta charset="utf-8">
-<title>BG-2 notices and source access</title><main><h1>Notices and source access</h1>
+    files["beta/legal/index.html"] = f'''<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BG-2 notices and source access</title>
+<main><h1>Notices and source access</h1>
 <p>Candidate for independent review. No licensing approval is asserted.</p>
+<h2>Required licenses and original notices</h2>
 <ul><li><a href="THIRD_PARTY_NOTICES.txt">Recipient notice index</a></li>
-<li><a href="SOURCE_ACCESS.txt">Source and modifications</a></li>
+<li><a href="original/THIRD_PARTY_NOTICES.txt">Complete preserved third-party notices</a></li>
+<li><a href="original/LICENSE-ACECOG.txt">ACECOG AGPL license text</a></li>
 <li><a href="original/index.html">Original notice and component crosswalk</a></li>
-<li><a href="recovered/index.html">Recovered CPython, SDK, Rust and patch evidence</a></li>
-<li><a href="claims.json">Finite claim disposition</a></li></ul></main></html>'''
+<li><a href="recovered/index.html">Recovered CPython, SDK, Rust and all 29 individual upstream patch links</a></li>
+<li><a href="recovered/upstream/rust-1.97.1/rustc/share/doc/rust/COPYRIGHT-library.html">Rust 1.97.1 library notices</a></li></ul>
+<h2>Matching source and modifications</h2>
+<ul><li><a href="https://github.com/acecog1/ACECOG-CivicOS/tree/{source_sha}">ACECOG corresponding source, this exact candidate</a></li>
+<li><a href="https://github.com/pyodide/pyodide/tree/b1e4fcc2488962f6360a97f19b9982d6fdb5d16f">Pyodide 314.0.7 pinned source and upstream CPython/SDK modifications</a></li>
+<li><a href="https://github.com/pyodide/hiwire/tree/6a1e67280a15d929ebeceee54a6358c9c8d5f697">Separate pinned hiwire MPL source</a></li>
+<li><a href="https://github.com/pyodide/pyodide-recipes/tree/fc8587207ecbf0fb54305d5da25ab7ed70f126d3">Pinned recipe sources and associated patches</a></li>
+<li><a href="recovered/index.html">Browse each packaged applicable upstream/recipe patch file</a></li>
+<li><a href="SOURCE_ACCESS.txt">Versions, modification correspondence and archive hashes</a></li>
+<li><a href="recovered/source-archives.json">Exact source archive URLs and SHA-256 pins</a></li></ul>
+<p>These source trees and patch files are distributed as source-access evidence; accepted historical build-object uncertainty is not proof that an additional license or changed source can be omitted.</p>
+<h2>Review controls</h2><ul><li><a href="claims.json">Nine evidence-classified claims, subject to independent decisions</a></li>
+<li><a href="recovered/component-source-matrix.json">Component-to-source evidence matrix</a></li></ul></main></html>'''.encode("utf-8")
     files["beta/legal/THIRD_PARTY_NOTICES.txt"] = (
         b"BG-2 recipient notice candidate: independent sufficiency review pending.\n"
         b"Original full notice texts: ./original/THIRD_PARTY_NOTICES.txt\n"
@@ -58,7 +73,13 @@ def assemble(previous: Path, runtime: Path, source_sha: str, output: Path,
         f"https://github.com/acecog1/ACECOG-CivicOS/tree/{source_sha}\n"
         "Covered upstream source archive pins and patch receipts:\n"
         "./recovered/source-archives.json\n./recovered/component-source-matrix.json\n"
-        "Recipe patches: ./recovered/upstream/recipes/packages/\n"
+        "Pyodide 314.0.7 pinned source (MPL): https://github.com/pyodide/pyodide/tree/b1e4fcc2488962f6360a97f19b9982d6fdb5d16f\\n"
+        "Separate hiwire MPL source: https://github.com/pyodide/hiwire/tree/6a1e67280a15d929ebeceee54a6358c9c8d5f697\\n"
+        "Pinned Pyodide recipes and applied-patch context: https://github.com/pyodide/pyodide-recipes/tree/fc8587207ecbf0fb54305d5da25ab7ed70f126d3\\n"
+        "All 29 individual recovered patch FILE links: ./recovered/index.html\\n"
+        "Included CPython and Emscripten upstream patch series and SciPy/OpenBLAS/libf2c recipes are indexed there; do not rely on bare Pages directory listings.\\n"
+        "The browser vendor script downloads version-pinned upstream root and wheel bytes without source edits; official upstream root hash matches have separate retained evidence.\\n"
+        "This does not establish selected build-object provenance or waive a genuinely missing modification.\\n"
         "Public source access is not proof of complete covered modifications.\n"
         "Matching-source sufficiency remains pending independent disposition.\n"
     ).encode()
