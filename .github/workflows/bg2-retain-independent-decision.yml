@@ -1,0 +1,36 @@
+# Retention only. Uploading a document does not authenticate or approve it.
+name: BG-2 retain independent decision (NO DEPLOY)
+on:
+  workflow_dispatch:
+    inputs:
+      decision_json:
+        description: Exact JSON document furnished by the independent reviewers
+        type: string
+        required: true
+permissions:
+  contents: read
+jobs:
+  retain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retain supplied bytes and digest without granting approval
+        env:
+          DECISION_JSON: ${{ inputs.decision_json }}
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          raw = os.environ['DECISION_JSON'].encode('utf-8')
+          doc = json.loads(raw)
+          assert doc['schema'] == 'ACECOG-BG2-INDEPENDENT-DECISION-v1'
+          Path('decision.json').write_bytes(raw)
+          Path('decision.sha256').write_text(hashlib.sha256(raw).hexdigest() + '\n')
+          PY
+      - uses: actions/upload-artifact@v7
+        with:
+          name: bg2-independent-decision
+          path: |
+            decision.json
+            decision.sha256
+          if-no-files-found: error
+          retention-days: 90

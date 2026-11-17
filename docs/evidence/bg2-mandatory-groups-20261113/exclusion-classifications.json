@@ -1,0 +1,47 @@
+[
+  {
+    "claim": "macOS installer screenshot",
+    "classification": "EXCLUDED_NOTICE_EVIDENCE",
+    "evidence": [
+      {
+        "reason": "macOS installer screenshot; not a WASM runtime notice",
+        "sha256": "76d77efe7ccf2f8cc8e49e340843cf7552c3da011d49e94481d3420f1a57dbba",
+        "source_path": "cpython/Doc/using/mac_installer_03_license.png"
+      }
+    ],
+    "verification": "Exact screenshot digest absent from runtime top-level payloads; bounded check only"
+  },
+  {
+    "claim": "CPython _ssl and _hashlib",
+    "classification": "PUBLIC_CONFIGURATION_DISABLED_NOT_BINARY_ABSENCE_CERTIFICATE",
+    "evidence": "upstream/pyodide/cpython/Setup.local",
+    "caveat": "HACL _hmac explicitly included; no blanket crypto exclusion"
+  },
+  {
+    "claim": "CLAPACK beyond libf2c / LAPACKE",
+    "classification": "RECIPE_SCOPE_EXCLUSION_PENDING_CUSTODIAN",
+    "evidence": [
+      "upstream/recipes/packages/libf2c/meta.yaml",
+      "upstream/recipes/packages/libopenblas/meta.yaml"
+    ],
+    "caveat": "Actual selected object proof remains B-U2"
+  },
+  {
+    "claim": "Rust compiler / full toolchain / Cargo.lock host and Windows branches",
+    "classification": "RESEARCH_OR_BUILD_CONTEXT_NOT_PROVEN_RUNTIME",
+    "evidence": "upstream/rust-1.97.1/rustc/share/doc/rust/COPYRIGHT.html",
+    "caveat": "COPYRIGHT-library.html is separate runtime candidate set; B-U5 actual target/features remain open"
+  },
+  {
+    "claim": "Architecture, benchmark, generators, XZ CLI, SDK tools and SDL trees",
+    "classification": "CONTEXT_NOT_PROVEN_INCORPORATED",
+    "evidence": "../bg2-compiled-notices/COMPONENT_REVIEW.md",
+    "caveat": "Source notice presence or absence of strings cannot prove exclusion of generated/portable/header contributions"
+  },
+  {
+    "claim": "SQLite tea/license.terms",
+    "classification": "TCL_EXTENSION_CONTEXT_NOT_CORE_NOTICE",
+    "evidence": "upstream/sqlite/sqlite3.c",
+    "caveat": "Exact core amalgamation copyright disclaimer recovered; human public-domain treatment pending"
+  }
+]

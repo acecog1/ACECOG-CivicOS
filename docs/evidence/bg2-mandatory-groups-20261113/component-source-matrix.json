@@ -1,0 +1,2893 @@
+[
+  {
+    "component_id": "numpy",
+    "name": "NumPy 2.4.6",
+    "source_notice_records": [
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/LICENSE.txt",
+        "notice_sha256": "1be1df33863f97a7bc1c4d67980bd6c69c9a6fef0a5ee76e6ad6cb91e56e8491",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/LICENSE.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/_core/_multiarray_umath.cpython-314-wasm32-emscripten.so",
+        "sha256": "f24e4d01250fc9d8bb4382727813914324a0bd792c3419f2dfade45e29830509"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/_core/lib/libnpymath.a",
+        "sha256": "a6924878bce1f8aef5317cce0ecc0bd7222e80a26bc53c2a8eb83588edc16eb4"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/fft/_pocketfft_umath.cpython-314-wasm32-emscripten.so",
+        "sha256": "ec3b6453b8720bb6369f279c02107893dad485ac13a831aa29ee096722773a1a"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/linalg/_umath_linalg.cpython-314-wasm32-emscripten.so",
+        "sha256": "e10f1c9b69919c48a3abad91f0a227bb9dddea6ba3eac2f96a1aae4a08450a55"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/linalg/lapack_lite.cpython-314-wasm32-emscripten.so",
+        "sha256": "578be9fdfbc5f103bb978afe67ecfeffb413f6cb1e8419e136fa4f97398f7ebe"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_bounded_integers.cpython-314-wasm32-emscripten.so",
+        "sha256": "b3355b64811cff5b3d41bcfa8ddb90a4c203d169e2910e6f897afbc4221523a7"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_common.cpython-314-wasm32-emscripten.so",
+        "sha256": "9b8afe8338fef7fe9a49d86f981f9fd607fac507ffbbc53c73c6f4225b23696d"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_generator.cpython-314-wasm32-emscripten.so",
+        "sha256": "3c3ee42ddcbfb5a3d9caf70c7fcb8e1f01d24ee08c9293124a672c68f8cba462"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_mt19937.cpython-314-wasm32-emscripten.so",
+        "sha256": "d3ca63807aea4b0b2caf67122087fa6eadd6f0d84ff4e3bd12a896fa45c64d55"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_pcg64.cpython-314-wasm32-emscripten.so",
+        "sha256": "414becc8e97858aadaa8a2acc784573985c3356e145c7091ea407ca6422c7ab3"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_philox.cpython-314-wasm32-emscripten.so",
+        "sha256": "ab0fc28792ec6eb3d9b8f3c427ce210a6f2e6f4744e7b7adb2da0da055fce5bc"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_sfc64.cpython-314-wasm32-emscripten.so",
+        "sha256": "bffdb1f5c6529feae6a4e3393589fb3827a03d851bb2d34869175267a58bd8a4"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/bit_generator.cpython-314-wasm32-emscripten.so",
+        "sha256": "1b293c6ba5e0909d4a4363e75ccf2f5d2dcbd711ca8ddaa4910ecc11c70aa072"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/lib/libnpyrandom.a",
+        "sha256": "6afdcbdd29d8d455f6f22729ab1a38b9128b3904a30e365889a441ecc13cc36c"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/mtrand.cpython-314-wasm32-emscripten.so",
+        "sha256": "6b2b87ec5dfaabde723369d27845b6107bc76f2935d3456b365787b3aa81b13b"
+      }
+    ],
+    "source_archive_keys": [
+      "numpy"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "scipy",
+    "name": "SciPy 1.18.0",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "LICENSES_bundled.txt",
+        "notice_sha256": "45b1a2cf4eb57277812fcbca2b6af7d84e98c942a5e4dcc360610f49de16c63f",
+        "original_notice_id": "originals/scipy-sdist/LICENSES_bundled.txt"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "scipy-1.18.0.dist-info/LICENSE.txt",
+        "notice_sha256": "221e59f5e910fd7f94e44f0dac77436a11338c285c6346232e4a850a50da0e94",
+        "original_notice_id": "originals/wheel-texts/scipy-1.18.0.dist-info/LICENSE.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy.libs/libopenblas.so",
+        "sha256": "173f7752ae75d8f120e4e36e3e346bb1f0213830971006db6ce2f0473c3f2c5a"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_cyutility.cpython-314-wasm32-emscripten.so",
+        "sha256": "c11c7c77b206b295176e7b6d776dbddf03295b9ef8e7db30d29d74fd9ee530fe"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_ccallback_c.cpython-314-wasm32-emscripten.so",
+        "sha256": "79e999574291b7fb13edce632702d5b39e6e9a4df2f2d9a9e7f41879ad2729a5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_fpumode.cpython-314-wasm32-emscripten.so",
+        "sha256": "9060ce6b18db94ace1739fa11b8a83c8b6e6e9c4a818aef72a4feb08dd93ada2"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_test_ccallback.cpython-314-wasm32-emscripten.so",
+        "sha256": "c0197b2bae2ae19107a10da213425b1cec5040ebd15a060076dcb2516774d103"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_test_deprecation_call.cpython-314-wasm32-emscripten.so",
+        "sha256": "f89db67f3433f8548e4c377f1b70fc19dae7faae8c2113164cbda0ba5e53d0bc"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_test_deprecation_def.cpython-314-wasm32-emscripten.so",
+        "sha256": "a13bed0f86b1b3eddcb8258e9de17a0bec4a9b6235b3f31abce8d7338b1d8ec8"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_uarray/_uarray.cpython-314-wasm32-emscripten.so",
+        "sha256": "fddafbebebab5ff080b24239c2c2c1d77601cb959827fc0b4658ddbe2a67f9fb"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/messagestream.cpython-314-wasm32-emscripten.so",
+        "sha256": "19a55540c84fa0350b4d67fbf4aa930bf06ea693d5565a19a9d7e6b410554b84"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/cluster/hierarchy/_hierarchy.cpython-314-wasm32-emscripten.so",
+        "sha256": "ec0ea1e103261ff94c8638d946aa6ca8727f8c4cbccc6fec720a2e7a81740b8b"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/cluster/hierarchy/_optimal_leaf_ordering.cpython-314-wasm32-emscripten.so",
+        "sha256": "f62d01b7dab4d7bda98988ab5f880a91da7a437f9f7b9ea3f11d98471f0e6f66"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/cluster/vq/_vq.cpython-314-wasm32-emscripten.so",
+        "sha256": "fef6b3fb9064dba805b01b2bf03ffc3cd0461454e3e06051aa030cbffabe6ce2"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/fft/_duccfft/pyduccfft.cpython-314-wasm32-emscripten.so",
+        "sha256": "7ea9663375bd1784a8f28c0c4e6ec95e7d895f651518b1b0d25c95a4c30e2e22"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/fftpack/convolve.cpython-314-wasm32-emscripten.so",
+        "sha256": "ee544899d9a7b824320e4e60d8c242d4315014a193f49584aa10a5ed8fc2660b"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_dop.cpython-314-wasm32-emscripten.so",
+        "sha256": "64a8fe4baf32bf595dfcf650135fad2ee42d9749b5af1e4bcceb74de6fe05b84"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_odepack.cpython-314-wasm32-emscripten.so",
+        "sha256": "90b7290ad21b73bd189a4ce2dd1a38c02ea5ea2fce51b92b05305ec4987505f5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_quadpack.cpython-314-wasm32-emscripten.so",
+        "sha256": "459a34b34b9514c8d94937c3e9b21e6add7fe2aa86573040cc7901f16c20fc6d"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_test_multivariate.cpython-314-wasm32-emscripten.so",
+        "sha256": "b650da2a18c59acea72f6259c55e785f444baf1f48ea33e75d3d742a79d94e9e"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_vode.cpython-314-wasm32-emscripten.so",
+        "sha256": "53b612758fc18e0d6bcc405258bc9b0066222651be17d05fc7c1d1328a6964ba"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_dierckx.cpython-314-wasm32-emscripten.so",
+        "sha256": "fbaed7fcfccb62b7e93adab999c10ce069ac9858c5fbc8c13c303888e81f3ea6"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_fitpack.cpython-314-wasm32-emscripten.so",
+        "sha256": "c6cd9b312696771d90256234b256bff8c67270be08db65dfb9c13175839117db"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_interpnd.cpython-314-wasm32-emscripten.so",
+        "sha256": "d74839f11d5f0d278f3c2d8bebe7f7157a4c1c653d0f243f3f0f46ae50e5fd05"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_ppoly.cpython-314-wasm32-emscripten.so",
+        "sha256": "538f43cb9ab8f20e847362d7a5bf1a26df2eb46cfcf0d0d79310eae37b065e24"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_rbfinterp_pythran.cpython-314-wasm32-emscripten.so",
+        "sha256": "a6dc4ddb1e563bb6eaad6871bad9a508e3ae9216fbef9c16a0a16be4152b0b64"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_rgi_cython.cpython-314-wasm32-emscripten.so",
+        "sha256": "2e2e630a7cb100693e4c1a5a50e1eb48058d542195316a0fd5d1da095d7f3dad"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/io/_fast_matrix_market/_fmm_core.cpython-314-wasm32-emscripten.so",
+        "sha256": "946557b6264199141241dd80112a2d253d4ec929ff71c025fe3de434abb37da2"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/io/matlab/_mio5_utils.cpython-314-wasm32-emscripten.so",
+        "sha256": "8cd962e1ee1c3c1d1a87cfb390612252fda7d4ebf3dc1d6bdf672ad2d0148a88"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/io/matlab/_mio_utils.cpython-314-wasm32-emscripten.so",
+        "sha256": "9fe81a32be165159f62c1f11432c31883b62ba680fbf597ce4facd77ba739a79"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/io/matlab/_streams.cpython-314-wasm32-emscripten.so",
+        "sha256": "316446528bd060d964461234255d9e21a9ddd2110c461e9c939f2e1a9aee335f"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_batched_linalg.cpython-314-wasm32-emscripten.so",
+        "sha256": "cf6229585c090ddefe6e5f023559b27c825bc929ddc84b8c8221b978ef651787"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_cythonized_array_utils.cpython-314-wasm32-emscripten.so",
+        "sha256": "c36637335a0ab2a43abc35eed219257c2153c7e6c9918b224f46481be19221e2"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_decomp_interpolative.cpython-314-wasm32-emscripten.so",
+        "sha256": "3c197f4ba4ad3bf4d72f36d6a7e251f96cb2a2b7e653c2444ace15d7dd52b518"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_decomp_update.cpython-314-wasm32-emscripten.so",
+        "sha256": "cf0d7ebe73f4adbfb8dacce342dbb13b9f671913e597e64ce40791f7da7c4f01"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_fblas.cpython-314-wasm32-emscripten.so",
+        "sha256": "9b325bcdc505dd374590289bca9db19f9bba7f8ed1d7540b8336ca777ae3c54e"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_flapack.cpython-314-wasm32-emscripten.so",
+        "sha256": "0ee7be049196ff4a330e9f9e09582f321afaefbc911ec5fcf214420b5cdba507"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_internal_matfuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "cc33dd37c8d61500f7179138787b7f2e6d4364b302e3a65ddf1d3f1da538d18d"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_linalg_pythran.cpython-314-wasm32-emscripten.so",
+        "sha256": "6e534c8e2927ee3df1374baa58f603d892e49768084c4f887d4622e66af37200"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_matfuncs_sqrtm_triu.cpython-314-wasm32-emscripten.so",
+        "sha256": "7478f4ac5471fd5f045faf60d09bf523f51b96604a92b80b249b4eaac4501c83"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_solve_toeplitz.cpython-314-wasm32-emscripten.so",
+        "sha256": "620c7377ef8f17c870cfe175a7913e88f8b7b9c30f907706fc504f125359a4b9"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/cython_blas.cpython-314-wasm32-emscripten.so",
+        "sha256": "5ff7ce0548f4e79ac7bb6febe397e24a2c35bbb91dfcba403730aa7a845202f8"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/cython_lapack.cpython-314-wasm32-emscripten.so",
+        "sha256": "3e09d72e3f2936d421645d7debc3c3f822fd995b46a7e45d1f178813f3599b6f"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_ctest.cpython-314-wasm32-emscripten.so",
+        "sha256": "5b2e820f1f46a50a26f6e601391350fa0f112b6700367161e47808b82a11ef01"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_cytest.cpython-314-wasm32-emscripten.so",
+        "sha256": "15edfcce450388387c8de5e40f2bf41ffbd4f1636347f63d2825434cdd3d4011"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_nd_image.cpython-314-wasm32-emscripten.so",
+        "sha256": "2fd2b5fd1b085f441c29f9b5efb9f476d93244ee956dabff2382e4ba525a5cca"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_ni_label.cpython-314-wasm32-emscripten.so",
+        "sha256": "592fff6c8c4a6edf4e3ec40568bd192431fcf128f339702a3e52fe1873a52248"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_rank_filter_1d.cpython-314-wasm32-emscripten.so",
+        "sha256": "a9fd81101f721f7c80faceb0e796c2e3f8b9b174d0d86ec0ac811437d37c93c3"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/odr/__odrpack.cpython-314-wasm32-emscripten.so",
+        "sha256": "57dae9b88fb1c5338377128755ef27c052c5fa39ca2ccc4afa9c71b653e2aadb"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_bglu_dense.cpython-314-wasm32-emscripten.so",
+        "sha256": "28411452d4b0fea499d5c432e012d6f6763ff947fac1f965b40b2ce18a20cd2c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_direct.cpython-314-wasm32-emscripten.so",
+        "sha256": "b4c755cb3a690b895aeba9daa9aae8003245e2fae33cee8990d8cb827bc2723e"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_group_columns.cpython-314-wasm32-emscripten.so",
+        "sha256": "c5c37a90231f658b794fa48f8be4e80d6ee67666d45adad74e202a795810998d"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_highspy/_core.cpython-314-wasm32-emscripten.so",
+        "sha256": "7f9661ea4eb4464356463cd1407ab0353e521c60c1d843b61900784c2c380569"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_highspy/_highs_options.cpython-314-wasm32-emscripten.so",
+        "sha256": "4675774a690353fbb5a0e15f81b10b08344630eea9a511be06dc3bc70eb0342b"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_lbfgsb.cpython-314-wasm32-emscripten.so",
+        "sha256": "af4b8817dc8d2cf826605168bda1f45bc0fbea326a8481ff12fc98c341b80a05"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_lsap.cpython-314-wasm32-emscripten.so",
+        "sha256": "f50c6189b9219edb59388724fb71c09c267cf5fd2b5b1c0826e16ec7fea7eff0"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_lsq/givens_elimination.cpython-314-wasm32-emscripten.so",
+        "sha256": "6c6b5d306735c46bbb1c4e7b3926d027d5935d44a3181bad295742faefca4384"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_minpack.cpython-314-wasm32-emscripten.so",
+        "sha256": "da31da9c91f808c9615a49adf4eb6dbed4efefd74885df875f0e96235f028040"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_moduleTNC.cpython-314-wasm32-emscripten.so",
+        "sha256": "aa0dda757f93eeff44ebabc938328847afa60839391ed681f4e50d725ad32e2a"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_pava_pybind.cpython-314-wasm32-emscripten.so",
+        "sha256": "318df0e34d5ebbc81bc1ddc61974a1687a2acbf31ffafadded5e4527afad6815"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_slsqplib.cpython-314-wasm32-emscripten.so",
+        "sha256": "2a188190b70842f1dcd7272877cd0bde344283f2f09c32aa99601df9f82982cd"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_trlib/_trlib.cpython-314-wasm32-emscripten.so",
+        "sha256": "04439128db4fe4cbc6bd5ef72d96d7b8aa79b9f6616320f78500696c97bffe74"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_zeros.cpython-314-wasm32-emscripten.so",
+        "sha256": "109681d28cde476c6f0135f8a59d635eb359a787e6cd29c47b8f266a7c2c6fab"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/cython_optimize/_zeros.cpython-314-wasm32-emscripten.so",
+        "sha256": "21666d3af6e3c11614e0ba87c7078f70eb4665ece7d0540490c260f184c70029"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_max_len_seq_inner.cpython-314-wasm32-emscripten.so",
+        "sha256": "4123bf60c8a3182d3859ad01254f11777b13b2a8af5ec1732e46327ae5d5d200"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_peak_finding_utils.cpython-314-wasm32-emscripten.so",
+        "sha256": "75b0e900c787826be615c537bad9a835e74b77cfc25442c87e80cc773a4adb90"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_sigtools.cpython-314-wasm32-emscripten.so",
+        "sha256": "377b650184bdf8babf7af5bf33bbe524da08d26141c574e6abad704322680778"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_sosfilt.cpython-314-wasm32-emscripten.so",
+        "sha256": "7b0fa2a20349bfb2fa7f907426a8a8d04b4ba122f00567effcade11f123ace5c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_spline.cpython-314-wasm32-emscripten.so",
+        "sha256": "45b26a0912c4b04b4fcac716f4f93b2bdb5b22352da52433fa529cc1d787c656"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_upfirdn_apply.cpython-314-wasm32-emscripten.so",
+        "sha256": "30ad4f368f2fd7b9348ab2d9bc95ac8ce2f75b54acf5856e907accc1a0c27487"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/_csparsetools.cpython-314-wasm32-emscripten.so",
+        "sha256": "df9cd7a49216b82ba7d4389fa927c18f73adbfb90937c268c3e30e549e61bdb0"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/_sparsetools.cpython-314-wasm32-emscripten.so",
+        "sha256": "6faefec9cf5e0c51c206db9540993df8b7edc3baa56a699a168c810600cd515a"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_flow.cpython-314-wasm32-emscripten.so",
+        "sha256": "ba9659d51139ab8048e7703433c2c45a9500d81407d4167fc50f87bdbb33124c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_matching.cpython-314-wasm32-emscripten.so",
+        "sha256": "7e94bc618119dc617005ab53ec2b1275d4404e29e6e4d1c1fe99f901819041d7"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_min_spanning_tree.cpython-314-wasm32-emscripten.so",
+        "sha256": "51934c622d99618c8e835b9b0b088c9fb65286cd90702215217f576bb4acb6c1"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_reordering.cpython-314-wasm32-emscripten.so",
+        "sha256": "a84ff0519f94e602e60422ca9fe42aa94a99c95ee3459dfe0221f94cad665ffe"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_shortest_path.cpython-314-wasm32-emscripten.so",
+        "sha256": "da834b17ce0363d2e1e40ece8d0f25d8461e1356744ac9b633e7fd758b302b1c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_tools.cpython-314-wasm32-emscripten.so",
+        "sha256": "223dcab52d347f89ab2f2d524e4fd0350d237ed7dcbc282a6cc4d89b110cbbc3"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_traversal.cpython-314-wasm32-emscripten.so",
+        "sha256": "9f57a2ec807f1fef28906ad390f55a47e1e0e6bd2468219447c024bdf4f3d688"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/linalg/_dsolve/_superlu.cpython-314-wasm32-emscripten.so",
+        "sha256": "3c72469c08a3d31b5d415a9a71ec8c3193e9ec07e4efae7f3641c87662081d01"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/linalg/_eigen/arpack/_arpacklib.cpython-314-wasm32-emscripten.so",
+        "sha256": "676fb9c6a0dc879c25fe4bb22f037ad52ced09c59d5d0b1665d645355398439a"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/linalg/_propack.cpython-314-wasm32-emscripten.so",
+        "sha256": "9de4124cdd3922026424bcfb0e91ec2634ef7c8408fa9e82a6996fd4d0c45d56"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_ckdtree.cpython-314-wasm32-emscripten.so",
+        "sha256": "e9b44b1e749a198bf0fde116fc9eff64e293d9ca61406b3ab663f50dbbe29193"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_distance_pybind.cpython-314-wasm32-emscripten.so",
+        "sha256": "351071419e635e6aec25bc9de5caae6499ce05414766311881ababd01d76e5a0"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_distance_wrap.cpython-314-wasm32-emscripten.so",
+        "sha256": "cea2b451caef15284ffaee5cb71543f4090a33bab78017cdc1be01e7a5b6101f"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_hausdorff.cpython-314-wasm32-emscripten.so",
+        "sha256": "4707ff1ed78c62457a4d1361eebd7aa8506d0f21c1df7e3c4b1d76ec5fdd3a74"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_qhull.cpython-314-wasm32-emscripten.so",
+        "sha256": "4eb8eeb0b73f11ad10c8df7a3597a36f955526fcf04e8b2b98edd018e745be83"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_voronoi.cpython-314-wasm32-emscripten.so",
+        "sha256": "aae2c9bed76962829fad38bb335b859fee88c58b31d70e33d9458efbb9e9f305"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/transform/_rigid_transform_cy.cpython-314-wasm32-emscripten.so",
+        "sha256": "c20feda4b7c9d67e46faad35ee0878780d086ad426e91ceba99b2bcf241ab587"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/transform/_rotation_cy.cpython-314-wasm32-emscripten.so",
+        "sha256": "713ad18f24bc130b4ed12b5d7049aaf301ef26b3ae30bb9cb16e9919be335f03"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_comb.cpython-314-wasm32-emscripten.so",
+        "sha256": "72512dcbeed2b9ff583ff069fdfa10c6b8dd6e8cca2b5bb6a579500e1089c9c9"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ellip_harm_2.cpython-314-wasm32-emscripten.so",
+        "sha256": "3a03ef6552ec145c250e0b3da199448d7588eb822720cbc0118f69fdf85994d5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_gufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "692fa8da52069616000469cfafe9873a48ae77ea9a9160eaf531875986f0eefa"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_specfun.cpython-314-wasm32-emscripten.so",
+        "sha256": "90c72bfec79a81ebfe7b8d2606830b07b51187dbb90cce7e8a4f4b61280d8965"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_special_ufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "d7e89416902d16d57cb5ffc273eef4f518e38387d32816103d8d5150beb5523c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_test_internal.cpython-314-wasm32-emscripten.so",
+        "sha256": "269439a372a8fc20b94e628d949932513a2b8a65940ae369111ec57514bde916"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "44f02ce82518f911b094ea319f35534e0db24cf542f899a106162ac34696b3a5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ufuncs_cxx.cpython-314-wasm32-emscripten.so",
+        "sha256": "cfbc1fccd7efd6dc49befd15904f2fb4f78fae24fa76aaaca5ef5aa8b80f2a4c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/cython_special.cpython-314-wasm32-emscripten.so",
+        "sha256": "3a5e8465d9b94ae6bda92dd05a839a5b5bbed31ab61d8b6a559cc511913ac974"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_ansari_swilk_statistics.cpython-314-wasm32-emscripten.so",
+        "sha256": "228e2d5e051fa284bf1ea7aabba71329c0309552d75e67193161e86f32e536c9"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_biasedurn.cpython-314-wasm32-emscripten.so",
+        "sha256": "b06cfc0d7ad73744d86c1169de599d018f3b390889d3ba71ad139e72e50e6875"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_levy_stable/levyst.cpython-314-wasm32-emscripten.so",
+        "sha256": "85d0f74723d86404765316346ff16045b4f13f9be67305db7b1ec6530edbad18"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_qmc_cy.cpython-314-wasm32-emscripten.so",
+        "sha256": "3368eafd7449459cb805ec536e7e6a8b838a82ef5331fcc9e3a30747c58493cd"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_qmvnt_cy.cpython-314-wasm32-emscripten.so",
+        "sha256": "94332602f2355ced685e249f2a39adb4ffb2a37fcfada85bb420e6a553b6a9a8"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_rcont/rcont.cpython-314-wasm32-emscripten.so",
+        "sha256": "f164cb18584002c39ef011e5144484558b4f460997700a6dc3a7d0dd1520a414"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_sobol.cpython-314-wasm32-emscripten.so",
+        "sha256": "a651ea1bc39ffd24ba82419fa4d34cb70e5b1b7ee29844b21e347b4ef0ce9e60"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_stats.cpython-314-wasm32-emscripten.so",
+        "sha256": "4533a1ce187e4ffc1e9b181b9841ec941e2e0cd9e882b0acea8c5f351869a09d"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_stats_pythran.cpython-314-wasm32-emscripten.so",
+        "sha256": "f10c8899a7e0359f25ea1155bb691b6bd66db6e0ff30759be4705bd12c7d179f"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_unuran/unuran_wrapper.cpython-314-wasm32-emscripten.so",
+        "sha256": "6f1883f6af129e3cbd86bd3a01b3ba338d1bb893905094b5afe37d760a5a266d"
+      }
+    ],
+    "source_archive_keys": [
+      "scipy"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "rpds",
+    "name": "rpds-py 0.30.0",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/r/rpds_py/rpds_py-0.30.0.tar.gz",
+        "source_path": "LICENSE",
+        "notice_sha256": "314e4e91be3baa93c0fb4bccc9e4e97cd643eb839b065af921782c2175fe9909",
+        "original_notice_id": "originals/rpds-sdist/LICENSE"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "rpds_py-0.30.0.dist-info/licenses/LICENSE",
+        "notice_sha256": "314e4e91be3baa93c0fb4bccc9e4e97cd643eb839b065af921782c2175fe9909",
+        "original_notice_id": "originals/wheel-texts/rpds_py-0.30.0.dist-info/licenses/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "rpds/rpds.cpython-314-wasm32-emscripten.so",
+        "sha256": "faf72eb53a01fc6a4ef6d1704b137517c8da63ef5b1224d749784784fb49cf6f"
+      }
+    ],
+    "source_archive_keys": [
+      "rpds"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "openblas",
+    "name": "OpenBLAS 0.3.31 / GotoBLAS",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+        "source_path": "GotoBLAS_00License.txt",
+        "notice_sha256": "38d9eb2e3d49d73fa12b18729a112fa949f7887c3ff12be23a02c0c97d9fb5b8",
+        "original_notice_id": "originals/openblas/GotoBLAS_00License.txt"
+      },
+      {
+        "source_url": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+        "source_path": "LICENSE",
+        "notice_sha256": "190b5a9c8d9723fe958ad33916bd7346d96fab3c5ea90832bb02d854f620fcff",
+        "original_notice_id": "originals/openblas/LICENSE"
+      },
+      {
+        "source_url": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+        "source_path": "reference/LICENSE",
+        "notice_sha256": "c1ceeff23f242ddac805ba9d332f58b559454ec00447e65540c0e818f7de69da",
+        "original_notice_id": "originals/openblas/reference/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy.libs/libopenblas.so",
+        "sha256": "173f7752ae75d8f120e4e36e3e346bb1f0213830971006db6ce2f0473c3f2c5a"
+      }
+    ],
+    "source_archive_keys": [
+      "openblas"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "lapack",
+    "name": "LAPACK 3.12.0",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/OpenMathLib/OpenBLAS/tree/76f1be470c9b9f80dc6e27407e13b975df436489",
+        "source_path": "lapack-netlib/LICENSE",
+        "notice_sha256": "978539245c405775bf347b1256c36df4daf8b69a64b099e94b1d53742201621e",
+        "original_notice_id": "originals/openblas/lapack-netlib/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy.libs/libopenblas.so",
+        "sha256": "173f7752ae75d8f120e4e36e3e346bb1f0213830971006db6ce2f0473c3f2c5a"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "libf2c",
+    "name": "libf2c from CLAPACK 3.2.1",
+    "source_notice_records": [
+      {
+        "source_url": "https://www.netlib.org/clapack/clapack.tgz",
+        "source_path": "F2CLIBS/libf2c/Notice",
+        "notice_sha256": "44561c447e91203ddc747beeca5cc2794d95ee982c17c578670e4f0408bc3904",
+        "original_notice_id": "originals/clapack/F2CLIBS/libf2c/Notice"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy.libs/libopenblas.so",
+        "sha256": "173f7752ae75d8f120e4e36e3e346bb1f0213830971006db6ce2f0473c3f2c5a"
+      }
+    ],
+    "source_archive_keys": [
+      "libf2c"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "uarray",
+    "name": "uarray (SciPy snapshot)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/_lib/_uarray/LICENSE",
+        "notice_sha256": "c80c39b5fce06ba4897e14e0b0a88b54458334d951eb1361402ffad2cfb863b4",
+        "original_notice_id": "originals/scipy-sdist/scipy/_lib/_uarray/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_uarray/_uarray.cpython-314-wasm32-emscripten.so",
+        "sha256": "fddafbebebab5ff080b24239c2c2c1d77601cb959827fc0b4658ddbe2a67f9fb"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "duccfft",
+    "name": "duccfft 0.40.0 / pyduccfft",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/duccfft/LICENSE.md",
+        "notice_sha256": "c254b2b5fd30ae3c89d36ba061730563b9760fca04f1b746a1b2c3157da2c789",
+        "original_notice_id": "originals/scipy-sdist/subprojects/duccfft/LICENSE.md"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "scipy/fft/_duccfft/LICENSE.md",
+        "notice_sha256": "c254b2b5fd30ae3c89d36ba061730563b9760fca04f1b746a1b2c3157da2c789",
+        "original_notice_id": "originals/wheel-texts/scipy/fft/_duccfft/LICENSE.md"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/fft/_duccfft/pyduccfft.cpython-314-wasm32-emscripten.so",
+        "sha256": "7ea9663375bd1784a8f28c0c4e6ec95e7d895f651518b1b0d25c95a4c30e2e22"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "dop",
+    "name": "DOP (SciPy snapshot)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/integrate/src/LICENSE_DOP",
+        "notice_sha256": "ed9bf58c6d74d3fad9d92d1d67d9bff8141d8ab60de784516b0711364fd43357",
+        "original_notice_id": "originals/scipy-sdist/scipy/integrate/src/LICENSE_DOP"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_dop.cpython-314-wasm32-emscripten.so",
+        "sha256": "64a8fe4baf32bf595dfcf650135fad2ee42d9749b5af1e4bcceb74de6fe05b84"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "fmm",
+    "name": "fast_matrix_market (SciPy snapshot)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/fast_float/LICENSE-MIT",
+        "notice_sha256": "e562f3f974ced7e69dd1db77b820b36bcf8f30377f1aa105723fba449c53c4e6",
+        "original_notice_id": "originals/scipy-sdist/scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/fast_float/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/ryu/LICENSE-Boost",
+        "notice_sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+        "original_notice_id": "originals/scipy-sdist/scipy/io/_fast_matrix_market/fast_matrix_market/dependencies/ryu/LICENSE-Boost"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/io/_fast_matrix_market/LICENSE.txt",
+        "notice_sha256": "4421977664ada9a02087ab1b031b50335f02b500e2cb58a1757074f31b4a89f5",
+        "original_notice_id": "originals/scipy-sdist/scipy/io/_fast_matrix_market/LICENSE.txt"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/io/_fast_matrix_market/src/pystreambuf.h",
+        "notice_sha256": "017cbea09dcbeade28614de7987d4e5122de2406e1e6715e4fa74d3f2c6791f4",
+        "original_notice_id": "originals/scipy-sdist/scipy/io/_fast_matrix_market/src/pystreambuf.h"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/io/_fast_matrix_market/_fmm_core.cpython-314-wasm32-emscripten.so",
+        "sha256": "946557b6264199141241dd80112a2d253d4ec929ff71c025fe3de434abb37da2"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "direct",
+    "name": "DIRECT (2.0.4 ancestry)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/optimize/_direct/COPYING",
+        "notice_sha256": "a7669da81aac1b0539f161cf93d6a94956d24ff476537e0b0579925997eec3f0",
+        "original_notice_id": "originals/scipy-sdist/scipy/optimize/_direct/COPYING"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_direct.cpython-314-wasm32-emscripten.so",
+        "sha256": "b4c755cb3a690b895aeba9daa9aae8003245e2fae33cee8990d8cb827bc2723e"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "highs",
+    "name": "HiGHS 1.12.0 / filereaderlp / pdqsort",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/highs/extern/filereaderlp/LICENSE",
+        "notice_sha256": "4374bb8064e5302f5ac6b82fd3e153a36670f04d0a6ee1bc55b3dc3faee923cc",
+        "original_notice_id": "originals/scipy-sdist/subprojects/highs/extern/filereaderlp/LICENSE"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/highs/extern/pdqsort/license.txt",
+        "notice_sha256": "323fc18e35fcf058d69d684022ef844f206cb8fefb2bac1298fa1767e0b9ae38",
+        "original_notice_id": "originals/scipy-sdist/subprojects/highs/extern/pdqsort/license.txt"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/highs/LICENSE.txt",
+        "notice_sha256": "10b39dba7b7731175f0705398b6db4320b64add1bd2ed9f9ec5b512a9ef1bd95",
+        "original_notice_id": "originals/scipy-sdist/subprojects/highs/LICENSE.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_highspy/_core.cpython-314-wasm32-emscripten.so",
+        "sha256": "7f9661ea4eb4464356463cd1407ab0353e521c60c1d843b61900784c2c380569"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_highspy/_highs_options.cpython-314-wasm32-emscripten.so",
+        "sha256": "4675774a690353fbb5a0e15f81b10b08344630eea9a511be06dc3bc70eb0342b"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "tnc",
+    "name": "TNC (SciPy snapshot)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/optimize/tnc/LICENSE",
+        "notice_sha256": "3df9207af2fdb861af0ae3b22026f163b9bcfab4e525dc4943afe2ffa3f77624",
+        "original_notice_id": "originals/scipy-sdist/scipy/optimize/tnc/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_moduleTNC.cpython-314-wasm32-emscripten.so",
+        "sha256": "aa0dda757f93eeff44ebabc938328847afa60839391ed681f4e50d725ad32e2a"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "trlib",
+    "name": "trlib (SciPy snapshot)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/optimize/_trlib/trlib_private.h",
+        "notice_sha256": "67af20e6d335290c9404f6ef4ab3c43f2273e6af79a5a929a87e2976d0438b7d",
+        "original_notice_id": "originals/scipy-sdist/scipy/optimize/_trlib/trlib_private.h"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_trlib/_trlib.cpython-314-wasm32-emscripten.so",
+        "sha256": "04439128db4fe4cbc6bd5ef72d96d7b8aa79b9f6616320f78500696c97bffe74"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "superlu",
+    "name": "SuperLU 7.0.1 / COLAMD",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "LICENSES_bundled.txt",
+        "notice_sha256": "45b1a2cf4eb57277812fcbca2b6af7d84e98c942a5e4dcc360610f49de16c63f",
+        "original_notice_id": "originals/scipy-sdist/LICENSES_bundled.txt"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/sparse/linalg/_dsolve/SuperLU/License.txt",
+        "notice_sha256": "f0cedf52503b2d42b83411a0a16e6fefac346dfad8fddc66f50050150123470c",
+        "original_notice_id": "originals/scipy-sdist/scipy/sparse/linalg/_dsolve/SuperLU/License.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/linalg/_dsolve/_superlu.cpython-314-wasm32-emscripten.so",
+        "sha256": "3c72469c08a3d31b5d415a9a71ec8c3193e9ec07e4efae7f3641c87662081d01"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "arpack",
+    "name": "ARPACK / arnaud translation",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/sparse/linalg/_eigen/arpack/arnaud/ARPACK_LICENSE.txt",
+        "notice_sha256": "53c82c54b92d94ef8c2ffee82e12135c6c3fdf23c3949d7bf6315282b14d6b8b",
+        "original_notice_id": "originals/scipy-sdist/scipy/sparse/linalg/_eigen/arpack/arnaud/ARPACK_LICENSE.txt"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/sparse/linalg/_eigen/arpack/arnaud/LICENSE",
+        "notice_sha256": "f49da99252dee2c12dbd5c71762b0724063f4531de193fbcece550ad9a3b6354",
+        "original_notice_id": "originals/scipy-sdist/scipy/sparse/linalg/_eigen/arpack/arnaud/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/linalg/_eigen/arpack/_arpacklib.cpython-314-wasm32-emscripten.so",
+        "sha256": "676fb9c6a0dc879c25fe4bb22f037ad52ced09c59d5d0b1665d645355398439a"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "propack",
+    "name": "PROPACK translation",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/sparse/linalg/_propack/PROPACK/LICENSE",
+        "notice_sha256": "f49da99252dee2c12dbd5c71762b0724063f4531de193fbcece550ad9a3b6354",
+        "original_notice_id": "originals/scipy-sdist/scipy/sparse/linalg/_propack/PROPACK/LICENSE"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/sparse/linalg/_propack/PROPACK/PROPACK_LICENSE.txt",
+        "notice_sha256": "7f961824c2570a623cb1420269cd4336807776379ac161771aacbecfdcf176c0",
+        "original_notice_id": "originals/scipy-sdist/scipy/sparse/linalg/_propack/PROPACK/PROPACK_LICENSE.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/linalg/_propack.cpython-314-wasm32-emscripten.so",
+        "sha256": "9de4124cdd3922026424bcfb0e91ec2634ef7c8408fa9e82a6996fd4d0c45d56"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "qhull",
+    "name": "Qhull 8.0.2",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/spatial/COPYING_QHULL.txt",
+        "notice_sha256": "106d55c931fd6a84822e5345d900273d059f1c27310d02567ccb313c5d18c55d",
+        "original_notice_id": "originals/scipy-sdist/scipy/spatial/COPYING_QHULL.txt"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/qhull_r/libqhull_r/COPYING.txt",
+        "notice_sha256": "106d55c931fd6a84822e5345d900273d059f1c27310d02567ccb313c5d18c55d",
+        "original_notice_id": "originals/scipy-sdist/subprojects/qhull_r/libqhull_r/COPYING.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_qhull.cpython-314-wasm32-emscripten.so",
+        "sha256": "4eb8eeb0b73f11ad10c8df7a3597a36f955526fcf04e8b2b98edd018e745be83"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "xsf",
+    "name": "xsf 0.2.2 / Cephes / Faddeeva / qd / mdspan",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/xsf/include/xsf/third_party/kokkos/mdspan.hpp",
+        "notice_sha256": "63454b51452c23880ee180c525de1418ad639644e052ba2f8f4792d5bd5e054a",
+        "original_notice_id": "originals/scipy-sdist/subprojects/xsf/include/xsf/third_party/kokkos/mdspan.hpp"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/xsf/LICENSE",
+        "notice_sha256": "632f86f8bd24a264ac49c002f39866f407a38e8cbd8a6568df7596cc7fbe0048",
+        "original_notice_id": "originals/scipy-sdist/subprojects/xsf/LICENSE"
+      },
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/xsf/LICENSES_bundled.txt",
+        "notice_sha256": "e28d89b1e6c248e98d1f02c946f52556e76e8757bec371cf5a67bffe7aa43cac",
+        "original_notice_id": "originals/scipy-sdist/subprojects/xsf/LICENSES_bundled.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_comb.cpython-314-wasm32-emscripten.so",
+        "sha256": "72512dcbeed2b9ff583ff069fdfa10c6b8dd6e8cca2b5bb6a579500e1089c9c9"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ellip_harm_2.cpython-314-wasm32-emscripten.so",
+        "sha256": "3a03ef6552ec145c250e0b3da199448d7588eb822720cbc0118f69fdf85994d5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_gufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "692fa8da52069616000469cfafe9873a48ae77ea9a9160eaf531875986f0eefa"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_specfun.cpython-314-wasm32-emscripten.so",
+        "sha256": "90c72bfec79a81ebfe7b8d2606830b07b51187dbb90cce7e8a4f4b61280d8965"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_special_ufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "d7e89416902d16d57cb5ffc273eef4f518e38387d32816103d8d5150beb5523c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_test_internal.cpython-314-wasm32-emscripten.so",
+        "sha256": "269439a372a8fc20b94e628d949932513a2b8a65940ae369111ec57514bde916"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "44f02ce82518f911b094ea319f35534e0db24cf542f899a106162ac34696b3a5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ufuncs_cxx.cpython-314-wasm32-emscripten.so",
+        "sha256": "cfbc1fccd7efd6dc49befd15904f2fb4f78fae24fa76aaaca5ef5aa8b80f2a4c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/cython_special.cpython-314-wasm32-emscripten.so",
+        "sha256": "3a5e8465d9b94ae6bda92dd05a839a5b5bbed31ab61d8b6a559cc511913ac974"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "boost",
+    "name": "Boost.Math 1.91.0 vs external Boost 1.84.0",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/boost_math/math/LICENSE",
+        "notice_sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+        "original_notice_id": "originals/scipy-sdist/subprojects/boost_math/math/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_comb.cpython-314-wasm32-emscripten.so",
+        "sha256": "72512dcbeed2b9ff583ff069fdfa10c6b8dd6e8cca2b5bb6a579500e1089c9c9"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ellip_harm_2.cpython-314-wasm32-emscripten.so",
+        "sha256": "3a03ef6552ec145c250e0b3da199448d7588eb822720cbc0118f69fdf85994d5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_gufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "692fa8da52069616000469cfafe9873a48ae77ea9a9160eaf531875986f0eefa"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_specfun.cpython-314-wasm32-emscripten.so",
+        "sha256": "90c72bfec79a81ebfe7b8d2606830b07b51187dbb90cce7e8a4f4b61280d8965"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_special_ufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "d7e89416902d16d57cb5ffc273eef4f518e38387d32816103d8d5150beb5523c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_test_internal.cpython-314-wasm32-emscripten.so",
+        "sha256": "269439a372a8fc20b94e628d949932513a2b8a65940ae369111ec57514bde916"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "44f02ce82518f911b094ea319f35534e0db24cf542f899a106162ac34696b3a5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ufuncs_cxx.cpython-314-wasm32-emscripten.so",
+        "sha256": "cfbc1fccd7efd6dc49befd15904f2fb4f78fae24fa76aaaca5ef5aa8b80f2a4c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/cython_special.cpython-314-wasm32-emscripten.so",
+        "sha256": "3a5e8465d9b94ae6bda92dd05a839a5b5bbed31ab61d8b6a559cc511913ac974"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "pybind11",
+    "name": "pybind11 (actual installed version UNKNOWN)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "LICENSES_bundled.txt",
+        "notice_sha256": "45b1a2cf4eb57277812fcbca2b6af7d84e98c942a5e4dcc360610f49de16c63f",
+        "original_notice_id": "originals/scipy-sdist/LICENSES_bundled.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_cyutility.cpython-314-wasm32-emscripten.so",
+        "sha256": "c11c7c77b206b295176e7b6d776dbddf03295b9ef8e7db30d29d74fd9ee530fe"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_ccallback_c.cpython-314-wasm32-emscripten.so",
+        "sha256": "79e999574291b7fb13edce632702d5b39e6e9a4df2f2d9a9e7f41879ad2729a5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_fpumode.cpython-314-wasm32-emscripten.so",
+        "sha256": "9060ce6b18db94ace1739fa11b8a83c8b6e6e9c4a818aef72a4feb08dd93ada2"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_test_ccallback.cpython-314-wasm32-emscripten.so",
+        "sha256": "c0197b2bae2ae19107a10da213425b1cec5040ebd15a060076dcb2516774d103"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_test_deprecation_call.cpython-314-wasm32-emscripten.so",
+        "sha256": "f89db67f3433f8548e4c377f1b70fc19dae7faae8c2113164cbda0ba5e53d0bc"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_test_deprecation_def.cpython-314-wasm32-emscripten.so",
+        "sha256": "a13bed0f86b1b3eddcb8258e9de17a0bec4a9b6235b3f31abce8d7338b1d8ec8"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/_uarray/_uarray.cpython-314-wasm32-emscripten.so",
+        "sha256": "fddafbebebab5ff080b24239c2c2c1d77601cb959827fc0b4658ddbe2a67f9fb"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/_lib/messagestream.cpython-314-wasm32-emscripten.so",
+        "sha256": "19a55540c84fa0350b4d67fbf4aa930bf06ea693d5565a19a9d7e6b410554b84"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/cluster/hierarchy/_hierarchy.cpython-314-wasm32-emscripten.so",
+        "sha256": "ec0ea1e103261ff94c8638d946aa6ca8727f8c4cbccc6fec720a2e7a81740b8b"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/cluster/hierarchy/_optimal_leaf_ordering.cpython-314-wasm32-emscripten.so",
+        "sha256": "f62d01b7dab4d7bda98988ab5f880a91da7a437f9f7b9ea3f11d98471f0e6f66"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/cluster/vq/_vq.cpython-314-wasm32-emscripten.so",
+        "sha256": "fef6b3fb9064dba805b01b2bf03ffc3cd0461454e3e06051aa030cbffabe6ce2"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/fft/_duccfft/pyduccfft.cpython-314-wasm32-emscripten.so",
+        "sha256": "7ea9663375bd1784a8f28c0c4e6ec95e7d895f651518b1b0d25c95a4c30e2e22"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/fftpack/convolve.cpython-314-wasm32-emscripten.so",
+        "sha256": "ee544899d9a7b824320e4e60d8c242d4315014a193f49584aa10a5ed8fc2660b"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_dop.cpython-314-wasm32-emscripten.so",
+        "sha256": "64a8fe4baf32bf595dfcf650135fad2ee42d9749b5af1e4bcceb74de6fe05b84"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_odepack.cpython-314-wasm32-emscripten.so",
+        "sha256": "90b7290ad21b73bd189a4ce2dd1a38c02ea5ea2fce51b92b05305ec4987505f5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_quadpack.cpython-314-wasm32-emscripten.so",
+        "sha256": "459a34b34b9514c8d94937c3e9b21e6add7fe2aa86573040cc7901f16c20fc6d"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_test_multivariate.cpython-314-wasm32-emscripten.so",
+        "sha256": "b650da2a18c59acea72f6259c55e785f444baf1f48ea33e75d3d742a79d94e9e"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/integrate/_vode.cpython-314-wasm32-emscripten.so",
+        "sha256": "53b612758fc18e0d6bcc405258bc9b0066222651be17d05fc7c1d1328a6964ba"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_dierckx.cpython-314-wasm32-emscripten.so",
+        "sha256": "fbaed7fcfccb62b7e93adab999c10ce069ac9858c5fbc8c13c303888e81f3ea6"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_fitpack.cpython-314-wasm32-emscripten.so",
+        "sha256": "c6cd9b312696771d90256234b256bff8c67270be08db65dfb9c13175839117db"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_interpnd.cpython-314-wasm32-emscripten.so",
+        "sha256": "d74839f11d5f0d278f3c2d8bebe7f7157a4c1c653d0f243f3f0f46ae50e5fd05"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_ppoly.cpython-314-wasm32-emscripten.so",
+        "sha256": "538f43cb9ab8f20e847362d7a5bf1a26df2eb46cfcf0d0d79310eae37b065e24"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_rbfinterp_pythran.cpython-314-wasm32-emscripten.so",
+        "sha256": "a6dc4ddb1e563bb6eaad6871bad9a508e3ae9216fbef9c16a0a16be4152b0b64"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/interpolate/_rgi_cython.cpython-314-wasm32-emscripten.so",
+        "sha256": "2e2e630a7cb100693e4c1a5a50e1eb48058d542195316a0fd5d1da095d7f3dad"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/io/_fast_matrix_market/_fmm_core.cpython-314-wasm32-emscripten.so",
+        "sha256": "946557b6264199141241dd80112a2d253d4ec929ff71c025fe3de434abb37da2"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/io/matlab/_mio5_utils.cpython-314-wasm32-emscripten.so",
+        "sha256": "8cd962e1ee1c3c1d1a87cfb390612252fda7d4ebf3dc1d6bdf672ad2d0148a88"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/io/matlab/_mio_utils.cpython-314-wasm32-emscripten.so",
+        "sha256": "9fe81a32be165159f62c1f11432c31883b62ba680fbf597ce4facd77ba739a79"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/io/matlab/_streams.cpython-314-wasm32-emscripten.so",
+        "sha256": "316446528bd060d964461234255d9e21a9ddd2110c461e9c939f2e1a9aee335f"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_batched_linalg.cpython-314-wasm32-emscripten.so",
+        "sha256": "cf6229585c090ddefe6e5f023559b27c825bc929ddc84b8c8221b978ef651787"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_cythonized_array_utils.cpython-314-wasm32-emscripten.so",
+        "sha256": "c36637335a0ab2a43abc35eed219257c2153c7e6c9918b224f46481be19221e2"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_decomp_interpolative.cpython-314-wasm32-emscripten.so",
+        "sha256": "3c197f4ba4ad3bf4d72f36d6a7e251f96cb2a2b7e653c2444ace15d7dd52b518"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_decomp_update.cpython-314-wasm32-emscripten.so",
+        "sha256": "cf0d7ebe73f4adbfb8dacce342dbb13b9f671913e597e64ce40791f7da7c4f01"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_fblas.cpython-314-wasm32-emscripten.so",
+        "sha256": "9b325bcdc505dd374590289bca9db19f9bba7f8ed1d7540b8336ca777ae3c54e"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_flapack.cpython-314-wasm32-emscripten.so",
+        "sha256": "0ee7be049196ff4a330e9f9e09582f321afaefbc911ec5fcf214420b5cdba507"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_internal_matfuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "cc33dd37c8d61500f7179138787b7f2e6d4364b302e3a65ddf1d3f1da538d18d"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_linalg_pythran.cpython-314-wasm32-emscripten.so",
+        "sha256": "6e534c8e2927ee3df1374baa58f603d892e49768084c4f887d4622e66af37200"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_matfuncs_sqrtm_triu.cpython-314-wasm32-emscripten.so",
+        "sha256": "7478f4ac5471fd5f045faf60d09bf523f51b96604a92b80b249b4eaac4501c83"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/_solve_toeplitz.cpython-314-wasm32-emscripten.so",
+        "sha256": "620c7377ef8f17c870cfe175a7913e88f8b7b9c30f907706fc504f125359a4b9"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/cython_blas.cpython-314-wasm32-emscripten.so",
+        "sha256": "5ff7ce0548f4e79ac7bb6febe397e24a2c35bbb91dfcba403730aa7a845202f8"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/linalg/cython_lapack.cpython-314-wasm32-emscripten.so",
+        "sha256": "3e09d72e3f2936d421645d7debc3c3f822fd995b46a7e45d1f178813f3599b6f"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_ctest.cpython-314-wasm32-emscripten.so",
+        "sha256": "5b2e820f1f46a50a26f6e601391350fa0f112b6700367161e47808b82a11ef01"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_cytest.cpython-314-wasm32-emscripten.so",
+        "sha256": "15edfcce450388387c8de5e40f2bf41ffbd4f1636347f63d2825434cdd3d4011"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_nd_image.cpython-314-wasm32-emscripten.so",
+        "sha256": "2fd2b5fd1b085f441c29f9b5efb9f476d93244ee956dabff2382e4ba525a5cca"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_ni_label.cpython-314-wasm32-emscripten.so",
+        "sha256": "592fff6c8c4a6edf4e3ec40568bd192431fcf128f339702a3e52fe1873a52248"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_rank_filter_1d.cpython-314-wasm32-emscripten.so",
+        "sha256": "a9fd81101f721f7c80faceb0e796c2e3f8b9b174d0d86ec0ac811437d37c93c3"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/odr/__odrpack.cpython-314-wasm32-emscripten.so",
+        "sha256": "57dae9b88fb1c5338377128755ef27c052c5fa39ca2ccc4afa9c71b653e2aadb"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_bglu_dense.cpython-314-wasm32-emscripten.so",
+        "sha256": "28411452d4b0fea499d5c432e012d6f6763ff947fac1f965b40b2ce18a20cd2c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_direct.cpython-314-wasm32-emscripten.so",
+        "sha256": "b4c755cb3a690b895aeba9daa9aae8003245e2fae33cee8990d8cb827bc2723e"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_group_columns.cpython-314-wasm32-emscripten.so",
+        "sha256": "c5c37a90231f658b794fa48f8be4e80d6ee67666d45adad74e202a795810998d"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_highspy/_core.cpython-314-wasm32-emscripten.so",
+        "sha256": "7f9661ea4eb4464356463cd1407ab0353e521c60c1d843b61900784c2c380569"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_highspy/_highs_options.cpython-314-wasm32-emscripten.so",
+        "sha256": "4675774a690353fbb5a0e15f81b10b08344630eea9a511be06dc3bc70eb0342b"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_lbfgsb.cpython-314-wasm32-emscripten.so",
+        "sha256": "af4b8817dc8d2cf826605168bda1f45bc0fbea326a8481ff12fc98c341b80a05"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_lsap.cpython-314-wasm32-emscripten.so",
+        "sha256": "f50c6189b9219edb59388724fb71c09c267cf5fd2b5b1c0826e16ec7fea7eff0"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_lsq/givens_elimination.cpython-314-wasm32-emscripten.so",
+        "sha256": "6c6b5d306735c46bbb1c4e7b3926d027d5935d44a3181bad295742faefca4384"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_minpack.cpython-314-wasm32-emscripten.so",
+        "sha256": "da31da9c91f808c9615a49adf4eb6dbed4efefd74885df875f0e96235f028040"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_moduleTNC.cpython-314-wasm32-emscripten.so",
+        "sha256": "aa0dda757f93eeff44ebabc938328847afa60839391ed681f4e50d725ad32e2a"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_pava_pybind.cpython-314-wasm32-emscripten.so",
+        "sha256": "318df0e34d5ebbc81bc1ddc61974a1687a2acbf31ffafadded5e4527afad6815"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_slsqplib.cpython-314-wasm32-emscripten.so",
+        "sha256": "2a188190b70842f1dcd7272877cd0bde344283f2f09c32aa99601df9f82982cd"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_trlib/_trlib.cpython-314-wasm32-emscripten.so",
+        "sha256": "04439128db4fe4cbc6bd5ef72d96d7b8aa79b9f6616320f78500696c97bffe74"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_zeros.cpython-314-wasm32-emscripten.so",
+        "sha256": "109681d28cde476c6f0135f8a59d635eb359a787e6cd29c47b8f266a7c2c6fab"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/cython_optimize/_zeros.cpython-314-wasm32-emscripten.so",
+        "sha256": "21666d3af6e3c11614e0ba87c7078f70eb4665ece7d0540490c260f184c70029"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_max_len_seq_inner.cpython-314-wasm32-emscripten.so",
+        "sha256": "4123bf60c8a3182d3859ad01254f11777b13b2a8af5ec1732e46327ae5d5d200"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_peak_finding_utils.cpython-314-wasm32-emscripten.so",
+        "sha256": "75b0e900c787826be615c537bad9a835e74b77cfc25442c87e80cc773a4adb90"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_sigtools.cpython-314-wasm32-emscripten.so",
+        "sha256": "377b650184bdf8babf7af5bf33bbe524da08d26141c574e6abad704322680778"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_sosfilt.cpython-314-wasm32-emscripten.so",
+        "sha256": "7b0fa2a20349bfb2fa7f907426a8a8d04b4ba122f00567effcade11f123ace5c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_spline.cpython-314-wasm32-emscripten.so",
+        "sha256": "45b26a0912c4b04b4fcac716f4f93b2bdb5b22352da52433fa529cc1d787c656"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/signal/_upfirdn_apply.cpython-314-wasm32-emscripten.so",
+        "sha256": "30ad4f368f2fd7b9348ab2d9bc95ac8ce2f75b54acf5856e907accc1a0c27487"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/_csparsetools.cpython-314-wasm32-emscripten.so",
+        "sha256": "df9cd7a49216b82ba7d4389fa927c18f73adbfb90937c268c3e30e549e61bdb0"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/_sparsetools.cpython-314-wasm32-emscripten.so",
+        "sha256": "6faefec9cf5e0c51c206db9540993df8b7edc3baa56a699a168c810600cd515a"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_flow.cpython-314-wasm32-emscripten.so",
+        "sha256": "ba9659d51139ab8048e7703433c2c45a9500d81407d4167fc50f87bdbb33124c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_matching.cpython-314-wasm32-emscripten.so",
+        "sha256": "7e94bc618119dc617005ab53ec2b1275d4404e29e6e4d1c1fe99f901819041d7"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_min_spanning_tree.cpython-314-wasm32-emscripten.so",
+        "sha256": "51934c622d99618c8e835b9b0b088c9fb65286cd90702215217f576bb4acb6c1"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_reordering.cpython-314-wasm32-emscripten.so",
+        "sha256": "a84ff0519f94e602e60422ca9fe42aa94a99c95ee3459dfe0221f94cad665ffe"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_shortest_path.cpython-314-wasm32-emscripten.so",
+        "sha256": "da834b17ce0363d2e1e40ece8d0f25d8461e1356744ac9b633e7fd758b302b1c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_tools.cpython-314-wasm32-emscripten.so",
+        "sha256": "223dcab52d347f89ab2f2d524e4fd0350d237ed7dcbc282a6cc4d89b110cbbc3"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_traversal.cpython-314-wasm32-emscripten.so",
+        "sha256": "9f57a2ec807f1fef28906ad390f55a47e1e0e6bd2468219447c024bdf4f3d688"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/linalg/_dsolve/_superlu.cpython-314-wasm32-emscripten.so",
+        "sha256": "3c72469c08a3d31b5d415a9a71ec8c3193e9ec07e4efae7f3641c87662081d01"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/linalg/_eigen/arpack/_arpacklib.cpython-314-wasm32-emscripten.so",
+        "sha256": "676fb9c6a0dc879c25fe4bb22f037ad52ced09c59d5d0b1665d645355398439a"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/linalg/_propack.cpython-314-wasm32-emscripten.so",
+        "sha256": "9de4124cdd3922026424bcfb0e91ec2634ef7c8408fa9e82a6996fd4d0c45d56"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_ckdtree.cpython-314-wasm32-emscripten.so",
+        "sha256": "e9b44b1e749a198bf0fde116fc9eff64e293d9ca61406b3ab663f50dbbe29193"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_distance_pybind.cpython-314-wasm32-emscripten.so",
+        "sha256": "351071419e635e6aec25bc9de5caae6499ce05414766311881ababd01d76e5a0"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_distance_wrap.cpython-314-wasm32-emscripten.so",
+        "sha256": "cea2b451caef15284ffaee5cb71543f4090a33bab78017cdc1be01e7a5b6101f"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_hausdorff.cpython-314-wasm32-emscripten.so",
+        "sha256": "4707ff1ed78c62457a4d1361eebd7aa8506d0f21c1df7e3c4b1d76ec5fdd3a74"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_qhull.cpython-314-wasm32-emscripten.so",
+        "sha256": "4eb8eeb0b73f11ad10c8df7a3597a36f955526fcf04e8b2b98edd018e745be83"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/_voronoi.cpython-314-wasm32-emscripten.so",
+        "sha256": "aae2c9bed76962829fad38bb335b859fee88c58b31d70e33d9458efbb9e9f305"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/transform/_rigid_transform_cy.cpython-314-wasm32-emscripten.so",
+        "sha256": "c20feda4b7c9d67e46faad35ee0878780d086ad426e91ceba99b2bcf241ab587"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/spatial/transform/_rotation_cy.cpython-314-wasm32-emscripten.so",
+        "sha256": "713ad18f24bc130b4ed12b5d7049aaf301ef26b3ae30bb9cb16e9919be335f03"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_comb.cpython-314-wasm32-emscripten.so",
+        "sha256": "72512dcbeed2b9ff583ff069fdfa10c6b8dd6e8cca2b5bb6a579500e1089c9c9"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ellip_harm_2.cpython-314-wasm32-emscripten.so",
+        "sha256": "3a03ef6552ec145c250e0b3da199448d7588eb822720cbc0118f69fdf85994d5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_gufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "692fa8da52069616000469cfafe9873a48ae77ea9a9160eaf531875986f0eefa"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_specfun.cpython-314-wasm32-emscripten.so",
+        "sha256": "90c72bfec79a81ebfe7b8d2606830b07b51187dbb90cce7e8a4f4b61280d8965"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_special_ufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "d7e89416902d16d57cb5ffc273eef4f518e38387d32816103d8d5150beb5523c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_test_internal.cpython-314-wasm32-emscripten.so",
+        "sha256": "269439a372a8fc20b94e628d949932513a2b8a65940ae369111ec57514bde916"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ufuncs.cpython-314-wasm32-emscripten.so",
+        "sha256": "44f02ce82518f911b094ea319f35534e0db24cf542f899a106162ac34696b3a5"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/_ufuncs_cxx.cpython-314-wasm32-emscripten.so",
+        "sha256": "cfbc1fccd7efd6dc49befd15904f2fb4f78fae24fa76aaaca5ef5aa8b80f2a4c"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/special/cython_special.cpython-314-wasm32-emscripten.so",
+        "sha256": "3a5e8465d9b94ae6bda92dd05a839a5b5bbed31ab61d8b6a559cc511913ac974"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_ansari_swilk_statistics.cpython-314-wasm32-emscripten.so",
+        "sha256": "228e2d5e051fa284bf1ea7aabba71329c0309552d75e67193161e86f32e536c9"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_biasedurn.cpython-314-wasm32-emscripten.so",
+        "sha256": "b06cfc0d7ad73744d86c1169de599d018f3b390889d3ba71ad139e72e50e6875"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_levy_stable/levyst.cpython-314-wasm32-emscripten.so",
+        "sha256": "85d0f74723d86404765316346ff16045b4f13f9be67305db7b1ec6530edbad18"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_qmc_cy.cpython-314-wasm32-emscripten.so",
+        "sha256": "3368eafd7449459cb805ec536e7e6a8b838a82ef5331fcc9e3a30747c58493cd"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_qmvnt_cy.cpython-314-wasm32-emscripten.so",
+        "sha256": "94332602f2355ced685e249f2a39adb4ffb2a37fcfada85bb420e6a553b6a9a8"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_rcont/rcont.cpython-314-wasm32-emscripten.so",
+        "sha256": "f164cb18584002c39ef011e5144484558b4f460997700a6dc3a7d0dd1520a414"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_sobol.cpython-314-wasm32-emscripten.so",
+        "sha256": "a651ea1bc39ffd24ba82419fa4d34cb70e5b1b7ee29844b21e347b4ef0ce9e60"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_stats.cpython-314-wasm32-emscripten.so",
+        "sha256": "4533a1ce187e4ffc1e9b181b9841ec941e2e0cd9e882b0acea8c5f351869a09d"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_stats_pythran.cpython-314-wasm32-emscripten.so",
+        "sha256": "f10c8899a7e0359f25ea1155bb691b6bd66db6e0ff30759be4705bd12c7d179f"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_unuran/unuran_wrapper.cpython-314-wasm32-emscripten.so",
+        "sha256": "6f1883f6af129e3cbd86bd3a01b3ba338d1bb893905094b5afe37d760a5a266d"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "unuran",
+    "name": "UNU.RAN 1.9.0",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "subprojects/unuran/license.txt",
+        "notice_sha256": "8d62d5c8e1752ee5c3d3a0f8fd0dd0b45865c243fa282cf5e63f00288a01c5ee",
+        "original_notice_id": "originals/scipy-sdist/subprojects/unuran/license.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_unuran/unuran_wrapper.cpython-314-wasm32-emscripten.so",
+        "sha256": "6f1883f6af129e3cbd86bd3a01b3ba338d1bb893905094b5afe37d760a5a266d"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "biasedurn",
+    "name": "Biasedurn / copied NumPy random code",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/stats/biasedurn/license.txt",
+        "notice_sha256": "c2bf3b1e5a5cde539b9f8e38b5c870f49db0b5f01c7f9cdd1d1291bafc81d22f",
+        "original_notice_id": "originals/scipy-sdist/scipy/stats/biasedurn/license.txt"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy/random/LICENSE.md",
+        "notice_sha256": "103166b62b80443afb9eb3488e052ea06be0cff566b908f199e561fde49af19f",
+        "original_notice_id": "originals/wheel-texts/numpy/random/LICENSE.md"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/stats/_biasedurn.cpython-314-wasm32-emscripten.so",
+        "sha256": "b06cfc0d7ad73744d86c1169de599d018f3b390889d3ba71ad139e72e50e6875"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "ndimage",
+    "name": "ndimage (SciPy snapshot)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "scipy/ndimage/LICENSE.txt",
+        "notice_sha256": "606209a000716c5f66e33e180ce08434b96ed17db4975ab9723c6b5fbcc89609",
+        "original_notice_id": "originals/scipy-sdist/scipy/ndimage/LICENSE.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_ctest.cpython-314-wasm32-emscripten.so",
+        "sha256": "5b2e820f1f46a50a26f6e601391350fa0f112b6700367161e47808b82a11ef01"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_cytest.cpython-314-wasm32-emscripten.so",
+        "sha256": "15edfcce450388387c8de5e40f2bf41ffbd4f1636347f63d2825434cdd3d4011"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_nd_image.cpython-314-wasm32-emscripten.so",
+        "sha256": "2fd2b5fd1b085f441c29f9b5efb9f476d93244ee956dabff2382e4ba525a5cca"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_ni_label.cpython-314-wasm32-emscripten.so",
+        "sha256": "592fff6c8c4a6edf4e3ec40568bd192431fcf128f339702a3e52fe1873a52248"
+      },
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/ndimage/_rank_filter_1d.cpython-314-wasm32-emscripten.so",
+        "sha256": "a9fd81101f721f7c80faceb0e796c2e3f8b9b174d0d86ec0ac811437d37c93c3"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "numpy-pocketfft",
+    "name": "NumPy pocketfft",
+    "source_notice_records": [
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+        "notice_sha256": "a85ca13fdf90160b64a0698215868c13b74d835ad0a4e2ba44713b8c5058a056",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/fft/_pocketfft_umath.cpython-314-wasm32-emscripten.so",
+        "sha256": "ec3b6453b8720bb6369f279c02107893dad485ac13a831aa29ee096722773a1a"
+      }
+    ],
+    "source_archive_keys": [
+      "numpy"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "numpy-lapack",
+    "name": "NumPy lapack_lite",
+    "source_notice_records": [
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+        "notice_sha256": "a14cc25e10d40a3aa705b7de2fb764a6535d8ee9b2db4e1724900585457dfd55",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/linalg/_umath_linalg.cpython-314-wasm32-emscripten.so",
+        "sha256": "e10f1c9b69919c48a3abad91f0a227bb9dddea6ba3eac2f96a1aae4a08450a55"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/linalg/lapack_lite.cpython-314-wasm32-emscripten.so",
+        "sha256": "578be9fdfbc5f103bb978afe67ecfeffb413f6cb1e8419e136fa4f97398f7ebe"
+      }
+    ],
+    "source_archive_keys": [
+      "numpy"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "numpy-core",
+    "name": "NumPy core portable/header contribution candidates",
+    "source_notice_records": [
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+        "notice_sha256": "fbc539f47d0cf83bc61378080fb873d5c14630126cacbfe754035c3926daa5ec",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+        "notice_sha256": "3f2c1ffa76383a55ae0aac01c9737cd70050dff63e1f026694fbe9d662573c98",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt",
+        "notice_sha256": "f7b14309e5f54e5022b26448eefd419988ada2aec01d3c1162d84a0ea8f21f2c",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/_core/_multiarray_umath.cpython-314-wasm32-emscripten.so",
+        "sha256": "f24e4d01250fc9d8bb4382727813914324a0bd792c3419f2dfade45e29830509"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/_core/lib/libnpymath.a",
+        "sha256": "a6924878bce1f8aef5317cce0ecc0bd7222e80a26bc53c2a8eb83588edc16eb4"
+      }
+    ],
+    "source_archive_keys": [
+      "numpy"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "numpy-random",
+    "name": "NumPy random generators/distributions",
+    "source_notice_records": [
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/LICENSE.md",
+        "notice_sha256": "103166b62b80443afb9eb3488e052ea06be0cff566b908f199e561fde49af19f",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/LICENSE.md"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+        "notice_sha256": "469778be8f33d54e1bcaab28c281cc472916d2d273f835e55bc487d30503face",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/distributions/LICENSE.md"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+        "notice_sha256": "0e111337b25494a773106695f0e799f642b8567aaacca4f116a74a8177179156",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+        "notice_sha256": "e7d4f4fb20358f314210a892ae17351e04993813646f697ec387385ca2a36918",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+        "notice_sha256": "6f5828a57223d4cc7f8ea505a2623e7b978b242752c1515e355f46ba2cec1800",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/philox/LICENSE.md"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+        "notice_sha256": "9d4098846018319cd68e228ee6220361787f73bccbf00237a85e4fc9621b998f",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md"
+      },
+      {
+        "source_url": "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "source_path": "numpy-2.4.6.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
+        "notice_sha256": "268b0ca06759d31ea3ca68dd35f20e877916e927b1c2a835e4592a3c4354b1f9",
+        "original_notice_id": "originals/wheel-texts/numpy-2.4.6.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_bounded_integers.cpython-314-wasm32-emscripten.so",
+        "sha256": "b3355b64811cff5b3d41bcfa8ddb90a4c203d169e2910e6f897afbc4221523a7"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_common.cpython-314-wasm32-emscripten.so",
+        "sha256": "9b8afe8338fef7fe9a49d86f981f9fd607fac507ffbbc53c73c6f4225b23696d"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_generator.cpython-314-wasm32-emscripten.so",
+        "sha256": "3c3ee42ddcbfb5a3d9caf70c7fcb8e1f01d24ee08c9293124a672c68f8cba462"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_mt19937.cpython-314-wasm32-emscripten.so",
+        "sha256": "d3ca63807aea4b0b2caf67122087fa6eadd6f0d84ff4e3bd12a896fa45c64d55"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_pcg64.cpython-314-wasm32-emscripten.so",
+        "sha256": "414becc8e97858aadaa8a2acc784573985c3356e145c7091ea407ca6422c7ab3"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_philox.cpython-314-wasm32-emscripten.so",
+        "sha256": "ab0fc28792ec6eb3d9b8f3c427ce210a6f2e6f4744e7b7adb2da0da055fce5bc"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/_sfc64.cpython-314-wasm32-emscripten.so",
+        "sha256": "bffdb1f5c6529feae6a4e3393589fb3827a03d851bb2d34869175267a58bd8a4"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/bit_generator.cpython-314-wasm32-emscripten.so",
+        "sha256": "1b293c6ba5e0909d4a4363e75ccf2f5d2dcbd711ca8ddaa4910ecc11c70aa072"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/lib/libnpyrandom.a",
+        "sha256": "6afdcbdd29d8d455f6f22729ab1a38b9128b3904a30e365889a441ecc13cc36c"
+      },
+      {
+        "wheel": "numpy-2.4.6-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "numpy/random/mtrand.cpython-314-wasm32-emscripten.so",
+        "sha256": "6b2b87ec5dfaabde723369d27845b6107bc76f2935d3456b365787b3aa81b13b"
+      }
+    ],
+    "source_archive_keys": [
+      "numpy"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "rust",
+    "name": "Rust 1.97.1 binary std marker",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/rust-lang/rust/tree/8bab26f4f68e0e26f0bb7960be334d5b520ea452",
+        "source_path": "COPYRIGHT",
+        "notice_sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+        "original_notice_id": "originals/rust/COPYRIGHT"
+      },
+      {
+        "source_url": "https://github.com/rust-lang/rust/tree/8bab26f4f68e0e26f0bb7960be334d5b520ea452",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "original_notice_id": "originals/rust/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://github.com/rust-lang/rust/tree/8bab26f4f68e0e26f0bb7960be334d5b520ea452",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
+        "original_notice_id": "originals/rust/LICENSE-MIT"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "rpds/rpds.cpython-314-wasm32-emscripten.so",
+        "sha256": "faf72eb53a01fc6a4ef6d1704b137517c8da63ef5b1224d749784784fb49cf6f"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "crate-rpds-1.2.0",
+    "name": "rpds-1.2.0",
+    "source_notice_records": [
+      {
+        "source_url": "https://static.crates.io/crates/rpds/rpds-1.2.0.crate",
+        "source_path": "LICENSE.md",
+        "notice_sha256": "e326b5fef9084c437878cc2184ba6dfa15503f46e5359dd67246f51761ea709f",
+        "original_notice_id": "originals/crates/rpds-1.2.0/LICENSE.md"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "rpds/rpds.cpython-314-wasm32-emscripten.so",
+        "sha256": "faf72eb53a01fc6a4ef6d1704b137517c8da63ef5b1224d749784784fb49cf6f"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "crate-pyo3-0.27.2",
+    "name": "pyo3-0.27.2",
+    "source_notice_records": [
+      {
+        "source_url": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+        "original_notice_id": "originals/crates/pyo3-0.27.2/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+        "original_notice_id": "originals/crates/pyo3-0.27.2/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+        "source_path": "pyo3-runtime/LICENSE-APACHE",
+        "notice_sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+        "original_notice_id": "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+        "source_path": "pyo3-runtime/LICENSE-MIT",
+        "notice_sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+        "original_notice_id": "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-MIT"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "rpds/rpds.cpython-314-wasm32-emscripten.so",
+        "sha256": "faf72eb53a01fc6a4ef6d1704b137517c8da63ef5b1224d749784784fb49cf6f"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "crate-pyo3-ffi-0.27.2",
+    "name": "pyo3-ffi-0.27.2",
+    "source_notice_records": [
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-ffi/pyo3-ffi-0.27.2.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+        "original_notice_id": "originals/crates/pyo3-ffi-0.27.2/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-ffi/pyo3-ffi-0.27.2.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+        "original_notice_id": "originals/crates/pyo3-ffi-0.27.2/LICENSE-MIT"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "rpds/rpds.cpython-314-wasm32-emscripten.so",
+        "sha256": "faf72eb53a01fc6a4ef6d1704b137517c8da63ef5b1224d749784784fb49cf6f"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "crate-triomphe-0.1.15",
+    "name": "triomphe-0.1.15",
+    "source_notice_records": [
+      {
+        "source_url": "https://static.crates.io/crates/triomphe/triomphe-0.1.15.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "a6b7260485462860838b76ad1846d21f1605e6d239141c3aa949a601d992676c",
+        "original_notice_id": "originals/crates/triomphe-0.1.15/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/triomphe/triomphe-0.1.15.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "15656cc11a8331f28c0986b8ab97220d3e76f98e60ed388b5ffad37dfac4710c",
+        "original_notice_id": "originals/crates/triomphe-0.1.15/LICENSE-MIT"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "rpds/rpds.cpython-314-wasm32-emscripten.so",
+        "sha256": "faf72eb53a01fc6a4ef6d1704b137517c8da63ef5b1224d749784784fb49cf6f"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "cargo-context",
+    "name": "Other Cargo.lock crates: target/host applicability unresolved",
+    "source_notice_records": [
+      {
+        "source_url": "https://static.crates.io/crates/archery/archery-1.2.2.crate",
+        "source_path": "LICENSE.md",
+        "notice_sha256": "e326b5fef9084c437878cc2184ba6dfa15503f46e5359dd67246f51761ea709f",
+        "original_notice_id": "originals/crates/archery-1.2.2/LICENSE.md"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/autocfg/autocfg-1.5.0.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+        "original_notice_id": "originals/crates/autocfg-1.5.0/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/autocfg/autocfg-1.5.0.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac",
+        "original_notice_id": "originals/crates/autocfg-1.5.0/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/cc/cc-1.2.48.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+        "original_notice_id": "originals/crates/cc-1.2.48/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/cc/cc-1.2.48.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+        "original_notice_id": "originals/crates/cc-1.2.48/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/find-msvc-tools/find-msvc-tools-0.1.5.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+        "original_notice_id": "originals/crates/find-msvc-tools-0.1.5/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/find-msvc-tools/find-msvc-tools-0.1.5.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+        "original_notice_id": "originals/crates/find-msvc-tools-0.1.5/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/heck/heck-0.5.0.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+        "original_notice_id": "originals/crates/heck-0.5.0/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/heck/heck-0.5.0.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0",
+        "original_notice_id": "originals/crates/heck-0.5.0/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/indoc/indoc-2.0.7.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "original_notice_id": "originals/crates/indoc-2.0.7/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/indoc/indoc-2.0.7.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "original_notice_id": "originals/crates/indoc-2.0.7/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/libc/libc-0.2.177.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "original_notice_id": "originals/crates/libc-0.2.177/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/libc/libc-0.2.177.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "a8d47ff51ca256f56a8932dba07660672dbfe3004257ca8de708aac1415937a1",
+        "original_notice_id": "originals/crates/libc-0.2.177/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/memoffset/memoffset-0.9.1.crate",
+        "source_path": "LICENSE",
+        "notice_sha256": "3234ac55816264ee7b6c7ee27efd61cf0a1fe775806870e3d9b4c41ea73c5cb1",
+        "original_notice_id": "originals/crates/memoffset-0.9.1/LICENSE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/once_cell/once_cell-1.21.3.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+        "original_notice_id": "originals/crates/once_cell-1.21.3/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/once_cell/once_cell-1.21.3.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "original_notice_id": "originals/crates/once_cell-1.21.3/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/portable-atomic/portable-atomic-1.11.1.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+        "original_notice_id": "originals/crates/portable-atomic-1.11.1/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/portable-atomic/portable-atomic-1.11.1.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "original_notice_id": "originals/crates/portable-atomic-1.11.1/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.103.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "original_notice_id": "originals/crates/proc-macro2-1.0.103/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.103.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "original_notice_id": "originals/crates/proc-macro2-1.0.103/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+        "original_notice_id": "originals/crates/pyo3-0.27.2/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+        "original_notice_id": "originals/crates/pyo3-0.27.2/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+        "source_path": "pyo3-runtime/LICENSE-APACHE",
+        "notice_sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+        "original_notice_id": "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3/pyo3-0.27.2.crate",
+        "source_path": "pyo3-runtime/LICENSE-MIT",
+        "notice_sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+        "original_notice_id": "originals/crates/pyo3-0.27.2/pyo3-runtime/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-build-config/pyo3-build-config-0.27.2.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+        "original_notice_id": "originals/crates/pyo3-build-config-0.27.2/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-build-config/pyo3-build-config-0.27.2.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+        "original_notice_id": "originals/crates/pyo3-build-config-0.27.2/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-ffi/pyo3-ffi-0.27.2.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+        "original_notice_id": "originals/crates/pyo3-ffi-0.27.2/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-ffi/pyo3-ffi-0.27.2.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+        "original_notice_id": "originals/crates/pyo3-ffi-0.27.2/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-macros/pyo3-macros-0.27.2.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+        "original_notice_id": "originals/crates/pyo3-macros-0.27.2/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-macros/pyo3-macros-0.27.2.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+        "original_notice_id": "originals/crates/pyo3-macros-0.27.2/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-macros-backend/pyo3-macros-backend-0.27.2.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "32c76dbe0e73d79100d5ece77c158399f2e2541bc5c78548a4ba45c1cb53c5c9",
+        "original_notice_id": "originals/crates/pyo3-macros-backend-0.27.2/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/pyo3-macros-backend/pyo3-macros-backend-0.27.2.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6",
+        "original_notice_id": "originals/crates/pyo3-macros-backend-0.27.2/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/python3-dll-a/python3-dll-a-0.2.14.crate",
+        "source_path": "LICENSE",
+        "notice_sha256": "c760d1f2e4614d58f2b91cd41b9826457989c09041be0219158b8f7f6d3f8763",
+        "original_notice_id": "originals/crates/python3-dll-a-0.2.14/LICENSE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/quote/quote-1.0.42.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "original_notice_id": "originals/crates/quote-1.0.42/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/quote/quote-1.0.42.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "original_notice_id": "originals/crates/quote-1.0.42/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/rpds/rpds-1.2.0.crate",
+        "source_path": "LICENSE.md",
+        "notice_sha256": "e326b5fef9084c437878cc2184ba6dfa15503f46e5359dd67246f51761ea709f",
+        "original_notice_id": "originals/crates/rpds-1.2.0/LICENSE.md"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/rustversion/rustversion-1.0.22.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "original_notice_id": "originals/crates/rustversion-1.0.22/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/rustversion/rustversion-1.0.22.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "original_notice_id": "originals/crates/rustversion-1.0.22/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/shlex/shlex-1.3.0.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583",
+        "original_notice_id": "originals/crates/shlex-1.3.0/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/shlex/shlex-1.3.0.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1",
+        "original_notice_id": "originals/crates/shlex-1.3.0/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/syn/syn-2.0.111.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "original_notice_id": "originals/crates/syn-2.0.111/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/syn/syn-2.0.111.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "original_notice_id": "originals/crates/syn-2.0.111/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/target-lexicon/target-lexicon-0.13.3.crate",
+        "source_path": "LICENSE",
+        "notice_sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+        "original_notice_id": "originals/crates/target-lexicon-0.13.3/LICENSE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/triomphe/triomphe-0.1.15.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "a6b7260485462860838b76ad1846d21f1605e6d239141c3aa949a601d992676c",
+        "original_notice_id": "originals/crates/triomphe-0.1.15/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/triomphe/triomphe-0.1.15.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "15656cc11a8331f28c0986b8ab97220d3e76f98e60ed388b5ffad37dfac4710c",
+        "original_notice_id": "originals/crates/triomphe-0.1.15/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.22.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "original_notice_id": "originals/crates/unicode-ident-1.0.22/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.22.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "original_notice_id": "originals/crates/unicode-ident-1.0.22/LICENSE-MIT"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.22.crate",
+        "source_path": "LICENSE-UNICODE",
+        "notice_sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+        "original_notice_id": "originals/crates/unicode-ident-1.0.22/LICENSE-UNICODE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/unindent/unindent-0.2.4.crate",
+        "source_path": "LICENSE-APACHE",
+        "notice_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "original_notice_id": "originals/crates/unindent-0.2.4/LICENSE-APACHE"
+      },
+      {
+        "source_url": "https://static.crates.io/crates/unindent/unindent-0.2.4.crate",
+        "source_path": "LICENSE-MIT",
+        "notice_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "original_notice_id": "originals/crates/unindent-0.2.4/LICENSE-MIT"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "rpds_py-0.30.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "rpds/rpds.cpython-314-wasm32-emscripten.so",
+        "sha256": "faf72eb53a01fc6a4ef6d1704b137517c8da63ef5b1224d749784784fb49cf6f"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "pyodide",
+    "name": "Pyodide 314.0.7",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/pyodide/pyodide/tree/b1e4fcc2488962f6360a97f19b9982d6fdb5d16f",
+        "source_path": "LICENSE",
+        "notice_sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+        "original_notice_id": "originals/pyodide-source/LICENSE"
+      },
+      {
+        "source_url": "https://github.com/pyodide/pyodide/tree/b1e4fcc2488962f6360a97f19b9982d6fdb5d16f",
+        "source_path": "src/js/vendor/stackframe/LICENSE",
+        "notice_sha256": "899da9d991cb211a3642b84e82a9ae0b4b4e44546fd207e34d7d4ec2eb40f420",
+        "original_notice_id": "originals/pyodide-source/src/js/vendor/stackframe/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [
+      "pyodide"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "cpython",
+    "name": "CPython 3.14.2",
+    "source_notice_records": [
+      {
+        "source_url": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+        "source_path": "Doc/license.rst",
+        "notice_sha256": "c695d550b135e53e38807e76496d1db17d22c40e461d1f3f354c86188d3305dd",
+        "original_notice_id": "originals/cpython/Doc/license.rst"
+      },
+      {
+        "source_url": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+        "source_path": "LICENSE",
+        "notice_sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231",
+        "original_notice_id": "originals/cpython/LICENSE"
+      },
+      {
+        "source_url": "https://www.python.org/ftp/python/3.14.2/Python-3.14.2.tgz",
+        "source_path": "Modules/expat/COPYING",
+        "notice_sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534",
+        "original_notice_id": "originals/cpython/Modules/expat/COPYING"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [
+      "cpython"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "hiwire",
+    "name": "hiwire 6a1e67280a15d929ebeceee54a6358c9c8d5f697",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/pyodide/hiwire/tree/6a1e67280a15d929ebeceee54a6358c9c8d5f697",
+        "source_path": "LICENSE",
+        "notice_sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+        "original_notice_id": "originals/hiwire/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [
+      "hiwire"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "libffi",
+    "name": "libffi 3.4.4 + f08493d249d2067c8b3207ba46693dd858f95db3",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/libffi/libffi/tree/f08493d249d2067c8b3207ba46693dd858f95db3",
+        "source_path": "LICENSE",
+        "notice_sha256": "2c9c2acb9743e6b007b91350475308aee44691d96aa20eacef8e199988c8c388",
+        "original_notice_id": "originals/libffi/LICENSE"
+      },
+      {
+        "source_url": "https://github.com/libffi/libffi/tree/f08493d249d2067c8b3207ba46693dd858f95db3",
+        "source_path": "LICENSE-BUILDTOOLS",
+        "notice_sha256": "e67978cd18816c0cb7d29aaaacde7b7447402c2fb321a051698890a8eaedda94",
+        "original_notice_id": "originals/libffi/LICENSE-BUILDTOOLS"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [
+      "libffi"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "liblzma",
+    "name": "liblzma 5.2.2",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/xz-mirror/xz/tree/v5.2.2",
+        "source_path": "COPYING",
+        "notice_sha256": "c4f8e14fafe458d84808a4cd8b69f94673ebe2bf8fc992291629a69ac12218f8",
+        "original_notice_id": "originals/xz/COPYING"
+      },
+      {
+        "source_url": "https://github.com/xz-mirror/xz/tree/v5.2.2",
+        "source_path": "COPYING.GPLv2",
+        "notice_sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+        "original_notice_id": "originals/xz/COPYING.GPLv2"
+      },
+      {
+        "source_url": "https://github.com/xz-mirror/xz/tree/v5.2.2",
+        "source_path": "COPYING.GPLv3",
+        "notice_sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+        "original_notice_id": "originals/xz/COPYING.GPLv3"
+      },
+      {
+        "source_url": "https://github.com/xz-mirror/xz/tree/v5.2.2",
+        "source_path": "COPYING.LGPLv2.1",
+        "notice_sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+        "original_notice_id": "originals/xz/COPYING.LGPLv2.1"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "sqlite",
+    "name": "SQLite 3.39.0",
+    "source_notice_records": [
+      {
+        "source_url": "https://www.sqlite.org/2022/sqlite-autoconf-3390000.tar.gz",
+        "source_path": "tea/license.terms",
+        "notice_sha256": "66e056b6e8687f32af30d5187611b98b12a8f46f07aaf62f43585f276e8f0ac9",
+        "original_notice_id": "originals/sqlite/tea/license.terms"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [
+      "sqlite"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "zstd",
+    "name": "zstd 1.5.7",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/python/cpython-source-deps/tree/zstd-1.5.7",
+        "source_path": "COPYING",
+        "notice_sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+        "original_notice_id": "originals/zstd/COPYING"
+      },
+      {
+        "source_url": "https://github.com/python/cpython-source-deps/tree/zstd-1.5.7",
+        "source_path": "LICENSE",
+        "notice_sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+        "original_notice_id": "originals/zstd/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [
+      "zstd"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "zlib",
+    "name": "zlib 1.3.1",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/madler/zlib/tree/v1.3.1",
+        "source_path": "LICENSE",
+        "notice_sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243",
+        "original_notice_id": "originals/zlib/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "bzip2",
+    "name": "bzip2 1.0.6",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/emscripten-ports/bzip2/tree/1.0.6",
+        "source_path": "LICENSE",
+        "notice_sha256": "4919cfb14a73cd64fcef67b107613970cf1659a09aa675dba31314f373bc7204",
+        "original_notice_id": "originals/bzip2/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "emscripten",
+    "name": "Emscripten 5.0.3 selected JS/system runtime",
+    "source_notice_records": [
+      {
+        "source_url": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+        "source_path": "LICENSE",
+        "notice_sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+        "original_notice_id": "originals/emscripten/LICENSE"
+      },
+      {
+        "source_url": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+        "source_path": "system/lib/compiler-rt/LICENSE.TXT",
+        "notice_sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+        "original_notice_id": "originals/emscripten/system/lib/compiler-rt/LICENSE.TXT"
+      },
+      {
+        "source_url": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+        "source_path": "system/lib/libc/musl/COPYRIGHT",
+        "notice_sha256": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+        "original_notice_id": "originals/emscripten/system/lib/libc/musl/COPYRIGHT"
+      },
+      {
+        "source_url": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+        "source_path": "system/lib/libcxx/LICENSE.TXT",
+        "notice_sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+        "original_notice_id": "originals/emscripten/system/lib/libcxx/LICENSE.TXT"
+      },
+      {
+        "source_url": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+        "source_path": "system/lib/libcxxabi/LICENSE.TXT",
+        "notice_sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+        "original_notice_id": "originals/emscripten/system/lib/libcxxabi/LICENSE.TXT"
+      },
+      {
+        "source_url": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+        "source_path": "system/lib/libunwind/LICENSE.TXT",
+        "notice_sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d",
+        "original_notice_id": "originals/emscripten/system/lib/libunwind/LICENSE.TXT"
+      },
+      {
+        "source_url": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+        "source_path": "system/lib/llvm-libc/LICENSE.TXT",
+        "notice_sha256": "ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47",
+        "original_notice_id": "originals/emscripten/system/lib/llvm-libc/LICENSE.TXT"
+      },
+      {
+        "source_url": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+        "source_path": "system/lib/mimalloc/LICENSE",
+        "notice_sha256": "19c99805e7a44a34b297a75d1edea9985e300066dfc024d5c99d4236d4573b5d",
+        "original_notice_id": "originals/emscripten/system/lib/mimalloc/LICENSE"
+      }
+    ],
+    "delivered_member_refs": [],
+    "source_archive_keys": [
+      "emscripten"
+    ],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "lbfgsb",
+    "name": "L-BFGS-B C translation (SciPy snapshot)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "LICENSES_bundled.txt",
+        "notice_sha256": "45b1a2cf4eb57277812fcbca2b6af7d84e98c942a5e4dcc360610f49de16c63f",
+        "original_notice_id": "originals/scipy-sdist/LICENSES_bundled.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/optimize/_lbfgsb.cpython-314-wasm32-emscripten.so",
+        "sha256": "af4b8817dc8d2cf826605168bda1f45bc0fbea326a8481ff12fc98c341b80a05"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  },
+  {
+    "component_id": "lapjvsp",
+    "name": "LAPJVsp (SciPy snapshot)",
+    "source_notice_records": [
+      {
+        "source_url": "https://files.pythonhosted.org/packages/source/s/scipy/scipy-1.18.0.tar.gz",
+        "source_path": "LICENSES_bundled.txt",
+        "notice_sha256": "45b1a2cf4eb57277812fcbca2b6af7d84e98c942a5e4dcc360610f49de16c63f",
+        "original_notice_id": "originals/scipy-sdist/LICENSES_bundled.txt"
+      }
+    ],
+    "delivered_member_refs": [
+      {
+        "wheel": "scipy-1.18.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "path": "scipy/sparse/csgraph/_matching.cpython-314-wasm32-emscripten.so",
+        "sha256": "7e94bc618119dc617005ab53ec2b1275d4404e29e6e4d1c1fe99f901819041d7"
+      }
+    ],
+    "source_archive_keys": [],
+    "modification_status": "ACTUAL_SELECTED_BUILD_CORRESPONDENCE_UNCONFIRMED",
+    "human_legal_decision": "PENDING",
+    "scope": "Candidate associations; notice/source identity does not prove linked source selection"
+  }
+]

@@ -1,0 +1,115 @@
+# Manual only. Protected digest pins are supplied by independent reviewers.
+# No Owner acceptance/native-device/schedule PASS is inferred by publication.
+name: BG-2 Pages publish or restore
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        type: choice
+        options: [publish, restore]
+        required: true
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: acecog-pages-publication
+  cancel-in-progress: false
+jobs:
+  deliver:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: bg2-publication
+      url: ${{ steps.deploy.outputs.page_url }}
+    permissions:
+      contents: read
+      actions: read
+      pages: write
+      id-token: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPERATION: ${{ inputs.operation }}
+      SOURCE_SHA: ${{ vars.BG2_SOURCE_SHA }}
+      CANDIDATE_RUN: ${{ vars.BG2_CANDIDATE_RUN_ID }}
+      CANDIDATE_SHA256: ${{ vars.BG2_CANDIDATE_SHA256 }}
+      DECISION_RUN: ${{ vars.BG2_DECISION_RUN_ID }}
+      DECISION_SHA256: ${{ vars.BG2_DECISION_SHA256 }}
+      PREVIOUS_SHA256: ${{ vars.BG2_PREVIOUS_SITE_SHA256 }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Require protected independent review and immutable plan
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = acecog1/ACECOG-CivicOS
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          [[ "$CANDIDATE_RUN" =~ ^[0-9]+$ ]]
+          [[ "$DECISION_RUN" =~ ^[0-9]+$ ]]
+          for value in "$CANDIDATE_SHA256" "$DECISION_SHA256" "$PREVIOUS_SHA256"; do
+            [[ "$value" =~ ^[a-f0-9]{64}$ ]]
+          done
+          # Fail closed if protection settings cannot be independently read.
+          gh api "repos/$GITHUB_REPOSITORY/environments/bg2-publication" > environment.json
+          jq -e 'any(.protection_rules[]; .type == "required_reviewers" and .prevent_self_review == true and (.reviewers | length > 0))' environment.json
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$CANDIDATE_RUN" > candidate-run.json
+          jq -e --arg sha "$SOURCE_SHA" '.head_sha == $sha and .conclusion == "success" and .head_repository.full_name == "acecog1/ACECOG-CivicOS"' candidate-run.json
+      - name: Download exact retained bytes without rebuilding
+        run: |
+          set -euo pipefail
+          gh run download "$CANDIDATE_RUN" -R "$GITHUB_REPOSITORY" --name bg2-pages-candidate --dir candidate
+          gh run download "$DECISION_RUN" -R "$GITHUB_REPOSITORY" --name bg2-independent-decision --dir decision
+          python - <<'PY'
+          import hashlib, os
+          from pathlib import Path
+          for name, key in [('candidate/site.zip', 'CANDIDATE_SHA256'),
+                            ('candidate/previous-site.zip', 'PREVIOUS_SHA256'),
+                            ('decision/decision.json', 'DECISION_SHA256')]:
+              if hashlib.sha256(Path(name).read_bytes()).hexdigest() != os.environ[key]:
+                  raise SystemExit('Retained bytes mismatch: ' + name)
+          PY
+      - name: Verify candidate and exact independent disposition
+        if: inputs.operation == 'publish'
+        run: |
+          set -euo pipefail
+          python -m scripts.bg2_publication_gate --zip candidate/site.zip \
+            --source-sha "$SOURCE_SHA" --archive-sha256 "$CANDIDATE_SHA256" \
+            --decision decision/decision.json --decision-sha256 "$DECISION_SHA256" --extract build/pages
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          m = json.loads(Path('build/pages/publication-manifest.json').read_bytes())
+          assert m['previous_site_sha256'] == os.environ['PREVIOUS_SHA256']
+          from scripts.bg2_publication_gate import read_archive, digest
+          previous = read_archive(Path('candidate/previous-site.zip'))
+          assert m['bg1_file_sha256'] == {n: digest(b) for n, b in previous.items()}
+          PY
+      - name: Restore actual retained prior deployment bytes
+        if: inputs.operation == 'restore'
+        run: |
+          python -m scripts.bg2_pages_tree --previous candidate/previous-site.zip \
+            --sha256 "$PREVIOUS_SHA256" --destination build/pages
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: build/pages
+      - name: Deploy verified bytes to existing Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+      - name: Verify served bytes and retain actual deployment receipt
+        env:
+          PAGE_URL: ${{ steps.deploy.outputs.page_url }}
+        run: |
+          python -m scripts.verify_bg2_served --root build/pages --url "$PAGE_URL" --receipt served-receipt.json
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: bg2-delivery-receipt-${{ github.run_id }}
+          path: |
+            served-receipt.json
+            environment.json
+            candidate-run.json
+          if-no-files-found: error
