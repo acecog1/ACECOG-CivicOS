@@ -1,0 +1,63 @@
+name: PR18 recovery addendum exact ZIP review upload
+on:
+  push:
+    branches: [builder/pr18-addendum-upload-20261113]
+    paths: [.github/workflows/pr18-addendum-upload.yml]
+permissions:
+  contents: read
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch unchanged committed addendum and verify identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir original
+          curl --fail --location --retry 3 --proto '=https' --tlsv1.2 \
+            https://raw.githubusercontent.com/acecog1/ACECOG-CivicOS/85b8b1c42dbbd7c9b1a54e244b3722b05c261fe6/docs/evidence/bg2-mandatory-groups-20261113/review-addendum.zip \
+            --output original/review-addendum.zip
+          echo 'fd2bd0ebf62a9e89c1ffc36cf4a107dc0f931698a24dfa5a3c62399377a5cafd  original/review-addendum.zip' | sha256sum --check --strict
+          test "$(stat -c %s original/review-addendum.zip)" = 1023096
+          test "$(git hash-object original/review-addendum.zip)" = 42221bf1d624e78517dcc9aa9f9446daa6ec29f6
+          chmod a-w original/review-addendum.zip
+      - name: Upload immutable read-only review artifact
+        id: artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr18-recovery-addendum-85b8b1c42dbbd7c9
+          path: original/review-addendum.zip
+          if-no-files-found: error
+          compression-level: 0
+          overwrite: false
+          retention-days: 90
+      - name: Download artifact for exact byte comparison
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ steps.artifact.outputs.artifact-id }}
+          path: roundtrip
+          merge-multiple: true
+      - name: Verify and record receipt
+        env:
+          ARTIFACT_ID: ${{ steps.artifact.outputs.artifact-id }}
+          ARTIFACT_URL: ${{ steps.artifact.outputs.artifact-url }}
+          OUTER_DIGEST: ${{ steps.artifact.outputs.artifact-digest }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmp original/review-addendum.zip roundtrip/review-addendum.zip
+          echo 'fd2bd0ebf62a9e89c1ffc36cf4a107dc0f931698a24dfa5a3c62399377a5cafd  roundtrip/review-addendum.zip' | sha256sum --check --strict
+          test "$(stat -c %s roundtrip/review-addendum.zip)" = 1023096
+          test "$(git hash-object roundtrip/review-addendum.zip)" = 42221bf1d624e78517dcc9aa9f9446daa6ec29f6
+          {
+            echo 'Builder transport verification only; independent QA required.'
+            echo 'PR18 source commit: 85b8b1c42dbbd7c9b1a54e244b3722b05c261fe6'
+            echo 'Committed Git blob: 42221bf1d624e78517dcc9aa9f9446daa6ec29f6'
+            echo 'Original inner ZIP SHA256: fd2bd0ebf62a9e89c1ffc36cf4a107dc0f931698a24dfa5a3c62399377a5cafd'
+            echo 'Original bytes: 1023096; 192 declared payloads subject to independent QA.'
+            echo "Artifact ID: $ARTIFACT_ID; URL: $ARTIFACT_URL"
+            echo "Run ID: $GITHUB_RUN_ID; attempt: $GITHUB_RUN_ATTEMPT; workflow commit: $GITHUB_SHA"
+            echo "Outer GitHub artifact digest (NOT inner ZIP): $OUTER_DIGEST"
+            echo 'BG2 HOLD. No rebuild, merge, deployment, license approval, or release authorization.'
+          } | tee -a "$GITHUB_STEP_SUMMARY"
