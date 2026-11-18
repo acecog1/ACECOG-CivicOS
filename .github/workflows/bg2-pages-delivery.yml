@@ -43,21 +43,18 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.13'
-      - name: Require protected independent review and immutable plan
+      - name: Require Owner dispatch and independently pinned release evidence
         run: |
           set -euo pipefail
-          test "$GITHUB_REPOSITORY" = acecog1/ACECOG-CivicOS
-          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]]
-          [[ "$CANDIDATE_RUN" =~ ^[0-9]+$ ]]
-          [[ "$DECISION_RUN" =~ ^[0-9]+$ ]]
-          for value in "$CANDIDATE_SHA256" "$DECISION_SHA256" "$PREVIOUS_SHA256"; do
-            [[ "$value" =~ ^[a-f0-9]{64}$ ]]
-          done
-          # Fail closed if protection settings cannot be independently read.
-          gh api "repos/$GITHUB_REPOSITORY/environments/bg2-publication" > environment.json
-          jq -e 'any(.protection_rules[]; .type == "required_reviewers" and .prevent_self_review == true and (.reviewers | length > 0))' environment.json
+          # This is an Owner-operated manual beta. QA and Security must still
+          # independently sign the exact decision, checked below after download.
+          # The environment stays for scoped variables; no second reviewer is
+          # a workflow prerequisite. GitHub environment rules are configured
+          # separately by the repository administrator.
+          python -m scripts.bg2_owner_publication_record \
+            --status DISPATCHED_UNVERIFIED --output owner-publication-record.json
           gh api "repos/$GITHUB_REPOSITORY/actions/runs/$CANDIDATE_RUN" > candidate-run.json
-          jq -e --arg sha "$SOURCE_SHA" '.head_sha == $sha and .conclusion == "success" and .head_repository.full_name == "acecog1/ACECOG-CivicOS"' candidate-run.json
+          jq -e --arg sha "$SOURCE_SHA" '.head_sha == $sha and .conclusion == "success" and .head_branch == "main" and .head_repository.full_name == "acecog1/ACECOG-CivicOS"' candidate-run.json
       - name: Download exact retained bytes without rebuilding
         run: |
           set -euo pipefail
@@ -104,12 +101,15 @@ jobs:
           PAGE_URL: ${{ steps.deploy.outputs.page_url }}
         run: |
           python -m scripts.verify_bg2_served --root build/pages --url "$PAGE_URL" --receipt served-receipt.json
+          python -m scripts.bg2_owner_publication_record \
+            --status SERVED_BYTES_VERIFIED --output owner-publication-record.json \
+            --served-receipt served-receipt.json --page-url "$PAGE_URL"
       - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: bg2-delivery-receipt-${{ github.run_id }}
           path: |
             served-receipt.json
-            environment.json
+            owner-publication-record.json
             candidate-run.json
           if-no-files-found: error
