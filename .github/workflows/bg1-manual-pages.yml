@@ -112,7 +112,7 @@ jobs:
           name: bg1-release-evidence-${{ github.sha }}
           path: build/site-evidence
       - name: Package Pages artifact without publishing it
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: build/site
 

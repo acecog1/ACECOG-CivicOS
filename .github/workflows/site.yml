@@ -69,6 +69,6 @@ jobs:
         with:
           name: bg1-browser-${{ github.sha }}
           path: build/site-evidence
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: build/site
