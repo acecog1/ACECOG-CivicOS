@@ -38,7 +38,10 @@ def verify(root: Path, url: str) -> dict:
                 if attempt < 4:
                     time.sleep(3)
         if error:
-            raise error
+            raise RuntimeError(
+                f'Served-byte verification failed: relative_path={relative!r} '
+                f'url={target!r} attempts=5 last_error={error!s}'
+            ) from error
         results.append({'path': relative, 'sha256': expected})
     return {'url': url, 'operation': os.environ.get('OPERATION'),
             'run_id': os.environ.get('GITHUB_RUN_ID'), 'files': results,
